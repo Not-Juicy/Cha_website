@@ -3260,15 +3260,29 @@ hr {
     <div class="donate-modal-backdrop" data-member-close></div>
     <div class="donate-modal-panel">
       <button class="donate-modal-close" type="button" data-member-close aria-label="Close login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
-      <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
-      <form id="member-modal-form" data-mock-form novalidate>
-        <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
-        <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
-        <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-      </form>
-      <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+      <div id="member-login-panel">
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
+        <form data-mock-form novalidate>
+          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
+          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+        </form>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+      </div>
+      <div id="member-register-panel" style="display:none">
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Create Account</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Join our community of patients, families, and supporters.</p>
+        <form data-mock-form novalidate>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="mregname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div></div>
+          <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
+          <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+        </form>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
+      </div>
     </div>
   </div>
 
@@ -3703,6 +3717,17 @@ hr {
   memberClosers.forEach((c) => c.addEventListener('click', closeMember));
   memberModal.addEventListener('click', (e) => { if (e.target === memberModal) closeMember(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && memberModal.classList.contains('is-open')) closeMember(); });
+
+  // Toggle between login and register panels
+  const loginPanel = document.getElementById('member-login-panel');
+  const registerPanel = document.getElementById('member-register-panel');
+  const registerLink = memberModal.querySelector('[data-member-register]');
+  const backLoginLink = memberModal.querySelector('[data-member-back-login]');
+  if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; });
+  if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; });
+  // Reset to login on close
+  const origCloseMember = closeMember;
+  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; };
 })();
 
 </script>
