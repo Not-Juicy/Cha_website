@@ -2340,25 +2340,27 @@ hr {
   display: grid;
   grid-template-columns: 80px 1fr;
   gap: var(--s-3);
-  padding: var(--s-3);
+  padding: var(--s-4);
   border: 1px solid var(--c-border);
-  border-radius: var(--r-md);
+  border-radius: var(--r-lg);
   margin-bottom: var(--s-3);
-  transition: all var(--t-fast) var(--ease);
+  transition: all 300ms var(--ease);
+  background: var(--c-white);
 }
-.campaign-card:hover { border-color: var(--c-blue); transform: translateX(2px); }
+.campaign-card:hover { border-color: var(--c-red-100); box-shadow: 0 4px 16px rgba(227, 30, 36, 0.06); }
 .campaign-card .thumb {
   width: 80px;
   height: 80px;
-  border-radius: var(--r-sm);
-  background: linear-gradient(135deg, var(--c-red-100), var(--c-gray-100));
+  border-radius: var(--r-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--c-red);
-  font-size: 0.7rem;
-  font-weight: var(--fw-semibold);
+  font-size: 1.5rem;
+  flex-shrink: 0;
 }
+.campaign-card:nth-child(1) .thumb { background: linear-gradient(135deg, #FCE5E6, #F8D0D2); }
+.campaign-card:nth-child(2) .thumb { background: linear-gradient(135deg, #E5E8F2, #D5DAF0); }
+.campaign-card:nth-child(3) .thumb { background: linear-gradient(135deg, #EFE6F4, #E2D4EE); }
 .campaign-card h4 { color: var(--c-blue); font-size: 0.9375rem; margin-bottom: var(--s-1); }
 .campaign-card .progress-meta { font-size: 0.75rem; margin-top: var(--s-1); }
 
@@ -3193,16 +3195,9 @@ hr {
           </div>
           <div class="campaigns-list" data-reveal>
             <h3>Current Campaigns</h3>
-            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
-            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
-            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
-            <div class="section" style="padding:var(--s-6) 0 0"><div class="section-heading" data-reveal><h2 style="font-size:1.25rem">Corporate Partners</h2></div>
-            <div class="partners-strip" data-reveal><div class="logos">
-              <div class="logo" title="World Federation of Hemophilia"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="WFH"><circle cx="14" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="18" font-family="Poppins" font-size="13" font-weight="700" fill="currentColor">WFH</text><text x="32" y="32" font-family="Poppins" font-size="6" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
-              <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="IFAH"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
-              <div class="logo" title="Global Haemophilia Alliance"><svg viewBox="0 0 140 40" width="140" height="40" aria-label="GHA"><text x="6" y="18" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Global</text><text x="6" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Haemophilia</text><text x="84" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Alliance</text></svg></div>
-              <div class="logo" title="PATH"><svg viewBox="0 0 80 40" width="80" height="40" aria-label="PATH"><text x="6" y="28" font-family="Poppins" font-size="22" font-weight="700" fill="currentColor">PATH</text></svg></div>
-            </div></div></div>
+            <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px;color:var(--c-red)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
+            <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px;color:var(--c-blue)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
+            <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px;color:var(--c-purple)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
           </div>
         </div></div></div>
       </div>
