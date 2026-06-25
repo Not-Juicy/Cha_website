@@ -415,6 +415,28 @@ hr {
   border-color: var(--c-red);
 }
 
+.btn-hero-primary {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border: 1.5px solid var(--c-blue);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-full);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.btn-hero-primary:hover {
+  background: var(--c-blue-700);
+  color: var(--c-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
 .btn-light {
   background: var(--c-white);
   color: var(--c-blue);
@@ -2973,7 +2995,7 @@ hr {
           <h1><span class="accent-blue">Together We Care.</span><br><span class="accent-red">Together We Change Lives.</span></h1>
           <p class="lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a class="btn btn-hero-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             <a class="btn btn-hero-member btn-lg" href="#" data-member-register-trigger>Become a Member</a>
           </div>
         </div>
