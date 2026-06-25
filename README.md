@@ -47,3 +47,4 @@ The page is a single scroll with anchored navigation:
 - The site is fully responsive (breakpoints at 540px, 720px, 900px)
 - All form submissions are mocked (no backend) — wire `data-mock-form` to a real endpoint when ready
 - Animations respect `prefers-reduced-motion`
+- Last updated: June 2026
