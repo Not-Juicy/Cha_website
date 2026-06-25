@@ -477,6 +477,88 @@ hr {
 }
 .main-nav a.is-active:hover { color: var(--c-white); background: var(--c-blue); }
 
+/* Nav dropdown (desktop) */
+.nav-drop { position: relative; }
+.nav-drop-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  border-radius: var(--r-full);
+  transition: all var(--t-fast) var(--ease);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+.nav-drop-trigger:hover { color: var(--c-blue); background: var(--c-blue-100); }
+.nav-drop-trigger svg { transition: transform var(--t-fast) var(--ease); }
+.nav-drop.is-open .nav-drop-trigger { color: var(--c-white); background: var(--c-blue); box-shadow: 0 2px 8px rgba(11, 29, 109, 0.2); }
+.nav-drop.is-open .nav-drop-trigger svg { transform: rotate(180deg); }
+.nav-drop-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 200px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  box-shadow: 0 12px 40px rgba(11, 29, 109, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: var(--s-2);
+  display: none;
+  z-index: 1010;
+}
+.nav-drop.is-open .nav-drop-panel { display: block; }
+.nav-drop-panel a {
+  display: block;
+  padding: 0.5625rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast) var(--ease);
+  white-space: nowrap;
+}
+.nav-drop-panel a:hover { background: var(--c-blue-100); color: var(--c-blue); }
+
+/* Mobile drawer sub-groups */
+.drawer-group { border-top: 1px solid var(--c-border); padding-top: var(--s-2); }
+.drawer-sub-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-800);
+  border-radius: var(--r-md);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--t-fast) var(--ease);
+}
+.drawer-sub-trigger:hover { background: var(--c-gray-100); }
+.drawer-sub-trigger svg { transition: transform var(--t-fast) var(--ease); }
+.drawer-group.is-open .drawer-sub-trigger svg { transform: rotate(180deg); }
+.drawer-sub-items { display: none; padding: 0 0 var(--s-2) var(--s-3); }
+.drawer-group.is-open .drawer-sub-items { display: flex; flex-direction: column; gap: 2px; }
+.drawer-sub-items a {
+  padding: 0.6rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-regular);
+  color: var(--c-gray-600);
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast) var(--ease);
+}
+.drawer-sub-items a:hover { background: var(--c-blue-100); color: var(--c-blue); }
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -2672,6 +2754,64 @@ hr {
   background: var(--c-border);
 }
 
+/* ---------- 39. Donate Modal ---------- */
+.donate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms var(--ease);
+}
+.donate-modal.is-open { opacity: 1; pointer-events: auto; }
+.donate-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+}
+.donate-modal-panel {
+  position: relative;
+  background: var(--c-white);
+  border-radius: var(--r-xl);
+  padding: var(--s-8);
+  width: min(480px, 92vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(11, 29, 109, 0.2), 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  transition: transform 300ms var(--ease);
+}
+.donate-modal.is-open .donate-modal-panel { transform: translateY(0); }
+.donate-modal-close {
+  position: absolute;
+  top: var(--s-4);
+  right: var(--s-4);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-gray-100);
+  color: var(--c-gray-600);
+  border: none;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.donate-modal-close:hover { background: var(--c-blue); color: var(--c-white); }
+
+/* Programs tabs wider style */
+.programs-tabs { justify-content: center; gap: 0; }
+.programs-tabs .tab-btn {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-full);
+}
+
 </style>
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
 </head>
@@ -2684,16 +2824,28 @@ hr {
       <a class="brand" href="#home"><img class="brand-logo" src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association"></a>
       <nav class="main-nav" aria-label="Primary">
         <a href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#haemophilia">About Haemophilia</a>
-        <a href="#member">Become a Member</a>
-        <a href="#news">News &amp; Activities</a>
-        <a href="#partners">Partners</a>
-        <a href="#contact">Contact Us</a>
+        <a href="#about">About</a>
+        <div class="nav-drop" data-nav-drop>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">Programs<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-drop-panel">
+            <a href="#programs-haemophilia">About Haemophilia</a>
+            <a href="#programs-member">Become a Member</a>
+            <a href="#programs-donate">Donate &amp; Fundraising</a>
+          </div>
+        </div>
+        <div class="nav-drop" data-nav-drop>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">News<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-drop-panel">
+            <a href="#news">Latest News</a>
+            <a href="#news-events">Upcoming Events</a>
+            <a href="#programs-donate">Campaigns</a>
+          </div>
+        </div>
+        <a href="#contact">Contact</a>
       </nav>
       <div class="header-actions">
         <button class="lang-switcher" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>EN</button>
-        <a class="btn btn-donate" href="#donate">Donate</a>
+        <a class="btn btn-donate" href="#" data-donate-trigger aria-label="Open donation form">❤ Donate</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
@@ -2708,10 +2860,28 @@ hr {
         <button class="close" type="button" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <nav aria-label="Mobile primary">
-        <a href="#home">Home</a><a href="#about">About Us</a><a href="#haemophilia">About Haemophilia</a><a href="#member">Become a Member</a><a href="#news">News &amp; Activities</a><a href="#partners">Partners</a><a href="#contact">Contact Us</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <div class="drawer-group">
+          <button class="drawer-sub-trigger" type="button" aria-expanded="false">Programs<svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="drawer-sub-items">
+            <a href="#programs-haemophilia">About Haemophilia</a>
+            <a href="#programs-member">Become a Member</a>
+            <a href="#programs-donate">Donate &amp; Fundraising</a>
+          </div>
+        </div>
+        <div class="drawer-group">
+          <button class="drawer-sub-trigger" type="button" aria-expanded="false">News<svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="drawer-sub-items">
+            <a href="#news">Latest News</a>
+            <a href="#news-events">Upcoming Events</a>
+            <a href="#programs-donate">Campaigns</a>
+          </div>
+        </div>
+        <a href="#contact">Contact</a>
       </nav>
       <div class="panel-actions">
-        <a class="btn btn-donate btn-block" href="#donate">Donate</a>
+        <a class="btn btn-donate btn-block" href="#" data-donate-trigger>❤ Donate</a>
         <a class="btn btn-secondary btn-block" href="#login">Member Login</a>
       </div>
     </div>
@@ -2728,8 +2898,8 @@ hr {
           <h1><span class="accent-blue">Together We Care.</span><br><span class="accent-red">Together We Change Lives.</span></h1>
           <p class="lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            <a class="btn btn-secondary btn-lg" href="#member">Learn More</a>
+            <a class="btn btn-primary btn-lg" href="#programs-haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a class="btn btn-secondary btn-lg" href="#programs-member">Learn More</a>
           </div>
         </div>
       </div>
@@ -2750,9 +2920,9 @@ hr {
       <div class="section-heading" data-reveal><h2>How We Help</h2><p>Four core areas where CHA makes a difference for patients and families across Cambodia.</p></div>
       <div class="grid grid-4">
         <div class="help-card" data-reveal><div class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Patient Support</h3><p>Emotional support, guidance and community for patients and families.</p><a class="card-link" href="#about">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Treatment Centres</h3><p>Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#centres">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Become a Member</h3><p>Join our community and access exclusive resources and programs.</p><a class="card-link" href="#member">Join Now <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Donate</h3><p>Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#donate">Donate Now <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Treatment Centres</h3><p>Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#programs-centres">Learn More <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Become a Member</h3><p>Join our community and access exclusive resources and programs.</p><a class="card-link" href="#programs-member">Join Now <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Donate</h3><p>Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#" data-donate-trigger>Donate Now <span class="arrow">→</span></a></div>
       </div>
     </div></section>
 
@@ -2781,16 +2951,7 @@ hr {
         <h2>Help Change Lives</h2>
         <p>Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.</p>
       </div>
-      <a class="btn btn-light btn-lg" href="#donate">Donate Now <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div></div></section>
-
-    <!-- Partners -->
-    <section class="partners-strip" id="partners" data-reveal><div class="container"><div class="label">Our Global Partners</div><div class="logos">
-      <div class="logo" title="World Federation of Hemophilia"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="WFH"><circle cx="14" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="18" font-family="Poppins" font-size="13" font-weight="700" fill="currentColor">WFH</text><text x="32" y="32" font-family="Poppins" font-size="6" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
-      <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="IFAH"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
-      <div class="logo" title="Global Haemophilia Alliance"><svg viewBox="0 0 140 40" width="140" height="40" aria-label="GHA"><text x="6" y="18" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Global</text><text x="6" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Haemophilia</text><text x="84" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Alliance</text></svg></div>
-      <div class="logo" title="Save One Life"><svg viewBox="0 0 120 40" width="120" height="40" aria-label="Save One Life"><path d="M10 20 q0 -10 8 -10 q8 0 8 10 q0 10 -8 14 q-8 -4 -8 -14 z" fill="none" stroke="currentColor" stroke-width="2"/><text x="36" y="26" font-family="Poppins" font-size="13" font-weight="600" fill="currentColor">Save One Life</text></svg></div>
-      <div class="logo" title="PATH"><svg viewBox="0 0 80 40" width="80" height="40" aria-label="PATH"><text x="6" y="28" font-family="Poppins" font-size="22" font-weight="700" fill="currentColor">PATH</text></svg></div>
+      <a class="btn btn-light btn-lg" href="#" data-donate-trigger>Donate Now <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div></div></section>
 
     <!-- ===== ABOUT US ===== -->
@@ -2830,253 +2991,167 @@ hr {
       </div>
     </div></section>
 
-    <!-- ===== ABOUT HAEMOPHILIA ===== -->
-    <div class="section-divider"><div class="divider-inner">About Haemophilia</div></div>
-    <section class="hero-dark" id="haemophilia"><div class="container">
-      <h1>Understanding<br>Haemophilia</h1>
-      <p>Learn about bleeding disorders, symptoms, treatment and how to live well.</p>
-      <a class="btn btn-light" href="#what">Learn More <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-    </div></section>
-
-    <section class="section" id="what"><div class="container"><div class="split">
-      <div data-reveal>
-        <p class="eyebrow">About</p>
-        <h2>What is Haemophilia?</h2>
-        <p>Haemophilia is a rare genetic bleeding disorder that affects a person's ability to stop bleed. People with haemophilia can bleed longer than others after an injury or even without a known cause.</p>
-        <p>While there is no cure, modern treatments allow people with haemophilia to live full, active and healthy lives. Early diagnosis, proper treatment and ongoing support are key to preventing complications and joint damage.</p>
-        <a class="btn btn-secondary" href="#contact">Contact a Specialist <span class="arrow">→</span></a>
+    <!-- ===== PROGRAMS ===== -->
+    <div class="section-divider"><div class="divider-inner">Programs</div></div>
+    <section class="section" id="programs"><div class="container">
+      <div class="section-heading" data-reveal>
+        <h2>Our Programs</h2>
+        <p>Learn about bleeding disorders, become a member, or support our mission — all in one place.</p>
       </div>
-      <div class="split-illust" data-reveal>
-        <svg viewBox="0 0 200 240" width="280" height="280" aria-label="Blood drop">
-          <defs><radialGradient id="drop-grad" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#E31E24"/></radialGradient></defs>
-          <path d="M100 20 C 60 80, 30 130, 30 170 C 30 210, 60 230, 100 230 C 140 230, 170 210, 170 170 C 170 130, 140 80, 100 20 Z" fill="url(#drop-grad)"/>
-          <ellipse cx="78" cy="120" rx="14" ry="22" fill="rgba(255,255,255,0.35)"/>
-        </svg>
+      <div class="tabs-nav programs-tabs" data-tabs>
+        <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="p-haemo">About Haemophilia</button>
+        <button class="tab-btn" type="button" data-tab-group data-tab-target="p-member">Membership</button>
+        <button class="tab-btn" type="button" data-tab-group data-tab-target="p-donate">Donate</button>
       </div>
-    </div></div></section>
-
-    <section class="section section-soft"><div class="container">
-      <div class="section-heading" data-reveal><h2>Types of Haemophilia</h2></div>
-      <div class="grid grid-2">
-        <div class="type-card" data-reveal>
-          <svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#E31E24"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg>
-          <div><h3>Haemophilia A</h3><p>Caused by a deficiency of factor VIII. The most common type.</p></div>
-        </div>
-        <div class="type-card" data-reveal>
-          <svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#0B1D6D"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg>
-          <div><h3>Haemophilia B</h3><p>Caused by a deficiency of factor IX. Sometimes called Christmas disease.</p></div>
-        </div>
+      <div class="tab-panel is-active" data-tab-panel="p-haemo" id="programs-haemophilia" style="padding-top:var(--s-8)">
+        <div class="hero-dark" id="haemophilia"><div class="container">
+          <h1>Understanding<br>Haemophilia</h1>
+          <p>Learn about bleeding disorders, symptoms, treatment and how to live well.</p>
+          <a class="btn btn-light" href="#what">Learn More <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div></div>
+        <div class="section" id="what"><div class="container"><div class="split">
+          <div data-reveal><p class="eyebrow">About</p><h2>What is Haemophilia?</h2>
+          <p>Haemophilia is a rare genetic bleeding disorder that affects a person's ability to stop bleed. People with haemophilia can bleed longer than others after an injury or even without a known cause.</p>
+          <p>While there is no cure, modern treatments allow people with haemophilia to live full, active and healthy lives. Early diagnosis, proper treatment and ongoing support are key to preventing complications and joint damage.</p>
+          <a class="btn btn-secondary" href="#contact">Contact a Specialist <span class="arrow">→</span></a></div>
+          <div class="split-illust" data-reveal><svg viewBox="0 0 200 240" width="280" height="280" aria-label="Blood drop"><defs><radialGradient id="drop-grad" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#E31E24"/></radialGradient></defs><path d="M100 20 C 60 80, 30 130, 30 170 C 30 210, 60 230, 100 230 C 140 230, 170 210, 170 170 C 170 130, 140 80, 100 20 Z" fill="url(#drop-grad)"/><ellipse cx="78" cy="120" rx="14" ry="22" fill="rgba(255,255,255,0.35)"/></svg></div>
+        </div></div></div>
+        <div class="section section-soft"><div class="container">
+          <div class="section-heading" data-reveal><h2>Types of Haemophilia</h2></div>
+          <div class="grid grid-2">
+            <div class="type-card" data-reveal><svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#E31E24"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Haemophilia A</h3><p>Caused by a deficiency of factor VIII. The most common type.</p></div></div>
+            <div class="type-card" data-reveal><svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#0B1D6D"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Haemophilia B</h3><p>Caused by a deficiency of factor IX. Sometimes called Christmas disease.</p></div></div>
+          </div>
+        </div></div>
+        <div class="section symptoms-section"><div class="container">
+          <div class="section-heading" data-reveal><h2>Common Symptoms</h2><p>Recognizing the signs of a bleeding disorder is the first step toward diagnosis and proper care.</p></div>
+          <div class="symptoms-grid">
+            <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><p class="label">Easy Bruising</p><p class="hint">Unexplained bruises from minor bumps or pressure.</p></div>
+            <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8 2 6 5 6 8c0 4 6 12 6 12s6-8 6-12c0-3-2-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg></div><p class="label">Frequent Nosebleeds</p><p class="hint">Recurring nosebleeds that are hard to stop.</p></div>
+            <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div><p class="label">Bleeding Gums</p><p class="hint">Gums that bleed during brushing or eating.</p></div>
+            <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></div><p class="label">Joint Pain or Swelling</p><p class="hint">Painful, swollen joints after minor injury or activity.</p></div>
+            <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><p class="label">Prolonged Bleeding</p><p class="hint">Bleeding that lasts longer than expected after cuts.</p></div>
+          </div>
+          <div class="symptoms-cta" data-reveal><p>Experiencing any of these symptoms? Early diagnosis can make a life-changing difference.</p><div class="btn-row"><a class="btn btn-primary" href="#programs-centres">Find a Treatment Centre <span class="arrow">→</span></a><a class="btn btn-secondary" href="#contact">Contact a Specialist</a></div></div>
+        </div></div>
+        <div class="section section-soft"><div class="container">
+          <div class="section-heading" data-reveal><h2>Explore More</h2></div>
+          <div class="explore-grid">
+            <div class="explore-card" data-reveal><h3>Von Willebrand Disease (VWD)</h3><p>The most common inherited bleeding disorder.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+            <div class="explore-card" data-reveal><h3>Other Bleeding Disorders</h3><p>Information on rare factor deficiencies and platelet disorders.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+            <div class="explore-card" data-reveal><h3>Treatment Centres</h3><p>Find a haemophilia treatment centre near you.</p><a class="card-link" href="#programs-centres">Learn More <span class="arrow">→</span></a></div>
+            <div class="explore-card" data-reveal><h3>Treatment Guide</h3><p>Patient and family guide to living well with a bleeding disorder.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+          </div>
+        </div></div>
+        <div class="section" id="programs-centres"><div class="container">
+          <h2 class="mb-6" data-reveal>Treatment Centres</h2>
+          <div class="tc-search mb-6" data-reveal><label class="form-label" for="province">Select Province</label><select class="form-select" id="province" data-province-select><option value="">All provinces</option><option value="phnom-penh">Phnom Penh</option><option value="siem-reap">Siem Reap</option><option value="battambang">Battambang</option><option value="sihanoukville">Sihanoukville</option></select></div>
+          <div class="grid" style="gap:var(--s-5)">
+            <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-1.jpg" alt="National Paediatric Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body"><h3>National Paediatric Hospital — Haemophilia Clinic</h3><div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 721 833</span></div><div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">VWD</span><span class="tc-tag">Consultation</span><span class="tc-tag">Laboratory</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a></article>
+            <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-2.jpg" alt="Calmette Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body"><h3>Calmette Hospital — Haemophilia Unit</h3><div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 338 707</span></div><div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Factor Replacement</span><span class="tc-tag">Counselling</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a></article>
+            <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-3.jpg" alt="Siem Reap Provincial Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body"><h3>Siem Reap Provincial Hospital</h3><div class="tc-meta"><span>📍 Siem Reap</span><span>📞 063 765 376</span></div><div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Consultation</span><span class="tc-tag">Emergency Care</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a></article>
+          </div>
+          <div class="emergency-banner" data-reveal><div><h3>Emergency Support</h3><p>If you have a bleeding emergency, contact your nearest treatment centre or call our support line.</p></div><a class="phone" href="tel:+85512345678"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>012 345 678</a></div>
+        </div></div>
       </div>
-    </div></section>
-
-    <section class="section symptoms-section"><div class="container">
-      <div class="section-heading" data-reveal><h2>Common Symptoms</h2><p>Recognizing the signs of a bleeding disorder is the first step toward diagnosis and proper care.</p></div>
-      <div class="symptoms-grid">
-        <div class="symptom-card" data-reveal>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
-          <p class="label">Easy Bruising</p>
-          <p class="hint">Unexplained bruises from minor bumps or pressure.</p>
-        </div>
-        <div class="symptom-card" data-reveal>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8 2 6 5 6 8c0 4 6 12 6 12s6-8 6-12c0-3-2-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg></div>
-          <p class="label">Frequent Nosebleeds</p>
-          <p class="hint">Recurring nosebleeds that are hard to stop.</p>
-        </div>
-        <div class="symptom-card" data-reveal>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <p class="label">Bleeding Gums</p>
-          <p class="hint">Gums that bleed during brushing or eating.</p>
-        </div>
-        <div class="symptom-card" data-reveal>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></div>
-          <p class="label">Joint Pain or Swelling</p>
-          <p class="hint">Painful, swollen joints after minor injury or activity.</p>
-        </div>
-        <div class="symptom-card" data-reveal>
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <p class="label">Prolonged Bleeding</p>
-          <p class="hint">Bleeding that lasts longer than expected after cuts.</p>
-        </div>
-      </div>
-      <div class="symptoms-cta" data-reveal>
-        <p>Experiencing any of these symptoms? Early diagnosis can make a life-changing difference.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#centres">Find a Treatment Centre <span class="arrow">→</span></a>
-          <a class="btn btn-secondary" href="#contact">Contact a Specialist</a>
-        </div>
-      </div>
-    </div></section>
-
-    <section class="section section-soft"><div class="container">
-      <div class="section-heading" data-reveal><h2>Explore More</h2></div>
-      <div class="explore-grid">
-        <div class="explore-card" data-reveal><h3>Von Willebrand Disease (VWD)</h3><p>The most common inherited bleeding disorder, caused by deficiency of von Willebrand factor.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
-        <div class="explore-card" data-reveal><h3>Other Bleeding Disorders</h3><p>Information on rare factor deficiencies and platelet function disorders.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
-        <div class="explore-card" data-reveal><h3>Treatment Centres</h3><p>Find a haemophilia treatment centre near you in Cambodia.</p><a class="card-link" href="#centres">Learn More <span class="arrow">→</span></a></div>
-        <div class="explore-card" data-reveal><h3>Treatment Guide</h3><p>Patient and family guide to living well with a bleeding disorder.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
-      </div>
-    </div></section>
-
-    <!-- ===== TREATMENT CENTRES ===== -->
-    <div class="section-divider"><div class="divider-inner">Treatment Centres</div></div>
-    <section class="page-hero" id="centres"><div class="container">
-      <div data-reveal><h1>Find Treatment Centre<br>Near You</h1><p class="lead">Search by province to find haemophilia treatment centres across Cambodia.</p></div>
-      <div class="page-art" data-reveal><div style="text-align:center;width:100%">
-        <div class="tc-map-wrap" style="width:340px;height:340px;margin:0 auto">
-          <img src="images/cambodia-map.svg" alt="Cambodia treatment centre map" style="width:100%;height:100%;object-fit:contain">
-        </div>
-      </div></div>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <h2 class="mb-6" data-reveal>Treatment Centres</h2>
-      <div class="tc-search mb-6" data-reveal>
-        <label class="form-label" for="province">Select Province</label>
-        <select class="form-select" id="province" data-province-select>
-          <option value="">All provinces</option>
-          <option value="phnom-penh">Phnom Penh</option>
-          <option value="siem-reap">Siem Reap</option>
-          <option value="battambang">Battambang</option>
-          <option value="sihanoukville">Sihanoukville</option>
-        </select>
-      </div>
-      <div class="grid" style="gap:var(--s-5)">
-        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-1.jpg" alt="National Paediatric Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
-          <h3>National Paediatric Hospital — Haemophilia Clinic</h3>
-          <div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 721 833</span></div>
-          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">VWD</span><span class="tc-tag">Consultation</span><span class="tc-tag">Laboratory</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
-        </article>
-        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-2.jpg" alt="Calmette Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
-          <h3>Calmette Hospital — Haemophilia Unit</h3>
-          <div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 338 707</span></div>
-          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Factor Replacement</span><span class="tc-tag">Counselling</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
-        </article>
-        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-3.jpg" alt="Siem Reap Provincial Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
-          <h3>Siem Reap Provincial Hospital</h3>
-          <div class="tc-meta"><span>📍 Siem Reap</span><span>📞 063 765 376</span></div>
-          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Consultation</span><span class="tc-tag">Emergency Care</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
-        </article>
-      </div>
-      <div class="emergency-banner" data-reveal>
-        <div><h3>Emergency Support</h3><p>If you have a bleeding emergency, contact your nearest treatment centre or call our support line.</p></div>
-        <a class="phone" href="tel:+85512345678"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>012 345 678</a>
-      </div>
-    </div></section>
-
-    <!-- ===== BECOME A MEMBER ===== -->
-    <div class="section-divider"><div class="divider-inner">Become a Member</div></div>
-
-    <section class="section" id="member"><div class="container">
-      <div class="member-hero" data-reveal>
-        <div class="member-photo">
-          <img src="images/family.jpg" alt="CHA family and community">
-        </div>
-        <div class="member-form-wrap">
-          <h2>Become a Member</h2>
-          <p>Join our community and be part of a strong, caring network supporting people living with bleeding disorders.</p>
-          <form data-mock-form novalidate>
-            <div class="form-row">
-              <div class="form-group"><label class="form-label" for="fullname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="fullname" placeholder="Enter your full name" required></div>
-              <div class="form-group"><label class="form-label" for="email">Email Address <span class="req">*</span></label><input class="form-input" type="email" id="email" placeholder="Enter your email" required></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label class="form-label" for="phone">Phone Number <span class="req">*</span></label><input class="form-input" type="tel" id="phone" placeholder="Enter your phone number" required></div>
-              <div class="form-group"><label class="form-label" for="dob">Date of Birth <span class="req">*</span></label><input class="form-input" type="date" id="dob" required></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label class="form-label" for="prov">Province <span class="req">*</span></label><select class="form-select" id="prov" required><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div>
-              <div class="form-group"><label class="form-label" for="role">I am a <span class="req">*</span></label><select class="form-select" id="role" required><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div>
-            </div>
-            <div class="form-group"><label class="form-label" for="disorder">Type of Bleeding Disorder</label><select class="form-select" id="disorder"><option value="">Select (if applicable)</option><option>Haemophilia A</option><option>Haemophilia B</option><option>VWD</option><option>Other</option></select></div>
-            <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Registration</button>
-          </form>
-          <div class="form-success" data-form-success hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <h3>Welcome to CHA!</h3><p>Your registration has been received. Our team will be in touch within 2 working days.</p>
+      <div class="tab-panel" data-tab-panel="p-member" id="programs-member" style="padding-top:var(--s-8)">
+        <div class="member-hero" data-reveal>
+          <div class="member-photo"><img src="images/family.jpg" alt="CHA family and community"></div>
+          <div class="member-form-wrap">
+            <h2>Become a Member</h2>
+            <p>Join our community and be part of a strong, caring network supporting people living with bleeding disorders.</p>
+            <form data-mock-form novalidate>
+              <div class="form-row"><div class="form-group"><label class="form-label" for="fullname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="fullname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="email">Email Address <span class="req">*</span></label><input class="form-input" type="email" id="email" placeholder="Enter your email" required></div></div>
+              <div class="form-row"><div class="form-group"><label class="form-label" for="phone">Phone Number <span class="req">*</span></label><input class="form-input" type="tel" id="phone" placeholder="Enter your phone number" required></div><div class="form-group"><label class="form-label" for="dob">Date of Birth <span class="req">*</span></label><input class="form-input" type="date" id="dob" required></div></div>
+              <div class="form-row"><div class="form-group"><label class="form-label" for="prov">Province <span class="req">*</span></label><select class="form-select" id="prov" required><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="role">I am a <span class="req">*</span></label><select class="form-select" id="role" required><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
+              <div class="form-group"><label class="form-label" for="disorder">Type of Bleeding Disorder</label><select class="form-select" id="disorder"><option value="">Select (if applicable)</option><option>Haemophilia A</option><option>Haemophilia B</option><option>VWD</option><option>Other</option></select></div>
+              <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Registration</button>
+            </form>
+            <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Welcome to CHA!</h3><p>Your registration has been received. Our team will be in touch within 2 working days.</p></div>
           </div>
         </div>
+        <div class="section section-soft"><div class="container">
+          <div class="section-heading" data-reveal><h2>Membership Benefits</h2></div>
+          <div class="benefits-grid">
+            <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Community &amp; Support</h3></div>
+            <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Access to Resources</h3></div>
+            <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Events &amp; Workshops</h3></div>
+            <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h3>Advocacy &amp; Awareness</h3></div>
+            <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Updates &amp; Newsletters</h3></div>
+          </div>
+          <div class="already-member" data-reveal><p>Already a Member?</p><p style="color:var(--c-muted);font-weight:var(--fw-regular)">Login to your account to update your profile, access resources and more.</p><a class="btn btn-secondary" href="#login">Login Now <span class="arrow">→</span></a></div>
+        </div></div>
+      </div>
+      <div class="tab-panel" data-tab-panel="p-donate" id="programs-donate" style="padding-top:var(--s-8)">
+        <div class="hero-red"><div class="container">
+          <div data-reveal><h1>Help Change Lives</h1><p>Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.</p></div>
+          <div class="heart-art" data-reveal><img src="images/heart-hands.jpg" alt="Heart in hands - donation" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg)"></div>
+        </div></div>
+        <div class="section"><div class="container">
+          <div class="section-heading" data-reveal><h2>Your Impact</h2></div>
+          <div class="impact-grid">
+            <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p>Provide treatment access for patients</p></div>
+            <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><p>Support education and awareness</p></div>
+            <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><p>Strengthen healthcare capacity</p></div>
+            <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><p>Empower families and communities</p></div>
+          </div>
+        </div></div>
+        <div class="section section-soft"><div class="container"><div class="donation-wrap">
+          <div class="donation-form" data-reveal>
+            <h3>Make a Donation</h3>
+            <form id="donate-form-submit" novalidate>
+              <div class="tabs-nav" data-tabs>
+                <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once">One-time</button>
+                <button class="tab-btn" type="button" data-tab-group data-tab-target="monthly">Monthly</button>
+              </div>
+              <div class="tab-panel is-active" data-tab-panel="once" data-amount-group>
+                <div class="amount-chips">
+                  <button type="button" class="amount-chip is-active" data-amount="10">$10</button>
+                  <button type="button" class="amount-chip" data-amount="25">$25</button>
+                  <button type="button" class="amount-chip" data-amount="50">$50</button>
+                  <button type="button" class="amount-chip" data-amount="100">$100</button>
+                  <button type="button" class="amount-chip" data-amount="other">Other</button>
+                </div>
+                <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+              </div>
+              <div class="tab-panel" data-tab-panel="monthly" data-amount-group>
+                <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support for long-term care.</p>
+                <div class="amount-chips">
+                  <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
+                  <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
+                  <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
+                  <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
+                  <button type="button" class="amount-chip" data-amount="other">Other</button>
+                </div>
+                <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+              </div>
+              <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
+              <div class="radio-row">
+                <label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> Stripe</label>
+                <label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label>
+              </div>
+              <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
+              <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via Stripe &amp; PayPal</p>
+            </form>
+            <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
+          </div>
+          <div class="campaigns-list" data-reveal>
+            <h3>Current Campaigns</h3>
+            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
+            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
+            <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
+            <div class="section" style="padding:var(--s-6) 0 0"><div class="section-heading" data-reveal><h2 style="font-size:1.25rem">Corporate Partners</h2></div>
+            <div class="partners-strip" data-reveal><div class="logos">
+              <div class="logo" title="World Federation of Hemophilia"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="WFH"><circle cx="14" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="18" font-family="Poppins" font-size="13" font-weight="700" fill="currentColor">WFH</text><text x="32" y="32" font-family="Poppins" font-size="6" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
+              <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="IFAH"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
+              <div class="logo" title="Global Haemophilia Alliance"><svg viewBox="0 0 140 40" width="140" height="40" aria-label="GHA"><text x="6" y="18" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Global</text><text x="6" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Haemophilia</text><text x="84" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Alliance</text></svg></div>
+              <div class="logo" title="PATH"><svg viewBox="0 0 80 40" width="80" height="40" aria-label="PATH"><text x="6" y="28" font-family="Poppins" font-size="22" font-weight="700" fill="currentColor">PATH</text></svg></div>
+            </div></div></div>
+          </div>
+        </div></div></div>
       </div>
     </div></section>
-
-    <section class="section section-soft"><div class="container">
-      <div class="section-heading" data-reveal><h2>Membership Benefits</h2></div>
-      <div class="benefits-grid">
-        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Community &amp; Support</h3></div>
-        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Access to Resources</h3></div>
-        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Events &amp; Workshops</h3></div>
-        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h3>Advocacy &amp; Awareness</h3></div>
-        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Updates &amp; Newsletters</h3></div>
-      </div>
-      <div class="already-member" data-reveal>
-        <p>Already a Member?</p>
-        <p style="color:var(--c-muted);font-weight:var(--fw-regular)">Login to your account to update your profile, access resources and more.</p>
-        <a class="btn btn-secondary" href="#login">Login Now <span class="arrow">→</span></a>
-      </div>
-    </div></section>
-
-    <!-- ===== DONATION ===== -->
-    <section class="hero-red" id="donate"><div class="container">
-      <div data-reveal><h1>Help Change Lives</h1><p>Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.</p><a class="btn btn-light btn-lg" href="#donate-form">Donate Now <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
-      <div class="heart-art" data-reveal><img src="images/heart-hands.jpg" alt="Heart in hands - donation" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg)"></div>
-    </div></section>
-
-    <section class="section"><div class="container">
-      <div class="section-heading" data-reveal><h2>Your Impact</h2></div>
-      <div class="impact-grid">
-        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p>Provide treatment access for patients</p></div>
-        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><p>Support education and awareness</p></div>
-        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><p>Strengthen healthcare capacity</p></div>
-        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><p>Empower families and communities</p></div>
-      </div>
-    </div></section>
-
-    <section class="section section-soft" id="donate-form"><div class="container"><div class="donation-wrap">
-      <div class="donation-form" data-reveal>
-        <h3>Make a Donation</h3>
-        <form id="donate-form-submit" novalidate>
-          <div class="tabs-nav" data-tabs>
-            <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once">One-time</button>
-            <button class="tab-btn" type="button" data-tab-group data-tab-target="monthly">Monthly</button>
-          </div>
-          <div class="tab-panel is-active" data-tab-panel="once" data-amount-group>
-            <div class="amount-chips">
-              <button type="button" class="amount-chip is-active" data-amount="10">$10</button>
-              <button type="button" class="amount-chip" data-amount="25">$25</button>
-              <button type="button" class="amount-chip" data-amount="50">$50</button>
-              <button type="button" class="amount-chip" data-amount="100">$100</button>
-              <button type="button" class="amount-chip" data-amount="other">Other</button>
-            </div>
-            <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
-          </div>
-          <div class="tab-panel" data-tab-panel="monthly" data-amount-group>
-            <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support for long-term care.</p>
-            <div class="amount-chips">
-              <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
-              <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
-              <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
-              <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
-              <button type="button" class="amount-chip" data-amount="other">Other</button>
-            </div>
-            <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
-          </div>
-          <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
-          <div class="radio-row">
-            <label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> Stripe</label>
-            <label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label>
-          </div>
-          <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
-          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via Stripe &amp; PayPal</p>
-        </form>
-        <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
-      </div>
-      <div class="campaigns-list" data-reveal>
-        <h3>Current Campaigns</h3>
-        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
-        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
-        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
-      </div>
-    </div></div></section>
 
     <!-- ===== CONTACT ===== -->
     <div class="section-divider"><div class="divider-inner">Contact Us</div></div>
@@ -3130,6 +3205,50 @@ hr {
 
   </main>
 
+  <!-- Donate modal -->
+  <div class="donate-modal" id="donate-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Make a donation">
+    <div class="donate-modal-backdrop" data-donate-close></div>
+    <div class="donate-modal-panel">
+      <button class="donate-modal-close" type="button" data-donate-close aria-label="Close donation form"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">❤ Make a Donation</h3>
+      <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Your support changes lives across Cambodia.</p>
+      <form id="donate-modal-form" novalidate>
+        <div class="tabs-nav" data-tabs>
+          <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="modal-once">One-time</button>
+          <button class="tab-btn" type="button" data-tab-group data-tab-target="modal-monthly">Monthly</button>
+        </div>
+        <div class="tab-panel is-active" data-tab-panel="modal-once">
+          <div class="amount-chips">
+            <button type="button" class="amount-chip is-active" data-amount="10">$10</button>
+            <button type="button" class="amount-chip" data-amount="25">$25</button>
+            <button type="button" class="amount-chip" data-amount="50">$50</button>
+            <button type="button" class="amount-chip" data-amount="100">$100</button>
+            <button type="button" class="amount-chip" data-amount="other">Other</button>
+          </div>
+          <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+        </div>
+        <div class="tab-panel" data-tab-panel="modal-monthly">
+          <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support.</p>
+          <div class="amount-chips">
+            <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
+            <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
+            <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
+            <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
+            <button type="button" class="amount-chip" data-amount="other">Other</button>
+          </div>
+          <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+        </div>
+        <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="stripe" checked> Stripe</label>
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal"> PayPal</label>
+        </div>
+        <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Now</button>
+        <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
+      </form>
+    </div>
+  </div>
+
   <!-- Footer transition wave -->
   <div class="footer-wave">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -3152,7 +3271,7 @@ hr {
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#haemophilia">About Haemophilia</a></li><li><a href="#member">Become a Member</a></li><li><a href="#news">News &amp; Activities</a></li><li><a href="#donate">Fundraising</a></li><li><a href="#contact">Contact Us</a></li></ul>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#programs">Programs</a></li><li><a href="#news">News &amp; Activities</a></li><li><a href="#contact">Contact Us</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
@@ -3469,6 +3588,71 @@ hr {
       } else {
         window.open(paypalUrl, '_blank');
       }
+    });
+  }
+
+  // ---------- 13. Nav dropdowns (desktop hover + click) ----------
+  document.querySelectorAll('[data-nav-drop]').forEach((drop) => {
+    const trigger = drop.querySelector('.nav-drop-trigger');
+    if (!trigger) return;
+    // Desktop hover
+    drop.addEventListener('mouseenter', () => drop.classList.add('is-open'));
+    drop.addEventListener('mouseleave', () => drop.classList.remove('is-open'));
+    // Mobile tap toggle
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = drop.classList.contains('is-open');
+      document.querySelectorAll('[data-nav-drop].is-open').forEach((d) => d.classList.remove('is-open'));
+      if (!wasOpen) drop.classList.add('is-open');
+    });
+    // Close on Escape
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') drop.classList.remove('is-open');
+    });
+  });
+  // Click outside closes dropdowns
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-nav-drop].is-open').forEach((d) => d.classList.remove('is-open'));
+  });
+
+  // ---------- 14. Mobile drawer sub-group toggles ----------
+  document.querySelectorAll('.drawer-sub-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.parentElement;
+      group.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', group.classList.contains('is-open'));
+    });
+  });
+
+  // ---------- 15. Donate modal ----------
+  const donateModal = document.getElementById('donate-modal');
+  const donateTriggers = document.querySelectorAll('[data-donate-trigger]');
+  const donateClosers = document.querySelectorAll('[data-donate-close]');
+
+  const openModal = (e) => { if (e) e.preventDefault(); donateModal.classList.add('is-open'); donateModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  const closeModal = () => { donateModal.classList.remove('is-open'); donateModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+
+  donateTriggers.forEach((t) => t.addEventListener('click', openModal));
+  donateClosers.forEach((c) => c.addEventListener('click', closeModal));
+  donateModal.addEventListener('click', (e) => { if (e.target === donateModal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && donateModal.classList.contains('is-open')) closeModal(); });
+
+  // Modal donate form submit
+  const modalForm = document.getElementById('donate-modal-form');
+  if (modalForm) {
+    modalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const activePanel = modalForm.querySelector('.tab-panel.is-active');
+      const activeChip = activePanel ? activePanel.querySelector('.amount-chip.is-active') : null;
+      const otherInput = activePanel ? activePanel.querySelector('[data-amount-other]') : null;
+      let amount = activeChip ? activeChip.dataset.amount : '10';
+      if (amount === 'other' && otherInput && otherInput.value) amount = otherInput.value;
+      const payMethod = modalForm.querySelector('input[name="modal-pay"]:checked');
+      const method = payMethod ? payMethod.value : 'stripe';
+      const stripeUrl = 'https://buy.stripe.com/your-stripe-link';
+      const paypalUrl = 'https://www.paypal.com/donate?business=YOUR_PAYPAL_ID';
+      if (method === 'stripe') window.open(stripeUrl, '_blank');
+      else window.open(paypalUrl, '_blank');
     });
   }
 })();
