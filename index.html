@@ -1846,10 +1846,16 @@ hr {
 .type-card p { color: var(--c-muted); margin: 0; font-size: 0.9375rem; }
 
 /* ---------- 25. Symptoms grid ---------- */
+.symptoms-section {
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(227, 30, 36, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(11, 29, 109, 0.04) 0%, transparent 50%),
+    var(--c-white);
+}
 .symptoms-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: var(--s-3);
+  gap: var(--s-4);
 }
 @media (max-width: 900px) { .symptoms-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 540px) { .symptoms-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -1857,24 +1863,78 @@ hr {
   background: var(--c-white);
   border: 1px solid var(--c-border);
   border-radius: var(--r-lg);
-  padding: var(--s-6) var(--s-3);
+  padding: var(--s-6) var(--s-4) var(--s-5);
   text-align: center;
+  position: relative;
+  overflow: hidden;
   transition: all 300ms var(--ease);
 }
-.symptom-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(11, 29, 109, 0.12); border-color: var(--c-blue-100); }
+.symptom-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background: var(--c-red);
+  border-radius: 0 0 var(--r-full) var(--r-full);
+  opacity: 0;
+  transition: opacity 300ms var(--ease), width 300ms var(--ease);
+}
+.symptom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(227, 30, 36, 0.08), 0 4px 12px rgba(11, 29, 109, 0.06);
+  border-color: rgba(227, 30, 36, 0.2);
+}
+.symptom-card:hover::before { opacity: 1; width: 100%; }
 .symptom-card .icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto var(--s-3);
-  border-radius: var(--r-md);
-  background: var(--c-blue-100);
-  color: var(--c-blue);
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--s-4);
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, #FCE5E6 0%, #F8D0D2 100%);
+  color: var(--c-red);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
 }
-.symptom-card .icon svg { width: 26px; height: 26px; }
-.symptom-card .label { font-size: 0.875rem; font-weight: var(--fw-medium); color: var(--c-text); margin: 0; }
+.symptom-card:hover .icon {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(227, 30, 36, 0.15);
+}
+.symptom-card .icon svg { width: 28px; height: 28px; }
+.symptom-card .label {
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-blue);
+  margin: 0 0 var(--s-1);
+  line-height: 1.3;
+}
+.symptom-card .hint {
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.symptoms-cta {
+  text-align: center;
+  margin-top: var(--s-10);
+  padding-top: var(--s-8);
+  border-top: 1px solid var(--c-border);
+}
+.symptoms-cta p {
+  color: var(--c-muted);
+  font-size: 1rem;
+  margin-bottom: var(--s-4);
+}
+.symptoms-cta .btn-row {
+  display: flex;
+  gap: var(--s-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 /* ---------- 26. Explore More (4-up info cards) ---------- */
 .explore-grid {
@@ -2741,14 +2801,41 @@ hr {
       </div>
     </div></section>
 
-    <section class="section"><div class="container">
+    <section class="section symptoms-section"><div class="container">
       <div class="section-heading" data-reveal><h2>Common Symptoms</h2><p>Recognizing the signs of a bleeding disorder is the first step toward diagnosis and proper care.</p></div>
       <div class="symptoms-grid">
-        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 8 L4 16 L12 22 L20 16 L20 8 Z"/><path d="M12 2 L12 22"/></svg></div><p class="label">Easy Bruising</p></div>
-        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 C 6 6, 18 6, 21 12"/><path d="M5 14 C 8 18, 16 18, 19 14"/></svg></div><p class="label">Frequent Nosebleeds</p></div>
-        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 L8 21 M16 3 L16 21 M8 12 L16 12"/></svg></div><p class="label">Bleeding Gums</p></div>
-        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M9 22 L9 14 L15 14 L15 22"/><path d="M12 11 L7 14 M12 11 L17 14"/></svg></div><p class="label">Joint Pain or Swelling</p></div>
-        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><p class="label">Prolonged Bleeding</p></div>
+        <div class="symptom-card" data-reveal>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+          <p class="label">Easy Bruising</p>
+          <p class="hint">Unexplained bruises from minor bumps or pressure.</p>
+        </div>
+        <div class="symptom-card" data-reveal>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8 2 6 5 6 8c0 4 6 12 6 12s6-8 6-12c0-3-2-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg></div>
+          <p class="label">Frequent Nosebleeds</p>
+          <p class="hint">Recurring nosebleeds that are hard to stop.</p>
+        </div>
+        <div class="symptom-card" data-reveal>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <p class="label">Bleeding Gums</p>
+          <p class="hint">Gums that bleed during brushing or eating.</p>
+        </div>
+        <div class="symptom-card" data-reveal>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg></div>
+          <p class="label">Joint Pain or Swelling</p>
+          <p class="hint">Painful, swollen joints after minor injury or activity.</p>
+        </div>
+        <div class="symptom-card" data-reveal>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <p class="label">Prolonged Bleeding</p>
+          <p class="hint">Bleeding that lasts longer than expected after cuts.</p>
+        </div>
+      </div>
+      <div class="symptoms-cta" data-reveal>
+        <p>Experiencing any of these symptoms? Early diagnosis can make a life-changing difference.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#centres">Find a Treatment Centre <span class="arrow">→</span></a>
+          <a class="btn btn-secondary" href="#contact">Contact a Specialist</a>
+        </div>
       </div>
     </div></section>
 
