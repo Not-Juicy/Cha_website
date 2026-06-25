@@ -14,7 +14,6 @@ Single-page website for the **Cambodian Haemophilia Association** — a patient-
 ```
 web/
 ├── index.html         # entire site (all CSS + JS inlined)
-├── icons/             # SVG icons used in the page
 └── images/            # photographs, logo, and SVG illustrations
 ```
 
