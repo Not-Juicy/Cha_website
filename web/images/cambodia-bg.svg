@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300" aria-label="Cambodia outline">
+  <path d="M30 70 Q40 50 70 45 L100 50 L130 40 L160 55 L180 80 L200 100 L210 130 L220 160 L200 190 L190 220 L160 240 L120 250 L90 245 L60 230 L40 200 L35 160 L25 120 Z"
+        fill="none" stroke="#0B1D6D" stroke-width="2" stroke-linejoin="round" opacity="0.6"/>
+  <circle cx="100" cy="120" r="4" fill="#E31E24"/>
+  <circle cx="130" cy="90" r="4" fill="#E31E24"/>
+  <circle cx="160" cy="150" r="4" fill="#E31E24"/>
+</svg>

@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local scratch
+prototype/
+prototype - Copy*/
+web - Copy*/
+
+# Local agent / tool config
+.agents/
+.claude/
+.cursor/
+.gemini/
+
+# Scratch docs and source images that are not part of the deployed site
+*.docx
+*.txt
+gen_docx.py
+*.png
+!web/images/*.png
+PRODUCT.md

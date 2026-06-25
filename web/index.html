@@ -1,0 +1,3264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cambodian Haemophilia Association — Supporting People With Bleeding Disorders Across Cambodia</title>
+  <meta name="description" content="CHA supports people living with bleeding disorders across Cambodia. Access treatment, education, care and support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================
+   CHA Website — Design System & Components
+   Single-file CSS for easy WordPress paste-in
+   ============================================ */
+
+/* ---------- 01. Design Tokens ---------- */
+:root {
+  /* Brand colors */
+  --c-blue: #0B1D6D;
+  --c-blue-700: #081652;
+  --c-blue-100: #E5E8F2;
+  --c-red: #E31E24;
+  --c-red-700: #B8151A;
+  --c-red-100: #FCE5E6;
+  --c-purple: #6A2C91;
+  --c-purple-100: #EFE6F4;
+
+  /* Neutrals */
+  --c-white: #FFFFFF;
+  --c-gray-50: #F8F9FB;
+  --c-gray-100: #F2F4F8;
+  --c-gray-200: #E5E8EE;
+  --c-gray-300: #CDD2DB;
+  --c-gray-400: #9AA0AC;
+  --c-gray-500: #6B7280;
+  --c-gray-600: #4B5563;
+  --c-gray-700: #374151;
+  --c-gray-800: #1F2937;
+  --c-gray-900: #111827;
+  --c-text: #1A1A1A;
+  --c-muted: #5A5A5A;
+
+  /* Semantic */
+  --c-bg: var(--c-white);
+  --c-bg-soft: var(--c-gray-100);
+  --c-bg-dark: var(--c-blue);
+  --c-text-on-dark: #FFFFFF;
+  --c-border: var(--c-gray-200);
+
+  /* Type */
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --fs-h1: clamp(2rem, 4.5vw, 3.25rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-h3: clamp(1.125rem, 2vw, 1.375rem);
+  --fs-h4: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-xs: 0.75rem;
+  --lh-tight: 1.2;
+  --lh-snug: 1.35;
+  --lh-base: 1.6;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Spacing scale */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-20: 5rem;
+  --s-24: 6rem;
+  --s-32: 8rem;
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 999px;
+
+  /* Shadows */
+  --sh-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --sh-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --sh-lg: 0 12px 32px rgba(15, 23, 42, 0.10);
+  --sh-xl: 0 24px 60px rgba(15, 23, 42, 0.14);
+
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 960px;
+  --container-wide: 1320px;
+  --header-h: 72px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --t-fast: 150ms;
+  --t-base: 250ms;
+  --t-slow: 400ms;
+}
+
+/* ---------- 02. Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--c-blue);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease);
+}
+
+a:hover {
+  color: var(--c-red);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--s-4);
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-semibold);
+  color: var(--c-blue);
+}
+
+h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); }
+h2 { font-size: var(--fs-h2); font-weight: var(--fw-bold); }
+h3 { font-size: var(--fs-h3); font-weight: var(--fw-semibold); }
+h4 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); }
+
+p { margin: 0 0 var(--s-4); }
+
+ul, ol { margin: 0 0 var(--s-4); padding-left: var(--s-6); }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--c-border);
+  margin: var(--s-8) 0;
+}
+
+/* Focus ring (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--s-4);
+  background: var(--c-blue);
+  color: var(--c-white);
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-sm);
+  z-index: 10000;
+  transition: top var(--t-base) var(--ease);
+}
+.skip-link:focus { top: var(--s-4); color: var(--c-white); }
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--s-6);
+}
+.container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--s-6); }
+.container-wide { max-width: var(--container-wide); margin: 0 auto; padding: 0 var(--s-6); }
+
+.section { padding: var(--s-24) 0; }
+.section-sm { padding: var(--s-12) 0; }
+.section-lg { padding: var(--s-32) 0; }
+.section-soft { background: var(--c-bg-soft); }
+.section-blue-soft { background: #EAF0FB; }
+.section-dark { background: var(--c-bg-dark); color: var(--c-text-on-dark); }
+.section-dark h1, .section-dark h2, .section-dark h3 { color: var(--c-text-on-dark); }
+
+.text-center { text-align: center; }
+.text-red { color: var(--c-red); }
+.text-blue { color: var(--c-blue); }
+.text-white { color: var(--c-white); }
+.text-muted { color: var(--c-muted); }
+.fw-bold { font-weight: var(--fw-bold); }
+.fw-semi { font-weight: var(--fw-semibold); }
+.fw-med { font-weight: var(--fw-medium); }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-red);
+  margin-bottom: var(--s-3);
+}
+
+.section-heading {
+  margin-bottom: var(--s-12);
+  position: relative;
+}
+.section-heading h2 {
+  margin-bottom: var(--s-3);
+  position: relative;
+  display: inline-block;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.section-heading p {
+  color: var(--c-muted);
+  max-width: 640px;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.section-heading.text-center p { margin-left: auto; margin-right: auto; }
+.section-heading.text-center h2 { display: block; }
+
+.grid { display: grid; gap: var(--s-6); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-2 { gap: var(--s-2); }
+.gap-3 { gap: var(--s-3); }
+.gap-4 { gap: var(--s-4); }
+.gap-6 { gap: var(--s-6); }
+
+.mt-4 { margin-top: var(--s-4); }
+.mt-6 { margin-top: var(--s-6); }
+.mt-8 { margin-top: var(--s-8); }
+.mb-4 { margin-bottom: var(--s-4); }
+.mb-6 { margin-bottom: var(--s-6); }
+.mb-8 { margin-bottom: var(--s-8); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 03. Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: 0.75rem 1.5rem;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  border-radius: var(--r-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: all 200ms var(--ease);
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+.btn:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+
+.btn-primary {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-color: var(--c-blue);
+}
+.btn-primary:hover { background: var(--c-blue-700); border-color: var(--c-blue-700); color: var(--c-white); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--c-blue);
+  border-color: var(--c-blue);
+}
+.btn-secondary:hover { background: var(--c-blue); color: var(--c-white); }
+
+.btn-tertiary {
+  background: transparent;
+  color: var(--c-blue);
+  padding: 0.5rem 0.75rem;
+  border: none;
+}
+.btn-tertiary:hover { color: var(--c-red); }
+
+.btn-donate {
+  background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%);
+  color: var(--c-white);
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(227, 30, 36, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-full);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  white-space: nowrap;
+}
+.btn-donate::before {
+  content: "♥";
+  font-size: 0.875rem;
+  margin-right: 2px;
+}
+.btn-donate:hover {
+  background: linear-gradient(135deg, var(--c-red-700) 0%, #8B0F13 100%);
+  color: var(--c-white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(227, 30, 36, 0.35);
+}
+
+.btn-light {
+  background: var(--c-white);
+  color: var(--c-blue);
+  border-color: var(--c-white);
+}
+.btn-light:hover { background: var(--c-gray-100); color: var(--c-blue); }
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--c-white);
+  border-color: var(--c-white);
+}
+.btn-outline-light:hover { background: var(--c-white); color: var(--c-blue); }
+
+.btn-sm { padding: 0.5rem 1rem; font-size: var(--fs-small); }
+.btn-lg { padding: 1rem 2rem; font-size: 1.0625rem; }
+.btn-block { width: 100%; }
+
+.btn .arrow { transition: transform var(--t-fast) var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* ---------- 04. Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  height: var(--header-h);
+  transition: all var(--t-base) var(--ease);
+}
+.site-header.is-scrolled {
+  box-shadow: 0 4px 24px rgba(11, 29, 109, 0.08);
+  border-bottom-color: var(--c-border);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity var(--t-fast) var(--ease);
+}
+.brand:hover { opacity: 0.85; }
+.brand-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.brand-text .en { font-size: 0.75rem; font-weight: var(--fw-semibold); color: var(--c-blue); }
+.brand-text .km { font-size: 0.7rem; color: var(--c-gray-600); font-weight: var(--fw-medium); }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.main-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  text-decoration: none;
+  border-radius: var(--r-full);
+  transition: all var(--t-fast) var(--ease);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-nav a:hover {
+  color: var(--c-blue);
+  background: var(--c-blue-100);
+}
+.main-nav a.is-active {
+  color: var(--c-white);
+  background: var(--c-blue);
+  box-shadow: 0 2px 8px rgba(11, 29, 109, 0.2);
+}
+.main-nav a.is-active:hover { color: var(--c-white); background: var(--c-blue); }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-left: auto;
+  margin-right: -40px;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 0.875rem;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--c-gray-700);
+  border-radius: var(--r-full);
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.lang-switcher:hover {
+  color: var(--c-blue);
+  border-color: var(--c-blue);
+  background: var(--c-blue-100);
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  color: var(--c-blue);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  transition: all var(--t-fast) var(--ease);
+}
+.nav-toggle:hover {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-color: var(--c-blue);
+}
+.nav-toggle svg { width: 22px; height: 22px; }
+
+@media (max-width: 1180px) {
+  .main-nav,
+  .header-actions .lang-switcher {
+    display: none;
+  }
+  .nav-toggle { display: inline-flex; }
+  .header-actions .btn-donate { display: none; }
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: none;
+}
+.mobile-drawer.is-open { display: block; }
+.mobile-drawer .backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  opacity: 0;
+  transition: opacity var(--t-base) var(--ease);
+}
+.mobile-drawer.is-open .backdrop { opacity: 1; }
+.mobile-drawer .panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(380px, 90vw);
+  background: var(--c-white);
+  padding: var(--s-5) var(--s-6) var(--s-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  transform: translateX(100%);
+  transition: transform var(--t-base) var(--ease);
+  overflow-y: auto;
+  box-shadow: -8px 0 32px rgba(11, 29, 109, 0.12);
+}
+.mobile-drawer.is-open .panel { transform: translateX(0); }
+.mobile-drawer .panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--c-border);
+}
+.mobile-drawer .panel-head .close {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  color: var(--c-gray-700);
+  background: var(--c-gray-100);
+  transition: all var(--t-fast) var(--ease);
+}
+.mobile-drawer .panel-head .close:hover {
+  background: var(--c-blue);
+  color: var(--c-white);
+}
+.mobile-drawer .panel nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+.mobile-drawer .panel nav a {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-800);
+  border-radius: var(--r-md);
+  transition: all var(--t-fast) var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-drawer .panel nav a::after {
+  content: "→";
+  color: var(--c-gray-400);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all var(--t-fast) var(--ease);
+}
+.mobile-drawer .panel nav a:hover {
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+}
+.mobile-drawer .panel nav a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-drawer .panel nav a.is-active {
+  background: var(--c-blue);
+  color: var(--c-white);
+}
+.mobile-drawer .panel nav a.is-active::after {
+  color: var(--c-white);
+  opacity: 1;
+}
+.mobile-drawer .panel .panel-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ---------- 05. Footer ---------- */
+.site-footer {
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(227, 30, 36, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(106, 44, 145, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #081652 0%, #0B1D6D 50%, #061040 100%);
+  color: var(--c-text-on-dark);
+  padding: var(--s-16) 0 var(--s-8);
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.3), rgba(11, 29, 109, 0.3), transparent);
+}
+.site-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(227, 30, 36, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.site-footer .container { position: relative; z-index: 1; }
+
+/* Wave transition above footer */
+.footer-wave {
+  position: relative;
+  z-index: 1;
+  margin-top: -1px;
+}
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.site-footer h4 {
+  color: var(--c-white);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--s-5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  position: relative;
+  padding-bottom: var(--s-3);
+}
+.site-footer h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--c-red);
+  border-radius: var(--r-full);
+}
+.site-footer a { color: rgba(255, 255, 255, 0.75); transition: color var(--t-fast) var(--ease); }
+.site-footer a:hover { color: var(--c-white); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li {
+  margin-bottom: var(--s-3);
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 0;
+  transition: padding-left 200ms var(--ease);
+}
+.site-footer ul li:hover { padding-left: 6px; }
+.site-footer ul li a { display: inline-block; }
+.site-footer ul li a::before {
+  content: "→";
+  display: inline-block;
+  margin-right: 6px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 200ms var(--ease);
+  color: var(--c-red);
+}
+.site-footer ul li:hover a::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: var(--s-10);
+  margin-bottom: var(--s-10);
+}
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; gap: var(--s-8); }
+}
+
+.footer-col { min-width: 0; }
+.footer-col-brand .footer-brand { margin-bottom: var(--s-4); }
+.footer-brand img {
+  height: 52px;
+  width: auto;
+  border-radius: var(--r-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 10px;
+  transition: transform var(--t-fast) var(--ease);
+}
+.footer-brand img:hover { transform: scale(1.03); }
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
+  max-width: 360px;
+  margin-bottom: var(--s-5);
+}
+
+.footer-contact .item {
+  display: flex;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  align-items: flex-start;
+}
+.footer-contact .item svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--c-red);
+  margin-top: 2px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: var(--s-2);
+  margin-top: var(--s-5);
+}
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--c-white);
+  transition: all var(--t-fast) var(--ease);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.footer-socials a:hover {
+  background: var(--c-red);
+  border-color: var(--c-red);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(227, 30, 36, 0.3);
+  color: var(--c-white);
+}
+.footer-socials svg { width: 18px; height: 18px; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--s-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--t-fast) var(--ease);
+  text-decoration: none;
+  margin-left: var(--s-4);
+}
+.footer-bottom a:hover { color: var(--c-white); }
+.footer-bottom a:first-of-type { margin-left: 0; }
+.footer-bottom-links { display: flex; flex-wrap: wrap; }
+
+/* ---------- 06. Hero (Homepage) ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(227, 30, 36, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(11, 29, 109, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, #FAFBFE 0%, #F0F4FB 50%, #E8EEF8 100%);
+  padding: var(--s-10) 0 var(--s-20);
+  min-height: 620px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(11, 29, 109, 0.05) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 60% 60%, rgba(227, 30, 36, 0.04) 1.5px, transparent 1.5px);
+  background-size: 40px 40px, 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(20px, -20px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+.hero .hero-bg {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 72%;
+  height: calc(100% - 60px);
+  object-fit: cover;
+  object-position: 70% center;
+  z-index: 0;
+}
+.hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(250,251,254,1) 0%, rgba(240,244,251,0.95) 25%, rgba(232,238,248,0.4) 55%, rgba(232,238,248,0) 75%);
+  z-index: 1;
+}
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--s-8) var(--s-6);
+}
+.hero .hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 80px;
+  z-index: 3;
+  display: block;
+}
+@media (max-width: 900px) {
+  .hero { padding: var(--s-8) 0 var(--s-16); min-height: auto; }
+  .hero .hero-bg {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 70% center;
+  }
+  .hero .hero-overlay {
+    background: linear-gradient(180deg, rgba(250,251,254,0.95) 0%, rgba(240,244,251,0.85) 50%, rgba(232,238,248,0.6) 100%);
+  }
+  .hero .hero-wave { height: 40px; }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--c-blue);
+  margin-bottom: var(--s-6);
+  max-width: 640px;
+  text-wrap: balance;
+}
+.hero h1 .accent-red { color: var(--c-red); }
+.hero h1 .accent-blue { color: var(--c-blue); }
+.hero .lead {
+  font-size: 1.0625rem;
+  color: var(--c-gray-600);
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: var(--s-8);
+}
+.hero .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.hero .cta-row .btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.hero-art {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #E5E8F2 0%, #F2F4F8 100%);
+  box-shadow: 0 20px 60px rgba(11, 29, 109, 0.15), 0 8px 24px rgba(11, 29, 109, 0.1);
+  border: 4px solid var(--c-white);
+  transition: transform 400ms var(--ease);
+}
+.hero-art:hover { transform: translateY(-4px) scale(1.01); }
+.hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-art .placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--s-3);
+  background: linear-gradient(135deg, #E5E8F2 0%, #F2F4F8 100%);
+  color: var(--c-gray-500);
+  text-align: center;
+  padding: var(--s-6);
+}
+.hero-art .placeholder svg { width: 56px; height: 56px; opacity: 0.6; }
+
+.hero-bg-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+.hero-bg-shape.cambodia {
+  right: -40px;
+  top: 30%;
+  width: 220px;
+  height: auto;
+  opacity: 0.25;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  font-size: var(--fs-small);
+  color: var(--c-muted);
+  margin-bottom: var(--s-4);
+}
+.breadcrumb a { color: var(--c-blue); }
+.breadcrumb a:hover { color: var(--c-red); }
+.breadcrumb .sep { color: var(--c-gray-400); }
+.breadcrumb .current { color: var(--c-muted); font-weight: var(--fw-medium); }
+
+/* ---------- 07. Cards ---------- */
+.card {
+  background: var(--c-white);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.08);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(11, 29, 109, 0.12), 0 4px 8px rgba(11, 29, 109, 0.06);
+}
+
+.card-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--c-gray-100);
+  position: relative;
+}
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--ease); }
+.card:hover .card-img img { transform: scale(1.05); }
+.card-img.placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gray-400);
+  font-size: 0.875rem;
+  background: linear-gradient(135deg, var(--c-gray-100) 0%, var(--c-gray-200) 100%);
+}
+.card-body { padding: var(--s-5); flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 1.0625rem; font-weight: var(--fw-semibold); margin-bottom: var(--s-2); color: var(--c-blue); line-height: 1.4; }
+.card-text { color: var(--c-muted); font-size: 0.9375rem; margin-bottom: var(--s-4); flex: 1; line-height: 1.55; }
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--c-blue);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.card-link .arrow { transition: transform var(--t-fast) var(--ease); }
+.card-link:hover { color: var(--c-red); }
+.card-link:hover .arrow { transform: translateX(4px); }
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--r-sm);
+  color: var(--c-white);
+}
+.badge-event { background: var(--c-red); }
+.badge-update { background: var(--c-blue); }
+.badge-workshop { background: var(--c-purple); }
+
+/* ---------- 08. Stat Strip ---------- */
+.stat-strip {
+  background:
+    radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 90% 50%, rgba(227, 30, 36, 0.12) 0%, transparent 50%),
+    linear-gradient(135deg, #0B1D6D 0%, #1A2E8A 50%, #0B1D6D 100%);
+  color: var(--c-white);
+  border-radius: var(--r-xl);
+  padding: var(--s-10) var(--s-8);
+  margin-top: calc(var(--s-20) * -1);
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 24px 64px rgba(11, 29, 109, 0.35),
+    0 8px 24px rgba(11, 29, 109, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.stat-strip::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(227, 30, 36, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.stat-strip::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  left: -5%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.stat-strip-light {
+  background: var(--c-white);
+  color: var(--c-blue);
+  box-shadow: var(--sh-lg);
+}
+.stat-strip-light .stat {
+  border-right-color: var(--c-border);
+}
+.stat-strip-light .stat-icon {
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+}
+.stat-strip-light .stat-text .value { color: var(--c-blue); }
+.stat-strip-light .stat-text .label { color: var(--c-muted); }
+.stat-strip .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-8);
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 720px) {
+  .stat-strip .container { grid-template-columns: 1fr; gap: var(--s-5); }
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+.stat::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+.stat:hover::before { opacity: 1; }
+.stat:last-child { border-right: none; }
+@media (max-width: 720px) {
+  .stat { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: var(--s-3); }
+  .stat:last-child { border-bottom: none; }
+}
+
+.stat-icon {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-white);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 300ms var(--ease);
+}
+.stat:hover .stat-icon { transform: scale(1.08) rotate(-3deg); }
+.stat-icon svg { width: 32px; height: 32px; }
+
+.stat-text .value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.1;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.stat-text .label {
+  font-size: 0.875rem;
+  color: #FFFFFF;
+  margin-top: 4px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ---------- 09. How We Help ---------- */
+.help-card {
+  text-align: center;
+  padding: var(--s-8) var(--s-5);
+  border-radius: var(--r-xl);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  transition: all 300ms var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.help-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--c-blue), var(--c-purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease);
+}
+.help-card:hover {
+  border-color: transparent;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(11, 29, 109, 0.15), 0 4px 12px rgba(11, 29, 109, 0.08);
+}
+.help-card:hover::after { transform: scaleX(1); }
+.help-card .icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--s-4);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 300ms var(--ease);
+}
+.help-card:hover .icon { transform: scale(1.1) rotate(-5deg); }
+.help-card .icon svg { width: 32px; height: 32px; }
+.help-card .icon.icon-blue   { background: linear-gradient(135deg, #E5E8F2 0%, #D5DBED 100%); color: var(--c-blue); }
+.help-card .icon.icon-red    { background: linear-gradient(135deg, #FCE5E6 0%, #F8D2D4 100%); color: var(--c-red); }
+.help-card .icon.icon-purple { background: linear-gradient(135deg, #EFE6F4 0%, #E0D0EB 100%); color: var(--c-purple); }
+.help-card .icon.icon-green  { background: linear-gradient(135deg, #E2F4E8 0%, #C9E8D4 100%); color: #15803D; }
+.help-card h3 { font-size: 1.0625rem; margin-bottom: var(--s-2); color: var(--c-blue); }
+.help-card p { color: var(--c-muted); font-size: 0.9375rem; margin-bottom: var(--s-4); }
+
+/* ---------- 10. Carousel ---------- */
+.carousel {
+  position: relative;
+}
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--r-md);
+}
+.carousel-track {
+  display: flex;
+  transition: transform var(--t-slow) var(--ease);
+  will-change: transform;
+}
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--s-5);
+  gap: var(--s-4);
+}
+.carousel-arrows { display: flex; gap: var(--s-2); }
+.carousel-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-full);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  color: var(--c-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.carousel-arrow:hover { background: var(--c-blue); color: var(--c-white); border-color: var(--c-blue); }
+.carousel-arrow svg { width: 18px; height: 18px; }
+.carousel-dots { display: flex; gap: var(--s-2); align-items: center; }
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--c-gray-300);
+  border: none;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.carousel-dot.is-active { width: 24px; background: var(--c-blue); }
+
+/* News card */
+.news-card .card-img { aspect-ratio: 16 / 9; }
+.news-card .card-date {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  margin-bottom: var(--s-2);
+}
+.news-card .card-date .badge { margin-left: auto; }
+.news-card .card-title { font-size: 1.0625rem; }
+
+/* ---------- 10b. News + Red CTA side by side (legacy, kept for reference) ---------- */
+
+/* ---------- 11. Red CTA banner ---------- */
+.cta-banner {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 15, 19, 0.4) 0%, transparent 50%),
+    linear-gradient(135deg, #E31E24 0%, #B8151A 50%, #8B0F13 100%);
+  color: var(--c-white);
+  border-radius: var(--r-xl);
+  padding: var(--s-10) var(--s-12);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s-8);
+  box-shadow:
+    0 20px 60px rgba(227, 30, 36, 0.3),
+    0 8px 24px rgba(227, 30, 36, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+@media (max-width: 800px) {
+  .cta-banner { grid-template-columns: 1fr; text-align: center; padding: var(--s-8); }
+}
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+.cta-banner::after {
+  content: "";
+  position: absolute;
+  left: -40px;
+  bottom: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+.cta-banner-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-white);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.cta-banner-icon svg { width: 36px; height: 36px; }
+.cta-banner-text { position: relative; z-index: 1; }
+.cta-banner h2 { color: var(--c-white); margin-bottom: var(--s-2); font-size: 1.875rem; }
+.cta-banner p { color: rgba(255, 255, 255, 0.92); margin: 0; max-width: 560px; font-size: 1.0625rem; }
+.cta-banner .btn { position: relative; z-index: 1; }
+@media (max-width: 800px) {
+  .cta-banner-icon { margin: 0 auto; }
+}
+
+/* ---------- 12. Partners strip ---------- */
+.partners-strip {
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  padding: var(--s-12) 0;
+  background:
+    linear-gradient(180deg, #FAFBFE 0%, #F0F4FB 100%);
+  position: relative;
+}
+.partners-strip .label {
+  text-align: center;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-muted);
+  margin-bottom: var(--s-5);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.partners-strip .label::before,
+.partners-strip .label::after {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--c-border);
+  vertical-align: middle;
+  margin: 0 var(--s-3);
+}
+.partners-strip .logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-12);
+}
+.partners-strip .logo {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gray-700);
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  opacity: 0.65;
+  filter: grayscale(30%);
+  transition: all var(--t-base) var(--ease);
+}
+.partners-strip .logo:hover {
+  opacity: 1;
+  color: var(--c-blue);
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+.partners-strip .logo svg { height: 40px; width: auto; }
+
+/* ---------- 13. Forms ---------- */
+.form-group { margin-bottom: var(--s-4); }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  margin-bottom: var(--s-2);
+}
+.form-label .req { color: var(--c-red); }
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--c-text);
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--r-sm);
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover { border-color: var(--c-gray-400); }
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--c-blue);
+  box-shadow: 0 0 0 4px rgba(11, 29, 109, 0.1);
+}
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-input.is-invalid,
+.form-select.is-invalid { border-color: var(--c-red); }
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  font-size: 0.875rem;
+  color: var(--c-gray-700);
+  cursor: pointer;
+}
+.form-check input { margin-top: 3px; }
+
+.form-success {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+  padding: var(--s-6);
+  border-radius: var(--r-md);
+  text-align: center;
+}
+.form-success svg { width: 48px; height: 48px; margin: 0 auto var(--s-3); color: #059669; }
+.form-success h3 { color: var(--c-blue); margin-bottom: var(--s-2); }
+
+/* ---------- 14. Tabs ---------- */
+.tabs-nav {
+  display: inline-flex;
+  background: var(--c-gray-100);
+  padding: 4px;
+  border-radius: var(--r-sm);
+  margin-bottom: var(--s-5);
+}
+.tab-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-600);
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast) var(--ease);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.tab-btn.is-active {
+  background: var(--c-white);
+  color: var(--c-blue);
+  box-shadow: var(--sh-sm);
+}
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; }
+
+/* ---------- 15. Amount chips ---------- */
+.amount-chips {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-2);
+  margin-bottom: var(--s-4);
+}
+@media (max-width: 600px) { .amount-chips { grid-template-columns: repeat(3, 1fr); } }
+.amount-chip {
+  padding: 0.75rem 0.5rem;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-gray-700);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.amount-chip:hover { border-color: var(--c-blue); color: var(--c-blue); }
+.amount-chip.is-active { background: var(--c-blue); color: var(--c-white); border-color: var(--c-blue); }
+
+.radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.radio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  font-size: 0.9375rem;
+  color: var(--c-gray-700);
+  cursor: pointer;
+}
+.radio-pill input { accent-color: var(--c-blue); }
+
+/* ---------- 16. Progress bar ---------- */
+.progress {
+  height: 8px;
+  background: var(--c-gray-200);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-red) 0%, var(--c-red-700) 100%);
+  border-radius: var(--r-full);
+  transition: width 1.2s var(--ease);
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  margin-top: var(--s-2);
+}
+.progress-meta strong { color: var(--c-text); }
+
+/* ---------- 17. Reveal animation ---------- */
+[data-reveal] {
+  transform: translateY(16px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+[data-reveal].is-visible {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { transition: none; }
+}
+
+/* ---------- 18. Page hero (white) ---------- */
+.page-hero {
+  padding: var(--s-24) 0 var(--s-16);
+  background:
+    radial-gradient(ellipse at 90% 30%, rgba(227, 30, 36, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 70%, rgba(11, 29, 109, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #FAFBFE 0%, #F0F4FB 100%);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 30%, rgba(11, 29, 109, 0.05) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+.page-hero .container {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--s-10);
+  align-items: center;
+}
+@media (max-width: 900px) { .page-hero .container { grid-template-columns: 1fr; } }
+.page-hero h1 { color: var(--c-blue); margin-bottom: var(--s-4); }
+.page-hero .lead { color: var(--c-gray-600); font-size: 1.0625rem; max-width: 560px; }
+.page-hero .page-art {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #E5E8F2 0%, #F2F4F8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gray-500);
+  text-align: center;
+  padding: var(--s-6);
+  font-size: 0.875rem;
+  box-shadow: 0 20px 60px rgba(11, 29, 109, 0.1), 0 8px 24px rgba(11, 29, 109, 0.06);
+  border: 4px solid var(--c-white);
+}
+
+/* ---------- 19. Mission cards (4-up) ---------- */
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 900px) { .mission-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } }
+.mission-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-6) var(--s-5);
+  text-align: center;
+  transition: all 300ms var(--ease);
+}
+.mission-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11, 29, 109, 0.1), 0 4px 12px rgba(11, 29, 109, 0.05);
+  border-color: var(--c-blue-100);
+}
+.mission-card .icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--s-4);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 300ms var(--ease);
+}
+.mission-card:hover .icon { transform: scale(1.08); }
+.mission-card .icon svg { width: 30px; height: 30px; }
+.mission-card h3 { color: var(--c-blue); font-size: 1.0625rem; margin-bottom: var(--s-2); }
+.mission-card p { color: var(--c-muted); font-size: 0.875rem; margin: 0; }
+
+/* ---------- 20. Timeline ---------- */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+  position: relative;
+}
+@media (max-width: 900px) { .timeline { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .timeline { grid-template-columns: 1fr; } }
+.timeline-item {
+  position: relative;
+  padding-left: var(--s-5);
+  border-left: 2px solid var(--c-gray-200);
+  transition: border-color 300ms var(--ease);
+}
+.timeline-item:hover { border-left-color: var(--c-red); }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--r-full);
+  background: var(--c-red);
+  box-shadow: 0 0 0 4px var(--c-red-100);
+  transition: transform 300ms var(--ease);
+}
+.timeline-item:hover::before { transform: scale(1.2); }
+.timeline-item .year {
+  display: inline-block;
+  color: var(--c-white);
+  background: var(--c-red);
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--s-3);
+  letter-spacing: 0.05em;
+}
+.timeline-item h3 { font-size: 1.0625rem; color: var(--c-blue); margin-bottom: var(--s-2); }
+.timeline-item p { color: var(--c-muted); font-size: 0.9375rem; margin: 0; }
+
+/* ---------- 21. Leadership team ---------- */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-6);
+}
+@media (max-width: 900px) { .leadership-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .leadership-grid { grid-template-columns: 1fr; } }
+.leader-card {
+  text-align: center;
+  background: var(--c-white);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  transition: all 300ms var(--ease);
+  box-shadow: 0 2px 8px rgba(11, 29, 109, 0.06), 0 1px 2px rgba(11, 29, 109, 0.04);
+}
+.leader-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11, 29, 109, 0.12), 0 4px 8px rgba(11, 29, 109, 0.06);
+}
+.leader-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--c-blue-100) 0%, var(--c-gray-100) 100%);
+}
+.leader-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+.leader-card:hover .leader-photo img { transform: scale(1.05); }
+.leader-info {
+  padding: var(--s-4) var(--s-3) var(--s-5);
+}
+.leader-card h3 {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-blue);
+  margin-bottom: var(--s-1);
+}
+.leader-card .role {
+  color: var(--c-red);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-semibold);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- 22. Dark hero (About Haemophilia) ---------- */
+.hero-dark {
+  position: relative;
+  background: var(--c-blue);
+  color: var(--c-white);
+  padding: var(--s-32) 0;
+  overflow: hidden;
+}
+.hero-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(227, 30, 36, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(106, 44, 145, 0.4) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(8, 22, 82, 1) 0%, rgba(11, 29, 109, 1) 100%);
+  z-index: 0;
+}
+.hero-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 50%, rgba(255,255,255,0.06) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 70% 30%, rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
+  background-size: 30px 30px, 50px 50px;
+  z-index: 0;
+}
+.hero-dark .container { position: relative; z-index: 1; max-width: 900px; }
+.hero-dark h1 { color: var(--c-white); font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: var(--s-5); }
+.hero-dark p { color: rgba(255,255,255,0.9); font-size: 1.0625rem; max-width: 640px; margin-bottom: var(--s-6); }
+
+/* ---------- 23. Two-column intro (haemophilia what-is) ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--s-10);
+  align-items: center;
+}
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.split-illust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: radial-gradient(ellipse at center, #FCE5E6 0%, transparent 70%);
+  border-radius: var(--r-lg);
+}
+
+/* ---------- 24. Types of Haemophilia ---------- */
+.type-card {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+  padding: var(--s-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  transition: all var(--t-base) var(--ease);
+}
+.type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(11, 29, 109, 0.1); border-color: var(--c-blue-100); }
+.type-card .drop {
+  width: 56px;
+  height: 64px;
+  flex-shrink: 0;
+}
+.type-card h3 { color: var(--c-blue); margin-bottom: var(--s-2); }
+.type-card p { color: var(--c-muted); margin: 0; font-size: 0.9375rem; }
+
+/* ---------- 25. Symptoms grid ---------- */
+.symptoms-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-3);
+}
+@media (max-width: 900px) { .symptoms-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 540px) { .symptoms-grid { grid-template-columns: repeat(2, 1fr); } }
+.symptom-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-6) var(--s-3);
+  text-align: center;
+  transition: all 300ms var(--ease);
+}
+.symptom-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(11, 29, 109, 0.12); border-color: var(--c-blue-100); }
+.symptom-card .icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.symptom-card .icon svg { width: 26px; height: 26px; }
+.symptom-card .label { font-size: 0.875rem; font-weight: var(--fw-medium); color: var(--c-text); margin: 0; }
+
+/* ---------- 26. Explore More (4-up info cards) ---------- */
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 900px) { .explore-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .explore-grid { grid-template-columns: 1fr; } }
+.explore-card {
+  padding: var(--s-6);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  transition: all var(--t-base) var(--ease);
+}
+.explore-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11, 29, 109, 0.1), 0 4px 12px rgba(11, 29, 109, 0.05);
+  border-color: var(--c-blue-100);
+}
+.explore-card h3 { color: var(--c-blue); font-size: 1.0625rem; margin-bottom: var(--s-3); }
+.explore-card p { color: var(--c-muted); font-size: 0.875rem; margin-bottom: var(--s-4); }
+
+/* ---------- 27. Treatment Centres ---------- */
+.tc-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--s-8);
+  align-items: center;
+}
+@media (max-width: 900px) { .tc-hero { grid-template-columns: 1fr; } }
+.tc-search { display: flex; flex-direction: column; gap: var(--s-3); max-width: 320px; }
+.tc-map-wrap {
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.tc-map-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+.tc-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--s-5);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: all var(--t-base) var(--ease);
+}
+@media (max-width: 600px) { .tc-card { grid-template-columns: 1fr; } }
+.tc-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
+.tc-card .tc-img {
+  background: linear-gradient(135deg, var(--c-gray-100), var(--c-gray-200));
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gray-500);
+  font-size: 0.875rem;
+}
+.tc-card .tc-body { padding: var(--s-5); display: flex; flex-direction: column; }
+.tc-card h3 { color: var(--c-blue); font-size: 1.125rem; margin-bottom: var(--s-2); }
+.tc-card .tc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  margin-bottom: var(--s-3);
+}
+.tc-card .tc-meta span { display: inline-flex; align-items: center; gap: var(--s-1); }
+.tc-card .tc-tags { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: auto; }
+.tc-card .tc-tag {
+  font-size: 0.75rem;
+  background: var(--c-gray-100);
+  color: var(--c-gray-700);
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+}
+
+.emergency-banner {
+  background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%);
+  color: var(--c-white);
+  border-radius: var(--r-md);
+  padding: var(--s-6) var(--s-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-8);
+}
+.emergency-banner h3 { color: var(--c-white); margin-bottom: var(--s-1); }
+.emergency-banner p { color: rgba(255,255,255,0.9); margin: 0; }
+.emergency-banner .phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: var(--c-white);
+  color: var(--c-red);
+  padding: var(--s-3) var(--s-5);
+  border-radius: var(--r-sm);
+  font-weight: var(--fw-bold);
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+.emergency-banner .phone:hover { background: var(--c-gray-100); color: var(--c-red-700); }
+
+/* ---------- 28. Membership section (consolidated) ---------- */
+.member-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--s-8);
+  align-items: center;
+  background: var(--c-white);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(11, 29, 109, 0.08), 0 2px 8px rgba(11, 29, 109, 0.04);
+}
+@media (max-width: 900px) {
+  .member-hero { grid-template-columns: 1fr; padding: 0; }
+  .member-hero .member-photo { aspect-ratio: 2/1; border-radius: var(--r-xl) var(--r-xl) 0 0; }
+}
+.member-hero .member-photo {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin: 0;
+}
+.member-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.member-form-wrap {
+  padding: var(--s-6) var(--s-8) var(--s-6) 0;
+}
+@media (max-width: 900px) {
+  .member-form-wrap { padding: var(--s-6); }
+}
+.member-form-wrap h2 {
+  color: var(--c-blue);
+  margin-bottom: var(--s-3);
+  font-size: 1.75rem;
+}
+.member-form-wrap p {
+  color: var(--c-muted);
+  margin-bottom: var(--s-6);
+  font-size: 1rem;
+}
+
+.registration-form {
+  display: none;
+}
+.registration-form h3 { color: var(--c-blue); font-size: 1.125rem; margin-bottom: var(--s-5); }
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 1000px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .benefits-grid { grid-template-columns: 1fr; } }
+.benefit-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  text-align: center;
+  transition: all var(--t-base) var(--ease);
+}
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11, 29, 109, 0.1), 0 4px 12px rgba(11, 29, 109, 0.05);
+  border-color: var(--c-blue-100);
+}
+.benefit-card .icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.benefit-card .icon svg { width: 26px; height: 26px; }
+.benefit-card h3 { color: var(--c-blue); font-size: 0.9375rem; margin: 0; }
+
+.already-member {
+  background: var(--c-blue-100);
+  border: 1px solid var(--c-blue);
+  border-radius: var(--r-md);
+  padding: var(--s-5) var(--s-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-8);
+}
+.already-member p { margin: 0; color: var(--c-blue); font-weight: var(--fw-medium); }
+
+/* ---------- 29. Red hero (donation) ---------- */
+.hero-red {
+  position: relative;
+  background: var(--c-red);
+  color: var(--c-white);
+  padding: var(--s-16) 0;
+  overflow: hidden;
+}
+.hero-red::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+}
+.hero-red .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items: center; }
+@media (max-width: 900px) { .hero-red .container { grid-template-columns: 1fr; } }
+.hero-red h1 { color: var(--c-white); font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: var(--s-4); }
+.hero-red p { color: rgba(255,255,255,0.92); font-size: 1.0625rem; margin-bottom: var(--s-6); }
+.hero-red .heart-art {
+  aspect-ratio: 4/3;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.875rem;
+  border-radius: var(--r-lg);
+  text-align: center;
+  padding: var(--s-6);
+}
+
+/* ---------- 30. Impact cards ---------- */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 900px) { .impact-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .impact-grid { grid-template-columns: 1fr; } }
+.impact-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  text-align: center;
+  transition: all var(--t-base) var(--ease);
+}
+.impact-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(11, 29, 109, 0.1); }
+.impact-card .icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--s-3);
+  border-radius: var(--r-md);
+  background: var(--c-red-100);
+  color: var(--c-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.impact-card .icon svg { width: 26px; height: 26px; }
+.impact-card p { color: var(--c-text); font-size: 0.9375rem; margin: 0; font-weight: var(--fw-medium); }
+
+/* ---------- 31. Donation form ---------- */
+.donation-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-8);
+}
+@media (max-width: 900px) { .donation-wrap { grid-template-columns: 1fr; } }
+.donation-form,
+.campaigns-list {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-6);
+}
+.donation-form h3,
+.campaigns-list h3 { color: var(--c-blue); margin-bottom: var(--s-4); }
+.donation-form .secure-note {
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  margin-top: var(--s-3);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.campaign-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--s-3);
+  padding: var(--s-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  margin-bottom: var(--s-3);
+  transition: all var(--t-fast) var(--ease);
+}
+.campaign-card:hover { border-color: var(--c-blue); transform: translateX(2px); }
+.campaign-card .thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--c-red-100), var(--c-gray-100));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-red);
+  font-size: 0.7rem;
+  font-weight: var(--fw-semibold);
+}
+.campaign-card h4 { color: var(--c-blue); font-size: 0.9375rem; margin-bottom: var(--s-1); }
+.campaign-card .progress-meta { font-size: 0.75rem; margin-top: var(--s-1); }
+
+/* ---------- 32. Dashboard ---------- */
+.dashboard {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--s-8);
+  padding: var(--s-8) 0;
+}
+@media (max-width: 900px) { .dashboard { grid-template-columns: 1fr; } }
+.dash-sidebar {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  height: fit-content;
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-4));
+}
+.dash-sidebar .dash-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0 var(--s-2) var(--s-3);
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: var(--s-3);
+}
+.dash-sidebar .dash-brand img { width: 32px; height: 32px; }
+.dash-sidebar .dash-brand .name { font-size: 0.8125rem; font-weight: var(--fw-semibold); color: var(--c-blue); }
+.dash-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.dash-sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  border-radius: var(--r-sm);
+  transition: all var(--t-fast) var(--ease);
+}
+.dash-sidebar nav a svg { width: 18px; height: 18px; }
+.dash-sidebar nav a:hover { background: var(--c-gray-100); color: var(--c-blue); }
+.dash-sidebar nav a.is-active { background: var(--c-blue); color: var(--c-white); }
+
+.dash-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-5) var(--s-6);
+  margin-bottom: var(--s-6);
+  flex-wrap: wrap;
+  gap: var(--s-4);
+}
+.dash-welcome h2 { margin-bottom: var(--s-1); }
+.dash-welcome p { margin: 0; color: var(--c-muted); }
+.dash-welcome .user-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.dash-welcome .avatar {
+  width: 44px; height: 44px;
+  border-radius: var(--r-full);
+  background: linear-gradient(135deg, var(--c-blue), var(--c-purple));
+  color: var(--c-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--fw-bold);
+}
+.dash-welcome .bell { position: relative; color: var(--c-blue); }
+.dash-welcome .bell .dot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; border-radius: 50%; background: var(--c-red); }
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--s-5);
+}
+@media (max-width: 900px) { .dash-grid { grid-template-columns: 1fr; } }
+.dash-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  margin-bottom: var(--s-5);
+}
+.dash-card h3 { color: var(--c-blue); font-size: 1.0625rem; margin-bottom: var(--s-4); }
+
+.membership-status {
+  background: var(--c-blue-100);
+  border: 1px solid var(--c-blue);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+  margin-bottom: var(--s-5);
+}
+.membership-status .status-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+}
+.membership-status .status-row .item { display: flex; flex-direction: column; }
+.membership-status .status-row .label { font-size: 0.75rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.membership-status .status-row .value { font-size: 0.9375rem; font-weight: var(--fw-semibold); color: var(--c-text); }
+.membership-status .status-row .value.green { color: #15803D; }
+
+.event-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+.event-row:last-child { border-bottom: none; }
+.event-row .date {
+  background: var(--c-red-100);
+  color: var(--c-red);
+  border-radius: var(--r-sm);
+  padding: var(--s-2);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+}
+.event-row .date .day { display: block; font-size: 1.125rem; }
+.event-row .info h4 { font-size: 0.9375rem; color: var(--c-blue); margin-bottom: 2px; }
+.event-row .info .meta { font-size: 0.8125rem; color: var(--c-muted); margin: 0; }
+
+.news-mini {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--s-3);
+  padding: var(--s-2) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+.news-mini:last-child { border-bottom: none; }
+.news-mini .thumb {
+  width: 60px; height: 60px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--c-blue-100), var(--c-purple-100));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-blue);
+  font-size: 0.65rem;
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  padding: 4px;
+}
+.news-mini h4 { font-size: 0.875rem; color: var(--c-blue); margin-bottom: 2px; line-height: 1.3; }
+.news-mini .meta { font-size: 0.75rem; color: var(--c-muted); margin: 0; }
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) 0;
+  font-size: 0.875rem;
+  color: var(--c-blue);
+  font-weight: var(--fw-medium);
+}
+.quick-link svg { width: 18px; height: 18px; color: var(--c-red); }
+.quick-link:hover { color: var(--c-red); }
+
+.resource-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--c-border);
+  gap: var(--s-3);
+}
+.resource-row:last-child { border-bottom: none; }
+.resource-row .info { display: flex; align-items: center; gap: var(--s-3); }
+.resource-row .info .icon {
+  width: 40px; height: 40px;
+  background: var(--c-red-100);
+  color: var(--c-red);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resource-row .info .icon svg { width: 18px; height: 18px; }
+.resource-row .info .text h4 { font-size: 0.875rem; margin: 0; color: var(--c-blue); }
+.resource-row .info .text .meta { font-size: 0.75rem; color: var(--c-muted); margin: 0; }
+
+/* ---------- 33. News list page ---------- */
+.news-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-bottom: var(--s-6);
+}
+.filter-btn {
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-full);
+  font-size: 0.875rem;
+  font-weight: var(--fw-medium);
+  color: var(--c-gray-700);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+}
+.filter-btn:hover { border-color: var(--c-blue); color: var(--c-blue); }
+.filter-btn.is-active { background: var(--c-blue); color: var(--c-white); border-color: var(--c-blue); }
+
+/* ---------- 34. News article ---------- */
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.article .article-img {
+  aspect-ratio: 16/9;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--c-gray-100), var(--c-gray-200));
+  margin-bottom: var(--s-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-gray-500);
+}
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  margin-bottom: var(--s-3);
+}
+.article h1 { color: var(--c-blue); margin-bottom: var(--s-4); }
+.article p { font-size: 1.0625rem; line-height: 1.7; color: var(--c-gray-700); margin-bottom: var(--s-4); }
+.article h2 { color: var(--c-blue); margin-top: var(--s-8); margin-bottom: var(--s-3); }
+
+/* ---------- 35. Auth (login) ---------- */
+.auth-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: var(--s-12) 0;
+}
+.auth-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-8);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--sh-md);
+}
+.auth-card h1 { color: var(--c-blue); text-align: center; margin-bottom: var(--s-2); }
+.auth-card .subtitle { text-align: center; color: var(--c-muted); margin-bottom: var(--s-6); }
+
+/* ---------- 36. Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--s-8);
+  align-items: start;
+}
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-radius: var(--r-md);
+  padding: var(--s-8);
+}
+.contact-info h3 { color: var(--c-white); margin-bottom: var(--s-5); }
+.contact-info .item {
+  display: flex;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+  color: rgba(255,255,255,0.9);
+}
+.contact-info .item svg { width: 22px; height: 22px; color: var(--c-red); flex-shrink: 0; margin-top: 2px; }
+.contact-info .item .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); display: block; margin-bottom: 2px; }
+.contact-info .item .value { font-size: 0.9375rem; }
+
+.contact-form {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--s-8);
+}
+.contact-form h3 { color: var(--c-blue); margin-bottom: var(--s-5); }
+
+/* ---------- 37. Back to top button ---------- */
+.back-to-top {
+  position: fixed;
+  right: var(--s-6);
+  bottom: var(--s-6);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-full);
+  background: var(--c-blue);
+  color: var(--c-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sh-lg);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all var(--t-base) var(--ease);
+  z-index: 900;
+  border: none;
+}
+.back-to-top.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { background: var(--c-blue-700); transform: translateY(-2px); }
+.back-to-top svg { width: 22px; height: 22px; }
+
+/* ---------- 38. Section divider ---------- */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-12) 0;
+}
+.section-divider .divider-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--c-white);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: var(--fw-bold);
+  padding: var(--s-3) var(--s-6);
+  background: linear-gradient(135deg, var(--c-blue), var(--c-purple));
+  border-radius: var(--r-full);
+  box-shadow: 0 4px 16px rgba(11, 29, 109, 0.2);
+}
+.section-divider .divider-inner::before,
+.section-divider .divider-inner::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--c-border);
+}
+
+</style>
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home"><img class="brand-logo" src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association"></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#haemophilia">About Haemophilia</a>
+        <a href="#member">Become a Member</a>
+        <a href="#news">News &amp; Activities</a>
+        <a href="#partners">Partners</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-switcher" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>EN</button>
+        <a class="btn btn-donate" href="#donate">Donate</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="backdrop"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Site menu">
+      <div class="panel-head">
+        <a class="brand" href="#home"><img class="brand-logo" src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association"></a>
+        <button class="close" type="button" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <nav aria-label="Mobile primary">
+        <a href="#home">Home</a><a href="#about">About Us</a><a href="#haemophilia">About Haemophilia</a><a href="#member">Become a Member</a><a href="#news">News &amp; Activities</a><a href="#partners">Partners</a><a href="#contact">Contact Us</a>
+      </nav>
+      <div class="panel-actions">
+        <a class="btn btn-donate btn-block" href="#donate">Donate</a>
+        <a class="btn btn-secondary btn-block" href="#login">Member Login</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ===== HOME ===== -->
+    <section class="hero" id="home">
+      <img class="hero-bg" src="images/Heroo.png" alt="">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div data-reveal>
+          <h1><span class="accent-blue">Together We Care.</span><br><span class="accent-red">Together We Change Lives.</span></h1>
+          <p class="lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a class="btn btn-secondary btn-lg" href="#member">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#EAF0FB"/>
+      </svg>
+    </section>
+
+    <!-- Stat strip (white card overlaid on hero) -->
+    <section class="container" style="position:relative;margin-top:-80px;z-index:5;padding-bottom:0"><div class="stat-strip stat-strip-light" data-reveal><div class="container">
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="stat-text"><span class="value">12+</span><span class="label">Provinces Reached</span></div></div>
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="stat-text"><span class="value">1,200+</span><span class="label">Patients Supported</span></div></div>
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="stat-text"><span class="value">15+</span><span class="label">Healthcare Partners</span></div></div>
+    </div></div></section>
+
+    <!-- How We Help -->
+    <section class="section section-blue-soft" id="help"><div class="container">
+      <div class="section-heading" data-reveal><h2>How We Help</h2><p>Four core areas where CHA makes a difference for patients and families across Cambodia.</p></div>
+      <div class="grid grid-4">
+        <div class="help-card" data-reveal><div class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Patient Support</h3><p>Emotional support, guidance and community for patients and families.</p><a class="card-link" href="#about">Learn More <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Treatment Centres</h3><p>Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#centres">Learn More <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Become a Member</h3><p>Join our community and access exclusive resources and programs.</p><a class="card-link" href="#member">Join Now <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Donate</h3><p>Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#donate">Donate Now <span class="arrow">→</span></a></div>
+      </div>
+    </div></section>
+
+    <!-- News section -->
+    <section class="section section-soft" id="news"><div class="container">
+      <div class="section-heading flex-between" data-reveal>
+        <div>
+          <h2>Latest News &amp; Events</h2>
+          <p>Updates from our community awareness, treatment guidelines and training programs.</p>
+        </div>
+        <a class="btn btn-tertiary" href="#">View All <span class="arrow">→</span></a>
+      </div>
+      <div class="grid grid-3">
+        <article class="card news-card" data-reveal><div class="card-img"><img src="images/news-event-1.jpg" alt="World Haemophilia Day 2025"></div><div class="card-body"><div class="card-date">Apr 17, 2025<span class="badge badge-event">Event</span></div><h3 class="card-title">World Haemophilia Day 2025 Community Awareness Event</h3><p class="card-text">Join us for our annual awareness day in Phnom Penh.</p><a class="card-link" href="#">Read More <span class="arrow">→</span></a></div></article>
+        <article class="card news-card" data-reveal><div class="card-img"><img src="images/news-update-1.jpg" alt="New Treatment Guidelines"></div><div class="card-body"><div class="card-date">Apr 16, 2025<span class="badge badge-update">Update</span></div><h3 class="card-title">New Treatment Guidelines Now Available in Cambodia</h3><p class="card-text">Updated clinical guidelines for haemophilia management.</p><a class="card-link" href="#">Read More <span class="arrow">→</span></a></div></article>
+        <article class="card news-card" data-reveal><div class="card-img"><img src="images/doctor training.png" alt="Training Workshop"></div><div class="card-body"><div class="card-date">Apr 12, 2025<span class="badge badge-workshop">Workshop</span></div><h3 class="card-title">Training Workshop for Healthcare Professionals</h3><p class="card-text">Hands-on workshop covering diagnosis and treatment.</p><a class="card-link" href="#">Read More <span class="arrow">→</span></a></div></article>
+      </div>
+    </div></section>
+
+    <!-- Red CTA banner (full width, separate section) -->
+    <section class="section"><div class="container"><div class="cta-banner" data-reveal>
+      <div class="cta-banner-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="cta-banner-text">
+        <h2>Help Change Lives</h2>
+        <p>Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.</p>
+      </div>
+      <a class="btn btn-light btn-lg" href="#donate">Donate Now <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div></div></section>
+
+    <!-- Partners -->
+    <section class="partners-strip" id="partners" data-reveal><div class="container"><div class="label">Our Global Partners</div><div class="logos">
+      <div class="logo" title="World Federation of Hemophilia"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="WFH"><circle cx="14" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="18" font-family="Poppins" font-size="13" font-weight="700" fill="currentColor">WFH</text><text x="32" y="32" font-family="Poppins" font-size="6" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
+      <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="IFAH"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
+      <div class="logo" title="Global Haemophilia Alliance"><svg viewBox="0 0 140 40" width="140" height="40" aria-label="GHA"><text x="6" y="18" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Global</text><text x="6" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Haemophilia</text><text x="84" y="32" font-family="Poppins" font-size="11" font-weight="700" fill="currentColor">Alliance</text></svg></div>
+      <div class="logo" title="Save One Life"><svg viewBox="0 0 120 40" width="120" height="40" aria-label="Save One Life"><path d="M10 20 q0 -10 8 -10 q8 0 8 10 q0 10 -8 14 q-8 -4 -8 -14 z" fill="none" stroke="currentColor" stroke-width="2"/><text x="36" y="26" font-family="Poppins" font-size="13" font-weight="600" fill="currentColor">Save One Life</text></svg></div>
+      <div class="logo" title="PATH"><svg viewBox="0 0 80 40" width="80" height="40" aria-label="PATH"><text x="6" y="28" font-family="Poppins" font-size="22" font-weight="700" fill="currentColor">PATH</text></svg></div>
+    </div></div></section>
+
+    <!-- ===== ABOUT US ===== -->
+    <div class="section-divider"><div class="divider-inner">About Us</div></div>
+    <section class="page-hero" id="about"><div class="container">
+      <div data-reveal><h1>About Us</h1><p class="lead">The Cambodian Haemophilia Association is a patient-led organization working to improve the quality of life for people living with bleeding disorders through advocacy, education, care and empowerment.</p></div>
+      <div class="page-art" data-reveal><img src="images/about-team.jpg" alt="CHA leadership and team" style="width:100%;height:100%;object-fit:cover"></div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container">
+      <div class="section-heading" data-reveal><h2>Our Mission</h2></div>
+      <div class="mission-grid">
+        <div class="mission-card" data-reveal><div class="icon" style="background:#FCE5E6;color:var(--c-red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Advocate</h3><p>for access to quality care and treatment.</p></div>
+        <div class="mission-card" data-reveal><div class="icon" style="background:var(--c-blue-100);color:var(--c-blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h3>Educate</h3><p>and raise awareness about bleeding disorders.</p></div>
+        <div class="mission-card" data-reveal><div class="icon" style="background:#EFE6F4;color:var(--c-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Support</h3><p>patients and families through programs and resources.</p></div>
+        <div class="mission-card" data-reveal><div class="icon" style="background:#FEF3C7;color:#B45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Empower</h3><p>communities and caregivers through support and advocacy.</p></div>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <div class="section-heading flex-between" data-reveal><div><h2>Our History</h2></div><a class="btn btn-tertiary" href="#">View Full Timeline <span class="arrow">→</span></a></div>
+      <div class="timeline">
+        <div class="timeline-item" data-reveal><span class="year">2011</span><h3>CHA Established</h3><p>CHA was established by patients and families.</p></div>
+        <div class="timeline-item" data-reveal><span class="year">2014</span><h3>WFH Member</h3><p>Became a member of the World Federation of Hemophilia.</p></div>
+        <div class="timeline-item" data-reveal><span class="year">2017</span><h3>Hospital Partnerships</h3><p>Partnered with hospitals to improve treatment access.</p></div>
+        <div class="timeline-item" data-reveal><span class="year">2023</span><h3>National Reach</h3><p>Expanded education and outreach across provinces.</p></div>
+      </div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container">
+      <div class="section-heading flex-between" data-reveal><div><h2>Leadership Team</h2><p>Dedicated individuals leading CHA's mission across Cambodia.</p></div><a class="btn btn-secondary btn-sm" href="#">Meet the Full Team <span class="arrow">→</span></a></div>
+      <div class="leadership-grid">
+        <div class="leader-card" data-reveal><div class="leader-photo"><img src="images/leader-1.jpg" alt="Chan Soveun Ly"></div><div class="leader-info"><h3>Chan Soveun Ly</h3><p class="role">President</p></div></div>
+        <div class="leader-card" data-reveal><div class="leader-photo"><img src="images/leader-2.jpg" alt="Sok Sothea"></div><div class="leader-info"><h3>Sok Sothea</h3><p class="role">Vice President</p></div></div>
+        <div class="leader-card" data-reveal><div class="leader-photo"><img src="images/leader-3.jpg" alt="Bory Kao"></div><div class="leader-info"><h3>Bory Kao</h3><p class="role">Medical Advisor</p></div></div>
+        <div class="leader-card" data-reveal><div class="leader-photo"><img src="images/leader-4.jpg" alt="Yordak Kim"></div><div class="leader-info"><h3>Yordak Kim</h3><p class="role">Executive Director</p></div></div>
+      </div>
+    </div></section>
+
+    <!-- ===== ABOUT HAEMOPHILIA ===== -->
+    <div class="section-divider"><div class="divider-inner">About Haemophilia</div></div>
+    <section class="hero-dark" id="haemophilia"><div class="container">
+      <h1>Understanding<br>Haemophilia</h1>
+      <p>Learn about bleeding disorders, symptoms, treatment and how to live well.</p>
+      <a class="btn btn-light" href="#what">Learn More <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div></section>
+
+    <section class="section" id="what"><div class="container"><div class="split">
+      <div data-reveal>
+        <p class="eyebrow">About</p>
+        <h2>What is Haemophilia?</h2>
+        <p>Haemophilia is a rare genetic bleeding disorder that affects a person's ability to stop bleed. People with haemophilia can bleed longer than others after an injury or even without a known cause.</p>
+        <p>While there is no cure, modern treatments allow people with haemophilia to live full, active and healthy lives. Early diagnosis, proper treatment and ongoing support are key to preventing complications and joint damage.</p>
+        <a class="btn btn-secondary" href="#contact">Contact a Specialist <span class="arrow">→</span></a>
+      </div>
+      <div class="split-illust" data-reveal>
+        <svg viewBox="0 0 200 240" width="280" height="280" aria-label="Blood drop">
+          <defs><radialGradient id="drop-grad" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#E31E24"/></radialGradient></defs>
+          <path d="M100 20 C 60 80, 30 130, 30 170 C 30 210, 60 230, 100 230 C 140 230, 170 210, 170 170 C 170 130, 140 80, 100 20 Z" fill="url(#drop-grad)"/>
+          <ellipse cx="78" cy="120" rx="14" ry="22" fill="rgba(255,255,255,0.35)"/>
+        </svg>
+      </div>
+    </div></div></section>
+
+    <section class="section section-soft"><div class="container">
+      <div class="section-heading" data-reveal><h2>Types of Haemophilia</h2></div>
+      <div class="grid grid-2">
+        <div class="type-card" data-reveal>
+          <svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#E31E24"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg>
+          <div><h3>Haemophilia A</h3><p>Caused by a deficiency of factor VIII. The most common type.</p></div>
+        </div>
+        <div class="type-card" data-reveal>
+          <svg class="drop" viewBox="0 0 56 64" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#0B1D6D"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg>
+          <div><h3>Haemophilia B</h3><p>Caused by a deficiency of factor IX. Sometimes called Christmas disease.</p></div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <div class="section-heading" data-reveal><h2>Common Symptoms</h2><p>Recognizing the signs of a bleeding disorder is the first step toward diagnosis and proper care.</p></div>
+      <div class="symptoms-grid">
+        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L4 8 L4 16 L12 22 L20 16 L20 8 Z"/><path d="M12 2 L12 22"/></svg></div><p class="label">Easy Bruising</p></div>
+        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12 C 6 6, 18 6, 21 12"/><path d="M5 14 C 8 18, 16 18, 19 14"/></svg></div><p class="label">Frequent Nosebleeds</p></div>
+        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 L8 21 M16 3 L16 21 M8 12 L16 12"/></svg></div><p class="label">Bleeding Gums</p></div>
+        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M9 22 L9 14 L15 14 L15 22"/><path d="M12 11 L7 14 M12 11 L17 14"/></svg></div><p class="label">Joint Pain or Swelling</p></div>
+        <div class="symptom-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><p class="label">Prolonged Bleeding</p></div>
+      </div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container">
+      <div class="section-heading" data-reveal><h2>Explore More</h2></div>
+      <div class="explore-grid">
+        <div class="explore-card" data-reveal><h3>Von Willebrand Disease (VWD)</h3><p>The most common inherited bleeding disorder, caused by deficiency of von Willebrand factor.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+        <div class="explore-card" data-reveal><h3>Other Bleeding Disorders</h3><p>Information on rare factor deficiencies and platelet function disorders.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+        <div class="explore-card" data-reveal><h3>Treatment Centres</h3><p>Find a haemophilia treatment centre near you in Cambodia.</p><a class="card-link" href="#centres">Learn More <span class="arrow">→</span></a></div>
+        <div class="explore-card" data-reveal><h3>Treatment Guide</h3><p>Patient and family guide to living well with a bleeding disorder.</p><a class="card-link" href="#contact">Learn More <span class="arrow">→</span></a></div>
+      </div>
+    </div></section>
+
+    <!-- ===== TREATMENT CENTRES ===== -->
+    <div class="section-divider"><div class="divider-inner">Treatment Centres</div></div>
+    <section class="page-hero" id="centres"><div class="container">
+      <div data-reveal><h1>Find Treatment Centre<br>Near You</h1><p class="lead">Search by province to find haemophilia treatment centres across Cambodia.</p></div>
+      <div class="page-art" data-reveal><div style="text-align:center;width:100%">
+        <div class="tc-map-wrap" style="width:340px;height:340px;margin:0 auto">
+          <img src="images/cambodia-map.svg" alt="Cambodia treatment centre map" style="width:100%;height:100%;object-fit:contain">
+        </div>
+      </div></div>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <h2 class="mb-6" data-reveal>Treatment Centres</h2>
+      <div class="tc-search mb-6" data-reveal>
+        <label class="form-label" for="province">Select Province</label>
+        <select class="form-select" id="province" data-province-select>
+          <option value="">All provinces</option>
+          <option value="phnom-penh">Phnom Penh</option>
+          <option value="siem-reap">Siem Reap</option>
+          <option value="battambang">Battambang</option>
+          <option value="sihanoukville">Sihanoukville</option>
+        </select>
+      </div>
+      <div class="grid" style="gap:var(--s-5)">
+        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-1.jpg" alt="National Paediatric Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
+          <h3>National Paediatric Hospital — Haemophilia Clinic</h3>
+          <div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 721 833</span></div>
+          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">VWD</span><span class="tc-tag">Consultation</span><span class="tc-tag">Laboratory</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
+        </article>
+        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-2.jpg" alt="Calmette Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
+          <h3>Calmette Hospital — Haemophilia Unit</h3>
+          <div class="tc-meta"><span>📍 Phnom Penh</span><span>📞 023 338 707</span></div>
+          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Factor Replacement</span><span class="tc-tag">Counselling</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
+        </article>
+        <article class="tc-card" data-reveal><div class="tc-img"><img src="images/hospital-3.jpg" alt="Siem Reap Provincial Hospital" style="width:100%;height:100%;object-fit:cover"></div><div class="tc-body">
+          <h3>Siem Reap Provincial Hospital</h3>
+          <div class="tc-meta"><span>📍 Siem Reap</span><span>📞 063 765 376</span></div>
+          <div class="tc-tags"><span class="tc-tag">Haemophilia A &amp; B</span><span class="tc-tag">Consultation</span><span class="tc-tag">Emergency Care</span></div><a class="card-link mt-4" href="#">View on Map <span class="arrow">→</span></a>
+        </article>
+      </div>
+      <div class="emergency-banner" data-reveal>
+        <div><h3>Emergency Support</h3><p>If you have a bleeding emergency, contact your nearest treatment centre or call our support line.</p></div>
+        <a class="phone" href="tel:+85512345678"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>012 345 678</a>
+      </div>
+    </div></section>
+
+    <!-- ===== BECOME A MEMBER ===== -->
+    <div class="section-divider"><div class="divider-inner">Become a Member</div></div>
+
+    <section class="section" id="member"><div class="container">
+      <div class="member-hero" data-reveal>
+        <div class="member-photo">
+          <img src="images/family.jpg" alt="CHA family and community">
+        </div>
+        <div class="member-form-wrap">
+          <h2>Become a Member</h2>
+          <p>Join our community and be part of a strong, caring network supporting people living with bleeding disorders.</p>
+          <form data-mock-form novalidate>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" for="fullname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="fullname" placeholder="Enter your full name" required></div>
+              <div class="form-group"><label class="form-label" for="email">Email Address <span class="req">*</span></label><input class="form-input" type="email" id="email" placeholder="Enter your email" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" for="phone">Phone Number <span class="req">*</span></label><input class="form-input" type="tel" id="phone" placeholder="Enter your phone number" required></div>
+              <div class="form-group"><label class="form-label" for="dob">Date of Birth <span class="req">*</span></label><input class="form-input" type="date" id="dob" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" for="prov">Province <span class="req">*</span></label><select class="form-select" id="prov" required><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div>
+              <div class="form-group"><label class="form-label" for="role">I am a <span class="req">*</span></label><select class="form-select" id="role" required><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div>
+            </div>
+            <div class="form-group"><label class="form-label" for="disorder">Type of Bleeding Disorder</label><select class="form-select" id="disorder"><option value="">Select (if applicable)</option><option>Haemophilia A</option><option>Haemophilia B</option><option>VWD</option><option>Other</option></select></div>
+            <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Registration</button>
+          </form>
+          <div class="form-success" data-form-success hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Welcome to CHA!</h3><p>Your registration has been received. Our team will be in touch within 2 working days.</p>
+          </div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section section-soft"><div class="container">
+      <div class="section-heading" data-reveal><h2>Membership Benefits</h2></div>
+      <div class="benefits-grid">
+        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Community &amp; Support</h3></div>
+        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Access to Resources</h3></div>
+        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h3>Events &amp; Workshops</h3></div>
+        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h3>Advocacy &amp; Awareness</h3></div>
+        <div class="benefit-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Updates &amp; Newsletters</h3></div>
+      </div>
+      <div class="already-member" data-reveal>
+        <p>Already a Member?</p>
+        <p style="color:var(--c-muted);font-weight:var(--fw-regular)">Login to your account to update your profile, access resources and more.</p>
+        <a class="btn btn-secondary" href="#login">Login Now <span class="arrow">→</span></a>
+      </div>
+    </div></section>
+
+    <!-- ===== DONATION ===== -->
+    <section class="hero-red" id="donate"><div class="container">
+      <div data-reveal><h1>Help Change Lives</h1><p>Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.</p><a class="btn btn-light btn-lg" href="#donate-form">Donate Now <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+      <div class="heart-art" data-reveal><img src="images/heart-hands.jpg" alt="Heart in hands - donation" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg)"></div>
+    </div></section>
+
+    <section class="section"><div class="container">
+      <div class="section-heading" data-reveal><h2>Your Impact</h2></div>
+      <div class="impact-grid">
+        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><p>Provide treatment access for patients</p></div>
+        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><p>Support education and awareness</p></div>
+        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><p>Strengthen healthcare capacity</p></div>
+        <div class="impact-card" data-reveal><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><p>Empower families and communities</p></div>
+      </div>
+    </div></section>
+
+    <section class="section section-soft" id="donate-form"><div class="container"><div class="donation-wrap">
+      <div class="donation-form" data-reveal>
+        <h3>Make a Donation</h3>
+        <form data-mock-form novalidate>
+          <div class="tabs-nav" data-tabs>
+            <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once">One-time</button>
+            <button class="tab-btn" type="button" data-tab-group data-tab-target="monthly">Monthly</button>
+          </div>
+          <div class="tab-panel is-active" data-tab-panel="once" data-amount-group>
+            <div class="amount-chips">
+              <button type="button" class="amount-chip is-active" data-amount="10">$10</button>
+              <button type="button" class="amount-chip" data-amount="25">$25</button>
+              <button type="button" class="amount-chip" data-amount="50">$50</button>
+              <button type="button" class="amount-chip" data-amount="100">$100</button>
+              <button type="button" class="amount-chip" data-amount="other">Other</button>
+            </div>
+            <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+          </div>
+          <div class="tab-panel" data-tab-panel="monthly" data-amount-group>
+            <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support for long-term care.</p>
+            <div class="amount-chips">
+              <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
+              <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
+              <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
+              <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
+              <button type="button" class="amount-chip" data-amount="other">Other</button>
+            </div>
+            <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+          </div>
+          <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
+          <div class="radio-row">
+            <label class="radio-pill"><input type="radio" name="pay" value="card" checked> Credit / Debit Card</label>
+            <label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label>
+          </div>
+          <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
+          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
+        </form>
+        <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
+      </div>
+      <div class="campaigns-list" data-reveal>
+        <h3>Current Campaigns</h3>
+        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
+        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
+        <div class="campaign-card"><div class="thumb">Donate</div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
+      </div>
+    </div></div></section>
+
+    <!-- ===== CONTACT ===== -->
+    <div class="section-divider"><div class="divider-inner">Contact Us</div></div>
+    <section class="section" id="contact"><div class="container">
+      <div class="section-heading" data-reveal>
+        <h2>Contact Us</h2>
+        <p>Have a question or want to get involved? We'd love to hear from you.</p>
+      </div><div class="contact-grid">
+      <div class="contact-info" data-reveal>
+        <h3>Get In Touch</h3>
+        <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><span class="label">Address</span><span class="value">#35, St. 121, Sangkat Tuel Tumpong 2, Khan Chamkarmon, Phnom Penh, Cambodia</span></div></div>
+        <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><span class="label">Phone</span><span class="value">(+855) 12 345 678</span></div></div>
+        <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div><span class="label">Email</span><span class="value">info@chacambodia.org.kh</span></div></div>
+      </div>
+      <div class="contact-form" data-reveal>
+        <h3>Send us a Message</h3>
+        <form data-mock-form novalidate>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="cname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="cname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="cemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="cemail" placeholder="Enter your email" required></div></div>
+          <div class="form-group"><label class="form-label" for="csubject">Subject <span class="req">*</span></label><input class="form-input" type="text" id="csubject" placeholder="What's this about?" required></div>
+          <div class="form-group"><label class="form-label" for="cmessage">Message <span class="req">*</span></label><textarea class="form-textarea" id="cmessage" placeholder="How can we help?" required></textarea></div>
+          <button type="submit" class="btn btn-primary btn-lg">Send Message <span class="arrow">→</span></button>
+        </form>
+        <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Message Sent!</h3><p>Thank you for reaching out. We'll respond within 1–2 working days.</p></div>
+      </div>
+    </div></div></section>
+
+  </main>
+
+  <!-- Footer transition wave -->
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L0,60 Q120,80 360,60 Q600,40 720,50 Q960,70 1200,50 Q1320,40 1440,50 L1440,0 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer"><div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand"><img src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association" style="height:52px;width:auto"></div>
+        <p class="footer-tagline">Dedicated to improving the quality of life for all people affected by bleeding disorders in Cambodia.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#haemophilia">About Haemophilia</a></li><li><a href="#member">Become a Member</a></li><li><a href="#news">News &amp; Activities</a></li><li><a href="#donate">Fundraising</a></li><li><a href="#contact">Contact Us</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul><li><a href="#haemophilia">Patient Guides</a></li><li><a href="#news">Publications</a></li><li><a href="#news">Events</a></li><li><a href="#centres">Treatment Centres</a></li><li><a href="#contact">FAQs</a></li><li><a href="#contact">Emergency Info</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>#35, St. 121, Sangkat Tuel Tumpong 2, Khan Chamkarmon, Phnom Penh, Cambodia</span>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+85512345678">(+855) 12 345 678</a>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@chacambodia.org.kh">info@chacambodia.org.kh</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Cambodian Haemophilia Association. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script defer>
+/* ============================================
+   CHA Website — Interactivity
+   Vanilla JS, no libraries
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  // ---------- 1. Sticky header shadow on scroll ----------
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const onScroll = () => {
+      if (window.scrollY > 8) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // ---------- 2. Mobile drawer ----------
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.querySelector('.mobile-drawer');
+  const closeBtn = document.querySelector('.mobile-drawer .close');
+  const backdrop = document.querySelector('.mobile-drawer .backdrop');
+
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    const firstLink = drawer.querySelector('nav a');
+    if (firstLink) firstLink.focus();
+  }
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  if (toggle) toggle.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
+      closeDrawer();
+    }
+  });
+
+  // ---------- 3. Donation tabs (one-time / monthly) ----------
+  const tabBtns = document.querySelectorAll('[data-tab-group]');
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tabTarget;
+      const group = btn.closest('[data-tabs]') || document;
+      group.querySelectorAll('[data-tab-group]').forEach((b) => b.classList.remove('is-active'));
+      group.querySelectorAll('[data-tab-panel]').forEach((p) => p.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const panel = document.querySelector(`[data-tab-panel="${target}"]`);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+
+  // ---------- 4. News carousel ----------
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const prev = carousel.querySelector('.carousel-prev');
+    const next = carousel.querySelector('.carousel-next');
+    const dotsWrap = carousel.querySelector('.carousel-dots');
+    if (!track || slides.length === 0) return;
+
+    let index = 0;
+    let autoTimer;
+
+    // Build dots
+    if (dotsWrap) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, j) =>
+          d.classList.toggle('is-active', j === index)
+        );
+      }
+    }
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => goTo(index + 1), 6000);
+    }
+    function stopAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    if (prev) prev.addEventListener('click', () => { goTo(index - 1); startAuto(); });
+    if (next) next.addEventListener('click', () => { goTo(index + 1); startAuto(); });
+
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    startAuto();
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) goTo(index + (dx < 0 ? 1 : -1));
+      startAuto();
+    });
+  });
+
+  // ---------- 5. Donation amount chip ----------
+  document.querySelectorAll('[data-amount]').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const group = chip.closest('[data-amount-group]') || document;
+      group.querySelectorAll('[data-amount]').forEach((c) => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const val = chip.dataset.amount;
+      const other = document.querySelector('[data-amount-other]');
+      if (other && val === 'other') other.focus();
+    });
+  });
+
+  // ---------- 6. Form mock submit ----------
+  document.querySelectorAll('[data-mock-form]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Simple required validation
+      let ok = true;
+      form.querySelectorAll('[required]').forEach((field) => {
+        if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+          ok = false;
+          field.classList.add('is-invalid');
+        } else {
+          field.classList.remove('is-invalid');
+        }
+      });
+      if (!ok) return;
+      // Hide form, show success
+      const success = form.parentElement.querySelector('[data-form-success]');
+      if (success) {
+        form.style.display = 'none';
+        success.removeAttribute('hidden');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        alert('Thank you! Your submission has been received.');
+        form.reset();
+      }
+    });
+  });
+
+  // ---------- 7. Province → Map pin highlight ----------
+  const provinceSelect = document.querySelector('[data-province-select]');
+  const cambodiaMap = document.querySelector('[data-cambodia-map]');
+  if (provinceSelect && cambodiaMap) {
+    provinceSelect.addEventListener('change', () => {
+      const v = provinceSelect.value;
+      cambodiaMap.querySelectorAll('[data-province]').forEach((p) => {
+        p.classList.toggle('is-highlighted', p.dataset.province === v);
+      });
+    });
+  }
+
+  // ---------- 8. Scroll reveal ----------
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // ---------- 9. Active nav link based on scroll position (single-page) ----------
+  const navLinks = document.querySelectorAll('.main-nav a, .mobile-drawer nav a');
+  const sectionMap = new Map();
+  navLinks.forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('#')) {
+      const target = document.querySelector(href);
+      if (target) sectionMap.set(href, a);
+    }
+  });
+
+  if (sectionMap.size > 0 && 'IntersectionObserver' in window) {
+    const setActive = (href) => {
+      navLinks.forEach((a) => a.classList.remove('is-active'));
+      sectionMap.forEach((link, h) => {
+        if (h === href) link.classList.add('is-active');
+      });
+    };
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        // Use the entry closest to the top of the viewport that is intersecting
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length > 0) {
+          const id = '#' + visible[0].target.id;
+          if (sectionMap.has(id)) setActive(id);
+        }
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+    );
+    sectionMap.forEach((_, href) => {
+      const el = document.querySelector(href);
+      if (el) navObserver.observe(el);
+    });
+  }
+
+  // ---------- 10. Close mobile drawer on link click ----------
+  document.querySelectorAll('.mobile-drawer nav a').forEach((a) => {
+    a.addEventListener('click', () => {
+      // Delay so the anchor scroll fires before we close
+      setTimeout(closeDrawer, 50);
+    });
+  });
+
+  // ---------- 11. Back-to-top button ----------
+  const topBtn = document.querySelector('[data-back-to-top]');
+  if (topBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) topBtn.classList.add('is-visible');
+      else topBtn.classList.remove('is-visible');
+    }, { passive: true });
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
