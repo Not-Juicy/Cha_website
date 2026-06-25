@@ -987,31 +987,15 @@ hr {
 .hero {
   position: relative;
   overflow: hidden;
-  background: var(--c-white);
+  background: #ffffff;
   padding: var(--s-10) 0 var(--s-20);
   min-height: 620px;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
-  height: 100%;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(11, 29, 109, 0.05) 1.5px, transparent 1.5px),
-    radial-gradient(circle at 60% 60%, rgba(227, 30, 36, 0.04) 1.5px, transparent 1.5px);
-  background-size: 40px 40px, 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-  animation: drift 20s ease-in-out infinite alternate;
 }
 @keyframes drift {
   from { transform: translate(0, 0); }
   to { transform: translate(20px, -20px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 .hero .hero-bg {
