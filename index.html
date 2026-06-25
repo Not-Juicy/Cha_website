@@ -371,6 +371,30 @@ hr {
   box-shadow: 0 4px 12px rgba(227, 30, 36, 0.35);
 }
 
+.btn-member {
+  background: var(--c-blue);
+  color: var(--c-white);
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(11, 29, 109, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-full);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  white-space: nowrap;
+}
+.btn-member:hover {
+  background: var(--c-blue-700);
+  color: var(--c-white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 29, 109, 0.3);
+}
+
 .btn-light {
   background: var(--c-white);
   color: var(--c-blue);
@@ -2866,7 +2890,7 @@ hr {
       </nav>
       <div class="header-actions">
         <button class="lang-switcher" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>EN</button>
-        <a class="btn btn-secondary btn-sm" href="#" data-member-trigger aria-label="Member login">Member</a>
+        <a class="btn btn-member btn-sm" href="#" data-member-trigger aria-label="Member login">Member</a>
         <a class="btn btn-donate" href="#" data-donate-trigger aria-label="Open donation form">❤ Donate</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
@@ -2912,7 +2936,7 @@ hr {
         <a href="#contact">Contact</a>
       </nav>
       <div class="panel-actions">
-        <a class="btn btn-secondary btn-block" href="#" data-member-trigger>Member</a>
+        <a class="btn btn-member btn-block" href="#" data-member-trigger>Member</a>
         <a class="btn btn-donate btn-block" href="#" data-donate-trigger>❤ Donate</a>
         <a class="btn btn-secondary btn-block" href="#login">Member Login</a>
       </div>
