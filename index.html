@@ -2836,7 +2836,16 @@ hr {
       <a class="brand" href="#home"><img class="brand-logo" src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association"></a>
       <nav class="main-nav" aria-label="Primary">
         <a href="#home">Home</a>
-        <a href="#about">About Us</a>
+        <div class="nav-drop" data-nav-drop>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">About Us<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-drop-panel">
+            <a href="#about">Who is CHA?</a>
+            <a href="#about-leadership">Leadership</a>
+            <a href="#about-src">Social Responsibility</a>
+            <a href="#about-history">Our History</a>
+            <a href="#about-wfh">WFH &amp; HFA</a>
+          </div>
+        </div>
         <div class="nav-drop" data-nav-drop>
           <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">About Haemophilia<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-drop-panel">
@@ -2874,7 +2883,16 @@ hr {
       </div>
       <nav aria-label="Mobile primary">
         <a href="#home">Home</a>
-        <a href="#about">About Us</a>
+        <div class="drawer-group">
+          <button class="drawer-sub-trigger" type="button" aria-expanded="false">About Us<svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="drawer-sub-items">
+            <a href="#about">Who is CHA?</a>
+            <a href="#about-leadership">Leadership</a>
+            <a href="#about-src">Social Responsibility</a>
+            <a href="#about-history">Our History</a>
+            <a href="#about-wfh">WFH &amp; HFA</a>
+          </div>
+        </div>
         <div class="drawer-group">
           <button class="drawer-sub-trigger" type="button" aria-expanded="false">About Haemophilia<svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="drawer-sub-items">
@@ -2985,7 +3003,16 @@ hr {
       </div>
     </div></section>
 
-    <section class="section"><div class="container">
+    <section class="section section-soft" id="about-src"><div class="container">
+      <div class="section-heading" data-reveal><h2>Social Responsibility</h2><p>CHA's commitment to community outreach, volunteer engagement, and public awareness across Cambodia.</p></div>
+      <div class="grid grid-2">
+        <div class="type-card" data-reveal><svg viewBox="0 0 56 64" class="drop" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#E31E24"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Community Outreach</h3><p>We run awareness campaigns in provinces, distribute educational materials in Khmer, and partner with local health centres to reach underserved communities.</p></div></div>
+        <div class="type-card" data-reveal><svg viewBox="0 0 56 64" class="drop" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#0B1D6D"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Volunteer Program</h3><p>CHA volunteers — including patients, families, and healthcare students — support events, peer mentoring, and community-based activities throughout the year.</p></div></div>
+      </div>
+      <div class="symptoms-cta" data-reveal style="margin-top:var(--s-6)"><p>Want to get involved? Join our volunteer network and make a difference in the bleeding disorders community.</p><div class="btn-row"><a class="btn btn-primary" href="#" data-member-trigger>Become a Member <span class="arrow">→</span></a><a class="btn btn-secondary" href="#contact">Contact Us</a></div></div>
+    </div></section>
+
+    <section class="section" id="about-history"><div class="container">
       <div class="section-heading flex-between" data-reveal><div><h2>Our History</h2></div><a class="btn btn-tertiary" href="#">View Full Timeline <span class="arrow">→</span></a></div>
       <div class="timeline">
         <div class="timeline-item" data-reveal><span class="year">2011</span><h3>CHA Established</h3><p>CHA was established by patients and families.</p></div>
@@ -2995,13 +3022,31 @@ hr {
       </div>
     </div></section>
 
-    <section class="section section-soft"><div class="container">
+    <section class="section section-soft" id="about-leadership"><div class="container">
       <div class="section-heading flex-between" data-reveal><div><h2>Leadership Team</h2><p>Dedicated individuals leading CHA's mission across Cambodia.</p></div><a class="btn btn-secondary btn-sm" href="#">Meet the Full Team <span class="arrow">→</span></a></div>
       <div class="leadership-grid">
         <div class="leader-card" data-reveal><div class="leader-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=500&q=80" alt="Chan Soveun Ly"></div><div class="leader-info"><h3>Chan Soveun Ly</h3><p class="role">President</p></div></div>
         <div class="leader-card" data-reveal><div class="leader-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500&q=80" alt="Sok Sothea"></div><div class="leader-info"><h3>Sok Sothea</h3><p class="role">Vice President</p></div></div>
         <div class="leader-card" data-reveal><div class="leader-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&h=500&q=80" alt="Bory Kao"></div><div class="leader-info"><h3>Bory Kao</h3><p class="role">Medical Advisor</p></div></div>
         <div class="leader-card" data-reveal><div class="leader-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=500&q=80" alt="Yordak Kim"></div><div class="leader-info"><h3>Yordak Kim</h3><p class="role">Executive Director</p></div></div>
+      </div>
+    </div></section>
+
+    <section class="section section-soft" id="about-wfh"><div class="container">
+      <div class="section-heading" data-reveal><h2>Our Work with WFH &amp; HFA</h2><p>CHA is an active member of the global bleeding disorders community through our partnerships with the World Federation of Hemophilia and Haemophilia Foundation Australia.</p></div>
+      <div class="split">
+        <div data-reveal>
+          <h3 style="color:var(--c-blue);margin-bottom:var(--s-3)">World Federation of Hemophilia</h3>
+          <p>Since 2014, CHA has been a proud member of the WFH — the global organization dedicated to improving and sustaining care for people with inherited bleeding disorders around the world. Through WFH, we access international treatment guidelines, training programs, and humanitarian aid to strengthen care in Cambodia.</p>
+          <h3 style="color:var(--c-blue);margin-bottom:var(--s-3);margin-top:var(--s-6)">Haemophilia Foundation Australia</h3>
+          <p>HFA partners with CHA to support capacity building, clinical training, and patient advocacy. Joint programs have helped expand diagnosis, improve treatment protocols, and connect Cambodian clinicians with Australian expertise.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--s-4);justify-content:center" data-reveal>
+          <div class="partners-strip" style="display:flex;flex-direction:column;gap:var(--s-4);align-items:center">
+            <div class="logo" title="WFH" style="margin-bottom:var(--s-2)"><svg viewBox="0 0 180 60" width="180" height="60" aria-label="WFH"><circle cx="18" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="42" y="26" font-family="Poppins" font-size="18" font-weight="700" fill="currentColor">WFH</text><text x="42" y="42" font-family="Poppins" font-size="8" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
+            <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
+          </div>
+        </div>
       </div>
     </div></section>
 
