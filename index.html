@@ -2954,7 +2954,7 @@ hr {
           <p class="lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
           <div class="cta-row">
             <a class="btn btn-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            <a class="btn btn-secondary btn-lg" href="#" data-member-trigger>Member</a>
+            <a class="btn btn-secondary btn-lg" href="#" data-member-register-trigger style="color:var(--c-red);border-color:var(--c-red)">Become a Member</a>
           </div>
         </div>
       </div>
@@ -3740,6 +3740,15 @@ hr {
   memberClosers.forEach((c) => c.addEventListener('click', closeMember));
   memberModal.addEventListener('click', (e) => { if (e.target === memberModal) closeMember(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && memberModal.classList.contains('is-open')) closeMember(); });
+
+  // Register-specific trigger (hero button): open modal and show register panel
+  const registerTriggers = document.querySelectorAll('[data-member-register-trigger]');
+  registerTriggers.forEach((t) => t.addEventListener('click', (e) => {
+    e.preventDefault();
+    memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+    if (loginPanel) loginPanel.style.display = 'none';
+    if (registerPanel) registerPanel.style.display = 'block';
+  }));
 
   // Toggle between login and register panels
   const loginPanel = document.getElementById('member-login-panel');
