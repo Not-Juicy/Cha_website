@@ -2887,6 +2887,61 @@ hr {
 }
 .donate-modal-close:hover { background: var(--c-blue); color: var(--c-white); }
 
+/* ---------- 39. WFH / HFA partner cards ---------- */
+.wfh-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-blue);
+  border-radius: var(--r-lg);
+  padding: var(--s-8);
+  position: relative;
+  overflow: hidden;
+  transition: all 300ms var(--ease);
+}
+.wfh-card-purple { border-left-color: var(--c-purple); }
+.wfh-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11, 29, 109, 0.1); }
+.wfh-card-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-white);
+  background: var(--c-blue);
+  border-radius: var(--r-full);
+  margin-bottom: var(--s-4);
+}
+.wfh-card-purple .wfh-card-badge { background: var(--c-purple); }
+.wfh-card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-lg);
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--s-4);
+}
+.wfh-card-purple .wfh-card-icon { background: var(--c-purple-100); color: var(--c-purple); }
+.wfh-card-icon svg { width: 32px; height: 32px; }
+.wfh-card h3 { color: var(--c-blue); font-size: 1.125rem; margin-bottom: var(--s-2); }
+.wfh-card p { color: var(--c-muted); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--s-4); }
+.wfh-card-link {
+  font-size: 0.875rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-blue);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  transition: color var(--t-fast) var(--ease);
+}
+.wfh-card-link:hover { color: var(--c-red); }
+.wfh-card-link .arrow { transition: transform var(--t-fast) var(--ease); }
+.wfh-card-link:hover .arrow { transform: translateX(3px); }
+
 </style>
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
 </head>
@@ -3095,19 +3150,21 @@ hr {
     </div></section>
 
     <section class="section section-soft" id="about-wfh"><div class="container">
-      <div class="section-heading" data-reveal><h2>Our Work with WFH &amp; HFA</h2><p>CHA is an active member of the global bleeding disorders community through our partnerships with the World Federation of Hemophilia and Haemophilia Foundation Australia.</p></div>
-      <div class="split">
-        <div data-reveal>
-          <h3 style="color:var(--c-blue);margin-bottom:var(--s-3)">World Federation of Hemophilia</h3>
-          <p>Since 2014, CHA has been a proud member of the WFH — the global organization dedicated to improving and sustaining care for people with inherited bleeding disorders around the world. Through WFH, we access international treatment guidelines, training programs, and humanitarian aid to strengthen care in Cambodia.</p>
-          <h3 style="color:var(--c-blue);margin-bottom:var(--s-3);margin-top:var(--s-6)">Haemophilia Foundation Australia</h3>
-          <p>HFA partners with CHA to support capacity building, clinical training, and patient advocacy. Joint programs have helped expand diagnosis, improve treatment protocols, and connect Cambodian clinicians with Australian expertise.</p>
+      <div class="section-heading" data-reveal><h2>Our Work with WFH &amp; HFA</h2><p>CHA proudly partners with leading global organizations to strengthen haemophilia care across Cambodia.</p></div>
+      <div class="grid grid-2">
+        <div class="wfh-card" data-reveal>
+          <div class="wfh-card-badge">Member Since 2014</div>
+          <div class="wfh-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3>World Federation of Hemophilia</h3>
+          <p>CHA is part of a 140+ country global network. Through WFH we access international treatment guidelines, training programs, and humanitarian aid to improve care.</p>
+          <a class="wfh-card-link" href="#">Visit WFH <span class="arrow">→</span></a>
         </div>
-        <div style="display:flex;flex-direction:column;gap:var(--s-4);justify-content:center" data-reveal>
-          <div class="partners-strip" style="display:flex;flex-direction:column;gap:var(--s-4);align-items:center">
-            <div class="logo" title="WFH" style="margin-bottom:var(--s-2)"><svg viewBox="0 0 180 60" width="180" height="60" aria-label="WFH"><circle cx="18" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="42" y="26" font-family="Poppins" font-size="18" font-weight="700" fill="currentColor">WFH</text><text x="42" y="42" font-family="Poppins" font-size="8" fill="currentColor">WORLD FEDERATION OF HEMOPHILIA</text></svg></div>
-            <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
-          </div>
+        <div class="wfh-card wfh-card-purple" data-reveal>
+          <div class="wfh-card-badge">Training Partner</div>
+          <div class="wfh-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>Haemophilia Foundation Australia</h3>
+          <p>HFA partners with CHA on capacity building, clinical training, and patient advocacy. Joint programs connect Cambodian clinicians with Australian expertise.</p>
+          <a class="wfh-card-link" href="#">Learn More <span class="arrow">→</span></a>
         </div>
       </div>
     </div></section>
