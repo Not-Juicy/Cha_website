@@ -2890,38 +2890,40 @@ hr {
 /* ---------- 39. WFH / HFA partner features ---------- */
 .wfh-feature-grid {
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  gap: var(--s-10);
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--s-8);
   align-items: start;
 }
 @media (max-width: 900px) {
-  .wfh-feature-grid { grid-template-columns: 1fr; gap: var(--s-8); }
+  .wfh-feature-grid { grid-template-columns: 1fr; gap: var(--s-12); }
 }
 .wfh-divider {
-  background: linear-gradient(180deg, transparent, var(--c-border), transparent);
-  min-height: 200px;
-}
-@media (max-width: 900px) {
-  .wfh-divider { display: none; }
-}
-.wfh-feature { text-align: center; }
-.wfh-feature-mark {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--s-6);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: var(--s-12);
 }
-.wfh-feature-mark svg { width: 80px; height: 80px; }
+.wfh-divider svg { width: 40px; height: 40px; color: var(--c-border); }
+@media (max-width: 900px) { .wfh-divider { display: none; } }
+.wfh-feature { text-align: center; }
+.wfh-feature-mark {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto var(--s-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(11, 29, 109, 0.08));
+}
+.wfh-feature-mark svg { width: 96px; height: 96px; }
 .wfh-feature h3 {
   font-size: 1.25rem;
   color: var(--c-blue);
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
 }
 .wfh-tag {
   display: inline-block;
-  padding: 0.25rem 0.875rem;
+  padding: 0.3rem 0.875rem;
   font-size: 0.6875rem;
   font-weight: var(--fw-semibold);
   letter-spacing: 0.06em;
@@ -2932,11 +2934,26 @@ hr {
   margin-bottom: var(--s-4);
 }
 .purple-tag { color: var(--c-purple); background: var(--c-purple-100); }
+.wfh-stat { margin-bottom: var(--s-4); }
+.wfh-stat-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-blue);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.wfh-feature:nth-child(3) .wfh-stat-num { color: var(--c-purple); }
+.wfh-stat-label {
+  font-size: 0.8125rem;
+  color: var(--c-muted);
+  font-weight: var(--fw-medium);
+}
 .wfh-feature p {
   color: var(--c-muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.65;
-  max-width: 440px;
+  max-width: 420px;
   margin: 0 auto var(--s-4);
 }
 .wfh-link {
@@ -3160,26 +3177,28 @@ hr {
       </div>
     </div></section>
 
-    <section class="section section-soft" id="about-wfh"><div class="container">
+    <section class="section" id="about-wfh" style="background:linear-gradient(180deg, #FAFBFE 0%, #F4F6FC 100%)"><div class="container">
       <div class="section-heading" data-reveal><h2>Our Work with WFH &amp; HFA</h2><p>CHA proudly partners with leading global organizations to strengthen haemophilia care across Cambodia.</p></div>
       <div class="wfh-feature-grid">
         <div class="wfh-feature" data-reveal>
           <div class="wfh-feature-mark">
-            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#E5E8F2" stroke="#0B1D6D" stroke-width="1.5"/><text x="24" y="30" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="700" fill="#0B1D6D">WFH</text></svg>
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#E5E8F2" stroke="#0B1D6D" stroke-width="1.5"/><circle cx="28" cy="28" r="10" fill="none" stroke="#0B1D6D" stroke-width="1.5"/><path d="M28 6a15.3 15.3 0 0 1 6 14 15.3 15.3 0 0 1-6 14 15.3 15.3 0 0 1-6-14 15.3 15.3 0 0 1 6-14z" fill="none" stroke="#0B1D6D" stroke-width="1.5"/></svg>
           </div>
           <h3>World Federation of Hemophilia</h3>
           <span class="wfh-tag">Member Since 2014</span>
-          <p>CHA is part of a 140+ country global network. Through WFH we access international treatment guidelines, training programs, and humanitarian aid that directly improve patient care in Cambodia.</p>
+          <div class="wfh-stat"><span class="wfh-stat-num">140+</span><span class="wfh-stat-label">Countries in Network</span></div>
+          <p>Global member of the WFH network. Through this partnership, CHA accesses international treatment guidelines, training programs, and humanitarian aid that directly improve patient care.</p>
           <a class="wfh-link" href="#">Visit WFH <span class="arrow">→</span></a>
         </div>
-        <div class="wfh-divider" aria-hidden="true"></div>
+        <div class="wfh-divider"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c-border)" stroke-width="1.5" aria-hidden="true"><line x1="1" y1="12" x2="23" y2="12"/></svg></div>
         <div class="wfh-feature" data-reveal>
           <div class="wfh-feature-mark">
-            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#EFE6F4" stroke="#6A2C91" stroke-width="1.5"/><text x="24" y="30" text-anchor="middle" font-family="Poppins" font-size="13" font-weight="700" fill="#6A2C91">HFA</text></svg>
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#EFE6F4" stroke="#6A2C91" stroke-width="1.5"/><path d="M28 12c-6 0-10 4-10 10 0 8 10 20 10 20s10-12 10-20c0-6-4-10-10-10z" fill="none" stroke="#6A2C91" stroke-width="1.5"/><circle cx="28" cy="22" r="3" fill="#6A2C91"/></svg>
           </div>
           <h3>Haemophilia Foundation Australia</h3>
           <span class="wfh-tag purple-tag">Training Partner</span>
-          <p>HFA partners with CHA on capacity building, clinical training, and patient advocacy. Joint programs connect Cambodian clinicians with Australian expertise for stronger haemophilia care.</p>
+          <div class="wfh-stat"><span class="wfh-stat-num">15+</span><span class="wfh-stat-label">Joint Programs</span></div>
+          <p>HFA partners with CHA on capacity building, clinical training, and patient advocacy. Joint programs connect Cambodian clinicians with Australian expertise.</p>
           <a class="wfh-link" href="#">Learn More <span class="arrow">→</span></a>
         </div>
       </div>
