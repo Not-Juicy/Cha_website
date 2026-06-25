@@ -10,6 +10,8 @@ Thumbs.db
 prototype/
 prototype - Copy*/
 web - Copy*/
+web/                  # local mirror of root site for editing convenience
+index.html.backup
 
 # Local agent / tool config
 .agents/

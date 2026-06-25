@@ -12,20 +12,19 @@ Single-page website for the **Cambodian Haemophilia Association** — a patient-
 ## Project structure
 
 ```
-web/
+.
 ├── index.html         # entire site (all CSS + JS inlined)
 └── images/            # photographs, logo, and SVG illustrations
 ```
 
 ## Running locally
 
-Open `web/index.html` directly in any modern browser — no server required.
+Open `index.html` directly in any modern browser — no server required.
 
-For the cleanest experience (so fonts and image paths resolve correctly), serve the `web/` folder over HTTP:
+For the cleanest experience (so fonts and image paths resolve correctly), serve the repo over HTTP:
 
 ```bash
 # from the repo root
-cd web
 python -m http.server 8000
 # then visit http://localhost:8000
 ```
