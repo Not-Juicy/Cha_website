@@ -1921,22 +1921,35 @@ hr {
 /* ---------- 24. Types of Haemophilia ---------- */
 .type-card {
   display: flex;
-  gap: var(--s-4);
-  align-items: flex-start;
-  padding: var(--s-6);
+  gap: var(--s-5);
+  align-items: center;
+  padding: var(--s-8) var(--s-6);
   background: var(--c-white);
   border: 1px solid var(--c-border);
-  border-radius: var(--r-md);
-  transition: all var(--t-base) var(--ease);
+  border-radius: var(--r-lg);
+  transition: all 300ms var(--ease);
+  position: relative;
+  overflow: hidden;
 }
-.type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(11, 29, 109, 0.1); border-color: var(--c-blue-100); }
+.type-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: var(--r-lg) 0 0 var(--r-lg);
+}
+.type-card:first-child::before { background: var(--c-red); }
+.type-card:last-child::before { background: var(--c-blue); }
+.type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11, 29, 109, 0.1); border-color: var(--c-blue-100); }
 .type-card .drop {
-  width: 56px;
-  height: 64px;
+  width: 72px;
+  height: 82px;
   flex-shrink: 0;
 }
-.type-card h3 { color: var(--c-blue); margin-bottom: var(--s-2); }
-.type-card p { color: var(--c-muted); margin: 0; font-size: 0.9375rem; }
+.type-card h3 { color: var(--c-blue); margin-bottom: var(--s-1); font-size: 1.125rem; }
+.type-card p { color: var(--c-muted); margin: 0; font-size: 0.9375rem; line-height: 1.5; }
 
 /* ---------- 25. Symptoms grid ---------- */
 .symptoms-section {
@@ -2815,13 +2828,48 @@ hr {
 .donate-modal-close:hover { background: var(--c-blue); color: var(--c-white); }
 
 /* Programs tabs wider style */
-.programs-tabs { justify-content: center; gap: 0; }
-.programs-tabs .tab-btn {
-  padding: 0.625rem 1.5rem;
-  font-size: 0.9375rem;
-  font-weight: var(--fw-semibold);
-  border-radius: var(--r-full);
+.programs-tabs {
+  justify-content: center;
+  gap: var(--s-1);
+  background: none;
+  padding: 0;
+  margin-bottom: var(--s-10);
+  border-bottom: 1px solid var(--c-border);
+  border-radius: 0;
 }
+.programs-tabs .tab-btn {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  color: var(--c-gray-500);
+  border-radius: 0;
+  position: relative;
+  background: none;
+}
+.programs-tabs .tab-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--c-red);
+  border-radius: var(--r-full) var(--r-full) 0 0;
+  transition: width 300ms var(--ease);
+}
+.programs-tabs .tab-btn:hover { color: var(--c-blue); }
+.programs-tabs .tab-btn.is-active {
+  color: var(--c-blue);
+  background: none;
+  box-shadow: none;
+}
+.programs-tabs .tab-btn.is-active::after { width: 60%; }
+
+/* Programs tab content */
+.tab-panel[data-tab-panel^="p-"] { padding-top: 0; }
+.tab-panel[data-tab-panel^="p-"] .section { padding: var(--s-16) 0; }
+.tab-panel[data-tab-panel^="p-"] .section-soft { background: linear-gradient(180deg, #FAFBFE 0%, #F4F6FC 100%); }
 
 </style>
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
@@ -3015,8 +3063,8 @@ hr {
         <button class="tab-btn" type="button" data-tab-group data-tab-target="p-member">Membership</button>
         <button class="tab-btn" type="button" data-tab-group data-tab-target="p-donate">Donate</button>
       </div>
-      <div class="tab-panel is-active" data-tab-panel="p-haemo" id="programs-haemophilia" style="padding-top:var(--s-8)">
-        <div class="section" id="what"><div class="container"><div class="split">
+      <div class="tab-panel is-active" data-tab-panel="p-haemo" id="programs-haemophilia">
+        <div class="section" id="what" style="padding-top:0"><div class="container"><div class="split">
           <div data-reveal><p class="eyebrow">About</p><h2>What is Haemophilia?</h2>
           <p>Haemophilia is a rare genetic bleeding disorder that affects a person's ability to stop bleed. People with haemophilia can bleed longer than others after an injury or even without a known cause.</p>
           <p>While there is no cure, modern treatments allow people with haemophilia to live full, active and healthy lives. Early diagnosis, proper treatment and ongoing support are key to preventing complications and joint damage.</p>
