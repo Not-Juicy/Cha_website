@@ -2966,7 +2966,7 @@ hr {
     <section class="section section-soft" id="donate-form"><div class="container"><div class="donation-wrap">
       <div class="donation-form" data-reveal>
         <h3>Make a Donation</h3>
-        <form data-mock-form novalidate>
+        <form id="donate-form-submit" novalidate>
           <div class="tabs-nav" data-tabs>
             <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once">One-time</button>
             <button class="tab-btn" type="button" data-tab-group data-tab-target="monthly">Monthly</button>
@@ -2994,11 +2994,11 @@ hr {
           </div>
           <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
           <div class="radio-row">
-            <label class="radio-pill"><input type="radio" name="pay" value="card" checked> Credit / Debit Card</label>
+            <label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> Stripe</label>
             <label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label>
           </div>
           <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
-          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
+          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via Stripe &amp; PayPal</p>
         </form>
         <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
       </div>
@@ -3342,6 +3342,40 @@ hr {
     }, { passive: true });
     topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---------- 12. Donate form — redirect to Stripe or PayPal ----------
+  const donateForm = document.getElementById('donate-form-submit');
+  if (donateForm) {
+    donateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Get selected amount
+      const activePanel = donateForm.querySelector('.tab-panel.is-active');
+      const activeChip = activePanel ? activePanel.querySelector('.amount-chip.is-active') : null;
+      const otherInput = activePanel ? activePanel.querySelector('[data-amount-other]') : null;
+      let amount = activeChip ? activeChip.dataset.amount : '10';
+      if (amount === 'other' && otherInput && otherInput.value) {
+        amount = otherInput.value;
+      }
+
+      // Get selected payment method
+      const payMethod = donateForm.querySelector('input[name="pay"]:checked');
+      const method = payMethod ? payMethod.value : 'stripe';
+
+      // Get donation type (one-time or monthly)
+      const isMonthly = activePanel && activePanel.dataset.tabPanel === 'monthly';
+
+      // Redirect URLs — replace these with your real Stripe/PayPal links
+      const stripeUrl = 'https://buy.stripe.com/your-stripe-link';
+      const paypalUrl = 'https://www.paypal.com/donate?business=YOUR_PAYPAL_ID';
+
+      if (method === 'stripe') {
+        window.open(stripeUrl, '_blank');
+      } else {
+        window.open(paypalUrl, '_blank');
+      }
     });
   }
 })();
