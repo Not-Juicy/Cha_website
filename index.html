@@ -2998,7 +2998,8 @@ hr {
         <h2>Our Programs</h2>
         <p>Learn about bleeding disorders, become a member, or support our mission — all in one place.</p>
       </div>
-      <div class="tabs-nav programs-tabs" data-tabs>
+      <div data-tabs>
+      <div class="tabs-nav programs-tabs">
         <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="p-haemo">About Haemophilia</button>
         <button class="tab-btn" type="button" data-tab-group data-tab-target="p-member">Membership</button>
         <button class="tab-btn" type="button" data-tab-group data-tab-target="p-donate">Donate</button>
@@ -3150,6 +3151,7 @@ hr {
             </div></div></div>
           </div>
         </div></div></div>
+      </div>
       </div>
     </div></section>
 
@@ -3364,11 +3366,17 @@ hr {
   tabBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tabTarget;
-      const group = btn.closest('[data-tabs]') || document;
-      group.querySelectorAll('[data-tab-group]').forEach((b) => b.classList.remove('is-active'));
-      group.querySelectorAll('[data-tab-panel]').forEach((p) => p.classList.remove('is-active'));
+      const group = btn.closest('[data-tabs]');
+      const panelRoot = group || document;
+      // Deactivate all buttons and panels within this tab group
+      const scopeBtns = group ? group.querySelectorAll('[data-tab-group]') : document.querySelectorAll('[data-tab-group]');
+      const scopePanels = group ? group.querySelectorAll('[data-tab-panel]') : document.querySelectorAll('[data-tab-panel]');
+      scopeBtns.forEach((b) => b.classList.remove('is-active'));
+      scopePanels.forEach((p) => p.classList.remove('is-active'));
       btn.classList.add('is-active');
-      const panel = document.querySelector(`[data-tab-panel="${target}"]`);
+      // Try to find panel within group first, then fallback to document
+      let panel = group ? group.querySelector(`[data-tab-panel="${target}"]`) : null;
+      if (!panel) panel = document.querySelector(`[data-tab-panel="${target}"]`);
       if (panel) panel.classList.add('is-active');
     });
   });
