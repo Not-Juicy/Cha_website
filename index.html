@@ -1847,16 +1847,15 @@ hr {
 @media (max-width: 540px) { .vision-text { font-size: 1.125rem; } }
 
 /* Vision & Mission premium cards (in page-hero) */
-.vm-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
-@media (max-width: 540px) { .vm-cards { grid-template-columns: 1fr; } }
-.vm-card { display: flex; align-items: flex-start; gap: var(--s-3); padding: var(--s-4); background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%); border: 1px solid var(--c-border); border-radius: var(--r-lg); transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
+.vm-cards { display: flex; flex-direction: column; gap: var(--s-3); }
+.vm-card { display: flex; align-items: flex-start; gap: var(--s-4); padding: var(--s-5) var(--s-5); background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%); border: 1px solid var(--c-border); border-radius: var(--r-lg); transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
 .vm-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px -10px rgba(11,29,109,0.18); }
-.vm-card-icon { flex-shrink: 0; width: 42px; height: 42px; border-radius: var(--r-md); background: var(--c-blue-100); color: var(--c-blue); display: flex; align-items: center; justify-content: center; }
-.vm-card-icon svg { width: 20px; height: 20px; }
+.vm-card-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: var(--r-md); background: var(--c-blue-100); color: var(--c-blue); display: flex; align-items: center; justify-content: center; }
+.vm-card-icon svg { width: 22px; height: 22px; }
 .vm-card:nth-child(2) .vm-card-icon { background: #FCE5E6; color: var(--c-red); }
 .vm-body { min-width: 0; flex: 1; }
-.vm-label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-blue); margin-bottom: 4px; }
-.vm-card p { margin: 0; font-size: 0.8125rem; line-height: 1.5; color: var(--c-text); }
+.vm-label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-blue); margin-bottom: 6px; }
+.vm-card p { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--c-text); }
 
 /* Groups sub-grid (Youth / Women's) */
 .groups-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); margin-top: var(--s-8); }
