@@ -1834,6 +1834,12 @@ hr {
 .vision-text { font-size: 1.5rem; font-weight: 500; line-height: 1.45; margin: 0 auto; max-width: 780px; color: #fff; }
 @media (max-width: 540px) { .vision-text { font-size: 1.125rem; } }
 
+/* Vision & Mission inline block (in page-hero) */
+.vm-block { display: flex; flex-direction: column; gap: var(--s-3); margin-top: var(--s-5); max-width: 560px; }
+.vm-item { padding: var(--s-3) 0; border-left: 3px solid var(--c-blue); padding-left: var(--s-4); }
+.vm-label { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-blue); margin-bottom: 4px; }
+.vm-item p { margin: 0; color: var(--c-text); font-size: 0.9375rem; line-height: 1.55; }
+
 /* Groups sub-grid (Youth / Women's) */
 .groups-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); margin-top: var(--s-8); }
 @media (max-width: 700px) { .groups-grid { grid-template-columns: 1fr; } }
@@ -3222,7 +3228,21 @@ hr {
     <!-- ===== ABOUT US ===== -->
     <div class="section-divider"><div class="divider-inner">About Us</div></div>
     <section class="page-hero" id="about"><div class="container">
-      <div data-reveal><h1>About Us</h1><p class="lead">The Cambodian Haemophilia Association is a patient-led organization working to improve the quality of life for people living with bleeding disorders through advocacy, education, care and empowerment.</p></div>
+      <div data-reveal>
+        <p class="eyebrow" style="color:var(--c-blue);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 var(--s-3)">Who is CHA?</p>
+        <h1>About Us</h1>
+        <p class="lead">The Cambodian Haemophilia Association is a patient-led organization dedicated to improving the quality of life for people living with bleeding disorders across Cambodia.</p>
+        <div class="vm-block">
+          <div class="vm-item">
+            <span class="vm-label">Our Vision</span>
+            <p>A Cambodia where every person with a bleeding disorder has access to diagnosis, treatment, and support — enabling them to live full and healthy lives.</p>
+          </div>
+          <div class="vm-item">
+            <span class="vm-label">Our Mission</span>
+            <p>To advocate for access to quality care, educate communities, support patients and families, and empower caregivers across the country.</p>
+          </div>
+        </div>
+      </div>
       <div class="page-art" data-reveal><img src="images/about-team.jpg" alt="CHA leadership and team" style="width:100%;height:100%;object-fit:cover"></div>
     </div></section>
 
