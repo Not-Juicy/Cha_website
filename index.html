@@ -1876,13 +1876,16 @@ hr {
 .presidents-block h3 { color: var(--c-blue); font-size: 1.25rem; font-weight: 700; margin: 0 0 var(--s-5); }
 .presidents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
 @media (max-width: 700px) { .presidents-grid { grid-template-columns: 1fr; } }
-.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: var(--s-7) var(--s-5) var(--s-5); text-align: center; position: relative; overflow: hidden; transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); }
-.president-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--c-blue) 0%, var(--c-red) 50%, var(--c-purple) 100%); }
-.president-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -12px rgba(11,29,109,0.2); }
-.president-avatar { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto var(--s-4); overflow: hidden; box-shadow: 0 10px 24px -6px rgba(11,29,109,0.3); border: 4px solid var(--c-white); position: relative; }
-.president-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.president-card h4 { color: var(--c-blue); font-size: 1.125rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
-.president-card .term { color: var(--c-muted); font-size: 0.8125rem; margin: 0; font-weight: 500; letter-spacing: 0.02em; }
+.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-xl); overflow: hidden; text-align: center; transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); }
+.president-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -14px rgba(11,29,109,0.22); }
+.president-image { width: 100%; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+.president-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 500ms var(--ease); }
+.president-card:hover .president-image img { transform: scale(1.06); }
+.president-image::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, transparent 0%, rgba(11,29,109,0.5) 100%); pointer-events: none; }
+.president-body { padding: var(--s-5) var(--s-4) var(--s-6); }
+.president-role { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-blue); margin: 0 0 6px; }
+.president-card h4 { font-size: 1.0625rem; font-weight: 700; color: var(--c-text); margin: 0 0 12px; letter-spacing: -0.01em; }
+.president-term { display: inline-block; font-size: 0.75rem; color: var(--c-blue); background: var(--c-blue-100); padding: 5px 12px; border-radius: var(--r-full); margin: 0; font-weight: 600; letter-spacing: 0.02em; }
 
 /* ---------- 20. Timeline ---------- */
 .timeline {
@@ -3339,19 +3342,28 @@ hr {
         <h3>Past Presidents</h3>
         <div class="presidents-grid">
           <div class="president-card">
-            <div class="president-avatar"><img src="images/president-1.jpg" alt="Past President 1"></div>
-            <h4>Past President 1</h4>
-            <p class="term">2011 – 2015</p>
+            <div class="president-image"><img src="images/president-1.jpg" alt="Past President 1"></div>
+            <div class="president-body">
+              <p class="president-role">President</p>
+              <h4>Past President 1</h4>
+              <span class="president-term">2011 – 2015</span>
+            </div>
           </div>
           <div class="president-card">
-            <div class="president-avatar"><img src="images/president-2.jpg" alt="Past President 2"></div>
-            <h4>Past President 2</h4>
-            <p class="term">2015 – 2019</p>
+            <div class="president-image"><img src="images/president-2.jpg" alt="Past President 2"></div>
+            <div class="president-body">
+              <p class="president-role">President</p>
+              <h4>Past President 2</h4>
+              <span class="president-term">2015 – 2019</span>
+            </div>
           </div>
           <div class="president-card">
-            <div class="president-avatar"><img src="images/president-3.jpg" alt="Past President 3"></div>
-            <h4>Past President 3</h4>
-            <p class="term">2019 – 2023</p>
+            <div class="president-image"><img src="images/president-3.jpg" alt="Past President 3"></div>
+            <div class="president-body">
+              <p class="president-role">President</p>
+              <h4>Past President 3</h4>
+              <span class="president-term">2019 – 2023</span>
+            </div>
           </div>
         </div>
       </div>
