@@ -7,7 +7,7 @@
   <meta name="description" content="CHA supports people living with bleeding disorders across Cambodia. Access treatment, education, care and support.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 /* ============================================
    CHA Website — Design System & Components
@@ -49,7 +49,7 @@
   --c-border: var(--c-gray-200);
 
   /* Type */
-  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Poppins', 'Noto Sans Khmer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --fs-h1: clamp(2rem, 4.5vw, 3.25rem);
   --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
   --fs-h3: clamp(1.125rem, 2vw, 1.375rem);
@@ -130,6 +130,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+[lang="km"] body, [lang="km"] h1, [lang="km"] h2, [lang="km"] h3, [lang="km"] h4, [lang="km"] h5, [lang="km"] h6, [lang="km"] p, [lang="km"] span, [lang="km"] a, [lang="km"] li, [lang="km"] td, [lang="km"] th, [lang="km"] label, [lang="km"] input, [lang="km"] select, [lang="km"] textarea, [lang="km"] button {
+  font-family: 'Noto Sans Khmer', 'Poppins', sans-serif !important;
+}
+[lang="km"] .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; }
+[lang="km"] .src-title { font-size: clamp(2.5rem, 5vw, 4rem); }
 
 img,
 svg,
@@ -3482,44 +3487,47 @@ hr {
     <div class="container header-inner">
       <a class="brand" href="#home"><img class="brand-logo" src="images/cha-logo-left.png" alt="Cambodian Haemophilia Association"></a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="#home">Home</a>
+        <a href="#home" data-i18n="nav_home">Home</a>
         <div class="nav-drop" data-nav-drop>
-          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">About Us<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true" data-i18n="nav_about_us">About Us<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-drop-panel">
-            <a href="#about">Who is CHA?</a>
-            <a href="#about-leadership">Leadership structure and Groups</a>
-            <a href="#about-src">SRC</a>
-            <a href="#about-history">Our History</a>
-            <a href="#about-wfh">Our work with WFH and HFA</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#about" data-i18n="nav_who_is_cha">Who is CHA?</a>
+            <a href="#about-leadership" data-i18n="nav_leadership">Leadership structure and Groups</a>
+            <a href="#about-src" data-i18n="nav_src">SRC</a>
+            <a href="#about-history" data-i18n="nav_history">Our History</a>
+            <a href="#about-wfh" data-i18n="nav_wfh">Our work with WFH and HFA</a>
+            <a href="#contact" data-i18n="nav_contact_us">Contact Us</a>
           </div>
         </div>
         <div class="nav-drop" data-nav-drop>
-          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">About Haemophilia<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true" data-i18n="nav_about_haemophilia">About Haemophilia<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-drop-panel">
-            <a href="#vwd">About VWD</a>
-            <a href="#other-bleeding">About other bleeding disorders</a>
-            <a href="#programs-centres">Haemophilia Treatment Centres</a>
+            <a href="#vwd" data-i18n="nav_about_vwd">About VWD</a>
+            <a href="#other-bleeding" data-i18n="nav_other_bleeding">About other bleeding disorders</a>
+            <a href="#programs-centres" data-i18n="nav_treatment_centres">Haemophilia Treatment Centres</a>
             <span class="nav-drop-divider"></span>
-            <a href="#csr" class="nav-drop-parent">CSR Program</a>
-            <a href="#csr-fundraising" class="nav-drop-sub">Fundraising</a>
-            <a href="#csr-donate" class="nav-drop-sub">Online donation</a>
-            <a href="#csr-partners" class="nav-drop-sub">Corporate Partners</a>
+            <a href="#csr" class="nav-drop-parent" data-i18n="nav_csr_program">CSR Program</a>
+            <a href="#csr-fundraising" class="nav-drop-sub" data-i18n="nav_fundraising">Fundraising</a>
+            <a href="#csr-donate" class="nav-drop-sub" data-i18n="nav_online_donation">Online donation</a>
+            <a href="#csr-partners" class="nav-drop-sub" data-i18n="nav_corporate_partners">Corporate Partners</a>
           </div>
         </div>
         <div class="nav-drop" data-nav-drop>
-          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">News<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true" data-i18n="nav_news">News<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-drop-panel">
-            <a href="#news">Latest News</a>
-            <a href="#news-events">Upcoming Events</a>
+            <a href="#news" data-i18n="nav_latest_news">Latest News</a>
+            <a href="#news-events" data-i18n="nav_upcoming_events">Upcoming Events</a>
           </div>
         </div>
-        <a href="#contact">Contact</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
       </nav>
       <div class="header-actions">
-        <button class="lang-switcher" type="button" aria-label="Switch language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>EN</button>
-        <a class="btn btn-member btn-sm" href="#" data-member-trigger aria-label="Member login">Become a Member</a>
-        <a class="btn btn-donate" href="#" data-donate-trigger aria-label="Open donation form">Donate</a>
+        <button class="lang-switcher" type="button" aria-label="Switch language" data-i18n-attr="aria-label:lang_switcher_aria" data-lang-toggle>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="lang-label" data-i18n="lang_label">EN</span>
+        </button>
+        <a class="btn btn-member btn-sm" href="#" data-member-trigger aria-label="Member login" data-i18n="nav_become_member" data-i18n-attr="aria-label:nav_become_member_aria">Become a Member</a>
+        <a class="btn btn-donate" href="#" data-donate-trigger aria-label="Open donation form" data-i18n="nav_donate" data-i18n-attr="aria-label:nav_donate_aria">Donate</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
@@ -3583,11 +3591,11 @@ hr {
       <div class="hero-overlay"></div>
       <div class="container hero-content">
         <div data-reveal>
-          <h1><span class="accent-blue">Together We Care.</span><br><span class="accent-red">Together We Change Lives.</span></h1>
-          <p class="lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
+          <h1><span class="accent-blue" data-i18n="hero_title_1">Together We Care.</span><br><span class="accent-red" data-i18n="hero_title_2">Together We Change Lives.</span></h1>
+          <p class="lead" data-i18n="hero_lead">Supporting and empowering people with bleeding disorders across Cambodia.</p>
           <div class="cta-row">
-            <a class="btn btn-hero-primary btn-lg" href="#haemophilia">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-            <a class="btn btn-hero-member btn-lg" href="#" data-member-register-trigger>Become a Member</a>
+            <a class="btn btn-hero-primary btn-lg" href="#haemophilia" data-i18n="hero_cta_support">Get Support <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a class="btn btn-hero-member btn-lg" href="#" data-member-register-trigger data-i18n="nav_become_member">Become a Member</a>
           </div>
         </div>
       </div>
@@ -3598,19 +3606,19 @@ hr {
 
     <!-- Stat strip (white card overlaid on hero) -->
     <section class="container" style="position:relative;margin-top:-80px;z-index:5;padding-bottom:0"><div class="stat-strip stat-strip-light" data-reveal><div class="container">
-      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="stat-text"><span class="value">12+</span><span class="label">Provinces Reached</span></div></div>
-      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="stat-text"><span class="value">1,200+</span><span class="label">Patients Supported</span></div></div>
-      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="stat-text"><span class="value">15+</span><span class="label">Healthcare Partners</span></div></div>
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="stat-text"><span class="value">12+</span><span class="label" data-i18n="stat_provinces">Provinces Reached</span></div></div>
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="stat-text"><span class="value">1,200+</span><span class="label" data-i18n="stat_patients">Patients Supported</span></div></div>
+      <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="stat-text"><span class="value">15+</span><span class="label" data-i18n="stat_partners">Healthcare Partners</span></div></div>
     </div></div></section>
 
     <!-- How We Help -->
     <section class="section section-blue-soft" id="help"><div class="container">
-      <div class="section-heading" data-reveal><h2>How We Help</h2><p>Four core areas where CHA makes a difference for patients and families across Cambodia.</p></div>
+      <div class="section-heading" data-reveal><h2 data-i18n="help_heading">How We Help</h2><p data-i18n="help_sub">Four core areas where CHA makes a difference for patients and families across Cambodia.</p></div>
       <div class="grid grid-4">
-        <div class="help-card" data-reveal><div class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Patient Support</h3><p>Emotional support, guidance and community for patients and families.</p><a class="card-link" href="#about">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Treatment Centres</h3><p>Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#programs-centres">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Become a Member</h3><p>Join our community and access exclusive resources and programs.</p><a class="card-link" href="#programs-member">Join Now <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Donate</h3><p>Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#" data-donate-trigger>Donate Now <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3 data-i18n="help_patient_support">Patient Support</h3><p data-i18n="help_patient_support_desc">Emotional support, guidance and community for patients and families.</p><a class="card-link" href="#about" data-i18n="help_learn_more">Learn More <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 data-i18n="help_treatment">Treatment Centres</h3><p data-i18n="help_treatment_desc">Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#programs-centres" data-i18n="help_learn_more">Learn More <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3 data-i18n="help_become_member">Become a Member</h3><p data-i18n="help_become_member_desc">Join our community and access exclusive resources and programs.</p><a class="card-link" href="#programs-member" data-i18n="help_join_now">Join Now <span class="arrow">→</span></a></div>
+        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 data-i18n="help_donate">Donate</h3><p data-i18n="help_donate_desc">Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#" data-donate-trigger data-i18n="help_donate_now">Donate Now <span class="arrow">→</span></a></div>
       </div>
     </div></section>
 
@@ -4659,6 +4667,415 @@ hr {
   closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; };
 })();
 
-</script>
-</body>
-</html>
+/* ============================================
+   i18n — Bilingual EN/KM Language Toggle
+   ============================================ */
+(function(){
+  const i18n = {
+    en: {
+      /* Nav */
+      lang_label: "EN",
+      nav_home: "Home",
+      nav_about_us: "About Us",
+      nav_who_is_cha: "Who is CHA?",
+      nav_leadership: "Leadership structure and Groups",
+      nav_src: "SRC",
+      nav_history: "Our History",
+      nav_wfh: "Our work with WFH and HFA",
+      nav_contact_us: "Contact Us",
+      nav_about_haemophilia: "About Haemophilia",
+      nav_about_vwd: "About VWD",
+      nav_other_bleeding: "About other bleeding disorders",
+      nav_treatment_centres: "Haemophilia Treatment Centres",
+      nav_csr_program: "CSR Program",
+      nav_fundraising: "Fundraising",
+      nav_online_donation: "Online donation",
+      nav_corporate_partners: "Corporate Partners",
+      nav_news: "News",
+      nav_latest_news: "Latest News",
+      nav_upcoming_events: "Upcoming Events",
+      nav_contact: "Contact",
+      nav_become_member: "Become a Member",
+      nav_donate: "Donate",
+      nav_become_member_aria: "Member login",
+      nav_donate_aria: "Open donation form",
+      lang_switcher_aria: "Switch language",
+      /* Hero */
+      hero_title_1: "Together We Care.",
+      hero_title_2: "Together We Change Lives.",
+      hero_lead: "Supporting and empowering people with bleeding disorders across Cambodia.",
+      hero_cta_support: "Get Support",
+      /* Stats */
+      stat_provinces: "Provinces Reached",
+      stat_patients: "Patients Supported",
+      stat_partners: "Healthcare Partners",
+      /* How We Help */
+      help_heading: "How We Help",
+      help_sub: "Four core areas where CHA makes a difference for patients and families across Cambodia.",
+      help_patient_support: "Patient Support",
+      help_patient_support_desc: "Emotional support, guidance and community for patients and families.",
+      help_treatment: "Treatment Centres",
+      help_treatment_desc: "Find haemophilia treatment centres near you and get the care you need.",
+      help_become_member: "Become a Member",
+      help_become_member_desc: "Join our community and access exclusive resources and programs.",
+      help_donate: "Donate",
+      help_donate_desc: "Your support helps us provide treatment, education and hope.",
+      help_learn_more: "Learn More",
+      help_join_now: "Join Now",
+      help_donate_now: "Donate Now",
+      /* News */
+      news_heading: "Latest News & Events",
+      news_sub: "Updates from our community awareness, treatment guidelines and training programs.",
+      news_view_all: "View All",
+      news_read_more: "Read More",
+      /* CTA Banner */
+      cta_heading: "Help Change Lives",
+      cta_sub: "Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia.",
+      cta_donate: "Donate Now",
+      /* About */
+      about_divider: "About Us",
+      about_heading: "Who is CHA?",
+      about_lead: "The Cambodian Haemophilia Association is a patient-led organization dedicated to improving the quality of life for people living with bleeding disorders across Cambodia.",
+      about_vision_label: "Our Vision",
+      about_vision_text: "A Cambodia where every person with a bleeding disorder has access to diagnosis, treatment, and support.",
+      about_mission_label: "Our Mission",
+      about_mission_text: "To advocate for quality care, educate communities, support families, and empower caregivers.",
+      /* SRC */
+      src_eyebrow: "Serving Communities",
+      src_heading: "SRC",
+      src_sub: "CHA's commitment to community outreach, volunteer engagement, and public awareness across Cambodia.",
+      src_kicker_reach: "Reach",
+      src_kicker_people: "People",
+      src_kicker_region: "Region",
+      src_stat_1: "12+",
+      src_stat_label_1: "Provinces",
+      src_stat_2: "80+",
+      src_stat_label_2: "Volunteers",
+      src_stat_3: "1",
+      src_stat_label_3: "Chapter",
+      src_card_1_title: "Community Outreach",
+      src_card_1_desc: "Awareness campaigns, Khmer-language education, and partnerships with local health centres that reach patients where they live.",
+      src_card_2_title: "Volunteer Program",
+      src_card_2_desc: "Patients, families, and healthcare students who lead events, mentor newly diagnosed peers, and run community-based activities year-round.",
+      src_card_3_title: "Siem Reap Chapter",
+      src_card_3_desc: "Our northwest hub coordinates local outreach, patient support, and partnerships with Siem Reap Provincial Hospital.",
+      src_link_1: "Learn more",
+      src_link_2: "Join us",
+      src_link_3: "Visit chapter",
+      src_cta_heading: "Want to get involved?",
+      src_cta_sub: "Join our volunteer network and make a difference in the bleeding disorders community across Cambodia.",
+      src_cta_btn_1: "Get Involved",
+      src_cta_btn_2: "Learn More",
+      /* History */
+      history_heading: "Our History",
+      history_view_timeline: "View Full Timeline",
+      history_intro: "CHA was founded in 2011 by patients and families who came together with a shared vision: to ensure no one in Cambodia faces a bleeding disorder alone. What began as a small support group has grown into a national patient-led organization.",
+      /* Leadership */
+      leadership_heading: "Leadership Team",
+      leadership_sub: "Dedicated individuals leading CHA's mission across Cambodia.",
+      leadership_meet: "Meet the Full Team",
+      /* WFH */
+      wfh_heading: "Our Work with WFH & HFA",
+      wfh_sub: "CHA proudly partners with leading global organizations to strengthen haemophilia care across Cambodia.",
+      /* Haemophilia */
+      haem_divider: "About Haemophilia",
+      haem_heading: "What is Haemophilia?",
+      haem_contact: "Contact a Specialist",
+      /* Types */
+      types_heading: "Types of Haemophilia",
+      types_sub: "The two main types of haemophilia — both require proper diagnosis and lifelong management.",
+      types_a_title: "Haemophilia A",
+      types_b_title: "Haemophilia B",
+      /* Symptoms */
+      symptoms_heading: "Common Symptoms",
+      symptoms_sub: "Recognizing the signs of a bleeding disorder is the first step toward diagnosis and proper care.",
+      /* VWD */
+      vwd_heading: "Von Willebrand Disease (VWD)",
+      /* Other */
+      other_heading: "Other Bleeding Disorders",
+      /* Treatment */
+      treatment_heading: "Treatment Centres",
+      treatment_sub: "Find haemophilia treatment centres across Cambodia — search by province.",
+      treatment_select: "Select Province",
+      /* CSR */
+      csr_heading: "CSR Program",
+      csr_sub: "Fundraising, donations, and corporate partnerships that power our mission.",
+      /* Impact */
+      impact_heading: "Your Impact",
+      /* Membership */
+      membership_heading: "Membership Benefits",
+      membership_cta: "Ready to join our community?",
+      membership_cta_sub: "Join CHA and get access to support, resources and a community that understands.",
+      membership_register: "Register Now",
+      membership_signin: "Already a member? Sign In",
+      /* Donate */
+      donate_heading: "Make a Donation",
+      /* Contact */
+      contact_divider: "Contact Us",
+      contact_heading: "Contact Us",
+      contact_sub: "Have questions or need support? We're here to help.",
+      contact_info: "Get In Touch",
+      contact_address: "Address",
+      contact_phone: "Phone",
+      contact_email: "Email",
+      contact_hours: "Office Hours",
+      contact_message: "Send us a Message",
+      contact_message_sub: "Fill out the form below and we'll get back to you.",
+      contact_name: "Full Name",
+      contact_email_label: "Email",
+      contact_subject: "Subject",
+      contact_message_label: "Message",
+      contact_name_ph: "Enter your full name",
+      contact_email_ph: "Enter your email",
+      contact_subject_ph: "What's this about?",
+      contact_message_ph: "How can we help?",
+      contact_send: "Send Message",
+      /* Footer */
+      footer_tagline: "Supporting people with bleeding disorders across Cambodia.",
+      footer_quick_links: "Quick Links",
+      footer_resources: "Resources",
+      footer_contact: "Contact Us",
+      footer_patient_guides: "Patient Guides",
+      footer_news_events: "News & Events",
+      footer_donation: "Donation",
+      footer_copyright: "© 2026 Cambodian Haemophilia Association. All rights reserved.",
+      footer_privacy: "Privacy Policy",
+      footer_disclaimer: "Disclaimer",
+      footer_social: "Social Media Links",
+    },
+    km: {
+      /* Nav */
+      lang_label: "ខ្មែរ",
+      nav_home: "ទំព័រដើម",
+      nav_about_us: "អំពីយើង",
+      nav_who_is_cha: "CHA ជាអ្វី?",
+      nav_leadership: "រចនាសម្ព័ន្ធដឹកនាំ និងក្រុម",
+      nav_src: "SRC",
+      nav_history: "ប្រវត្តិសាស្រ្ត",
+      nav_wfh: "ការងាររបស់យើងជាមួយ WFH និង HFA",
+      nav_contact_us: "ទំនាក់ទំនង",
+      nav_about_haemophilia: "អំពីជំងឺហ្វូនឌីក",
+      nav_about_vwd: "អំពីជំងឺ VWD",
+      nav_other_bleeding: "អំពីជំងឺហូរឈាមផ្សេងទៀត",
+      nav_treatment_centres: "មជ្ឈមណ្ឌលព្យាបាលជំងឺហ្វូនឌីក",
+      nav_csr_program: "កម្មវិធី CSR",
+      nav_fundraising: "ប្រមូលថវិកា",
+      nav_online_donation: "បរិច្ចាគតាមអ៊ីនធឺណិត",
+      nav_corporate_partners: "ដៃគូអាជីវកម្ម",
+      nav_news: "ព័ត៌មាន",
+      nav_latest_news: "ព័ត៌មានថ្មីៗ",
+      nav_upcoming_events: "ព្រឹត្តិការណ៍ខាងមុខ",
+      nav_contact: "ទំនាក់ទំនង",
+      nav_become_member: "ក្លាយជាសមាជិក",
+      nav_donate: "បរិច្ចាគ",
+      nav_become_member_aria: "ចូលជាសមាជិក",
+      nav_donate_aria: "បើកទម្រង់បរិច្ចាគ",
+      lang_switcher_aria: "ប្តូរភាសា",
+      /* Hero */
+      hero_title_1: "យើងថែទាំគ្នា។",
+      hero_title_2: "យើងផ្លាស់ប្តូរជីវិត។",
+      hero_lead: "គាំទ្រ និងផ្តល់សមត្ថភាពដល់អ្នកជំងឺហូរឈាមនៅកម្ពុជា។",
+      hero_cta_support: "ទទួលជំនួយ",
+      /* Stats */
+      stat_provinces: "ខេត្តដែលបានគ្រប់ដណ្តប់",
+      stat_patients: "អ្នកជំងឺដែលបានជួយ",
+      stat_partners: "ដៃគូថែទាំសុខភាព",
+      /* How We Help */
+      help_heading: "យើងជួយដូចម្តេច",
+      help_sub: "វិស័យសំខាន់ៗចំនួនបួនដែល CHA ធ្វើឱ្យមានការផ្លាស់ប្តូរដល់អ្នកជំងឺ និងគ្រួសារនៅកម្ពុជា។",
+      help_patient_support: "ជំនួយអ្នកជំងឺ",
+      help_patient_support_desc: "ជំនួយផ្លូវចិត្ត ការណែនាំ និងសហគមន៍សម្រាប់អ្នកជំងឺ និងគ្រួសារ។",
+      help_treatment: "មជ្ឈមណ្ឌលព្យាបាល",
+      help_treatment_desc: "ស្វែងរកមជ្ឈមណ្ឌលព្យាបាលជំងឺហ្វូនឌីកជិតអ្នក និងទទួលបានការថែទាំដែលអ្នកត្រូវការ។",
+      help_become_member: "ក្លាយជាសមាជិក",
+      help_become_member_desc: "ចូលរួមជាមួយសហគមន៍របស់យើង និងទទួលបានធនធាន និងកម្មវិធីផ្តាច់មុខ។",
+      help_donate: "បរិច្ចាគ",
+      help_donate_desc: "ការគាំទ្ររបស់អ្នកជួយយើងផ្តល់ការព្យាបាល ការអប់រំ និងសង្ឃឹម។",
+      help_learn_more: "ស្វែងយល់បន្ថែម",
+      help_join_now: "ចូលរួមឥឡូវ",
+      help_donate_now: "បរិច្ចាគឥឡូវ",
+      /* News */
+      news_heading: "ព័ត៌មាន និងព្រឹត្តិការណ៍ថ្មីៗ",
+      news_sub: "ព័ត៌មានថ្មីៗពីសកម្មភាពសហគមន៍ គោលនាំព្យាបាល និងកម្មវិធីបណ្តុះបណ្តាល។",
+      news_view_all: "មើលទាំងអស់",
+      news_read_more: "អានបន្ថែម",
+      /* CTA Banner */
+      cta_heading: "ជួយផ្លាស់ប្តូរជីវិត",
+      cta_sub: "បរិច្ចាគរបស់អ្នកជួយយើងផ្តល់ការព្យាបាល ការអប់រំ និងសង្ឃឹមដល់អ្នកជំងឺហូរឈាមនៅកម្ពុជា។",
+      cta_donate: "បរិច្ចាគឥឡូវ",
+      /* About */
+      about_divider: "អំពីយើង",
+      about_heading: "CHA ជាអ្វី?",
+      about_lead: "សមាគមហ្វូនឌីកកម្ពុជា (CHA) គឺជាអង្គការដឹកនាំដោយអ្នកជំងឺ ដែលឧទ្ទិសដល់ការកែលម្អគុណភាពជីវិតរបស់អ្នកដែលរស់នៅជាមួយជំងឺហូរឈាមនៅទូទាំងប្រទេសកម្ពុជា។",
+      about_vision_label: "ចក្ខុវិស័យ",
+      about_vision_text: "កម្ពុជាមួយដែលអ្នករាល់គ្នាដែលមានជំងឺហូរឈាមអាចទទួលបានការវិនិច្ឆ័យ ការព្យាបាល និងការគាំទ្រ។",
+      about_mission_label: "បេសកកម្ម",
+      about_mission_text: "ការអំពាវនាវដល់ការថែទាំដែលមានគុណភាព អប់រំសហគមន៍ គាំទ្រគ្រួសារ និងផ្តល់សមត្ថភាពដល់អ្នកថែទាំ។",
+      /* SRC */
+      src_eyebrow: "បម្រើសហគមន៍",
+      src_heading: "SRC",
+      src_sub: "ការប្តេជ្ញាចិត្តរបស់ CHA ចំពោះការងារសហគមន៍ ការចូលរួមស្ម័គ្រចិត្ត និងការយល់ដឹងសាធារណៈនៅកម្ពុជា។",
+      src_kicker_reach: "ការឈានដល់",
+      src_kicker_people: "មនុស្ស",
+      src_kicker_region: "តំបន់",
+      src_stat_1: "12+",
+      src_stat_label_1: "ខេត្ត",
+      src_stat_2: "80+",
+      src_stat_label_2: "ស្ម័គ្រចិត្ត",
+      src_stat_3: "1",
+      src_stat_label_3: "ជំពូក",
+      src_card_1_title: "ការងារសហគមន៍",
+      src_card_1_desc: "យុទ្ធនាការលើកកម្ពស់ការដឹងគុណ ការអប់រំជាភាសាខ្មែរ និងភាពជាដៃគូជាមួយមណ្ឌលសុខភាពមូលដ្ឋានដែលឈានដល់អ្នកជំងឺ។",
+      src_card_2_title: "កម្មវិធីស្ម័គ្រចិត្ត",
+      src_card_2_desc: "អ្នកជំងឺ គ្រួសារ និងសិស្សវិទ្យាសាស្រ្តថែទាំដែលដឹកនាំព្រឹត្តិការណ៍ ជួយដល់សហសេវិកដែលទើបរកឃើញជំងឺ និងដំណើរការសកម្មភាពសហគមន៍។",
+      src_card_3_title: "ជំពូកសៀមរាប",
+      src_card_3_desc: "មជ្ឈមណ្ឌលភាគខាងជើងរបស់យើងសម្របសម្រួលការងារសហគមន៍ ការគាំទ្រអ្នកជំងឺ និងភាពជាដៃគូជាមួយមន្ទីរពេទ្យបង្អែកសៀមរាប។",
+      src_link_1: "ស្វែងយល់បន្ថែម",
+      src_link_2: "ចូលរួម",
+      src_link_3: "ទស្សនាជំពូក",
+      src_cta_heading: "ចង់ចូលរួម?",
+      src_cta_sub: "ចូលរួមជាមួយ jaringan ស្ម័គ្រចិត្តរបស់យើង និងបង្កើតការផ្លាស់ប្តូរក្នុងសហគមន៍ជំងឺហូរឈាមនៅកម្ពុជា។",
+      src_cta_btn_1: "ចូលរួម",
+      src_cta_btn_2: "ស្វែងយល់បន្ថែម",
+      /* History */
+      history_heading: "ប្រវត្តិសាស្រ្ត",
+      history_view_timeline: "មើលពេលវេលាពេញ",
+      history_intro: "CHA ត្រូវបានបង្កើតឡើងក្នុងឆ្នាំ ២០១១ ដោយអ្នកជំងឺ និងគ្រួសារដែលមានចក្ខុវិស័យរួមគ្នា៖ ធានាថាមិនមានអ្នកណាម្នាក់នៅកម្ពុជាជួបប្រទះជំងឺហូរឈាមម្នាក់ឯង។",
+      /* Leadership */
+      leadership_heading: "ក្រុមដឹកនាំ",
+      leadership_sub: "អ្នកដែលឧទ្ទិសដល់បេសកកម្មរបស់ CHA នៅទូទាំងប្រទេសកម្ពុជា។",
+      leadership_meet: "ជួបក្រុមពេញ",
+      /* WFH */
+      wfh_heading: "ការងាររបស់យើងជាមួយ WFH និង HFA",
+      wfh_sub: "CHA សូមក្រើនរង្វង់ក្នុងការជាដៃគូជាមួយអង្គការឈានមុខគេក្នុងពិភពលោកដើម្បីពង្រឹងការថែទាំជំងឺហ្វូនឌីកនៅកម្ពុជា។",
+      /* Haemophilia */
+      haem_divider: "អំពីជំងឺហ្វូនឌីក",
+      haem_heading: "ជំងឺហ្វូនឌីកគឺជាអ្វី?",
+      haem_contact: "ទំនាក់ទំនងជំនាញ",
+      /* Types */
+      types_heading: "ប្រភេទជំងឺហ្វូនឌីក",
+      types_sub: "ប្រភេទសំខាន់ៗចំនួនពីរនៃជំងឺហ្វូនឌីក — ទាំងពីរត្រូវការការវិនិច្ឆ័យត្រឹមត្រូវ និងការគ្រប់គ្រងអាយុជីវិត។",
+      types_a_title: "ហ្វូនឌីកប្រភេទ A",
+      types_b_title: "ហ្វូនឌីកប្រភេទ B",
+      /* Symptoms */
+      symptoms_heading: "រោគសញ្ញាទូទៅ",
+      symptoms_sub: "ការស្គាល់សញ្ញានៃជំងឺហូរឈាមគឺជាជំហានដំបូងឆ្ពោះទៅរកការវិនិច្ឆ័យ និងការថែទាំដែលត្រឹមត្រូវ។",
+      /* VWD */
+      vwd_heading: "ជំងឺ Von Willebrand (VWD)",
+      /* Other */
+      other_heading: "ជំងឺហូរឈាមផ្សេងទៀត",
+      /* Treatment */
+      treatment_heading: "មជ្ឈមណ្ឌលព្យាបាល",
+      treatment_sub: "ស្វែងរកមជ្ឈមណ្ឌលព្យាបាលជំងឺហ្វូនឌីកនៅទូទាំងប្រទេសកម្ពុជា — ស្វែងតាមខេត្ត។",
+      treatment_select: "ជ្រើសរើសខេត្ត",
+      /* CSR */
+      csr_heading: "កម្មវិធី CSR",
+      csr_sub: "ការប្រមូលថវិកា ការបរិច្ចាគ និងភាពជាដៃគូអាជីវកម្មដែលជំរុញបេសកកម្មរបស់យើង។",
+      /* Impact */
+      impact_heading: "ផលប៉ះពាល់របស់អ្នក",
+      /* Membership */
+      membership_heading: "អត្ថប្រយោជន៍សមាជិកភាព",
+      membership_cta: "ត្រៀមខ្លួនចូលរួមជាមួយសហគមន៍របស់យើង?",
+      membership_cta_sub: "ចូលរួមជាមួយ CHA និងទទួលបានការគាំទ្រ ធនធាន និងសហគមន៍ដែលយល់។",
+      membership_register: "ចុះឈ្មោះឥឡូវ",
+      membership_signin: "ជាសមាជិករួចហើយ? ចូល",
+      /* Donate */
+      donate_heading: "ធ្វើការបរិច្ចាគ",
+      /* Contact */
+      contact_divider: "ទំនាក់ទំនង",
+      contact_heading: "ទំនាក់ទំនង",
+      contact_sub: "មានសំណួរ ឬត្រូវការជំនួយ? យើងនៅទីនេះដើម្បីជួយ។",
+      contact_info: "ទាក់ទងយើង",
+      contact_address: "អាសយដ្ឋាន",
+      contact_phone: "ទូរស័ព្ទ",
+      contact_email: "អ៊ីមែល",
+      contact_hours: "ម៉ោងធ្វើការ",
+      contact_message: "ផ្ញើសារដល់យើង",
+      contact_message_sub: "បំពេញទម្រង់ខាងក្រោម ហើយយើងនឹងឆ្លើយតប។",
+      contact_name: "ឈ្មោះពេញ",
+      contact_email_label: "អ៊ីមែល",
+      contact_subject: "ប្រធានបទ",
+      contact_message_label: "សារ",
+      contact_name_ph: "បញ្ចូលឈ្មោះពេញ",
+      contact_email_ph: "បញ្ចូលអ៊ីមែល",
+      contact_subject_ph: "នេះអំពីអ្វី?",
+      contact_message_ph: "យើងអាចជួយដូចម្តេច?",
+      contact_send: "ផ្ញើសារ",
+      /* Footer */
+      footer_tagline: "គាំទ្រអ្នកជំងឺហូរឈាមនៅកម្ពុជា។",
+      footer_quick_links: "តំណភ្ជាប់រហ័ស",
+      footer_resources: "ធនធាន",
+      footer_contact: "ទំនាក់ទំនង",
+      footer_patient_guides: "មគ្គុទេសក៍អ្នកជំងឺ",
+      footer_news_events: "ព័ត៌មាន និងព្រឹត្តិការណ៍",
+      footer_donation: "បរិច្ចាគ",
+      footer_copyright: "© ២០២៦ សមាគមហ្វូនឌីកកម្ពុជា។ រក្សាសិទ្ធិគ្រប់យ៉ាង។",
+      footer_privacy: "គោលនយោបាយឯកជន",
+      footer_disclaimer: "ការបដិសេធ",
+      footer_social: "តំណភ្ជាប់ប្រព័ន្ធផ្សព្វផ្សាយសង្គម",
+    }
+  };
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang === 'km' ? 'km' : 'en';
+    const dict = i18n[lang];
+    if (!dict) return;
+
+    /* Swap textContent */
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) {
+        el.textContent = dict[key];
+      }
+    });
+
+    /* Swap placeholders */
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) {
+        el.placeholder = dict[key];
+      }
+    });
+
+    /* Swap aria-labels */
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (dict[key] !== undefined) {
+        el.setAttribute('aria-label', dict[key]);
+      }
+    });
+
+    /* Update lang label */
+    var label = document.querySelector('.lang-label');
+    if (label) label.textContent = dict.lang_label;
+
+    /* Swap dropdown trigger text (button inner text before SVG) */
+    document.querySelectorAll('.nav-drop-trigger').forEach(function(btn) {
+      var key = btn.getAttribute('data-i18n');
+      if (key && dict[key] !== undefined) {
+        /* Preserve the SVG icon */
+        var svg = btn.querySelector('svg');
+        var svgHtml = svg ? svg.outerHTML : '';
+        btn.textContent = dict[key];
+        if (svgHtml) btn.insertAdjacentHTML('beforeend', svgHtml);
+      }
+    });
+  }
+
+  function toggleLang() {
+    var current = localStorage.getItem('cha-lang') || 'en';
+    var next = current === 'en' ? 'km' : 'en';
+    localStorage.setItem('cha-lang', next);
+    applyLang(next);
+  }
+
+  /* Init */
+  var savedLang = localStorage.getItem('cha-lang') || 'en';
+  applyLang(savedLang);
+
+  /* Bind toggle buttons */
+  document.querySelectorAll('[data-lang-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', toggleLang);
+  });
+})();
+
