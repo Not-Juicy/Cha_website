@@ -1345,11 +1345,11 @@ hr {
 /* ---------- 09. How We Help ---------- */
 .help-card {
   text-align: center;
-  padding: var(--s-8) var(--s-6) var(--s-7);
+  padding: var(--s-8) var(--s-5);
   border-radius: var(--r-xl);
   background: var(--c-white);
   border: 1px solid var(--c-border);
-  transition: transform 350ms var(--ease), box-shadow 350ms var(--ease), border-color 300ms var(--ease);
+  transition: all 300ms var(--ease);
   position: relative;
   overflow: hidden;
 }
@@ -1367,41 +1367,28 @@ hr {
 }
 .help-card:hover {
   border-color: transparent;
-  transform: translateY(-6px);
-  box-shadow: 0 24px 52px -16px rgba(11, 29, 109, 0.16), 0 8px 20px -8px rgba(11, 29, 109, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(11, 29, 109, 0.15), 0 4px 12px rgba(11, 29, 109, 0.08);
 }
 .help-card:hover::after { transform: scaleX(1); }
 .help-card .icon {
-  width: 76px;
-  height: 76px;
-  margin: 0 auto var(--s-5);
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--s-4);
   border-radius: var(--r-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 350ms var(--ease);
+  transition: transform 300ms var(--ease);
 }
-.help-card:hover .icon { transform: scale(1.08) rotate(-3deg); }
-.help-card .icon svg { width: 32px; height: 32px; stroke-width: 1.75; }
+.help-card:hover .icon { transform: scale(1.1) rotate(-5deg); }
+.help-card .icon svg { width: 32px; height: 32px; }
 .help-card .icon.icon-blue   { background: linear-gradient(135deg, #E5E8F2 0%, #D5DBED 100%); color: var(--c-blue); }
 .help-card .icon.icon-red    { background: linear-gradient(135deg, #FCE5E6 0%, #F8D2D4 100%); color: var(--c-red); }
 .help-card .icon.icon-purple { background: linear-gradient(135deg, #EFE6F4 0%, #E0D0EB 100%); color: var(--c-purple); }
 .help-card .icon.icon-green  { background: linear-gradient(135deg, #E2F4E8 0%, #C9E8D4 100%); color: #15803D; }
-.help-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: var(--s-2); color: var(--c-blue); letter-spacing: -0.01em; }
-.help-card p { color: var(--c-muted); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--s-5); }
-.help-card .card-link {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 200ms var(--ease);
-}
-.help-card .card-link:hover { gap: 10px; }
-.help-card .card-link .arrow { transition: transform 200ms var(--ease); }
-.help-card .card-link:hover .arrow { transform: translateX(3px); }
-.help-card .card-link { color: var(--c-blue); }
-.help-card .card-link:hover { color: var(--c-red); }
+.help-card h3 { font-size: 1.0625rem; margin-bottom: var(--s-2); color: var(--c-blue); }
+.help-card p { color: var(--c-muted); font-size: 0.9375rem; margin-bottom: var(--s-4); }
 
 /* ---------- 10. Carousel ---------- */
 .carousel {
