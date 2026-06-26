@@ -2503,91 +2503,107 @@ hr {
   transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
   background: var(--c-white);
   border: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
 }
 .csr-block::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--csr-tint, transparent);
-  opacity: 0.45;
   z-index: 0;
+  pointer-events: none;
 }
+.csr-block.csr-blue::before { background: radial-gradient(ellipse at 85% 8%, #DCE3F4 0%, transparent 55%); }
+.csr-block.csr-red::before { background: radial-gradient(ellipse at 85% 8%, #FAD7DA 0%, transparent 55%); }
+.csr-block.csr-purple::before { background: radial-gradient(ellipse at 85% 8%, #E8DEF0 0%, transparent 55%); }
 .csr-block::after {
   content: "";
   position: absolute;
-  top: -40px; right: -40px;
-  width: 160px; height: 160px;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
   border-radius: 50%;
-  background: var(--csr-tint, transparent);
-  opacity: 0.35;
   z-index: 0;
-  filter: blur(8px);
+  filter: blur(6px);
+  pointer-events: none;
 }
+.csr-block.csr-blue::after { background: radial-gradient(circle, #DCE3F4 0%, transparent 70%); }
+.csr-block.csr-red::after { background: radial-gradient(circle, #FAD7DA 0%, transparent 70%); }
+.csr-block.csr-purple::after { background: radial-gradient(circle, #E8DEF0 0%, transparent 70%); }
 .csr-block > * { position: relative; z-index: 1; }
 .csr-block:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(11, 29, 109, 0.14); }
-.csr-blue { --csr-tint: radial-gradient(circle at 80% 10%, #DCE3F4 0%, transparent 60%); }
-.csr-red { --csr-tint: radial-gradient(circle at 80% 10%, #FAD7DA 0%, transparent 60%); }
-.csr-purple { --csr-tint: radial-gradient(circle at 80% 10%, #E8DEF0 0%, transparent 60%); }
+.csr-block.csr-blue { --csr-color: var(--c-blue); --csr-shadow: rgba(11, 29, 109, 0.22); }
+.csr-block.csr-red { --csr-color: var(--c-red); --csr-shadow: rgba(227, 30, 36, 0.25); }
+.csr-block.csr-purple { --csr-color: var(--c-purple); --csr-shadow: rgba(106, 44, 145, 0.25); }
 .csr-icon {
-  width: 72px; height: 72px;
+  width: 76px; height: 76px;
   border-radius: 50%;
   background: var(--c-white);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: var(--s-5);
-  box-shadow: 0 12px 28px var(--csr-shadow, rgba(11, 29, 109, 0.18));
+  margin-bottom: var(--s-6);
+  box-shadow: 0 14px 32px var(--csr-shadow);
   position: relative;
+  color: var(--csr-color);
+}
+.csr-icon::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px solid var(--csr-color);
+  opacity: 0.25;
 }
 .csr-icon::after {
   content: "";
   position: absolute;
-  inset: -8px;
+  bottom: -10px; right: -10px;
+  width: 18px; height: 18px;
   border-radius: 50%;
-  border: 2px solid var(--csr-color, var(--c-blue));
-  opacity: 0.18;
+  background: var(--csr-color);
+  opacity: 0.4;
+  filter: blur(4px);
 }
-.csr-icon svg { width: 30px; height: 30px; }
-.csr-blue .csr-icon { color: var(--c-blue); --csr-shadow: rgba(11, 29, 109, 0.18); --csr-color: var(--c-blue); }
-.csr-red .csr-icon { color: var(--c-red); --csr-shadow: rgba(227, 30, 36, 0.2); --csr-color: var(--c-red); }
-.csr-purple .csr-icon { color: var(--c-purple); --csr-shadow: rgba(106, 44, 145, 0.2); --csr-color: var(--c-purple); }
+.csr-icon svg { width: 32px; height: 32px; }
 .csr-block h3 {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 0 0 var(--s-2);
-  color: var(--csr-color, var(--c-blue));
+  color: var(--c-text);
   letter-spacing: -0.01em;
 }
 .csr-block h3::after {
   content: "";
   display: block;
-  width: 40px; height: 3px;
-  background: var(--csr-color, var(--c-blue));
+  width: 44px; height: 3px;
+  background: var(--csr-color);
   border-radius: 2px;
-  margin-top: var(--s-2);
+  margin-top: var(--s-3);
 }
 .csr-block p {
   color: var(--c-text);
   font-size: 0.9375rem;
   line-height: 1.65;
   margin: var(--s-4) 0 var(--s-6);
-  opacity: 0.85;
+  opacity: 0.78;
+  flex: 1;
 }
 .csr-btn {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 8px;
   padding: 14px 24px;
   border-radius: var(--r-full);
-  background: var(--csr-color, var(--c-blue));
+  background: var(--csr-color);
   color: var(--c-white);
   font-weight: 700;
   font-size: 0.9375rem;
   text-decoration: none;
   transition: transform 200ms var(--ease), box-shadow 200ms var(--ease), gap 200ms var(--ease);
-  box-shadow: 0 8px 20px var(--csr-shadow, rgba(11, 29, 109, 0.25));
+  box-shadow: 0 10px 24px var(--csr-shadow);
   width: 100%;
+  margin-top: auto;
 }
 .csr-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px var(--csr-shadow, rgba(11, 29, 109, 0.35));
+  box-shadow: 0 14px 32px var(--csr-shadow);
   gap: 12px;
 }
 
