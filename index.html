@@ -5056,8 +5056,12 @@ hr {
         /* Preserve the SVG icon */
         var svg = btn.querySelector('svg');
         var svgHtml = svg ? svg.outerHTML : '';
-        btn.textContent = dict[key];
-        if (svgHtml) btn.insertAdjacentHTML('beforeend', svgHtml);
+        /* Remove only text nodes, keep child elements */
+        for (var i = btn.childNodes.length - 1; i >= 0; i--) {
+          var node = btn.childNodes[i];
+          if (node.nodeType === Node.TEXT_NODE) btn.removeChild(node);
+        }
+        btn.insertAdjacentText('afterbegin', dict[key]);
       }
     });
   }
