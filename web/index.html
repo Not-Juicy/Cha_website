@@ -3249,21 +3249,43 @@ hr {
 .src-card.src-card-v2.blue-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(11,29,109,0.18) 100%); }
 .src-card.src-card-v2.purple-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(106,44,145,0.18) 100%); }
 
-/* Icon badge: top-center, larger floating circle */
+/* Icon + stat stack: icon on top, stat number directly below it (centered) */
 .src-card.src-card-v2 .src-photo-art {
   position: relative;
   z-index: 2;
-  display: flex; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   padding-top: var(--s-8);
+  gap: 6px;
 }
 .src-card.src-card-v2 .src-photo-icon {
-  width: 72px; height: 72px;
+  width: 64px; height: 64px;
   border-radius: var(--r-full);
   background: #fff;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 12px 32px rgba(11, 29, 109, 0.18);
   border: 1px solid var(--c-border);
 }
+.src-card.src-card-v2 .src-photo-stat {
+  display: flex; align-items: baseline; gap: 4px;
+  line-height: 1;
+}
+.src-card.src-card-v2 .src-photo-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.src-card.src-card-v2 .src-photo-stat-lbl {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--c-muted);
+  line-height: 1;
+}
+.src-card.src-card-v2.red-top .src-photo-stat-num { color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-photo-stat-num { color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-photo-stat-num { color: var(--c-purple); }
 .src-card.src-card-v2.red-top .src-photo-icon { color: var(--c-red); }
 .src-card.src-card-v2.blue-top .src-photo-icon { color: var(--c-blue); }
 .src-card.src-card-v2.purple-top .src-photo-icon { color: var(--c-purple); }
@@ -3273,13 +3295,16 @@ hr {
   position: absolute;
   top: 22px; right: 22px;
   z-index: 4;
-  background: #fff;
+  background: transparent;
   border-radius: var(--r-md);
-  padding: 10px 16px;
+  padding: 0;
   text-align: right;
-  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.18);
-  min-width: 84px;
+  box-shadow: none;
+  min-width: 0;
+  border: 0;
 }
+.src-card.src-card-v2 .src-stamp-num,
+.src-card.src-card-v2 .src-stamp-lbl { display: none; }
 .src-card.src-card-v2 .src-stamp-num {
   font-size: 1.5rem;
   font-weight: 800;
@@ -3684,11 +3709,12 @@ hr {
             <div class="src-photo-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18l-18-8z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
             </div>
+            <div class="src-photo-stat">
+              <span class="src-photo-stat-num">12+</span>
+              <span class="src-photo-stat-lbl">Provinces</span>
+            </div>
           </div>
-          <div class="src-stamp">
-            <span class="src-stamp-num">12+</span>
-            <span class="src-stamp-lbl">Provinces</span>
-          </div>
+          <div class="src-stamp" aria-hidden="true"></div>
           <div class="src-body">
             <span class="src-kicker">Reach</span>
             <h3>Community Outreach</h3>
@@ -3705,11 +3731,12 @@ hr {
             <div class="src-photo-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <div class="src-photo-stat">
+              <span class="src-photo-stat-num">80+</span>
+              <span class="src-photo-stat-lbl">Volunteers</span>
+            </div>
           </div>
-          <div class="src-stamp">
-            <span class="src-stamp-num">80+</span>
-            <span class="src-stamp-lbl">Volunteers</span>
-          </div>
+          <div class="src-stamp" aria-hidden="true"></div>
           <div class="src-body">
             <span class="src-kicker">People</span>
             <h3>Volunteer Program</h3>
@@ -3726,11 +3753,12 @@ hr {
             <div class="src-photo-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
+            <div class="src-photo-stat">
+              <span class="src-photo-stat-num">1</span>
+              <span class="src-photo-stat-lbl">Chapter</span>
+            </div>
           </div>
-          <div class="src-stamp">
-            <span class="src-stamp-num">1</span>
-            <span class="src-stamp-lbl">Chapter</span>
-          </div>
+          <div class="src-stamp" aria-hidden="true"></div>
           <div class="src-body">
             <span class="src-kicker">Region</span>
             <h3>Siem Reap Chapter</h3>
