@@ -5021,8 +5021,8 @@ hr {
     const dict = i18n[lang];
     if (!dict) return;
 
-    /* Swap textContent */
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    /* Swap textContent (exclude nav-drop-trigger — handled separately to preserve SVG icons) */
+    document.querySelectorAll('[data-i18n]:not(.nav-drop-trigger)').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) {
         el.textContent = dict[key];
@@ -5082,4 +5082,6 @@ hr {
     btn.addEventListener('click', toggleLang);
   });
 })();
-
+</script>
+</body>
+</html>
