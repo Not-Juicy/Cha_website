@@ -1774,8 +1774,20 @@ hr {
   align-items: center;
 }
 @media (max-width: 900px) { .page-hero .container { grid-template-columns: 1fr; } }
-.page-hero h1 { color: var(--c-blue); margin-bottom: var(--s-4); }
-.page-hero .lead { color: var(--c-gray-600); font-size: 1.0625rem; max-width: 560px; }
+.page-hero h1 { color: var(--c-blue); font-size: clamp(2.75rem, 5vw, 4.25rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: var(--s-5); }
+.page-hero .lead { color: var(--c-gray-600); font-size: 1.125rem; line-height: 1.65; max-width: 540px; margin-bottom: var(--s-7); }
+.page-hero-art { position: relative; }
+.page-hero-art::before { content: ""; position: absolute; top: -18px; right: -18px; width: 72px; height: 72px; background: var(--c-blue); border-radius: 50%; opacity: 0.14; z-index: -1; }
+.page-hero-art::after { content: ""; position: absolute; bottom: -14px; left: -14px; width: 44px; height: 44px; background: var(--c-red); border-radius: var(--r-md); opacity: 0.14; z-index: -1; transform: rotate(15deg); }
+.page-hero .page-art {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  box-shadow: 0 30px 60px -20px rgba(11,29,109,0.25), 0 10px 24px -8px rgba(11,29,109,0.1);
+  background: #fff;
+}
+.page-hero .page-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .page-hero .page-art {
   border-radius: var(--r-xl);
   overflow: hidden;
@@ -1834,11 +1846,17 @@ hr {
 .vision-text { font-size: 1.5rem; font-weight: 500; line-height: 1.45; margin: 0 auto; max-width: 780px; color: #fff; }
 @media (max-width: 540px) { .vision-text { font-size: 1.125rem; } }
 
-/* Vision & Mission inline block (in page-hero) */
-.vm-block { display: flex; flex-direction: column; gap: var(--s-3); margin-top: var(--s-5); max-width: 560px; }
-.vm-item { padding: var(--s-3) 0; border-left: 3px solid var(--c-blue); padding-left: var(--s-4); }
-.vm-label { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-blue); margin-bottom: 4px; }
-.vm-item p { margin: 0; color: var(--c-text); font-size: 0.9375rem; line-height: 1.55; }
+/* Vision & Mission premium cards (in page-hero) */
+.vm-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+@media (max-width: 540px) { .vm-cards { grid-template-columns: 1fr; } }
+.vm-card { display: flex; align-items: flex-start; gap: var(--s-3); padding: var(--s-4); background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%); border: 1px solid var(--c-border); border-radius: var(--r-lg); transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
+.vm-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px -10px rgba(11,29,109,0.18); }
+.vm-card-icon { flex-shrink: 0; width: 42px; height: 42px; border-radius: var(--r-md); background: var(--c-blue-100); color: var(--c-blue); display: flex; align-items: center; justify-content: center; }
+.vm-card-icon svg { width: 20px; height: 20px; }
+.vm-card:nth-child(2) .vm-card-icon { background: #FCE5E6; color: var(--c-red); }
+.vm-body { min-width: 0; flex: 1; }
+.vm-label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-blue); margin-bottom: 4px; }
+.vm-card p { margin: 0; font-size: 0.8125rem; line-height: 1.5; color: var(--c-text); }
 
 /* Groups sub-grid (Youth / Women's) */
 .groups-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-4); margin-top: var(--s-8); }
@@ -3232,18 +3250,26 @@ hr {
         <p class="eyebrow" style="color:var(--c-blue);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 var(--s-3)">Who is CHA?</p>
         <h1>About Us</h1>
         <p class="lead">The Cambodian Haemophilia Association is a patient-led organization dedicated to improving the quality of life for people living with bleeding disorders across Cambodia.</p>
-        <div class="vm-block">
-          <div class="vm-item">
-            <span class="vm-label">Our Vision</span>
-            <p>A Cambodia where every person with a bleeding disorder has access to diagnosis, treatment, and support — enabling them to live full and healthy lives.</p>
+        <div class="vm-cards">
+          <div class="vm-card" data-reveal>
+            <div class="vm-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div class="vm-body">
+              <span class="vm-label">Our Vision</span>
+              <p>A Cambodia where every person with a bleeding disorder has access to diagnosis, treatment, and support.</p>
+            </div>
           </div>
-          <div class="vm-item">
-            <span class="vm-label">Our Mission</span>
-            <p>To advocate for access to quality care, educate communities, support patients and families, and empower caregivers across the country.</p>
+          <div class="vm-card" data-reveal>
+            <div class="vm-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div class="vm-body">
+              <span class="vm-label">Our Mission</span>
+              <p>To advocate for quality care, educate communities, support families, and empower caregivers.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="page-art" data-reveal><img src="images/about-team.jpg" alt="CHA leadership and team" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="page-hero-art" data-reveal>
+        <div class="page-art"><img src="images/about-team.jpg" alt="CHA leadership and team" style="width:100%;height:100%;object-fit:cover"></div>
+      </div>
     </div></section>
 
     <section class="section section-soft"><div class="container">
