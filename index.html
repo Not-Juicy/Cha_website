@@ -4052,29 +4052,29 @@ hr {
       <div class="donation-form" data-reveal>
         <h3 data-i18n="donate_heading">Make a Donation</h3>
         <form id="donate-form-submit" novalidate>
-          <div class="tabs-nav" data-tabs><button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once">One-time</button><button class="tab-btn" type="button" data-tab-group data-tab-target="monthly">Monthly</button></div>
+          <div class="tabs-nav" data-tabs><button class="tab-btn is-active" type="button" data-tab-group data-tab-target="once" data-i18n="donate_tab_once">One-time</button><button class="tab-btn" type="button" data-tab-group data-tab-target="monthly" data-i18n="donate_tab_monthly">Monthly</button></div>
           <div class="tab-panel is-active" data-tab-panel="once" data-amount-group>
-            <div class="amount-chips"><button type="button" class="amount-chip is-active" data-amount="10">$10</button><button type="button" class="amount-chip" data-amount="25">$25</button><button type="button" class="amount-chip" data-amount="50">$50</button><button type="button" class="amount-chip" data-amount="100">$100</button><button type="button" class="amount-chip" data-amount="other">Other</button></div>
-            <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+            <div class="amount-chips"><button type="button" class="amount-chip is-active" data-amount="10">$10</button><button type="button" class="amount-chip" data-amount="25">$25</button><button type="button" class="amount-chip" data-amount="50">$50</button><button type="button" class="amount-chip" data-amount="100">$100</button><button type="button" class="amount-chip" data-amount="other" data-i18n="donate_other">Other</button></div>
+            <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-i18n-placeholder="donate_amount_ph" data-amount-other min="1">
           </div>
           <div class="tab-panel" data-tab-panel="monthly" data-amount-group>
-            <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support for long-term care.</p>
-            <div class="amount-chips"><button type="button" class="amount-chip" data-amount="5">$5/mo</button><button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button><button type="button" class="amount-chip" data-amount="25">$25/mo</button><button type="button" class="amount-chip" data-amount="50">$50/mo</button><button type="button" class="amount-chip" data-amount="other">Other</button></div>
-            <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+            <p class="text-muted mb-4" style="font-size:.875rem" data-i18n="donate_monthly_desc">Monthly gifts provide steady support for long-term care.</p>
+            <div class="amount-chips"><button type="button" class="amount-chip" data-amount="5">$5/mo</button><button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button><button type="button" class="amount-chip" data-amount="25">$25/mo</button><button type="button" class="amount-chip" data-amount="50">$50/mo</button><button type="button" class="amount-chip" data-amount="other" data-i18n="donate_other">Other</button></div>
+            <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-i18n-placeholder="donate_monthly_amount_ph" data-amount-other min="1">
           </div>
-          <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
-          <div class="radio-row"><label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> Stripe</label><label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label></div>
-          <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
-          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via Stripe &amp; PayPal</p>
+          <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem" data-i18n="donate_payment_method">Payment Method</h4>
+          <div class="radio-row"><label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> <span data-i18n="donate_stripe">Stripe</span></label><label class="radio-pill"><input type="radio" name="pay" value="paypal"> <span data-i18n="donate_paypal">PayPal</span></label></div>
+          <button type="submit" class="btn btn-donate btn-block btn-lg mt-6" data-i18n="donate_submit">Donate Securely</button>
+          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span data-i18n="donate_secure_note">Secure &amp; encrypted via Stripe &amp; PayPal</span></p>
         </form>
         <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
       </div>
       <div class="campaigns-list" data-reveal>
-        <h3>Current Campaigns</h3>
-        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-red)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4>Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> raised</span><span>Goal $15,000</span></div></div></div>
-        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-blue)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><h4>Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> raised</span><span>Goal $8,500</span></div></div></div>
-        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-purple)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><h4>Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> raised</span><span>Goal $5,000</span></div></div></div>
-        <div style="margin-top:var(--s-8)"><div class="section-heading"><h3 style="font-size:1.125rem">Corporate Partners</h3></div>
+        <h3 data-i18n="campaigns_heading">Current Campaigns</h3>
+        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-red)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4 data-i18n="campaign_1_title">Patient Support Fund</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)" data-i18n="campaign_1_desc">Help patients access essential treatment and medication.</p><div class="progress"><div class="progress-bar" style="width:28%"></div></div><div class="progress-meta"><span><strong>$4,250</strong> <span data-i18n="campaign_raised_suffix">raised</span></span><span><span data-i18n="campaign_goal_prefix">Goal</span> $15,000</span></div></div></div>
+        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-blue)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><h4 data-i18n="campaign_2_title">Education &amp; Awareness</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)" data-i18n="campaign_2_desc">Support workshops and awareness seminars across provinces.</p><div class="progress"><div class="progress-bar" style="width:26%"></div></div><div class="progress-meta"><span><strong>$2,180</strong> <span data-i18n="campaign_raised_suffix">raised</span></span><span><span data-i18n="campaign_goal_prefix">Goal</span> $8,500</span></div></div></div>
+        <div class="campaign-card"><div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:28px;height:28px;color:var(--c-purple)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><h4 data-i18n="campaign_3_title">Emergency Assistance</h4><p style="font-size:.8125rem;color:var(--c-muted);margin:0 0 var(--s-2)" data-i18n="campaign_3_desc">Provide urgent help for patients in critical situations.</p><div class="progress"><div class="progress-bar" style="width:30%"></div></div><div class="progress-meta"><span><strong>$1,500</strong> <span data-i18n="campaign_raised_suffix">raised</span></span><span><span data-i18n="campaign_goal_prefix">Goal</span> $5,000</span></div></div></div>
+        <div style="margin-top:var(--s-8)"><div class="section-heading"><h3 style="font-size:1.125rem" data-i18n="nav_corporate_partners">Corporate Partners</h3></div>
         <div class="partners-strip" data-reveal><div class="logos">
           <div class="logo" title="WFH"><svg viewBox="0 0 100 40" width="100" height="40" aria-label="WFH"><circle cx="14" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2"/><text x="32" y="18" font-family="Poppins" font-size="13" font-weight="700" fill="currentColor">WFH</text></svg></div>
           <div class="logo" title="IFAH"><svg viewBox="0 0 100 40" width="100" height="40"><text x="6" y="26" font-family="Poppins" font-size="20" font-weight="700" fill="currentColor">IFAH</text></svg></div>
@@ -4143,12 +4143,12 @@ hr {
     <div class="donate-modal-backdrop" data-donate-close></div>
     <div class="donate-modal-panel">
       <button class="donate-modal-close" type="button" data-donate-close aria-label="Close donation form"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Make a Donation</h3>
-      <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Your support changes lives across Cambodia.</p>
+      <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)" data-i18n="donate_heading">Make a Donation</h3>
+      <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem" data-i18n="donate_modal_sub">Your support changes lives across Cambodia.</p>
       <form id="donate-modal-form" novalidate>
         <div class="tabs-nav" data-tabs>
-          <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="modal-once">One-time</button>
-          <button class="tab-btn" type="button" data-tab-group data-tab-target="modal-monthly">Monthly</button>
+          <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="modal-once" data-i18n="donate_tab_once">One-time</button>
+          <button class="tab-btn" type="button" data-tab-group data-tab-target="modal-monthly" data-i18n="donate_tab_monthly">Monthly</button>
         </div>
         <div class="tab-panel is-active" data-tab-panel="modal-once">
           <div class="amount-chips">
@@ -4156,28 +4156,28 @@ hr {
             <button type="button" class="amount-chip" data-amount="25">$25</button>
             <button type="button" class="amount-chip" data-amount="50">$50</button>
             <button type="button" class="amount-chip" data-amount="100">$100</button>
-            <button type="button" class="amount-chip" data-amount="other">Other</button>
+            <button type="button" class="amount-chip" data-amount="other" data-i18n="donate_other">Other</button>
           </div>
-          <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+          <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-i18n-placeholder="donate_amount_ph" data-amount-other min="1">
         </div>
         <div class="tab-panel" data-tab-panel="modal-monthly">
-          <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support.</p>
+          <p class="text-muted mb-4" style="font-size:.875rem" data-i18n="donate_monthly_desc_short">Monthly gifts provide steady support.</p>
           <div class="amount-chips">
             <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
             <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
             <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
             <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
-            <button type="button" class="amount-chip" data-amount="other">Other</button>
+            <button type="button" class="amount-chip" data-amount="other" data-i18n="donate_other">Other</button>
           </div>
-          <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+          <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-i18n-placeholder="donate_monthly_amount_ph" data-amount-other min="1">
         </div>
-        <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
+        <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem" data-i18n="donate_payment_method">Payment Method</h4>
         <div class="radio-row">
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="stripe" checked> Stripe</label>
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal"> PayPal</label>
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="stripe" checked> <span data-i18n="donate_stripe">Stripe</span></label>
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal"> <span data-i18n="donate_paypal">PayPal</span></label>
         </div>
-        <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Now</button>
-        <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
+        <button type="submit" class="btn btn-donate btn-block btn-lg mt-6" data-i18n="donate_now">Donate Now</button>
+        <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <span data-i18n="donate_secure_note_short">Secure &amp; encrypted</span></p>
       </form>
     </div>
   </div>
@@ -4883,6 +4883,31 @@ hr {
       membership_benefit_5_desc: "Stay informed with the latest news and CHA announcements.",
       /* Donate */
       donate_heading: "Make a Donation",
+      donate_modal_sub: "Your support changes lives across Cambodia.",
+      donate_tab_once: "One-time",
+      donate_tab_monthly: "Monthly",
+      donate_other: "Other",
+      donate_amount_ph: "Enter amount in USD",
+      donate_monthly_amount_ph: "Enter monthly amount",
+      donate_monthly_desc: "Monthly gifts provide steady support for long-term care.",
+      donate_monthly_desc_short: "Monthly gifts provide steady support.",
+      donate_payment_method: "Payment Method",
+      donate_stripe: "Stripe",
+      donate_paypal: "PayPal",
+      donate_submit: "Donate Securely",
+      donate_now: "Donate Now",
+      donate_secure_note: "Secure & encrypted via Stripe & PayPal",
+      donate_secure_note_short: "Secure & encrypted",
+      /* Campaigns */
+      campaigns_heading: "Current Campaigns",
+      campaign_raised_suffix: "raised",
+      campaign_goal_prefix: "Goal",
+      campaign_1_title: "Patient Support Fund",
+      campaign_1_desc: "Help patients access essential treatment and medication.",
+      campaign_2_title: "Education & Awareness",
+      campaign_2_desc: "Support workshops and awareness seminars across provinces.",
+      campaign_3_title: "Emergency Assistance",
+      campaign_3_desc: "Provide urgent help for patients in critical situations.",
       /* Contact */
       contact_divider: "Contact Us",
       contact_heading: "Contact Us",
@@ -5135,6 +5160,31 @@ hr {
       membership_benefit_5_desc: "ទទួលបានព័ត៌មានថ្មីៗ និងសេចក្តីប្រកាសរបស់ CHA។",
       /* Donate */
       donate_heading: "ធ្វើការបរិច្ចាគ",
+      donate_modal_sub: "ការគាំទ្ររបស់អ្នកផ្លាស់ប្តូរជីវិតនៅទូទាំងប្រទេសកម្ពុជា។",
+      donate_tab_once: "តែម្តង",
+      donate_tab_monthly: "ប្រចាំខែ",
+      donate_other: "ផ្សេងទៀត",
+      donate_amount_ph: "បញ្ចូលចំនួនទឹកប្រាក់ជា USD",
+      donate_monthly_amount_ph: "បញ្ចូលចំនួនប្រចាំខែ",
+      donate_monthly_desc: "ការបរិច្ចាគប្រចាំខែផ្តល់ការគាំទ្រយ៉ាង�ទៀងទាត់សម្រាប់ការថែទាំរយៈពេលវែង។",
+      donate_monthly_desc_short: "ការបរិច្ចាគប្រចាំខែផ្តល់ការគាំទ្រយ៉ាងទៀងទាត់។",
+      donate_payment_method: "វិធីសាស្រ្តបង់ប្រាក់",
+      donate_stripe: "Stripe",
+      donate_paypal: "PayPal",
+      donate_submit: "បរិច្ចាគដោយសុវត្ថិភាព",
+      donate_now: "បរិច្ចាគឥឡូវ",
+      donate_secure_note: "សុវត្ថិភាព និងអ៊ិនគ្រីបតាមរយៈ Stripe និង PayPal",
+      donate_secure_note_short: "សុវត្ថិភាព និងអ៊ិនគ្រីប",
+      /* Campaigns */
+      campaigns_heading: "យុទ្ធនាការបច្ចុប្បន្ន",
+      campaign_raised_suffix: "បានប្រមូលបាន",
+      campaign_goal_prefix: "គោលដៅ",
+      campaign_1_title: "មូលនិធិគាំទ្រអ្នកជំងឺ",
+      campaign_1_desc: "ជួយអ្នកជំងឺឱ្យទទួលបានការព្យាបាល និងថ្នាំចាំបាច់។",
+      campaign_2_title: "ការអប់រំ និងការយល់ដឹង",
+      campaign_2_desc: "គាំទ្រសិក្ខាសាលា និងសិក្ខាសាលាលើកកម្ពស់ការដឹងគុណនៅទូទាំងខេត្ត។",
+      campaign_3_title: "ជំនួយអាសន្ន",
+      campaign_3_desc: "ផ្តល់ជំនួយបន្ទាន់ដល់អ្នកជំងឺក្នុងស្ថានភាពធ្ងន់ធ្ងរ។",
       /* Contact */
       contact_divider: "ទំនាក់ទំនង",
       contact_heading: "ទំនាក់ទំនង",
