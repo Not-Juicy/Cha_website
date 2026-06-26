@@ -2494,18 +2494,19 @@ hr {
 }
 .csr-section .section-heading { margin-bottom: var(--s-8); }
 .csr-section .section-heading h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 800; letter-spacing: -0.02em; }
-.csr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); margin-top: var(--s-8); }
+.csr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-8); margin-top: var(--s-10); align-items: stretch; }
 @media (max-width: 900px) { .csr-grid { grid-template-columns: 1fr; } }
 .csr-block {
   position: relative;
-  border-radius: var(--r-2xl);
-  padding: var(--s-8) var(--s-7) var(--s-7);
+  border-radius: 40px;
+  padding: 48px 36px 36px;
   overflow: hidden;
   transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
   background: var(--c-white);
   border: 1px solid var(--c-border);
   display: flex;
   flex-direction: column;
+  min-height: 460px;
 }
 .csr-block::before {
   content: "";
