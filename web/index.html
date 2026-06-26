@@ -3088,6 +3088,359 @@ hr {
 }
 .csr-tabs .tab-btn.is-active::after { width: 60%; }
 
+/* === SRC v4: full-bleed background image cards === */
+.src-section {
+  position: relative;
+  padding: var(--s-10) 0;
+}
+.src-section .src-header {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--s-10);
+  align-items: center;
+  margin-bottom: var(--s-10);
+}
+.src-section .src-header-text { max-width: 520px; }
+.src-section .src-header-art {
+  position: relative;
+  height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+.src-section .src-header-art .art-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(11,29,109,0.06) 0%, rgba(11,29,109,0) 65%);
+  pointer-events: none;
+}
+.src-section .src-header-art .dot-grid {
+  position: absolute; top: 8%; left: 4%;
+  display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px;
+  width: 160px;
+}
+.src-section .src-header-art .dot-grid span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--c-blue);
+  opacity: 0.22;
+}
+.src-section .src-header-art .accent-dot {
+  position: absolute; top: 36%; left: 26%;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 0 7px rgba(227, 30, 36, 0.18), 0 0 0 14px rgba(227, 30, 36, 0.08);
+}
+.src-section .src-header-art .accent-dot.small {
+  top: auto; bottom: 22%; left: auto; right: 12%;
+  width: 10px; height: 10px;
+  background: var(--c-blue);
+  box-shadow: 0 0 0 6px rgba(11, 29, 109, 0.18), 0 0 0 12px rgba(11, 29, 109, 0.08);
+}
+.src-section .src-header-art .big-drop {
+  position: relative;
+  width: 200px; height: 250px;
+  z-index: 1;
+  filter: drop-shadow(0 24px 50px rgba(106, 44, 145, 0.25));
+  animation: src-drop-float 6s ease-in-out infinite;
+}
+.src-section .src-header-art .big-drop svg { width: 100%; height: 100%; display: block; }
+@keyframes src-drop-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .src-section .src-header-art .big-drop { animation: none; }
+}
+@media (max-width: 720px) {
+  .src-section .src-header { grid-template-columns: 1fr; }
+  .src-section .src-header-art { height: 240px; order: -1; }
+}
+
+/* Eyebrow chip: heart + uppercase label */
+.src-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.src-eyebrow .heart {
+  width: 14px; height: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--c-red);
+}
+
+/* Big editorial title with multi-color underline */
+.src-section .src-title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--c-blue);
+  margin: 0 0 18px;
+  position: relative;
+  padding-bottom: 18px;
+  display: inline-block;
+  line-height: 0.95;
+}
+.src-section .src-title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 88px; height: 5px;
+  border-radius: var(--r-full);
+  background: linear-gradient(90deg, var(--c-red) 0%, var(--c-blue) 50%, var(--c-purple) 100%);
+}
+.src-section .src-sub {
+  color: var(--c-muted);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* === SRC cards v4: full-bleed background image === */
+.src-card.src-card-v2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
+  min-height: 520px;
+  isolation: isolate;
+}
+.src-card.src-card-v2::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  z-index: 3;
+}
+.src-card.src-card-v2.red-top::before { background: var(--c-red); }
+.src-card.src-card-v2.blue-top::before { background: var(--c-blue); }
+.src-card.src-card-v2.purple-top::before { background: var(--c-purple); }
+.src-card.src-card-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(11, 29, 109, 0.18);
+}
+
+/* Background image: full-bleed, covers entire card */
+.src-card.src-card-v2 .src-bg {
+  position: absolute; inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(0.85);
+  transition: transform 600ms var(--ease);
+}
+.src-card.src-card-v2.red-top .src-bg { background-image: url("images/members.jpg"); }
+.src-card.src-card-v2.blue-top .src-bg { background-image: url("images/family.jpg"); }
+.src-card.src-card-v2.purple-top .src-bg { background-image: url("images/hero-img.png"); }
+.src-card.src-card-v2:hover .src-bg { transform: scale(1.05); }
+
+/* Color gradient wash on top of background image */
+.src-card.src-card-v2 .src-bg::after {
+  content: ""; position: absolute; inset: 0;
+}
+.src-card.src-card-v2.red-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(227,30,36,0.18) 100%); }
+.src-card.src-card-v2.blue-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(11,29,109,0.18) 100%); }
+.src-card.src-card-v2.purple-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(106,44,145,0.18) 100%); }
+
+/* Icon badge: top-center, larger floating circle */
+.src-card.src-card-v2 .src-photo-art {
+  position: relative;
+  z-index: 2;
+  display: flex; justify-content: center;
+  padding-top: var(--s-8);
+}
+.src-card.src-card-v2 .src-photo-icon {
+  width: 72px; height: 72px;
+  border-radius: var(--r-full);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 32px rgba(11, 29, 109, 0.18);
+  border: 1px solid var(--c-border);
+}
+.src-card.src-card-v2.red-top .src-photo-icon { color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-photo-icon { color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-photo-icon { color: var(--c-purple); }
+
+/* Big number stamp — top-right corner of the card */
+.src-card.src-card-v2 .src-stamp {
+  position: absolute;
+  top: 22px; right: 22px;
+  z-index: 4;
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  text-align: right;
+  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.18);
+  min-width: 84px;
+}
+.src-card.src-card-v2 .src-stamp-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: block;
+}
+.src-card.src-card-v2 .src-stamp-lbl {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  font-weight: 700;
+  display: block;
+  margin-top: 3px;
+}
+.src-card.src-card-v2.red-top .src-stamp-num { color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-stamp-num { color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-stamp-num { color: var(--c-purple); }
+
+/* Card body — translucent panel over the lower 2/3 of the image */
+.src-card.src-card-v2 .src-body {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: var(--s-6) var(--s-6) var(--s-8);
+  display: flex; flex-direction: column; flex: 1;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 18%, #fff 32%);
+}
+.src-card.src-card-v2 .src-kicker {
+  display: inline-block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.src-card.src-card-v2.red-top .src-kicker { color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-kicker { color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-kicker { color: var(--c-purple); }
+
+.src-card.src-card-v2 h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.src-card.src-card-v2 p {
+  color: var(--c-muted); font-size: 0.9375rem; line-height: 1.65;
+  margin: 0;
+}
+
+/* Footer row: link + arrow */
+.src-card.src-card-v2 .src-foot {
+  margin-top: auto;
+  padding-top: var(--s-5);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.src-card.src-card-v2 .src-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.src-card.src-card-v2.red-top .src-link { color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-link { color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-link { color: var(--c-purple); }
+.src-card.src-card-v2 .src-link .arrow { transition: transform 250ms var(--ease); }
+.src-card.src-card-v2 .src-link:hover .arrow { transform: translateX(4px); }
+.src-card.src-card-v2 .src-arrow-btn {
+  width: 36px; height: 36px;
+  border-radius: var(--r-full);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 250ms var(--ease);
+}
+.src-card.src-card-v2.red-top .src-arrow-btn { background: #FCE5E6; color: var(--c-red); }
+.src-card.src-card-v2.blue-top .src-arrow-btn { background: var(--c-blue-100); color: var(--c-blue); }
+.src-card.src-card-v2.purple-top .src-arrow-btn { background: var(--c-purple-100); color: var(--c-purple); }
+.src-card.src-card-v2.red-top .src-arrow-btn:hover { background: var(--c-red); color: #fff; }
+.src-card.src-card-v2.blue-top .src-arrow-btn:hover { background: var(--c-blue); color: #fff; }
+.src-card.src-card-v2.purple-top .src-arrow-btn:hover { background: var(--c-purple); color: #fff; }
+
+/* === SRC CTA panel v3: full bleed with split bg === */
+.src-cta {
+  position: relative;
+  display: flex; align-items: center; gap: var(--s-6);
+  margin-top: var(--s-10);
+  padding: 0;
+  background: linear-gradient(135deg, #0B1D6D 0%, #1A2B7A 100%);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  color: #fff;
+}
+.src-cta::before {
+  content: ""; position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(227,30,36,0.35) 0%, rgba(227,30,36,0) 70%);
+  pointer-events: none;
+}
+.src-cta .src-cta-icon {
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  border-radius: var(--r-lg);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin: var(--s-8) 0 var(--s-8) var(--s-8);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.src-cta .src-cta-text {
+  flex: 1;
+  padding: var(--s-8) 0;
+  padding-right: var(--s-4);
+}
+.src-cta .src-cta-text h3 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.src-cta .src-cta-text p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 480px;
+}
+.src-cta .src-cta-actions {
+  flex-shrink: 0;
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: var(--s-8) var(--s-8) var(--s-8) 0;
+}
+.src-cta .src-cta-actions .btn-light {
+  background: #fff;
+  color: var(--c-blue);
+  border: 1px solid #fff;
+  font-weight: 700;
+}
+.src-cta .src-cta-actions .btn-light:hover { background: var(--c-blue-100); color: var(--c-blue); }
+.src-cta .src-cta-actions .btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+}
+.src-cta .src-cta-actions .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #fff; }
+@media (max-width: 720px) {
+  .src-cta { flex-direction: column; align-items: stretch; }
+  .src-cta .src-cta-icon { margin: var(--s-6) 0 0 var(--s-6); }
+  .src-cta .src-cta-text { padding: var(--s-4) var(--s-6) 0; }
+  .src-cta .src-cta-actions { padding: var(--s-6); }
+}
+
 </style>
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
 </head>
@@ -3287,14 +3640,123 @@ hr {
       </div>
     </div></section>
 
-    <section class="section section-soft" id="about-src"><div class="container">
-      <div class="section-heading" data-reveal><h2>SRC</h2><p>CHA's commitment to community outreach, volunteer engagement, and public awareness across Cambodia.</p></div>
-      <div class="grid grid-3">
-        <div class="src-card" data-reveal><svg viewBox="0 0 56 64" class="drop" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#E31E24"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Community Outreach</h3><p>We run awareness campaigns in provinces, distribute educational materials in Khmer, and partner with local health centres to reach underserved communities.</p></div></div>
-        <div class="src-card" data-reveal><svg viewBox="0 0 56 64" class="drop" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#0B1D6D"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Volunteer Program</h3><p>CHA volunteers — including patients, families, and healthcare students — support events, peer mentoring, and community-based activities throughout the year.</p></div></div>
-        <div class="src-card" data-reveal><svg viewBox="0 0 56 64" class="drop" aria-hidden="true"><path d="M28 4 C 16 24, 8 38, 8 48 C 8 58, 18 64, 28 64 C 38 64, 48 58, 48 48 C 48 38, 40 24, 28 4 Z" fill="#6A2C91"/><ellipse cx="20" cy="32" rx="4" ry="7" fill="rgba(255,255,255,0.4)"/></svg><div><h3>Siem Reap Chapter</h3><p>Our Siem Reap Chapter extends CHA's reach into the northwest, coordinating local outreach, patient support, and partnerships with Siem Reap Provincial Hospital to serve patients across the province.</p></div></div>
+    <section class="section section-soft src-section" id="about-src"><div class="container">
+      <div class="src-header">
+        <div>
+          <span class="src-eyebrow"><span class="heart" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Serving Communities</span>
+          <h2 class="src-title">SRC</h2>
+          <p class="src-sub">CHA's commitment to community outreach, volunteer engagement, and public awareness across Cambodia.</p>
+        </div>
+        <div class="src-header-art" aria-hidden="true">
+          <div class="dot-grid">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="accent-dot"></span>
+          <span class="accent-dot small"></span>
+          <div class="big-drop">
+            <svg viewBox="0 0 140 175" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="srcDropGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#E31E24"/>
+                  <stop offset="100%" stop-color="#6A2C91"/>
+                </linearGradient>
+              </defs>
+              <path d="M70 5 C 35 55, 18 85, 18 110 C 18 145, 42 168, 70 168 C 98 168, 122 145, 122 110 C 122 85, 105 55, 70 5 Z" fill="url(#srcDropGrad)"/>
+              <g transform="translate(70 90)" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-22 18 C -22 8, -16 0, -8 0 C -3 0, 0 3, 0 6 C 0 3, 3 0, 8 0 C 16 0, 22 8, 22 18 C 22 28, 0 42, 0 42 C 0 42, -22 28, -22 18 Z"/>
+                <path d="M-14 8 C -10 0, -4 -2, 0 -2"/>
+                <path d="M-22 22 L -18 28"/>
+                <path d="M-18 14 L -22 18"/>
+                <path d="M22 22 L 18 28"/>
+                <path d="M18 14 L 22 18"/>
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
-      <div class="symptoms-cta" data-reveal style="margin-top:var(--s-6)"><p>Want to get involved? Join our volunteer network and make a difference in the bleeding disorders community.</p><div class="btn-row"><a class="btn btn-primary" href="#contact">Get Involved <span class="arrow">→</span></a><a class="btn btn-secondary" href="#">Learn More</a></div></div>
+      <div class="grid grid-3">
+        <article class="src-card src-card-v2 red-top" data-reveal>
+          <div class="src-bg" aria-hidden="true"></div>
+          <div class="src-photo-art">
+            <div class="src-photo-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8v18l-18-8z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+            </div>
+          </div>
+          <div class="src-stamp">
+            <span class="src-stamp-num">12+</span>
+            <span class="src-stamp-lbl">Provinces</span>
+          </div>
+          <div class="src-body">
+            <span class="src-kicker">Reach</span>
+            <h3>Community Outreach</h3>
+            <p>Awareness campaigns, Khmer-language education, and partnerships with local health centres that reach patients where they live.</p>
+            <div class="src-foot">
+              <a class="src-link" href="#contact">Learn more <span class="arrow">→</span></a>
+              <a class="src-arrow-btn" href="#contact" aria-label="Learn more about Community Outreach">→</a>
+            </div>
+          </div>
+        </article>
+        <article class="src-card src-card-v2 blue-top" data-reveal>
+          <div class="src-bg" aria-hidden="true"></div>
+          <div class="src-photo-art">
+            <div class="src-photo-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+          </div>
+          <div class="src-stamp">
+            <span class="src-stamp-num">80+</span>
+            <span class="src-stamp-lbl">Volunteers</span>
+          </div>
+          <div class="src-body">
+            <span class="src-kicker">People</span>
+            <h3>Volunteer Program</h3>
+            <p>Patients, families, and healthcare students who lead events, mentor newly diagnosed peers, and run community-based activities year-round.</p>
+            <div class="src-foot">
+              <a class="src-link" href="#contact">Join us <span class="arrow">→</span></a>
+              <a class="src-arrow-btn" href="#contact" aria-label="Join the Volunteer Program">→</a>
+            </div>
+          </div>
+        </article>
+        <article class="src-card src-card-v2 purple-top" data-reveal>
+          <div class="src-bg" aria-hidden="true"></div>
+          <div class="src-photo-art">
+            <div class="src-photo-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+          </div>
+          <div class="src-stamp">
+            <span class="src-stamp-num">1</span>
+            <span class="src-stamp-lbl">Chapter</span>
+          </div>
+          <div class="src-body">
+            <span class="src-kicker">Region</span>
+            <h3>Siem Reap Chapter</h3>
+            <p>Our northwest hub coordinates local outreach, patient support, and partnerships with Siem Reap Provincial Hospital.</p>
+            <div class="src-foot">
+              <a class="src-link" href="#contact">Visit chapter <span class="arrow">→</span></a>
+              <a class="src-arrow-btn" href="#contact" aria-label="Visit the Siem Reap Chapter">→</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="src-cta" data-reveal>
+        <div class="src-cta-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="src-cta-text">
+          <h3>Want to get involved?</h3>
+          <p>Join our volunteer network and make a difference in the bleeding disorders community across Cambodia.</p>
+        </div>
+        <div class="src-cta-actions">
+          <a class="btn btn-light" href="#contact">Get Involved <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#">Learn More <span class="arrow">→</span></a>
+        </div>
+      </div>
     </div></section>
 
     <section class="section" id="about-history"><div class="container">
