@@ -1878,10 +1878,8 @@ hr {
 @media (max-width: 700px) { .presidents-grid { grid-template-columns: 1fr; } }
 .president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: var(--s-6) var(--s-4); text-align: center; transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
 .president-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgba(11,29,109,0.15); }
-.president-avatar { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto var(--s-3); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: 700; color: #fff; letter-spacing: 0.04em; box-shadow: 0 6px 16px -4px rgba(11,29,109,0.2); }
-.president-card:nth-child(1) .president-avatar { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-700) 100%); }
-.president-card:nth-child(2) .president-avatar { background: linear-gradient(135deg, var(--c-red) 0%, #B8101A 100%); }
-.president-card:nth-child(3) .president-avatar { background: linear-gradient(135deg, var(--c-purple) 0%, #4D1F6B 100%); }
+.president-avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto var(--s-3); overflow: hidden; box-shadow: 0 6px 16px -4px rgba(11,29,109,0.2); border: 3px solid var(--c-white); }
+.president-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .president-card h4 { color: var(--c-blue); font-size: 1rem; font-weight: 600; margin: 0 0 4px; }
 .president-card .term { color: var(--c-muted); font-size: 0.8125rem; margin: 0; }
 
@@ -3340,17 +3338,17 @@ hr {
         <h3>Past Presidents</h3>
         <div class="presidents-grid">
           <div class="president-card">
-            <div class="president-avatar" aria-hidden="true">P1</div>
+            <div class="president-avatar"><img src="images/president-1.jpg" alt="Past President 1"></div>
             <h4>Past President 1</h4>
             <p class="term">2011 – 2015</p>
           </div>
           <div class="president-card">
-            <div class="president-avatar" aria-hidden="true">P2</div>
+            <div class="president-avatar"><img src="images/president-2.jpg" alt="Past President 2"></div>
             <h4>Past President 2</h4>
             <p class="term">2015 – 2019</p>
           </div>
           <div class="president-card">
-            <div class="president-avatar" aria-hidden="true">P3</div>
+            <div class="president-avatar"><img src="images/president-3.jpg" alt="Past President 3"></div>
             <h4>Past President 3</h4>
             <p class="term">2019 – 2023</p>
           </div>
