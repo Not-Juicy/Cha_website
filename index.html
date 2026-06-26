@@ -1874,14 +1874,15 @@ hr {
 /* Past Presidents */
 .presidents-block { margin-top: var(--s-10); }
 .presidents-block h3 { color: var(--c-blue); font-size: 1.25rem; font-weight: 700; margin: 0 0 var(--s-5); }
-.presidents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+.presidents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
 @media (max-width: 700px) { .presidents-grid { grid-template-columns: 1fr; } }
-.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: var(--s-6) var(--s-4); text-align: center; transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
-.president-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgba(11,29,109,0.15); }
-.president-avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto var(--s-3); overflow: hidden; box-shadow: 0 6px 16px -4px rgba(11,29,109,0.2); border: 3px solid var(--c-white); }
+.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: var(--s-7) var(--s-5) var(--s-5); text-align: center; position: relative; overflow: hidden; transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); }
+.president-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--c-blue) 0%, var(--c-red) 50%, var(--c-purple) 100%); }
+.president-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -12px rgba(11,29,109,0.2); }
+.president-avatar { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto var(--s-4); overflow: hidden; box-shadow: 0 10px 24px -6px rgba(11,29,109,0.3); border: 4px solid var(--c-white); position: relative; }
 .president-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.president-card h4 { color: var(--c-blue); font-size: 1rem; font-weight: 600; margin: 0 0 4px; }
-.president-card .term { color: var(--c-muted); font-size: 0.8125rem; margin: 0; }
+.president-card h4 { color: var(--c-blue); font-size: 1.125rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+.president-card .term { color: var(--c-muted); font-size: 0.8125rem; margin: 0; font-weight: 500; letter-spacing: 0.02em; }
 
 /* ---------- 20. Timeline ---------- */
 .timeline {
