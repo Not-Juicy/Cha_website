@@ -4639,7 +4639,7 @@ hr {
   const memberClosers = document.querySelectorAll('[data-member-close]');
 
   const openMember = (e) => { if (e) e.preventDefault(); memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
-  let closeMember = () => { memberModal.classList.remove('is-open'); memberModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }; };
+  let closeMember = () => { memberModal.classList.remove('is-open'); memberModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
 
   memberTriggers.forEach((t) => t.addEventListener('click', openMember));
   memberClosers.forEach((c) => c.addEventListener('click', closeMember));
