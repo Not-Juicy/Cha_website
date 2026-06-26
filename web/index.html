@@ -4639,12 +4639,16 @@ hr {
   const memberClosers = document.querySelectorAll('[data-member-close]');
 
   const openMember = (e) => { if (e) e.preventDefault(); memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
-  const closeMember = () => { memberModal.classList.remove('is-open'); memberModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  let closeMember = () => { memberModal.classList.remove('is-open'); memberModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }; };
 
   memberTriggers.forEach((t) => t.addEventListener('click', openMember));
   memberClosers.forEach((c) => c.addEventListener('click', closeMember));
   memberModal.addEventListener('click', (e) => { if (e.target === memberModal) closeMember(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && memberModal.classList.contains('is-open')) closeMember(); });
+
+  // Toggle between login and register panels
+  const loginPanel = document.getElementById('member-login-panel');
+  const registerPanel = document.getElementById('member-register-panel');
 
   // Register-specific trigger (hero button): open modal and show register panel
   const registerTriggers = document.querySelectorAll('[data-member-register-trigger]');
@@ -4655,9 +4659,6 @@ hr {
     if (registerPanel) registerPanel.style.display = 'block';
   }));
 
-  // Toggle between login and register panels
-  const loginPanel = document.getElementById('member-login-panel');
-  const registerPanel = document.getElementById('member-register-panel');
   const registerLink = memberModal.querySelector('[data-member-register]');
   const backLoginLink = memberModal.querySelector('[data-member-back-login]');
   if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; });
