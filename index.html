@@ -1868,16 +1868,21 @@ hr {
 .group-card p { color: var(--c-muted); font-size: 0.9375rem; line-height: 1.55; margin: 0; }
 
 /* History intro paragraph */
-.history-intro { max-width: 820px; margin: 0 auto var(--s-7); text-align: center; }
-.history-intro p { font-size: 1.125rem; line-height: 1.65; color: var(--c-text); margin: 0; }
+.history-intro { max-width: 820px; margin: 0 auto var(--s-8); text-align: center; }
+.history-intro .quote-icon { width: 40px; height: 40px; color: var(--c-blue); opacity: 0.2; margin: 0 auto var(--s-4); display: block; }
+.history-intro p { font-size: 1.25rem; line-height: 1.7; color: var(--c-text); margin: 0; font-weight: 400; font-style: italic; }
 
 /* Past Presidents */
-.presidents-block { margin-top: var(--s-8); }
+.presidents-block { margin-top: var(--s-10); }
 .presidents-block h3 { color: var(--c-blue); font-size: 1.25rem; font-weight: 700; margin: 0 0 var(--s-5); text-align: center; }
 .presidents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
 @media (max-width: 700px) { .presidents-grid { grid-template-columns: 1fr; } }
-.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: var(--s-5); text-align: center; transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
-.president-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px -6px rgba(11,29,109,0.12); }
+.president-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: var(--s-6) var(--s-4); text-align: center; transition: transform 250ms var(--ease), box-shadow 250ms var(--ease); }
+.president-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -8px rgba(11,29,109,0.15); }
+.president-avatar { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto var(--s-3); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: 700; color: #fff; letter-spacing: 0.04em; box-shadow: 0 6px 16px -4px rgba(11,29,109,0.2); }
+.president-card:nth-child(1) .president-avatar { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-700) 100%); }
+.president-card:nth-child(2) .president-avatar { background: linear-gradient(135deg, var(--c-red) 0%, #B8101A 100%); }
+.president-card:nth-child(3) .president-avatar { background: linear-gradient(135deg, var(--c-purple) 0%, #4D1F6B 100%); }
 .president-card h4 { color: var(--c-blue); font-size: 1rem; font-weight: 600; margin: 0 0 4px; }
 .president-card .term { color: var(--c-muted); font-size: 0.8125rem; margin: 0; }
 
@@ -1918,9 +1923,11 @@ hr {
   border-radius: var(--r-full);
   font-size: 0.875rem;
   font-weight: var(--fw-bold);
-  margin-bottom: var(--s-3);
   letter-spacing: 0.05em;
 }
+.timeline-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+.timeline-icon { width: 36px; height: 36px; border-radius: var(--r-md); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.timeline-icon svg { width: 18px; height: 18px; }
 .timeline-item h3 { font-size: 1.0625rem; color: var(--c-blue); margin-bottom: var(--s-2); }
 .timeline-item p { color: var(--c-muted); font-size: 0.9375rem; margin: 0; }
 
@@ -3297,25 +3304,59 @@ hr {
 
     <section class="section" id="about-history"><div class="container">
       <div class="section-heading flex-between" data-reveal><div><h2>Our History</h2></div><a class="btn btn-tertiary" href="#">View Full Timeline <span class="arrow">→</span></a></div>
-      <div class="history-intro" data-reveal><p>CHA was founded in 2011 by patients and families who came together with a shared vision: to ensure no one in Cambodia faces a bleeding disorder alone. What began as a small support group has grown into a national patient-led organization.</p></div>
+      <div class="history-intro" data-reveal>
+        <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+        <p>CHA was founded in 2011 by patients and families who came together with a shared vision: to ensure no one in Cambodia faces a bleeding disorder alone. What began as a small support group has grown into a national patient-led organization.</p>
+      </div>
       <div class="timeline">
-        <div class="timeline-item" data-reveal><span class="year">2011</span><h3>CHA Established</h3><p>CHA was established by patients and families.</p></div>
-        <div class="timeline-item" data-reveal><span class="year">2014</span><h3>WFH Member</h3><p>Became a member of the World Federation of Hemophilia.</p></div>
-        <div class="timeline-item" data-reveal><span class="year">2017</span><h3>Hospital Partnerships</h3><p>Partnered with hospitals to improve treatment access.</p></div>
-        <div class="timeline-item" data-reveal><span class="year">2023</span><h3>National Reach</h3><p>Expanded education and outreach across provinces.</p></div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-head">
+            <span class="year">2011</span>
+            <span class="timeline-icon" style="background:var(--c-blue-100);color:var(--c-blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>
+          </div>
+          <h3>CHA Established</h3>
+          <p>CHA was established by patients and families.</p>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-head">
+            <span class="year">2014</span>
+            <span class="timeline-icon" style="background:#FCE5E6;color:var(--c-red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          </div>
+          <h3>WFH Member</h3>
+          <p>Became a member of the World Federation of Hemophilia.</p>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-head">
+            <span class="year">2017</span>
+            <span class="timeline-icon" style="background:#EFE6F4;color:var(--c-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          </div>
+          <h3>Hospital Partnerships</h3>
+          <p>Partnered with hospitals to improve treatment access.</p>
+        </div>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-head">
+            <span class="year">2023</span>
+            <span class="timeline-icon" style="background:#FEF3C7;color:#B45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
+          <h3>National Reach</h3>
+          <p>Expanded education and outreach across provinces.</p>
+        </div>
       </div>
       <div class="presidents-block" data-reveal>
         <h3>Past Presidents</h3>
         <div class="presidents-grid">
           <div class="president-card">
+            <div class="president-avatar" aria-hidden="true">P1</div>
             <h4>Past President 1</h4>
             <p class="term">2011 – 2015</p>
           </div>
           <div class="president-card">
+            <div class="president-avatar" aria-hidden="true">P2</div>
             <h4>Past President 2</h4>
             <p class="term">2015 – 2019</p>
           </div>
           <div class="president-card">
+            <div class="president-avatar" aria-hidden="true">P3</div>
             <h4>Past President 3</h4>
             <p class="term">2019 – 2023</p>
           </div>
