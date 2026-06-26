@@ -3249,36 +3249,39 @@ hr {
 .src-card.src-card-v2.blue-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(11,29,109,0.18) 100%); }
 .src-card.src-card-v2.purple-top .src-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.78) 35%, rgba(106,44,145,0.18) 100%); }
 
-/* Icon badge: top-center, larger floating circle */
+/* Icon badge: top-left, paired visually with the stamp on the right */
 .src-card.src-card-v2 .src-photo-art {
-  position: relative;
-  z-index: 2;
-  display: flex; justify-content: center;
-  padding-top: var(--s-8);
+  position: absolute;
+  top: 22px; left: 22px;
+  z-index: 4;
+  display: flex; justify-content: center; align-items: center;
+  padding-top: 0;
 }
 .src-card.src-card-v2 .src-photo-icon {
-  width: 72px; height: 72px;
-  border-radius: var(--r-full);
+  width: 56px; height: 56px;
+  border-radius: var(--r-md);
   background: #fff;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 12px 32px rgba(11, 29, 109, 0.18);
+  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.18);
   border: 1px solid var(--c-border);
 }
-.src-card.src-card-v2.red-top .src-photo-icon { color: var(--c-red); }
-.src-card.src-card-v2.blue-top .src-photo-icon { color: var(--c-blue); }
-.src-card.src-card-v2.purple-top .src-photo-icon { color: var(--c-purple); }
+.src-card.src-card-v2.red-top .src-photo-icon { color: var(--c-red); background: rgba(252, 229, 230, 0.95); }
+.src-card.src-card-v2.blue-top .src-photo-icon { color: var(--c-blue); background: rgba(220, 230, 245, 0.95); }
+.src-card.src-card-v2.purple-top .src-photo-icon { color: var(--c-purple); background: rgba(232, 220, 240, 0.95); }
+.src-card.src-card-v2 .src-photo-icon svg { width: 26px; height: 26px; stroke-width: 2.25; }
 
-/* Big number stamp — top-right corner of the card */
+/* Big number stamp — top-right corner of the card, paired with icon */
 .src-card.src-card-v2 .src-stamp {
   position: absolute;
   top: 22px; right: 22px;
   z-index: 4;
   background: #fff;
   border-radius: var(--r-md);
-  padding: 10px 16px;
-  text-align: right;
+  padding: 8px 14px;
+  text-align: center;
   box-shadow: 0 8px 20px rgba(11, 29, 109, 0.18);
-  min-width: 84px;
+  min-width: 72px;
+  border: 1px solid var(--c-border);
 }
 .src-card.src-card-v2 .src-stamp-num {
   font-size: 1.5rem;
