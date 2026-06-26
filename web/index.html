@@ -3165,7 +3165,10 @@ hr {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
 }
+.src-eyebrow + .src-title { margin-top: 0; }
 .src-eyebrow .heart {
   width: 14px; height: 14px;
   display: inline-flex; align-items: center; justify-content: center;
@@ -3181,8 +3184,9 @@ hr {
   margin: 0 0 18px;
   position: relative;
   padding-bottom: 18px;
-  display: inline-block;
-  line-height: 0.95;
+  display: block;
+  line-height: 1;
+  clear: both;
 }
 .src-section .src-title::after {
   content: "";
