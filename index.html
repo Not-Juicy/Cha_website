@@ -1390,6 +1390,156 @@ hr {
 .help-card h3 { font-size: 1.0625rem; margin-bottom: var(--s-2); color: var(--c-blue); }
 .help-card p { color: var(--c-muted); font-size: 0.9375rem; margin-bottom: var(--s-4); }
 
+/* === Help cards v2: full-bleed background image (mirrors src-card-v2) === */
+.help-card-v2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  min-height: 440px;
+  transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
+  isolation: isolate;
+}
+.help-card-v2::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  z-index: 3;
+}
+.help-card-v2.red-top::before    { background: var(--c-red); }
+.help-card-v2.blue-top::before   { background: var(--c-blue); }
+.help-card-v2.purple-top::before { background: var(--c-purple); }
+.help-card-v2.green-top::before  { background: #15803D; }
+.help-card-v2:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px -16px rgba(11, 29, 109, 0.18);
+}
+
+/* Background image: full-bleed */
+.help-card-v2 .help-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.85);
+  transition: transform 600ms var(--ease);
+}
+.help-card-v2:hover .help-bg { transform: scale(1.05); }
+
+/* Color gradient wash */
+.help-card-v2 .help-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.help-card-v2.red-top .help-bg::after    { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.8) 35%, rgba(227,30,36,0.18) 100%); }
+.help-card-v2.blue-top .help-bg::after   { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.8) 35%, rgba(11,29,109,0.18) 100%); }
+.help-card-v2.purple-top .help-bg::after { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.8) 35%, rgba(106,44,145,0.18) 100%); }
+.help-card-v2.green-top .help-bg::after  { background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.8) 35%, rgba(21,128,61,0.18) 100%); }
+
+/* Stat badge: top-left */
+.help-card-v2 .help-stat {
+  position: absolute;
+  top: 22px; left: 22px;
+  z-index: 4;
+  background: #fff;
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.18);
+  text-align: right;
+  min-width: 84px;
+}
+.help-card-v2 .help-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: block;
+}
+.help-card-v2 .help-stat-lbl {
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  font-weight: 700;
+  display: block;
+  margin-top: 3px;
+}
+.help-card-v2.red-top .help-stat-num    { color: var(--c-red); }
+.help-card-v2.blue-top .help-stat-num   { color: var(--c-blue); }
+.help-card-v2.purple-top .help-stat-num { color: var(--c-purple); }
+.help-card-v2.green-top .help-stat-num  { color: #15803D; }
+
+/* Body panel: translucent overlay over lower portion */
+.help-card-v2 .help-body {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: var(--s-6) var(--s-6) var(--s-7);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 18%, #fff 32%);
+}
+.help-card-v2 .help-kicker {
+  display: inline-block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.help-card-v2.red-top .help-kicker    { color: var(--c-red); }
+.help-card-v2.blue-top .help-kicker   { color: var(--c-blue); }
+.help-card-v2.purple-top .help-kicker { color: var(--c-purple); }
+.help-card-v2.green-top .help-kicker  { color: #15803D; }
+
+.help-card-v2 h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.help-card-v2 p {
+  color: var(--c-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0 0 var(--s-5);
+}
+
+/* Link row */
+.help-card-v2 .help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.help-card-v2.red-top .help-link    { color: var(--c-red); }
+.help-card-v2.blue-top .help-link   { color: var(--c-blue); }
+.help-card-v2.purple-top .help-link { color: var(--c-purple); }
+.help-card-v2.green-top .help-link  { color: #15803D; }
+.help-card-v2 .help-link:hover .arrow { transform: translateX(4px); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-4-help { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .grid-4-help { grid-template-columns: 1fr; }
+}
+
 /* ---------- 10. Carousel ---------- */
 .carousel {
   position: relative;
@@ -3606,11 +3756,59 @@ hr {
     <!-- How We Help -->
     <section class="section section-blue-soft" id="help"><div class="container">
       <div class="section-heading" data-reveal><h2>How We Help</h2><p>Four core areas where CHA makes a difference for patients and families across Cambodia.</p></div>
-      <div class="grid grid-4">
-        <div class="help-card" data-reveal><div class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Patient Support</h3><p>Emotional support, guidance and community for patients and families.</p><a class="card-link" href="#about">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Treatment Centres</h3><p>Find haemophilia treatment centres near you and get the care you need.</p><a class="card-link" href="#programs-centres">Learn More <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Become a Member</h3><p>Join our community and access exclusive resources and programs.</p><a class="card-link" href="#programs-member">Join Now <span class="arrow">→</span></a></div>
-        <div class="help-card" data-reveal><div class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Donate</h3><p>Your support helps us provide treatment, education and hope.</p><a class="card-link" href="#" data-donate-trigger>Donate Now <span class="arrow">→</span></a></div>
+      <div class="grid grid-4-help">
+        <article class="help-card-v2 red-top" data-reveal>
+          <div class="help-bg" style="background-image:url('images/members.jpg')"></div>
+          <div class="help-stat">
+            <span class="help-stat-num">80+</span>
+            <span class="help-stat-lbl">Patients</span>
+          </div>
+          <div class="help-body">
+            <span class="help-kicker">Support</span>
+            <h3>Patient Support</h3>
+            <p>Emotional support, guidance and community for patients and families.</p>
+            <a class="help-link" href="#about">Learn more <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="help-card-v2 blue-top" data-reveal>
+          <div class="help-bg" style="background-image:url('images/hospital-1.jpg')"></div>
+          <div class="help-stat">
+            <span class="help-stat-num">4</span>
+            <span class="help-stat-lbl">Centres</span>
+          </div>
+          <div class="help-body">
+            <span class="help-kicker">Treatment</span>
+            <h3>Treatment Centres</h3>
+            <p>Find haemophilia treatment centres near you and get the care you need.</p>
+            <a class="help-link" href="#programs-centres">Learn more <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="help-card-v2 purple-top" data-reveal>
+          <div class="help-bg" style="background-image:url('images/family.jpg')"></div>
+          <div class="help-stat">
+            <span class="help-stat-num">200+</span>
+            <span class="help-stat-lbl">Members</span>
+          </div>
+          <div class="help-body">
+            <span class="help-kicker">Join</span>
+            <h3>Become a Member</h3>
+            <p>Join our community and access exclusive resources and programs.</p>
+            <a class="help-link" href="#programs-member">Join now <span class="arrow">→</span></a>
+          </div>
+        </article>
+        <article class="help-card-v2 green-top" data-reveal>
+          <div class="help-bg" style="background-image:url('images/heart-hands.jpg')"></div>
+          <div class="help-stat">
+            <span class="help-stat-num">100%</span>
+            <span class="help-stat-lbl">Impact</span>
+          </div>
+          <div class="help-body">
+            <span class="help-kicker">Give</span>
+            <h3>Donate</h3>
+            <p>Your support helps us provide treatment, education and hope.</p>
+            <a class="help-link" href="#" data-donate-trigger>Donate now <span class="arrow">→</span></a>
+          </div>
+        </article>
       </div>
     </div></section>
 
