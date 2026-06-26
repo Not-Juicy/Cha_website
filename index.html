@@ -4188,27 +4188,27 @@ hr {
     <div class="donate-modal-panel">
       <button class="donate-modal-close" type="button" data-member-close aria-label="Close login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       <div id="member-login-panel">
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)" data-i18n="member_login_title">Member Login</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem" data-i18n="member_login_sub">Sign in to access your account, resources, and community.</p>
         <form data-mock-form novalidate>
-          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
-          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
-          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+          <div class="form-group"><label class="form-label" for="memail"><span data-i18n="contact_email_label">Email</span> <span class="req">*</span></label><input class="form-input" type="email" id="memail" data-i18n-placeholder="contact_email_ph" placeholder="Enter your email" required></div>
+          <div class="form-group"><label class="form-label" for="mpass"><span data-i18n="member_password">Password</span> <span class="req">*</span></label><input class="form-input" type="password" id="mpass" data-i18n-placeholder="member_password_ph" placeholder="Enter your password" required></div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)" data-i18n="member_forgot_password">Forgot password?</a></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="member_sign_in">Sign In</button>
         </form>
-        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)"><span data-i18n="member_no_account">Don't have an account?</span> <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)" data-i18n="member_register_link">Register</a></p>
       </div>
       <div id="member-register-panel" style="display:none">
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Create Account</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Join our community of patients, families, and supporters.</p>
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)" data-i18n="member_register_title">Create Account</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem" data-i18n="member_register_sub">Join our community of patients, families, and supporters.</p>
         <form data-mock-form novalidate>
-          <div class="form-row"><div class="form-group"><label class="form-label" for="mregname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div></div>
-          <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
-          <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
-          <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="mregname"><span data-i18n="contact_name">Full Name</span> <span class="req">*</span></label><input class="form-input" type="text" id="mregname" data-i18n-placeholder="contact_name_ph" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail"><span data-i18n="contact_email_label">Email</span> <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" data-i18n-placeholder="contact_email_ph" placeholder="Enter your email" required></div></div>
+          <div class="form-group"><label class="form-label" for="mregpass"><span data-i18n="member_password">Password</span> <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" data-i18n-placeholder="member_create_password_ph" placeholder="Create a password" required></div>
+          <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov" data-i18n="member_province">Province</label><select class="form-select" id="mregprov"><option value="" data-i18n="member_select_province">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option data-i18n="member_other">Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole" data-i18n="member_i_am_a">I am a</label><select class="form-select" id="mregrole"><option value="" data-i18n="member_select">Select</option><option data-i18n="member_role_patient">Patient</option><option data-i18n="member_role_family">Family member / Caregiver</option><option data-i18n="member_role_pro">Healthcare professional</option><option data-i18n="member_role_supporter">Supporter</option></select></div></div>
+          <div class="form-group"><label class="form-check"><input type="checkbox" required><span data-i18n="member_agree_prefix">I agree to the</span> <a href="#" data-i18n="member_terms">Terms &amp; Conditions</a></span></label></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="member_create_account">Create Account</button>
         </form>
-        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)"><span data-i18n="member_have_account">Already have an account?</span> <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)" data-i18n="member_sign_in_link">Sign In</a></p>
       </div>
     </div>
   </div>
@@ -4908,6 +4908,32 @@ hr {
       campaign_2_desc: "Support workshops and awareness seminars across provinces.",
       campaign_3_title: "Emergency Assistance",
       campaign_3_desc: "Provide urgent help for patients in critical situations.",
+      /* Member modal */
+      member_login_title: "Member Login",
+      member_login_sub: "Sign in to access your account, resources, and community.",
+      member_password: "Password",
+      member_password_ph: "Enter your password",
+      member_forgot_password: "Forgot password?",
+      member_sign_in: "Sign In",
+      member_no_account: "Don't have an account?",
+      member_register_link: "Register",
+      member_register_title: "Create Account",
+      member_register_sub: "Join our community of patients, families, and supporters.",
+      member_create_password_ph: "Create a password",
+      member_province: "Province",
+      member_select_province: "Select Province",
+      member_other: "Other",
+      member_i_am_a: "I am a",
+      member_select: "Select",
+      member_role_patient: "Patient",
+      member_role_family: "Family member / Caregiver",
+      member_role_pro: "Healthcare professional",
+      member_role_supporter: "Supporter",
+      member_agree_prefix: "I agree to the",
+      member_terms: "Terms & Conditions",
+      member_create_account: "Create Account",
+      member_have_account: "Already have an account?",
+      member_sign_in_link: "Sign In",
       /* Contact */
       contact_divider: "Contact Us",
       contact_heading: "Contact Us",
@@ -5185,6 +5211,32 @@ hr {
       campaign_2_desc: "គាំទ្រសិក្ខាសាលា និងសិក្ខាសាលាលើកកម្ពស់ការដឹងគុណនៅទូទាំងខេត្ត។",
       campaign_3_title: "ជំនួយអាសន្ន",
       campaign_3_desc: "ផ្តល់ជំនួយបន្ទាន់ដល់អ្នកជំងឺក្នុងស្ថានភាពធ្ងន់ធ្ងរ។",
+      /* Member modal */
+      member_login_title: "ចូលជាសមាជិក",
+      member_login_sub: "ចូលដើម្បីចូលប្រើគណនី ធនធាន និងសហគមន៍របស់អ្នក។",
+      member_password: "ពាក្យសម្ងាត់",
+      member_password_ph: "បញ្ចូលពាក្យសម្ងាត់របស់អ្នក",
+      member_forgot_password: "ភ្លេចពាក្យសម្ងាត់?",
+      member_sign_in: "ចូល",
+      member_no_account: "មិនមានគណនី?",
+      member_register_link: "ចុះឈ្មោះ",
+      member_register_title: "បង្កើតគណនី",
+      member_register_sub: "ចូលរួមជាមួយសហគមន៍របស់យើងអ្នកជំងឺ គ្រួសារ និងអ្នកគាំទ្រ។",
+      member_create_password_ph: "បង្កើតពាក្យសម្ងាត់",
+      member_province: "ខេត្ត",
+      member_select_province: "ជ្រើសរើសខេត្ត",
+      member_other: "ផ្សេងទៀត",
+      member_i_am_a: "ខ្ញុំជា",
+      member_select: "ជ្រើសរើស",
+      member_role_patient: "អ្នកជំងឺ",
+      member_role_family: "សមាជិកគ្រួសារ / អ្នកថែទាំ",
+      member_role_pro: "អ្នកវិជ្ជាជីវៈវេជ្ជសាស្ត្រ",
+      member_role_supporter: "អ្នកគាំទ្រ",
+      member_agree_prefix: "ខ្ញុំយល់ព្រមនឹង",
+      member_terms: "លក្ខខណ្ឌ និងខ្លឹមសារ",
+      member_create_account: "បង្កើតគណនី",
+      member_have_account: "មានគណនីហើយ?",
+      member_sign_in_link: "ចូល",
       /* Contact */
       contact_divider: "ទំនាក់ទំនង",
       contact_heading: "ទំនាក់ទំនង",
