@@ -5053,10 +5053,10 @@ hr {
     document.querySelectorAll('.nav-drop-trigger').forEach(function(btn) {
       var key = btn.getAttribute('data-i18n');
       if (key && dict[key] !== undefined) {
-        /* Preserve the SVG icon */
-        var svg = btn.querySelector('svg');
-        var svgHtml = svg ? svg.outerHTML : '';
-        /* Remove only text nodes, keep child elements */
+        /* Check if text already matches — skip DOM mutation on init to preserve event listeners */
+        var currentText = btn.textContent.trim();
+        if (currentText === dict[key]) return;
+        /* Remove only text nodes, keep child elements (SVG icon, etc.) */
         for (var i = btn.childNodes.length - 1; i >= 0; i--) {
           var node = btn.childNodes[i];
           if (node.nodeType === Node.TEXT_NODE) btn.removeChild(node);
