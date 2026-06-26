@@ -600,6 +600,9 @@ hr {
   white-space: nowrap;
 }
 .nav-drop-panel a:hover { background: var(--c-blue-100); color: var(--c-blue); }
+.nav-drop-divider { display: block; height: 1px; background: var(--c-border); margin: 6px 4px; }
+.nav-drop-parent { font-weight: var(--fw-semibold) !important; color: var(--c-blue) !important; }
+.nav-drop-sub { padding-left: 1.5rem !important; font-size: 0.8125rem !important; color: var(--c-muted) !important; }
 
 /* Mobile drawer sub-groups */
 .drawer-group { border-top: 1px solid var(--c-border); padding-top: var(--s-2); }
@@ -626,13 +629,18 @@ hr {
 .drawer-group.is-open .drawer-sub-items { display: flex; flex-direction: column; gap: 2px; }
 .drawer-sub-items a {
   padding: 0.6rem 1rem;
+  display: block;
   font-size: 0.9375rem;
   font-weight: var(--fw-regular);
-  color: var(--c-gray-600);
+  text-decoration: none;
+  color: var(--c-gray-700);
   border-radius: var(--r-sm);
-  transition: all var(--t-fast) var(--ease);
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
 }
 .drawer-sub-items a:hover { background: var(--c-blue-100); color: var(--c-blue); }
+.drawer-sub-divider { display: block; height: 1px; background: var(--c-border); margin: 6px 0.5rem; }
+.drawer-sub-parent { font-weight: var(--fw-semibold) !important; color: var(--c-blue) !important; }
+.drawer-sub-sub { padding-left: 2rem !important; font-size: 0.875rem !important; color: var(--c-muted) !important; }
 
 .header-actions {
   display: flex;
@@ -3037,11 +3045,13 @@ hr {
           <button class="nav-drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">About Haemophilia<svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-drop-panel">
             <a href="#vwd">About VWD</a>
-            <a href="#other-bleeding">Other Bleeding Disorders</a>
-            <a href="#programs-centres">Treatment Centres</a>
-            <a href="#csr-fundraising">Fundraising</a>
-            <a href="#csr-donate">Online donation</a>
-            <a href="#csr-partners">Corporate Partners</a>
+            <a href="#other-bleeding">About other bleeding disorders</a>
+            <a href="#programs-centres">Haemophilia Treatment Centres</a>
+            <span class="nav-drop-divider"></span>
+            <a href="#csr" class="nav-drop-parent">CSR Program</a>
+            <a href="#csr-fundraising" class="nav-drop-sub">Fundraising</a>
+            <a href="#csr-donate" class="nav-drop-sub">Online donation</a>
+            <a href="#csr-partners" class="nav-drop-sub">Corporate Partners</a>
           </div>
         </div>
         <div class="nav-drop" data-nav-drop>
@@ -3087,11 +3097,13 @@ hr {
           <button class="drawer-sub-trigger" type="button" aria-expanded="false">About Haemophilia<svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="drawer-sub-items">
             <a href="#vwd">About VWD</a>
-            <a href="#other-bleeding">Other Bleeding Disorders</a>
-            <a href="#programs-centres">Treatment Centres</a>
-            <a href="#csr-fundraising">Fundraising</a>
-            <a href="#csr-donate">Online donation</a>
-            <a href="#csr-partners">Corporate Partners</a>
+            <a href="#other-bleeding">About other bleeding disorders</a>
+            <a href="#programs-centres">Haemophilia Treatment Centres</a>
+            <span class="drawer-sub-divider"></span>
+            <a href="#csr" class="drawer-sub-parent">CSR Program</a>
+            <a href="#csr-fundraising" class="drawer-sub-sub">Fundraising</a>
+            <a href="#csr-donate" class="drawer-sub-sub">Online donation</a>
+            <a href="#csr-partners" class="drawer-sub-sub">Corporate Partners</a>
           </div>
         </div>
         <div class="drawer-group">
