@@ -500,8 +500,10 @@ hr {
 .brand:hover { opacity: 0.85; }
 .brand-logo {
   height: 48px;
+  max-width: 200px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 .brand-text {
   display: flex;
@@ -918,7 +920,9 @@ hr {
 .footer-col-brand .footer-brand { margin-bottom: var(--s-4); }
 .footer-brand img {
   height: 52px;
+  max-width: 200px;
   width: auto;
+  object-fit: contain;
   border-radius: var(--r-sm);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
   background: rgba(255, 255, 255, 0.95);
@@ -4713,7 +4717,7 @@ hr {
   <footer class="site-footer"><div class="container">
     <div class="footer-grid">
       <div class="footer-col footer-col-brand">
-        <div class="footer-brand"><img src="http://chacambodia.nexusfinance.asia/wp-content/uploads/2026/06/cha-logo-left.png" alt="Cambodian Haemophilia Association" style="height:52px;width:auto"></div>
+        <div class="footer-brand"><img src="http://chacambodia.nexusfinance.asia/wp-content/uploads/2026/06/cha-logo-left.png" alt="Cambodian Haemophilia Association" style="height:52px;width:auto;max-width:200px;object-fit:contain"></div>
         <p class="footer-tagline" data-i18n="footer_tagline">Dedicated to improving the quality of life for all people affected by bleeding disorders in Cambodia.</p>
         <div class="footer-socials">
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
