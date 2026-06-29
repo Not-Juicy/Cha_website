@@ -3810,7 +3810,7 @@ hr {
     </div></section>
 
     <!-- News section -->
-    <section class="section section-soft" id="news"><div class="container">
+    <section class="section section-soft" id="news-events"><div class="container">
       <div class="section-heading flex-between" data-reveal>
         <div>
           <h2 data-i18n="news_heading">Latest News &amp; Events</h2>
@@ -4232,6 +4232,7 @@ hr {
           <p style="color:var(--c-muted);font-weight:var(--fw-regular)" data-i18n="membership_cta_sub">Register now to access exclusive resources, events, and support.</p>
           <a class="btn btn-primary" href="#" data-member-register-trigger data-i18n="membership_register">Register Now <span class="arrow">→</span></a>
           <span style="margin-left:var(--s-4);font-size:0.875rem;color:var(--c-muted)" data-i18n="membership_signin">Already a member? <a href="#" data-member-trigger style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></span>
+          <span style="display:block;margin-top:var(--s-3);font-size:0.875rem"><a href="patient-card.html" style="color:var(--c-blue);font-weight:var(--fw-semibold)">View Patient Card →</a></span>
         </div>
       </div>
       <div class="tab-panel is-active" data-tab-panel="csr-donate" style="padding-top:0">
@@ -4422,11 +4423,11 @@ hr {
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_quick_links">Quick Links</h4>
-        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#haemophilia">About Haemophilia</a></li><li><a href="#news">News &amp; Activities</a></li><li><a href="#contact">Contact Us</a></li></ul>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#haemophilia">About Haemophilia</a></li><li><a href="#vwd">About VWD</a></li><li><a href="#news-events">News &amp; Activities</a></li><li><a href="#contact">Contact Us</a></li></ul>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_resources">Resources</h4>
-        <ul><li><a href="#haemophilia" data-i18n="footer_patient_guides">Patient Guides</a></li><li><a href="#news" data-i18n="footer_news_events">News &amp; Events</a></li><li><a href="#programs-centres">Treatment Centres</a></li><li><a href="#" data-donate-trigger data-i18n="footer_donation">Donation</a></li></ul>
+        <ul><li><a href="#haemophilia" data-i18n="footer_patient_guides">Patient Guides</a></li><li><a href="#news-events" data-i18n="footer_news_events">News &amp; Events</a></li><li><a href="#programs-centres">Treatment Centres</a></li><li><a href="#" data-donate-trigger data-i18n="footer_donation">Donation</a></li></ul>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_contact">Contact Us</h4>
@@ -4449,8 +4450,8 @@ hr {
     <div class="footer-bottom">
       <span data-i18n="footer_copyright">© 2026 Cambodian Haemophilia Association. All rights reserved.</span>
       <div class="footer-bottom-links">
-        <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
-        <a href="#" data-i18n="footer_disclaimer">Disclaimer</a>
+        <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+        <a href="disclaimer.html" data-i18n="footer_disclaimer">Disclaimer</a>
         <a href="#" data-i18n="footer_social">Social Media Links</a>
         <a href="#contact" data-i18n="nav_contact_us">Contact Us</a>
 
@@ -4850,6 +4851,54 @@ hr {
   // Reset to login on close
   const origCloseMember = closeMember;
   closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; };
+
+  // ---- localStorage auth: registration ----
+  const regForm = registerPanel.querySelector('form[data-mock-form]');
+  if (regForm) regForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('mregname').value.trim();
+    const email = document.getElementById('mregemail').value.trim();
+    const pass = document.getElementById('mregpass').value;
+    const province = document.getElementById('mregprov').value;
+    const role = document.getElementById('mregrole').value;
+    const agreed = regForm.querySelector('input[type="checkbox"]').checked;
+    if (!name || !email || !pass) { alert('Please fill in all required fields.'); return; }
+    if (!agreed) { alert('Please agree to the Terms & Conditions.'); return; }
+    const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
+    if (users.find(u => u.email === email)) { alert('An account with this email already exists. Please sign in.'); return; }
+    const memberId = 'CHA-' + new Date().getFullYear() + '-' + String(users.length + 1).padStart(4, '0');
+    const user = { name, email, pass, province, role, memberId, memberSince: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }), bloodType: '', condition: '', dob: '', emergencyContact: '', emergencyPhone: '', treatmentCentre: '', treatmentPhone: '' };
+    users.push(user);
+    localStorage.setItem('cha_users', JSON.stringify(users));
+    localStorage.setItem('cha_current_user', JSON.stringify(user));
+    closeMember();
+    updateMemberButton(user);
+    alert('Account created! Welcome, ' + name + '.');
+  });
+
+  // ---- localStorage auth: login ----
+  const loginForm = loginPanel.querySelector('form[data-mock-form]');
+  if (loginForm) loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('memail').value.trim();
+    const pass = document.getElementById('mpass').value;
+    if (!email || !pass) { alert('Please enter your email and password.'); return; }
+    const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
+    const user = users.find(u => u.email === email && u.pass === pass);
+    if (!user) { alert('Invalid email or password. Please try again.'); return; }
+    localStorage.setItem('cha_current_user', JSON.stringify(user));
+    closeMember();
+    updateMemberButton(user);
+    alert('Welcome back, ' + user.name + '!');
+  });
+
+  // ---- localStorage auth: check session on load ----
+  function updateMemberButton(user) {
+    const triggers = document.querySelectorAll('[data-member-trigger]');
+    triggers.forEach(t => { t.textContent = user ? 'My Account' : 'Become a Member'; });
+  }
+  const currentUser = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
+  if (currentUser) updateMemberButton(currentUser);
 })();
 
 /* ============================================
