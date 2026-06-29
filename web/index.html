@@ -4392,7 +4392,7 @@ hr {
           <div class="form-row"><div class="form-group"><label class="form-label" for="mregname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div></div>
           <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
           <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
-          <div class="form-group"><label class="form-check"><input type="checkbox" required><span>I agree to the <a href="#">Terms &amp; Conditions</a></span></label></div>
+          <div class="form-group"><label class="form-check"><input type="checkbox" id="mregterms"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a></span></label></div>
           <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
         </form>
         <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
@@ -4601,7 +4601,9 @@ hr {
   });
 
   // ---------- 6. Form mock submit ----------
+  // Skip forms that have their own handler (registration, login, donate handled separately)
   document.querySelectorAll('[data-mock-form]').forEach((form) => {
+    if (form.closest('#member-modal') || form.closest('#donate-modal')) return;
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       // Simple required validation
@@ -4858,12 +4860,13 @@ hr {
   const regForm = registerPanel.querySelector('form[data-mock-form]');
   if (regForm) regForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const name = document.getElementById('mregname').value.trim();
     const email = document.getElementById('mregemail').value.trim();
     const pass = document.getElementById('mregpass').value;
     const province = document.getElementById('mregprov').value;
     const role = document.getElementById('mregrole').value;
-    const agreed = regForm.querySelector('input[type="checkbox"]').checked;
+    const agreed = document.getElementById('mregterms').checked;
     if (!name || !email || !pass) { alert('Please fill in all required fields.'); return; }
     if (!agreed) { alert('Please agree to the Terms & Conditions.'); return; }
     const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
@@ -4882,6 +4885,7 @@ hr {
   const loginForm = loginPanel.querySelector('form[data-mock-form]');
   if (loginForm) loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const email = document.getElementById('memail').value.trim();
     const pass = document.getElementById('mpass').value;
     if (!email || !pass) { alert('Please enter your email and password.'); return; }
