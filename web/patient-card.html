@@ -3,33 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Patient Card — Cambodian Haemophilia Association</title>
-  <meta name="description" content="Digital patient card for CHA members — access your health info, member ID, and emergency contacts.">
+  <title>CHA Member Card — Cambodian Haemophilia Association</title>
+  <meta name="description" content="Digital membership card for CHA members — access your profile, member ID, and health info.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Battambang:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
 :root {
-  --c-blue: #0B1D6D;
-  --c-blue-700: #081652;
-  --c-blue-100: #E5E8F2;
-  --c-red: #E31E24;
-  --c-red-700: #B8151A;
-  --c-red-100: #FCE5E6;
-  --c-purple: #6A2C91;
-  --c-purple-700: #4D1F6B;
-  --c-purple-100: #EFE6F4;
-  --c-white: #FFFFFF;
-  --c-gray-50: #F8F9FB;
-  --c-gray-100: #F2F4F8;
-  --c-gray-200: #E5E8EE;
-  --c-text: #1A1A1A;
-  --c-muted: #5A5A5A;
+  --c-blue: #0B1D6D; --c-blue-700: #081652; --c-blue-100: #E5E8F2;
+  --c-red: #E31E24; --c-red-700: #B8151A; --c-red-100: #FCE5E6;
+  --c-purple: #6A2C91; --c-purple-700: #4D1F6B; --c-purple-100: #EFE6F4;
+  --c-white: #FFFFFF; --c-gray-50: #F8F9FB; --c-gray-100: #F2F4F8; --c-gray-200: #E5E8EE;
+  --c-text: #1A1A1A; --c-muted: #5A5A5A;
   --font-sans: 'Poppins', 'Battambang', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.25rem;
   --s-6: 1.5rem; --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem; --s-20: 5rem;
   --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
-  --t-fast: 150ms; --t-base: 250ms; --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 150ms; --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); color: var(--c-text); background: linear-gradient(180deg, #F4F6FB 0%, #FAFBFE 50%, #FFFFFF 100%); line-height: 1.6; min-height: 100vh; }
@@ -37,6 +27,7 @@ a { color: var(--c-blue); text-decoration: none; transition: color var(--t-fast)
 a:hover { color: var(--c-red); }
 .container { max-width: 1080px; margin: 0 auto; padding: 0 var(--s-6); }
 
+/* Topbar */
 .topbar { background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--c-gray-200); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--s-4) 0; }
 .brand { font-weight: 700; color: var(--c-blue); font-size: 1.0625rem; display: inline-flex; align-items: center; gap: var(--s-2); }
@@ -45,337 +36,376 @@ a:hover { color: var(--c-red); }
 
 /* Login required */
 .login-required { padding: var(--s-20) 0; text-align: center; display: none; }
-.login-required-card { max-width: 440px; margin: 0 auto; background: var(--c-white); border-radius: var(--r-xl); padding: var(--s-10) var(--s-8); box-shadow: 0 20px 60px rgba(11,29,109,0.1); border: 1px solid var(--c-gray-200); }
+.login-card { max-width: 440px; margin: 0 auto; background: var(--c-white); border-radius: var(--r-xl); padding: var(--s-10) var(--s-8); box-shadow: 0 20px 60px rgba(11,29,109,0.1); border: 1px solid var(--c-gray-200); }
 .login-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,var(--c-blue),var(--c-purple)); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--s-6); box-shadow: 0 12px 32px rgba(11,29,109,0.25); }
 .login-icon svg { width: 36px; height: 36px; }
-.login-required h1 { font-size: 1.75rem; font-weight: 800; color: var(--c-blue); margin-bottom: var(--s-3); letter-spacing: -0.02em; }
+.login-required h1 { font-size: 1.75rem; font-weight: 800; color: var(--c-blue); margin-bottom: var(--s-3); }
 .login-required p { color: var(--c-muted); font-size: 1rem; margin-bottom: var(--s-8); }
-.btn-login { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); padding: 14px 32px; border-radius: var(--r-full); font-weight: 700; font-size: 1rem; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
-.btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
+.btn-login { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); padding: 14px 32px; border-radius: var(--r-full); font-weight: 700; font-size: 1rem; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11,29,109,0.25); }
+.btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11,29,109,0.35); color: var(--c-white); }
 
 /* Card page */
-.card-page { padding: var(--s-10) 0 var(--s-20); display: none; }
-.card-page > .container { display: grid; grid-template-columns: 380px 1fr; gap: var(--s-8); align-items: start; }
-@media (max-width: 900px) { .card-page > .container { grid-template-columns: 1fr; gap: var(--s-6); } }
+.card-page { padding: var(--s-8) 0 var(--s-20); display: none; }
+.card-page > .container { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items: start; }
+@media (max-width: 900px) { .card-page > .container { grid-template-columns: 1fr; } }
 
-/* Patient card — credit card proportions with premium look */
-.patient-card-wrap { position: sticky; top: 80px; }
-.patient-card {
-  background: linear-gradient(135deg, var(--c-blue) 0%, #1E2B7A 50%, var(--c-purple) 100%);
-  border-radius: 20px; padding: var(--s-5) var(--s-5) var(--s-4); color: var(--c-white);
-  position: relative; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(11, 29, 109, 0.4), 0 10px 24px -8px rgba(11, 29, 109, 0.2);
-  min-height: 240px; display: flex; flex-direction: column; gap: var(--s-3); justify-content: space-between;
-}
-.patient-card::before { content: ""; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); }
-.patient-card::after { content: ""; position: absolute; bottom: -50px; left: -50px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(227,30,36,0.2) 0%, transparent 70%); }
-.patient-card > * { position: relative; z-index: 1; }
+/* SHARED: Member card (all roles) */
+.member-card { background: linear-gradient(135deg, var(--c-blue) 0%, #1E2B7A 50%, var(--c-purple) 100%); border-radius: 20px; padding: var(--s-5) var(--s-5) var(--s-4); color: var(--c-white); position: relative; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(11, 29, 109, 0.4), 0 10px 24px -8px rgba(11, 29, 109, 0.2); min-height: 220px; display: flex; flex-direction: column; gap: var(--s-3); justify-content: space-between; }
+.member-card::before { content: ""; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); }
+.member-card::after { content: ""; position: absolute; bottom: -50px; left: -50px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(227,30,36,0.2) 0%, transparent 70%); }
+.member-card > * { position: relative; z-index: 1; }
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-3); }
 .card-logo-block { display: flex; flex-direction: column; gap: 2px; }
-.card-logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; }
+.card-logo { font-weight: 800; font-size: 1.25rem; }
 .card-org { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.75; }
-.card-member-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.25); padding: 4px 10px; border-radius: var(--r-full); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-.card-member-badge svg { width: 11px; height: 11px; }
-.card-body { display: flex; flex-direction: column; gap: var(--s-2); }
-.card-patient-name { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
-.card-info { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2) var(--s-4); }
-.card-field-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; margin-bottom: 2px; }
-.card-field-value { font-size: 0.8125rem; font-weight: 600; }
+.card-role-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.25); padding: 4px 10px; border-radius: var(--r-full); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.card-role-badge svg { width: 11px; height: 11px; }
+.card-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+.card-details { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2) var(--s-4); }
+.card-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; margin-bottom: 2px; }
+.card-value { font-size: 0.8125rem; font-weight: 600; }
 .card-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-3); }
 .card-id-block { display: flex; flex-direction: column; gap: 2px; }
 .card-id-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; }
 .card-id { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
-.card-blood-type { background: var(--c-red); border-radius: var(--r-full); padding: 5px 16px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(227,30,36,0.4); }
-
-.card-actions { display: flex; gap: var(--s-3); margin-top: var(--s-5); }
-.btn-print, .btn-logout { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); padding: 12px 20px; border-radius: var(--r-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); flex: 1; }
-.btn-print { background: var(--c-blue); color: var(--c-white); border: none; box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
-.btn-print:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
-.btn-print svg { width: 18px; height: 18px; }
-.btn-logout { background: transparent; color: var(--c-red); border: 1px solid var(--c-red); }
-.btn-logout:hover { background: var(--c-red); color: var(--c-white); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(227,30,36,0.25); }
+.card-action-btns { display: flex; gap: var(--s-3); margin-top: var(--s-5); }
+.btn-print, .btn-signout { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); padding: 12px 20px; border-radius: var(--r-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); flex: 1; }
+.btn-print { background: var(--c-blue); color: var(--c-white); border: none; box-shadow: 0 8px 20px rgba(11,29,109,0.25); }
+.btn-print:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11,29,109,0.35); color: var(--c-white); }
+.btn-signout { background: transparent; color: var(--c-red); border: 1px solid var(--c-red); }
+.btn-signout:hover { background: var(--c-red); color: var(--c-white); transform: translateY(-2px); }
 
 /* Profile section */
 .profile-section { display: flex; flex-direction: column; gap: var(--s-5); }
-.profile-header { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-5) var(--s-6); background: var(--c-white); border-radius: var(--r-lg); border: 1px solid var(--c-gray-200); box-shadow: 0 2px 8px rgba(11,29,109,0.04); }
-.avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.25rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 8px 20px rgba(11, 29, 109, 0.2); }
-.profile-info-block { flex: 1; min-width: 0; }
-.profile-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; color: var(--c-text); }
-.profile-email { color: var(--c-muted); font-size: 0.875rem; }
-.profile-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-full); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-.profile-status.active { background: #DCFCE7; color: #166534; }
-.profile-status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.profile-header { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-4) var(--s-5); background: var(--c-white); border-radius: var(--r-lg); border: 1px solid var(--c-gray-200); box-shadow: 0 2px 8px rgba(11,29,109,0.04); }
+.avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.25rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 6px 16px -4px rgba(11,29,109,0.3); }
+.profile-info { flex: 1; min-width: 0; }
+.profile-name { font-size: 1.125rem; font-weight: 800; color: var(--c-text); margin: 0 0 2px; letter-spacing: -0.01em; }
+.profile-email { color: var(--c-muted); font-size: 0.875rem; margin: 0; }
+.profile-role { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--r-full); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+.profile-role.patient { background: #DCFCE7; color: #166534; }
+.profile-role.caregiver { background: var(--c-blue-100); color: var(--c-blue); }
+.profile-role.professional { background: #EFE6F4; color: var(--c-purple); }
+.profile-role.supporter { background: #FEF3C7; color: #92400E; }
+.profile-role .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-/* Info cards — premium with gradient top bar */
-.info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); position: relative; overflow: hidden; transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); }
-.info-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px -12px rgba(11,29,109,0.15); }
-.info-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--c-blue); }
+/* Info cards */
+.info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-4) var(--s-5); position: relative; overflow: hidden; margin-bottom: var(--s-4); }
+.info-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.info-card.blue::before { background: var(--c-blue); }
 .info-card.purple::before { background: var(--c-purple); }
 .info-card.red::before { background: var(--c-red); }
-.info-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-blue); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
-.info-card.purple h3 { color: var(--c-purple); }
-.info-card.red h3 { color: var(--c-red); }
-.info-card h3 svg { width: 14px; height: 14px; }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-5); }
+.info-card h4 { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-blue); font-weight: 700; margin: 0 0 var(--s-3); display: flex; align-items: center; gap: var(--s-2); }
+.info-card h4 svg { width: 14px; height: 14px; }
+.info-card.purple h4 { color: var(--c-purple); }
+.info-card.red h4 { color: var(--c-red); }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-4); }
 @media (max-width: 540px) { .info-grid { grid-template-columns: 1fr; } }
-.info-item .label { font-size: 0.75rem; color: var(--c-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; }
+.info-item .label { font-size: 0.6875rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; margin-bottom: 2px; }
 .info-item .value { font-size: 0.9375rem; font-weight: 600; color: var(--c-text); }
 
 /* Edit form */
-.edit-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); position: relative; overflow: hidden; }
+.edit-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-4) var(--s-5); position: relative; overflow: hidden; }
 .edit-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--c-blue) 0%, var(--c-red) 50%, var(--c-purple) 100%); }
-.edit-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-purple); font-weight: 700; margin-bottom: var(--s-5); display: flex; align-items: center; gap: var(--s-2); }
-.edit-card h3 svg { width: 14px; height: 14px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.edit-card h4 { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-purple); font-weight: 700; margin: 0 0 var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
+.edit-card h4 svg { width: 14px; height: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
 @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
-.form-group { margin-bottom: var(--s-4); }
-.form-group label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--c-text); margin-bottom: 6px; }
-.form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--c-gray-200); border-radius: var(--r-md); font-family: var(--font-sans); font-size: 0.9375rem; background: var(--c-white); transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--c-blue); box-shadow: 0 0 0 3px rgba(11, 29, 109, 0.1); }
-.btn-save { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); color: var(--c-white); border: none; padding: 12px 28px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 700; font-size: 0.9375rem; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.3); }
-.btn-save:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.4); }
+.form-group { margin-bottom: var(--s-3); }
+.form-group label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--c-text); margin-bottom: 4px; }
+.form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--c-gray-200); border-radius: var(--r-md); font-family: var(--font-sans); font-size: 0.9375rem; transition: border-color var(--t-fast) var(--ease); }
+.form-group input:focus { outline: none; border-color: var(--c-blue); box-shadow: 0 0 0 3px rgba(11,29,109,0.1); }
+.btn-save { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); color: var(--c-white); border: none; padding: 12px 28px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 700; font-size: 0.9375rem; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11,29,109,0.3); }
+.btn-save:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11,29,109,0.4); }
 
-/* Emergency banner */
-.emergency-banner { background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%); border-radius: var(--r-lg); padding: var(--s-5) var(--s-6); display: flex; align-items: center; gap: var(--s-4); color: var(--c-white); box-shadow: 0 12px 32px -8px rgba(227,30,36,0.4); }
-.emergency-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.emergency-icon svg { width: 22px; height: 22px; }
-.emergency-text { font-size: 0.9375rem; line-height: 1.4; }
-.emergency-text strong { display: block; font-size: 1.0625rem; margin-bottom: 2px; font-weight: 700; }
+/* Not-available message for non-medical roles */
+.na-note { background: var(--c-blue-100); border-radius: var(--r-md); padding: var(--s-4); text-align: center; color: var(--c-blue); font-size: 0.875rem; font-weight: 600; }
+.na-note svg { width: 18px; height: 18px; margin-bottom: var(--s-2); opacity: 0.5; }
 
 footer { background: var(--c-blue); color: var(--c-white); padding: var(--s-8) 0; text-align: center; font-size: 0.875rem; margin-top: var(--s-16); }
 footer a { color: var(--c-white); text-decoration: underline; }
 footer a:hover { color: var(--c-red); }
-
 @media print {
-  .topbar, .btn-print, .btn-save, .btn-logout, .edit-card, footer, .emergency-banner, .profile-section, .card-actions { display: none !important; }
+  .topbar, .btn-print, .btn-signout, .edit-card, footer, .profile-section, .card-action-btns { display: none !important; }
   body { background: white; }
   .card-page { padding: 0; }
   .card-page > .container { grid-template-columns: 1fr; }
-  .patient-card { box-shadow: none; border: 2px solid #ccc; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .member-card { box-shadow: none; border: 2px solid #ccc; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <a href="index.html" class="brand">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        CHA — Cambodian Haemophilia Association
-      </a>
-      <a href="index.html" class="back-link">← Back to home</a>
+<div class="topbar"><div class="container topbar-inner">
+  <a href="index.html" class="brand"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> CHA — Cambodian Haemophilia Association</a>
+  <a href="index.html" class="back-link">← Back to home</a>
+</div></div>
+
+<div class="login-required" id="login-screen"><div class="container"><div class="login-card">
+  <div class="login-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+  <h1>Your CHA Member Card</h1>
+  <p>Sign in or register to view your digital membership card and profile information.</p>
+  <a href="index.html" class="btn-login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> Go to CHA Website to Sign In</a>
+</div></div></div>
+
+<div class="card-page" id="card-page"><div class="container">
+
+<!-- ===== LEFT COLUMN: MEMBER CARD ===== -->
+<div id="card-left">
+  <div class="member-card" id="member-card">
+    <div class="card-header">
+      <div class="card-logo-block">
+        <div class="card-logo">CHA</div>
+        <div class="card-org">Cambodian Haemophilia Association</div>
+      </div>
+      <span class="card-role-badge" id="card-badge"></span>
+    </div>
+    <div class="card-name" id="card-name">—</div>
+    <div class="card-details" id="card-details"></div>
+    <div class="card-footer">
+      <div class="card-id-block">
+        <div class="card-id-label">Member ID</div>
+        <div class="card-id" id="card-id">—</div>
+      </div>
+      <div id="card-extra-badge"></div>
     </div>
   </div>
+  <div class="card-action-btns">
+    <button class="btn-print" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Card
+    </button>
+    <button class="btn-signout" onclick="localStorage.removeItem('cha_current_user');window.location.reload()">Sign Out</button>
+  </div>
+</div>
 
-  <div class="login-required" id="login-screen">
-    <div class="container">
-      <div class="login-required-card">
-        <div class="login-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <h1>Your Patient Card</h1>
-        <p>Sign in or register to view your digital patient card, treatment information, and emergency contacts.</p>
-        <a href="index.html" class="btn-login">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-          Go to CHA Website to Sign In
-        </a>
-      </div>
+<!-- ===== RIGHT COLUMN: ROLE-SPECIFIC SECTIONS ===== -->
+<div class="profile-section">
+  <div class="profile-header">
+    <div class="avatar" id="avatar-initials">—</div>
+    <div class="profile-info">
+      <p class="profile-name" id="profile-name">—</p>
+      <p class="profile-email" id="profile-email">—</p>
     </div>
+    <span class="profile-role" id="profile-role-badge"><span class="dot"></span> <span id="profile-role-text">—</span></span>
   </div>
 
-  <div class="card-page" id="card-page">
-    <div class="container">
-      <div>
-        <div class="patient-card-wrap">
-          <div class="patient-card" id="patient-card">
-            <div class="card-header">
-              <div class="card-logo-block">
-                <div class="card-logo">CHA</div>
-                <div class="card-org">Cambodian Haemophilia Association</div>
-              </div>
-              <span class="card-member-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Member
-              </span>
-            </div>
-            <div class="card-body">
-              <div class="card-patient-name" id="card-name">—</div>
-              <div class="card-info">
-                <div><div class="card-field-label">Blood Type</div><div class="card-field-value" id="card-blood">—</div></div>
-                <div><div class="card-field-label">Condition</div><div class="card-field-value" id="card-condition">—</div></div>
-                <div><div class="card-field-label">Date of Birth</div><div class="card-field-value" id="card-dob">—</div></div>
-                <div><div class="card-field-label">Member Since</div><div class="card-field-value" id="card-since">—</div></div>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="card-id-block">
-                <div class="card-id-label">Member ID</div>
-                <div class="card-id" id="card-id">CHA-0000-0000</div>
-              </div>
-              <div class="card-blood-type" id="card-blood-badge">—</div>
-            </div>
-          </div>
-        </div>
-        <div class="card-actions">
-          <button class="btn-print" onclick="window.print()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-            Print Card
-          </button>
-          <button class="btn-logout" onclick="localStorage.removeItem('cha_current_user');window.location.reload()">Sign Out</button>
-        </div>
-      </div>
-
-      <div class="profile-section">
-        <div class="profile-header">
-          <div class="avatar" id="avatar-initials">—</div>
-          <div class="profile-info-block">
-            <div class="profile-name" id="profile-name">—</div>
-            <div class="profile-email" id="profile-email">—</div>
-          </div>
-          <span class="profile-status active"><span class="dot"></span> Active</span>
-        </div>
-
-        <div class="info-card">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Patient Information
-          </h3>
-          <div class="info-grid">
-            <div class="info-item"><div class="label">Full Name</div><div class="value" id="info-name">—</div></div>
-            <div class="info-item"><div class="label">Date of Birth</div><div class="value" id="info-dob">—</div></div>
-            <div class="info-item"><div class="label">Blood Type</div><div class="value" id="info-blood">—</div></div>
-            <div class="info-item"><div class="label">Condition</div><div class="value" id="info-condition">—</div></div>
-            <div class="info-item"><div class="label">Member ID</div><div class="value" id="info-id">—</div></div>
-            <div class="info-item"><div class="label">Role</div><div class="value" id="info-role">—</div></div>
-          </div>
-        </div>
-
-        <div class="info-card purple">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            Treatment Centre
-          </h3>
-          <div class="info-grid">
-            <div class="info-item"><div class="label">Centre</div><div class="value" id="info-centre">—</div></div>
-            <div class="info-item"><div class="label">Phone</div><div class="value" id="info-centre-phone">—</div></div>
-          </div>
-        </div>
-
-        <div class="info-card red">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Emergency Contact
-          </h3>
-          <div class="info-grid">
-            <div class="info-item"><div class="label">Name</div><div class="value" id="info-emergency">—</div></div>
-            <div class="info-item"><div class="label">Phone</div><div class="value" id="info-emergency-phone">—</div></div>
-          </div>
-        </div>
-
-        <div class="edit-card">
-          <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Edit Profile
-          </h3>
-          <form id="edit-form">
-            <div class="form-row">
-              <div class="form-group"><label>Blood Type</label><input type="text" id="edit-blood" placeholder="e.g. A+, B+, O-"></div>
-              <div class="form-group"><label>Condition</label><input type="text" id="edit-condition" placeholder="e.g. Haemophilia A"></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label>Date of Birth</label><input type="text" id="edit-dob" placeholder="e.g. 15 March 1992"></div>
-              <div class="form-group"><label>Province</label><input type="text" id="edit-province" placeholder="e.g. Phnom Penh"></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label>Treatment Centre</label><input type="text" id="edit-centre" placeholder="e.g. National Paediatric Hospital"></div>
-              <div class="form-group"><label>Treatment Phone</label><input type="text" id="edit-centre-phone" placeholder="e.g. 023 721 833"></div>
-            </div>
-            <div class="form-row">
-              <div class="form-group"><label>Emergency Contact Name</label><input type="text" id="edit-emergency" placeholder="e.g. Sok Dara"></div>
-              <div class="form-group"><label>Emergency Contact Phone</label><input type="text" id="edit-emergency-phone" placeholder="e.g. 012 345 678"></div>
-            </div>
-            <button type="submit" class="btn-save">Save Changes</button>
-          </form>
-        </div>
-
-        <div class="emergency-banner">
-          <div class="emergency-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div class="emergency-text">
-            <strong>Emergency Support</strong>
-            For bleeding emergencies, call your treatment centre or go to the nearest hospital immediately.
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- PATIENT -->
+  <div id="sections-patient" style="display:none">
+    <div class="info-card blue"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Patient Information</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Blood Type</div><div class="value" id="i-blood">—</div></div>
+      <div class="info-item"><div class="label">Condition</div><div class="value" id="i-condition">—</div></div>
+      <div class="info-item"><div class="label">Date of Birth</div><div class="value" id="i-dob">—</div></div>
+      <div class="info-item"><div class="label">Member Since</div><div class="value" id="i-since">—</div></div>
+    </div></div>
+    <div class="info-card purple"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Treatment Centre</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Centre</div><div class="value" id="i-centre">—</div></div>
+      <div class="info-item"><div class="label">Phone</div><div class="value" id="i-centre-phone">—</div></div>
+    </div></div>
+    <div class="info-card red"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Emergency Contact</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Name</div><div class="value" id="i-emergency">—</div></div>
+      <div class="info-item"><div class="label">Phone</div><div class="value" id="i-emergency-phone">—</div></div>
+    </div></div>
+    <div class="edit-card"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Profile</h4>
+    <form id="edit-patient"><div class="form-row">
+      <div class="form-group"><label>Blood Type</label><input id="e-blood" placeholder="e.g. A+, B+, O-"></div>
+      <div class="form-group"><label>Condition</label><input id="e-condition" placeholder="e.g. Haemophilia A"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Date of Birth</label><input id="e-dob" placeholder="e.g. 15 March 1992"></div>
+      <div class="form-group"><label>Province</label><input id="e-province" placeholder="e.g. Phnom Penh"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Treatment Centre</label><input id="e-centre" placeholder="e.g. National Paediatric Hospital"></div>
+      <div class="form-group"><label>Treatment Phone</label><input id="e-centre-phone" placeholder="e.g. 023 721 833"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Emergency Contact</label><input id="e-emergency" placeholder="e.g. Sok Dara"></div>
+      <div class="form-group"><label>Emergency Phone</label><input id="e-emergency-phone" placeholder="e.g. 012 345 678"></div>
+    </div><button type="submit" class="btn-save">Save Changes</button></form></div>
   </div>
 
-  <footer>
-    <div class="container">
-      © 2026 Cambodian Haemophilia Association · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer</a>
-    </div>
-  </footer>
+  <!-- CAREGIVER -->
+  <div id="sections-caregiver" style="display:none">
+    <div class="info-card blue"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Caregiver Details</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Linked Patient</div><div class="value" id="cg-patient">—</div></div>
+      <div class="info-item"><div class="label">Relationship</div><div class="value" id="cg-relation">—</div></div>
+      <div class="info-item"><div class="label">Province</div><div class="value" id="cg-province">—</div></div>
+      <div class="info-item"><div class="label">Member Since</div><div class="value" id="cg-since">—</div></div>
+    </div></div>
+    <div class="info-card red"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Emergency Contact</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Name</div><div class="value" id="cg-emergency">—</div></div>
+      <div class="info-item"><div class="label">Phone</div><div class="value" id="cg-emergency-phone">—</div></div>
+    </div></div>
+    <div class="info-card purple"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Patient Card Access</h4>
+    <div class="na-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><p style="margin:0">Your linked patient can access their medical card by signing in with their own account.</p></div></div>
+    <div class="edit-card"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Profile</h4>
+    <form id="edit-caregiver"><div class="form-row">
+      <div class="form-group"><label>Linked Patient Name</label><input id="cg-e-patient" placeholder="e.g. Srey Mao"></div>
+      <div class="form-group"><label>Relationship</label><input id="cg-e-relation" placeholder="e.g. Parent"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Province</label><input id="cg-e-province" placeholder="e.g. Phnom Penh"></div>
+      <div class="form-group"><label>Emergency Contact</label><input id="cg-e-emergency" placeholder="e.g. Sok Dara"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Emergency Phone</label><input id="cg-e-emergency-phone" placeholder="e.g. 012 345 678"></div>
+    </div><button type="submit" class="btn-save">Save Changes</button></form></div>
+  </div>
 
-  <script>
-  (function() {
-    const user = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
-    const loginScreen = document.getElementById('login-screen');
-    const cardPage = document.getElementById('card-page');
-    if (!user) { loginScreen.style.display = 'block'; cardPage.style.display = 'none'; return; }
-    loginScreen.style.display = 'none'; cardPage.style.display = 'block';
+  <!-- PROFESSIONAL -->
+  <div id="sections-professional" style="display:none">
+    <div class="info-card blue"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Professional Details</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Affiliation</div><div class="value" id="pr-affiliation">—</div></div>
+      <div class="info-item"><div class="label">Specialty</div><div class="value" id="pr-specialty">—</div></div>
+      <div class="info-item"><div class="label">License #</div><div class="value" id="pr-license">—</div></div>
+      <div class="info-item"><div class="label">Province</div><div class="value" id="pr-province">—</div></div>
+    </div></div>
+    <div class="info-card red"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Contact</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Phone</div><div class="value" id="pr-emergency-phone">—</div></div>
+    </div></div>
+    <div class="edit-card"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Profile</h4>
+    <form id="edit-professional"><div class="form-row">
+      <div class="form-group"><label>Affiliation / Organisation</label><input id="pr-e-affiliation" placeholder="e.g. Calmette Hospital"></div>
+      <div class="form-group"><label>Specialty</label><input id="pr-e-specialty" placeholder="e.g. Haematology"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>License Number</label><input id="pr-e-license" placeholder="e.g. KHM-12345"></div>
+      <div class="form-group"><label>Province</label><input id="pr-e-province" placeholder="e.g. Phnom Penh"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Phone Number</label><input id="pr-e-phone" placeholder="e.g. 012 345 678"></div>
+    </div><button type="submit" class="btn-save">Save Changes</button></form></div>
+  </div>
 
-    function render(u) {
-      document.getElementById('card-name').textContent = u.name || '—';
-      document.getElementById('card-blood').textContent = u.bloodType || '—';
-      document.getElementById('card-condition').textContent = u.condition || '—';
-      document.getElementById('card-dob').textContent = u.dob || '—';
-      document.getElementById('card-since').textContent = u.memberSince || '—';
-      document.getElementById('card-id').textContent = u.memberId || '—';
-      document.getElementById('card-blood-badge').textContent = u.bloodType || '—';
-      document.getElementById('avatar-initials').textContent = (u.name || '?').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
-      document.getElementById('profile-name').textContent = u.name || '—';
-      document.getElementById('profile-email').textContent = u.email || '—';
-      document.getElementById('info-name').textContent = u.name || '—';
-      document.getElementById('info-dob').textContent = u.dob || '—';
-      document.getElementById('info-blood').textContent = u.bloodType || '—';
-      document.getElementById('info-condition').textContent = u.condition || '—';
-      document.getElementById('info-id').textContent = u.memberId || '—';
-      document.getElementById('info-role').textContent = u.role || '—';
-      document.getElementById('info-centre').textContent = u.treatmentCentre || '—';
-      document.getElementById('info-centre-phone').textContent = u.treatmentPhone || '—';
-      document.getElementById('info-emergency').textContent = u.emergencyContact || '—';
-      document.getElementById('info-emergency-phone').textContent = u.emergencyPhone || '—';
-      document.getElementById('edit-blood').value = u.bloodType || '';
-      document.getElementById('edit-condition').value = u.condition || '';
-      document.getElementById('edit-dob').value = u.dob || '';
-      document.getElementById('edit-province').value = u.province || '';
-      document.getElementById('edit-centre').value = u.treatmentCentre || '';
-      document.getElementById('edit-centre-phone').value = u.treatmentPhone || '';
-      document.getElementById('edit-emergency').value = u.emergencyContact || '';
-      document.getElementById('edit-emergency-phone').value = u.emergencyPhone || '';
-    }
-    render(user);
+  <!-- SUPPORTER -->
+  <div id="sections-supporter" style="display:none">
+    <div class="info-card blue"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Membership Profile</h4>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Full Name</div><div class="value" id="sp-name">—</div></div>
+      <div class="info-item"><div class="label">Email</div><div class="value" id="sp-email">—</div></div>
+      <div class="info-item"><div class="label">Province</div><div class="value" id="sp-province">—</div></div>
+      <div class="info-item"><div class="label">Member Since</div><div class="value" id="sp-since">—</div></div>
+    </div></div>
+    <div class="info-card purple"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Ways to Help</h4>
+    <div class="na-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p style="margin:0">Thank you for supporting CHA! Your membership helps us provide treatment, education, and hope to people with bleeding disorders across Cambodia.</p></div></div>
+    <div class="edit-card"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit Profile</h4>
+    <form id="edit-supporter"><div class="form-row">
+      <div class="form-group"><label>Full Name</label><input id="sp-e-name" placeholder="e.g. Your Name"></div>
+      <div class="form-group"><label>Province</label><input id="sp-e-province" placeholder="e.g. Phnom Penh"></div>
+    </div><div class="form-row">
+      <div class="form-group"><label>Phone Number</label><input id="sp-e-phone" placeholder="e.g. 012 345 678"></div>
+    </div><button type="submit" class="btn-save">Save Changes</button></form></div>
+  </div>
+</div>
 
-    document.getElementById('edit-form').addEventListener('submit', function(e) {
+</div></div>
+
+<footer><div class="container">© 2026 Cambodian Haemophilia Association · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer</a></div></footer>
+
+<script>
+(function() {
+  var user = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
+  var loginScreen = document.getElementById('login-screen');
+  var cardPage = document.getElementById('card-page');
+  if (!user) { loginScreen.style.display = 'block'; cardPage.style.display = 'none'; return; }
+  loginScreen.style.display = 'none'; cardPage.style.display = 'block';
+
+  var role = user.role || 'Patient';
+  var el = function(id) { return document.getElementById(id); };
+  var set = function(id, val) { var e = el(id); if (e) e.textContent = val || '—'; };
+
+  // Show role-specific sections
+  document.querySelectorAll('[id^="sections-"]').forEach(function(s) { s.style.display = 'none'; });
+  var sectionMap = { Patient: 'patient', 'Family member / Caregiver': 'caregiver', 'Healthcare professional': 'professional', Supporter: 'supporter' };
+  var sectionId = sectionMap[role] || 'supporter';
+  var sectionDiv = document.getElementById('sections-' + sectionId);
+  if (sectionDiv) sectionDiv.style.display = '';
+
+  // Avatar initials
+  var initials = (user.name || '?').split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
+  el('avatar-initials').textContent = initials;
+  el('profile-name').textContent = user.name || '—';
+  el('profile-email').textContent = user.email || '—';
+
+  // Role badge
+  var roleTextMap = { Patient: 'Patient', 'Family member / Caregiver': 'Caregiver', 'Healthcare professional': 'Healthcare Pro', Supporter: 'Supporter' };
+  el('profile-role-text').textContent = roleTextMap[role] || 'Member';
+  var badge = el('profile-role-badge');
+  badge.className = 'profile-role ' + sectionId;
+
+  // Shared card data
+  el('card-name').textContent = user.name || '—';
+  el('card-id').textContent = user.memberId || '—';
+  el('card-badge').innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> ' + roleTextMap[role];
+
+  // Role-specific card details
+  var detailsDiv = el('card-details');
+  var extraBadge = el('card-extra-badge');
+  if (role === 'Patient') {
+    detailsDiv.innerHTML = '<div><div class="card-label">Blood Type</div><div class="card-value">'+(user.bloodType||'—')+'</div></div><div><div class="card-label">Condition</div><div class="card-value">'+(user.condition||'—')+'</div></div><div><div class="card-label">Date of Birth</div><div class="card-value">'+(user.dob||'—')+'</div></div><div><div class="card-label">Member Since</div><div class="card-value">'+(user.memberSince||'—')+'</div></div>';
+    extraBadge.innerHTML = '<div style="background:var(--c-red);border-radius:var(--r-full);padding:4px 14px;font-size:0.75rem;font-weight:800;letter-spacing:0.05em;box-shadow:0 4px 12px rgba(227,30,36,0.4)">'+(user.bloodType||'—')+'</div>';
+    set('i-blood', user.bloodType); set('i-condition', user.condition); set('i-dob', user.dob); set('i-since', user.memberSince);
+    set('i-centre', user.treatmentCentre); set('i-centre-phone', user.treatmentPhone);
+    set('i-emergency', user.emergencyContact); set('i-emergency-phone', user.emergencyPhone);
+    el('e-blood').value = user.bloodType||''; el('e-condition').value = user.condition||''; el('e-dob').value = user.dob||'';
+    el('e-province').value = user.province||''; el('e-centre').value = user.treatmentCentre||''; el('e-centre-phone').value = user.treatmentPhone||'';
+    el('e-emergency').value = user.emergencyContact||''; el('e-emergency-phone').value = user.emergencyPhone||'';
+  } else if (role === 'Family member / Caregiver') {
+    detailsDiv.innerHTML = '<div><div class="card-label">Linked Patient</div><div class="card-value">'+(user.linkedPatient||'—')+'</div></div><div><div class="card-label">Relationship</div><div class="card-value">'+(user.relationship||'—')+'</div></div><div><div class="card-label">Province</div><div class="card-value">'+(user.province||'—')+'</div></div><div><div class="card-label">Member Since</div><div class="card-value">'+(user.memberSince||'—')+'</div></div>';
+    extraBadge.innerHTML = '';
+    set('cg-patient', user.linkedPatient); set('cg-relation', user.relationship); set('cg-province', user.province); set('cg-since', user.memberSince);
+    set('cg-emergency', user.emergencyContact); set('cg-emergency-phone', user.emergencyPhone);
+    el('cg-e-patient').value = user.linkedPatient||''; el('cg-e-relation').value = user.relationship||''; el('cg-e-province').value = user.province||'';
+    el('cg-e-emergency').value = user.emergencyContact||''; el('cg-e-emergency-phone').value = user.emergencyPhone||'';
+  } else if (role === 'Healthcare professional') {
+    detailsDiv.innerHTML = '<div><div class="card-label">Affiliation</div><div class="card-value">'+(user.affiliation||'—')+'</div></div><div><div class="card-label">Specialty</div><div class="card-value">'+(user.specialty||'—')+'</div></div><div><div class="card-label">License</div><div class="card-value">'+(user.licenseNumber||'—')+'</div></div><div><div class="card-label">Province</div><div class="card-value">'+(user.province||'—')+'</div></div>';
+    extraBadge.innerHTML = '';
+    set('pr-affiliation', user.affiliation); set('pr-specialty', user.specialty); set('pr-license', user.licenseNumber); set('pr-province', user.province);
+    set('pr-emergency-phone', user.emergencyPhone);
+    el('pr-e-affiliation').value = user.affiliation||''; el('pr-e-specialty').value = user.specialty||''; el('pr-e-license').value = user.licenseNumber||'';
+    el('pr-e-province').value = user.province||''; el('pr-e-phone').value = user.emergencyPhone||'';
+  } else {
+    // Supporter
+    detailsDiv.innerHTML = '<div><div class="card-label">Role</div><div class="card-value">Supporter</div></div><div><div class="card-label">Email</div><div class="card-value">'+(user.email||'—')+'</div></div><div><div class="card-label">Province</div><div class="card-value">'+(user.province||'—')+'</div></div><div><div class="card-label">Member Since</div><div class="card-value">'+(user.memberSince||'—')+'</div></div>';
+    extraBadge.innerHTML = '';
+    set('sp-name', user.name); set('sp-email', user.email); set('sp-province', user.province); set('sp-since', user.memberSince);
+    el('sp-e-name').value = user.name||''; el('sp-e-province').value = user.province||''; el('sp-e-phone').value = user.emergencyPhone||'';
+  }
+
+  // Generic save helper
+  function saveForm(formId, newFields) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const updated = Object.assign({}, user, {
-        bloodType: document.getElementById('edit-blood').value.trim(),
-        condition: document.getElementById('edit-condition').value.trim(),
-        dob: document.getElementById('edit-dob').value.trim(),
-        province: document.getElementById('edit-province').value.trim(),
-        treatmentCentre: document.getElementById('edit-centre').value.trim(),
-        treatmentPhone: document.getElementById('edit-centre-phone').value.trim(),
-        emergencyContact: document.getElementById('edit-emergency').value.trim(),
-        emergencyPhone: document.getElementById('edit-emergency-phone').value.trim()
-      });
+      var updated = Object.assign({}, user, newFields());
       localStorage.setItem('cha_current_user', JSON.stringify(updated));
-      const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
-      const idx = users.findIndex(u => u.email === updated.email);
+      var users = JSON.parse(localStorage.getItem('cha_users') || '[]');
+      var idx = users.findIndex(function(u) { return u.email === updated.email; });
       if (idx !== -1) users[idx] = updated;
       localStorage.setItem('cha_users', JSON.stringify(users));
-      render(updated);
-      alert('Profile saved!');
+      alert('Profile saved! Reloading...');
+      window.location.reload();
     });
-  })();
-  </script>
+  }
+
+  saveForm('edit-patient', function() { return {
+    bloodType: el('e-blood').value.trim(), condition: el('e-condition').value.trim(), dob: el('e-dob').value.trim(),
+    province: el('e-province').value.trim(), treatmentCentre: el('e-centre').value.trim(), treatmentPhone: el('e-centre-phone').value.trim(),
+    emergencyContact: el('e-emergency').value.trim(), emergencyPhone: el('e-emergency-phone').value.trim()
+  }; });
+  saveForm('edit-caregiver', function() { return {
+    linkedPatient: el('cg-e-patient').value.trim(), relationship: el('cg-e-relation').value.trim(), province: el('cg-e-province').value.trim(),
+    emergencyContact: el('cg-e-emergency').value.trim(), emergencyPhone: el('cg-e-emergency-phone').value.trim()
+  }; });
+  saveForm('edit-professional', function() { return {
+    affiliation: el('pr-e-affiliation').value.trim(), specialty: el('pr-e-specialty').value.trim(), licenseNumber: el('pr-e-license').value.trim(),
+    province: el('pr-e-province').value.trim(), emergencyPhone: el('pr-e-phone').value.trim()
+  }; });
+  saveForm('edit-supporter', function() { return {
+    name: el('sp-e-name').value.trim(), province: el('sp-e-province').value.trim(), emergencyPhone: el('sp-e-phone').value.trim()
+  }; });
+})();
+</script>
 </body>
 </html>
