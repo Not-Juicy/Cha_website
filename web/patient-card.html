@@ -7,7 +7,7 @@
   <meta name="description" content="Digital patient card for CHA members — access your health info, member ID, and emergency contacts.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Battambang:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Battambang:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
 :root {
   --c-blue: #0B1D6D;
@@ -17,6 +17,7 @@
   --c-red-700: #B8151A;
   --c-red-100: #FCE5E6;
   --c-purple: #6A2C91;
+  --c-purple-700: #4D1F6B;
   --c-purple-100: #EFE6F4;
   --c-white: #FFFFFF;
   --c-gray-50: #F8F9FB;
@@ -28,102 +29,127 @@
   --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.25rem;
   --s-6: 1.5rem; --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem; --s-20: 5rem;
   --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
-  --t-fast: 150ms; --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 150ms; --t-base: 250ms; --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-sans); color: var(--c-text); background: var(--c-gray-50); line-height: 1.6; min-height: 100vh; }
+body { font-family: var(--font-sans); color: var(--c-text); background: linear-gradient(180deg, #F4F6FB 0%, #FAFBFE 50%, #FFFFFF 100%); line-height: 1.6; min-height: 100vh; }
 a { color: var(--c-blue); text-decoration: none; transition: color var(--t-fast) var(--ease); }
 a:hover { color: var(--c-red); }
-.container { max-width: 960px; margin: 0 auto; padding: 0 var(--s-6); }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 var(--s-6); }
 
-.topbar { background: var(--c-white); border-bottom: 1px solid var(--c-gray-200); position: sticky; top: 0; z-index: 10; }
+.topbar { background: rgba(255,255,255,0.85); border-bottom: 1px solid var(--c-gray-200); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--s-4) 0; }
-.brand { font-weight: 700; color: var(--c-blue); font-size: 1.125rem; }
+.brand { font-weight: 700; color: var(--c-blue); font-size: 1.0625rem; display: inline-flex; align-items: center; gap: var(--s-2); }
 .brand:hover { color: var(--c-blue); }
 .back-link { font-size: 0.9375rem; font-weight: 500; }
 
-/* Not logged in */
-.login-required { padding: var(--s-20) 0; text-align: center; }
-.login-required h1 { font-size: 1.75rem; font-weight: 800; color: var(--c-blue); margin-bottom: var(--s-3); }
+/* Login required */
+.login-required { padding: var(--s-20) 0; text-align: center; display: none; }
+.login-required-card { max-width: 440px; margin: 0 auto; background: var(--c-white); border-radius: var(--r-xl); padding: var(--s-10) var(--s-8); box-shadow: 0 20px 60px rgba(11,29,109,0.1); border: 1px solid var(--c-gray-200); }
+.login-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,var(--c-blue),var(--c-purple)); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--s-6); box-shadow: 0 12px 32px rgba(11,29,109,0.25); }
+.login-icon svg { width: 36px; height: 36px; }
+.login-required h1 { font-size: 1.75rem; font-weight: 800; color: var(--c-blue); margin-bottom: var(--s-3); letter-spacing: -0.02em; }
 .login-required p { color: var(--c-muted); font-size: 1rem; margin-bottom: var(--s-8); }
 .btn-login { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); padding: 14px 32px; border-radius: var(--r-full); font-weight: 700; font-size: 1rem; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
 .btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
 
-/* Card wrapper */
-.card-page { padding: var(--s-16) 0 var(--s-20); display: none; }
-.card-page > .container { display: grid; grid-template-columns: 340px 1fr; gap: var(--s-8); align-items: start; }
-@media (max-width: 768px) { .card-page > .container { grid-template-columns: 1fr; } }
+/* Card page */
+.card-page { padding: var(--s-10) 0 var(--s-20); display: none; }
+.card-page > .container { display: grid; grid-template-columns: 380px 1fr; gap: var(--s-8); align-items: start; }
+@media (max-width: 900px) { .card-page > .container { grid-template-columns: 1fr; gap: var(--s-6); } }
 
+/* Patient card — credit card proportions with premium look */
+.patient-card-wrap { position: sticky; top: 80px; }
 .patient-card {
-  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%);
-  border-radius: var(--r-xl); padding: var(--s-8); color: var(--c-white);
-  position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(11, 29, 109, 0.25);
-  aspect-ratio: 3/2; display: flex; flex-direction: column; justify-content: space-between;
+  background: linear-gradient(135deg, var(--c-blue) 0%, #1E2B7A 50%, var(--c-purple) 100%);
+  border-radius: 20px; padding: var(--s-6) var(--s-6) var(--s-5); color: var(--c-white);
+  position: relative; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(11, 29, 109, 0.4), 0 10px 24px -8px rgba(11, 29, 109, 0.2);
+  aspect-ratio: 1.586 / 1; display: flex; flex-direction: column; justify-content: space-between;
 }
-.patient-card::before { content: ""; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%); }
-.patient-card::after { content: ""; position: absolute; bottom: -30px; left: -30px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(227,30,36,0.15) 0%, transparent 70%); }
+.patient-card::before { content: ""; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); }
+.patient-card::after { content: ""; position: absolute; bottom: -50px; left: -50px; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(227,30,36,0.2) 0%, transparent 70%); }
 .patient-card > * { position: relative; z-index: 1; }
-.card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-.card-org { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
-.card-logo { font-weight: 800; font-size: 1.125rem; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-3); }
+.card-logo-block { display: flex; flex-direction: column; gap: 2px; }
+.card-logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; }
+.card-org { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.75; }
+.card-member-badge { display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.25); padding: 4px 10px; border-radius: var(--r-full); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.card-member-badge svg { width: 11px; height: 11px; }
 .card-body { display: flex; flex-direction: column; gap: var(--s-3); }
-.card-patient-name { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.01em; }
-.card-info { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
-.card-field-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; font-weight: 600; }
-.card-field-value { font-size: 0.8125rem; font-weight: 500; }
-.card-footer { display: flex; justify-content: space-between; align-items: flex-end; }
-.card-id { font-size: 0.75rem; opacity: 0.6; font-weight: 500; }
-.card-blood-type { background: var(--c-red); border-radius: var(--r-full); padding: 4px 14px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; }
-.card-dob-badge { display: inline-flex; gap: var(--s-2); font-size: 0.75rem; opacity: 0.7; }
+.card-patient-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+.card-info { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-4); }
+.card-field-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; margin-bottom: 2px; }
+.card-field-value { font-size: 0.8125rem; font-weight: 600; }
+.card-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-3); }
+.card-id-block { display: flex; flex-direction: column; gap: 2px; }
+.card-id-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700; }
+.card-id { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
+.card-blood-type { background: var(--c-red); border-radius: var(--r-full); padding: 5px 16px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(227,30,36,0.4); }
 
-.profile-section { display: flex; flex-direction: column; gap: var(--s-6); }
-.profile-header { display: flex; align-items: center; gap: var(--s-5); }
-.avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.5rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 8px 24px rgba(11, 29, 109, 0.2); }
-.profile-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; }
-.profile-email { color: var(--c-muted); font-size: 0.9375rem; }
+.card-actions { display: flex; gap: var(--s-3); margin-top: var(--s-5); }
+.btn-print, .btn-logout { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); padding: 12px 20px; border-radius: var(--r-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); flex: 1; }
+.btn-print { background: var(--c-blue); color: var(--c-white); border: none; box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
+.btn-print:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
+.btn-print svg { width: 18px; height: 18px; }
+.btn-logout { background: transparent; color: var(--c-red); border: 1px solid var(--c-red); }
+.btn-logout:hover { background: var(--c-red); color: var(--c-white); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(227,30,36,0.25); }
 
-.info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); }
-.info-card h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
-.info-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-blue); display: inline-block; }
-.info-card h3 .dot.red { background: var(--c-red); }
-.info-card h3 .dot.purple { background: var(--c-purple); }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+/* Profile section */
+.profile-section { display: flex; flex-direction: column; gap: var(--s-5); }
+.profile-header { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-5) var(--s-6); background: var(--c-white); border-radius: var(--r-lg); border: 1px solid var(--c-gray-200); box-shadow: 0 2px 8px rgba(11,29,109,0.04); }
+.avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.25rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 8px 20px rgba(11, 29, 109, 0.2); }
+.profile-info-block { flex: 1; min-width: 0; }
+.profile-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; color: var(--c-text); }
+.profile-email { color: var(--c-muted); font-size: 0.875rem; }
+.profile-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-full); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+.profile-status.active { background: #DCFCE7; color: #166534; }
+.profile-status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* Info cards — premium with gradient top bar */
+.info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); position: relative; overflow: hidden; transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); }
+.info-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px -12px rgba(11,29,109,0.15); }
+.info-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--c-blue); }
+.info-card.purple::before { background: var(--c-purple); }
+.info-card.red::before { background: var(--c-red); }
+.info-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-blue); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
+.info-card.purple h3 { color: var(--c-purple); }
+.info-card.red h3 { color: var(--c-red); }
+.info-card h3 svg { width: 14px; height: 14px; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-5); }
 @media (max-width: 540px) { .info-grid { grid-template-columns: 1fr; } }
-.info-item .label { font-size: 0.8125rem; color: var(--c-muted); margin-bottom: 2px; }
-.info-item .value { font-size: 1rem; font-weight: 600; }
+.info-item .label { font-size: 0.75rem; color: var(--c-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; }
+.info-item .value { font-size: 0.9375rem; font-weight: 600; color: var(--c-text); }
 
 /* Edit form */
-.edit-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); }
-.edit-card h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
-.edit-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-purple); }
+.edit-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); position: relative; overflow: hidden; }
+.edit-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--c-blue) 0%, var(--c-red) 50%, var(--c-purple) 100%); }
+.edit-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-purple); font-weight: 700; margin-bottom: var(--s-5); display: flex; align-items: center; gap: var(--s-2); }
+.edit-card h3 svg { width: 14px; height: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
 @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
 .form-group { margin-bottom: var(--s-4); }
-.form-group label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--c-text); margin-bottom: var(--s-1); }
-.form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--c-gray-200); border-radius: var(--r-md); font-family: var(--font-sans); font-size: 0.9375rem; transition: border-color var(--t-fast) var(--ease); }
+.form-group label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--c-text); margin-bottom: 6px; }
+.form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--c-gray-200); border-radius: var(--r-md); font-family: var(--font-sans); font-size: 0.9375rem; background: var(--c-white); transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
 .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--c-blue); box-shadow: 0 0 0 3px rgba(11, 29, 109, 0.1); }
-.btn-save { background: var(--c-blue); color: var(--c-white); border: none; padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 6px 16px rgba(11, 29, 109, 0.25); }
-.btn-save:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(11, 29, 109, 0.35); }
-.btn-logout { background: transparent; color: var(--c-red); border: 1px solid var(--c-red); padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: all var(--t-fast) var(--ease); }
-.btn-logout:hover { background: var(--c-red); color: var(--c-white); }
+.btn-save { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); color: var(--c-white); border: none; padding: 12px 28px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 700; font-size: 0.9375rem; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.3); }
+.btn-save:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.4); }
 
-.emergency-banner { background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%); border-radius: var(--r-lg); padding: var(--s-5) var(--s-6); display: flex; align-items: center; gap: var(--s-4); color: var(--c-white); }
-.emergency-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+/* Emergency banner */
+.emergency-banner { background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%); border-radius: var(--r-lg); padding: var(--s-5) var(--s-6); display: flex; align-items: center; gap: var(--s-4); color: var(--c-white); box-shadow: 0 12px 32px -8px rgba(227,30,36,0.4); }
+.emergency-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .emergency-icon svg { width: 22px; height: 22px; }
 .emergency-text { font-size: 0.9375rem; line-height: 1.4; }
-.emergency-text strong { display: block; font-size: 1.0625rem; margin-bottom: 2px; }
-
-.btn-print { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); border: none; padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
-.btn-print:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
-.btn-print svg { width: 18px; height: 18px; }
+.emergency-text strong { display: block; font-size: 1.0625rem; margin-bottom: 2px; font-weight: 700; }
 
 footer { background: var(--c-blue); color: var(--c-white); padding: var(--s-8) 0; text-align: center; font-size: 0.875rem; margin-top: var(--s-16); }
 footer a { color: var(--c-white); text-decoration: underline; }
 footer a:hover { color: var(--c-red); }
+
 @media print {
-  .topbar, .btn-print, .btn-save, .btn-logout, .edit-card, footer, .emergency-banner { display: none !important; }
+  .topbar, .btn-print, .btn-save, .btn-logout, .edit-card, footer, .emergency-banner, .profile-section, .card-actions { display: none !important; }
   body { background: white; }
   .card-page { padding: 0; }
+  .card-page > .container { grid-template-columns: 1fr; }
   .patient-card { box-shadow: none; border: 2px solid #ccc; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
   </style>
@@ -131,55 +157,64 @@ footer a:hover { color: var(--c-red); }
 <body>
   <div class="topbar">
     <div class="container topbar-inner">
-      <a href="index.html" class="brand">CHA — Cambodian Haemophilia Association</a>
+      <a href="index.html" class="brand">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        CHA — Cambodian Haemophilia Association
+      </a>
       <a href="index.html" class="back-link">← Back to home</a>
     </div>
   </div>
 
-  <!-- Login required screen -->
   <div class="login-required" id="login-screen">
     <div class="container">
-      <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue),var(--c-purple));display:flex;align-items:center;justify-content:center;margin:0 auto var(--s-6);box-shadow:0 12px 32px rgba(11,29,109,0.25);">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div class="login-required-card">
+        <div class="login-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h1>Your Patient Card</h1>
+        <p>Sign in or register to view your digital patient card, treatment information, and emergency contacts.</p>
+        <a href="index.html" class="btn-login">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Go to CHA Website to Sign In
+        </a>
       </div>
-      <h1>Your Patient Card</h1>
-      <p>Sign in or register to view your digital patient card, treatment information, and emergency contacts.</p>
-      <a href="index.html" class="btn-login">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-        Go to CHA Website to Sign In
-      </a>
     </div>
   </div>
 
   <div class="card-page" id="card-page">
     <div class="container">
       <div>
-        <div class="patient-card" id="patient-card">
-          <div class="card-header">
-            <div>
-              <div class="card-logo">CHA</div>
-              <div class="card-org">Cambodian Haemophilia Association</div>
+        <div class="patient-card-wrap">
+          <div class="patient-card" id="patient-card">
+            <div class="card-header">
+              <div class="card-logo-block">
+                <div class="card-logo">CHA</div>
+                <div class="card-org">Cambodian Haemophilia Association</div>
+              </div>
+              <span class="card-member-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Member
+              </span>
             </div>
-            <div class="card-dob-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              MEMBER
+            <div class="card-body">
+              <div class="card-patient-name" id="card-name">—</div>
+              <div class="card-info">
+                <div><div class="card-field-label">Blood Type</div><div class="card-field-value" id="card-blood">—</div></div>
+                <div><div class="card-field-label">Condition</div><div class="card-field-value" id="card-condition">—</div></div>
+                <div><div class="card-field-label">Date of Birth</div><div class="card-field-value" id="card-dob">—</div></div>
+                <div><div class="card-field-label">Member Since</div><div class="card-field-value" id="card-since">—</div></div>
+              </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-patient-name" id="card-name">—</div>
-            <div class="card-info">
-              <div><div class="card-field-label">Blood Type</div><div class="card-field-value" id="card-blood">—</div></div>
-              <div><div class="card-field-label">Condition</div><div class="card-field-value" id="card-condition">—</div></div>
-              <div><div class="card-field-label">Date of Birth</div><div class="card-field-value" id="card-dob">—</div></div>
-              <div><div class="card-field-label">Member Since</div><div class="card-field-value" id="card-since">—</div></div>
+            <div class="card-footer">
+              <div class="card-id-block">
+                <div class="card-id-label">Member ID</div>
+                <div class="card-id" id="card-id">CHA-0000-0000</div>
+              </div>
+              <div class="card-blood-type" id="card-blood-badge">—</div>
             </div>
-          </div>
-          <div class="card-footer">
-            <div class="card-id" id="card-id">ID: CHA-0000-0000</div>
-            <div class="card-blood-type" id="card-blood-badge">—</div>
           </div>
         </div>
-        <div style="display:flex;gap:var(--s-3);margin-top:var(--s-4)">
+        <div class="card-actions">
           <button class="btn-print" onclick="window.print()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             Print Card
@@ -191,14 +226,18 @@ footer a:hover { color: var(--c-red); }
       <div class="profile-section">
         <div class="profile-header">
           <div class="avatar" id="avatar-initials">—</div>
-          <div>
+          <div class="profile-info-block">
             <div class="profile-name" id="profile-name">—</div>
             <div class="profile-email" id="profile-email">—</div>
           </div>
+          <span class="profile-status active"><span class="dot"></span> Active</span>
         </div>
 
         <div class="info-card">
-          <h3><span class="dot"></span> Patient Information</h3>
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Patient Information
+          </h3>
           <div class="info-grid">
             <div class="info-item"><div class="label">Full Name</div><div class="value" id="info-name">—</div></div>
             <div class="info-item"><div class="label">Date of Birth</div><div class="value" id="info-dob">—</div></div>
@@ -209,16 +248,22 @@ footer a:hover { color: var(--c-red); }
           </div>
         </div>
 
-        <div class="info-card">
-          <h3><span class="dot purple"></span> Treatment Centre</h3>
+        <div class="info-card purple">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Treatment Centre
+          </h3>
           <div class="info-grid">
             <div class="info-item"><div class="label">Centre</div><div class="value" id="info-centre">—</div></div>
             <div class="info-item"><div class="label">Phone</div><div class="value" id="info-centre-phone">—</div></div>
           </div>
         </div>
 
-        <div class="info-card">
-          <h3><span class="dot red"></span> Emergency Contact</h3>
+        <div class="info-card red">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Emergency Contact
+          </h3>
           <div class="info-grid">
             <div class="info-item"><div class="label">Name</div><div class="value" id="info-emergency">—</div></div>
             <div class="info-item"><div class="label">Phone</div><div class="value" id="info-emergency-phone">—</div></div>
@@ -226,7 +271,10 @@ footer a:hover { color: var(--c-red); }
         </div>
 
         <div class="edit-card">
-          <h3><span class="dot" style="background:var(--c-purple)"></span> Edit Profile</h3>
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit Profile
+          </h3>
           <form id="edit-form">
             <div class="form-row">
               <div class="form-group"><label>Blood Type</label><input type="text" id="edit-blood" placeholder="e.g. A+, B+, O-"></div>
@@ -281,7 +329,7 @@ footer a:hover { color: var(--c-red); }
       document.getElementById('card-condition').textContent = u.condition || '—';
       document.getElementById('card-dob').textContent = u.dob || '—';
       document.getElementById('card-since').textContent = u.memberSince || '—';
-      document.getElementById('card-id').textContent = 'ID: ' + (u.memberId || '—');
+      document.getElementById('card-id').textContent = u.memberId || '—';
       document.getElementById('card-blood-badge').textContent = u.bloodType || '—';
       document.getElementById('avatar-initials').textContent = (u.name || '?').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
       document.getElementById('profile-name').textContent = u.name || '—';
