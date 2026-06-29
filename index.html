@@ -2330,54 +2330,52 @@ hr {
 }
 .registration-form h3 { color: var(--c-blue); font-size: 1.125rem; margin-bottom: var(--s-5); }
 
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--s-4);
-}
-@media (max-width: 1000px) { .benefits-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 700px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .benefits-grid { grid-template-columns: 1fr; } }
-.benefit-card {
-  background: var(--c-white);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-md);
-  padding: var(--s-5);
-  text-align: center;
-  transition: all var(--t-base) var(--ease);
-}
-.benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(11, 29, 109, 0.1), 0 4px 12px rgba(11, 29, 109, 0.05);
-  border-color: var(--c-blue-100);
-}
-.benefit-card .icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto var(--s-3);
-  border-radius: var(--r-md);
-  background: var(--c-blue-100);
-  color: var(--c-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.benefit-card .icon svg { width: 26px; height: 26px; }
-.benefit-card h3 { color: var(--c-blue); font-size: 0.9375rem; margin: 0; }
+/* Membership benefits grid (2×2) */
+.membership-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-bottom: var(--s-8); }
+@media (max-width: 700px) { .membership-benefits { grid-template-columns: 1fr; } }
+.membership-benefit-card { background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: var(--s-6); display: flex; align-items: flex-start; gap: var(--s-4); transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); position: relative; overflow: hidden; }
+.membership-benefit-card::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+.membership-benefit-card:nth-child(1)::before { background: var(--c-blue); }
+.membership-benefit-card:nth-child(2)::before { background: var(--c-red); }
+.membership-benefit-card:nth-child(3)::before { background: var(--c-purple); }
+.membership-benefit-card:nth-child(4)::before { background: #B45309; }
+.membership-benefit-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px -10px rgba(11,29,109,0.15); }
+.membership-benefit-icon { width: 48px; height: 48px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.membership-benefit-icon svg { width: 24px; height: 24px; }
+.membership-benefit-card:nth-child(1) .membership-benefit-icon { background: var(--c-blue-100); color: var(--c-blue); }
+.membership-benefit-card:nth-child(2) .membership-benefit-icon { background: #FCE5E6; color: var(--c-red); }
+.membership-benefit-card:nth-child(3) .membership-benefit-icon { background: #EFE6F4; color: var(--c-purple); }
+.membership-benefit-card:nth-child(4) .membership-benefit-icon { background: #FEF3C7; color: #B45309; }
+.membership-benefit-card h3 { color: var(--c-blue); font-size: 1rem; font-weight: 600; margin: 0 0 var(--s-2); line-height: 1.25; }
+.membership-benefit-card p { color: var(--c-muted); font-size: 0.875rem; line-height: 1.5; margin: 0; }
 
-.already-member {
-  background: var(--c-blue-100);
-  border: 1px solid var(--c-blue);
-  border-radius: var(--r-md);
-  padding: var(--s-5) var(--s-6);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--s-4);
-  margin-top: var(--s-8);
+/* Membership CTA — 2-column with image */
+.membership-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; border-radius: var(--r-xl); overflow: hidden; background: var(--c-white); border: 1px solid var(--c-border); }
+.membership-cta-content { padding: var(--s-8) var(--s-7); display: flex; flex-direction: column; justify-content: center; gap: var(--s-4); }
+.membership-cta-content h2 { color: var(--c-blue); font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+.membership-cta-content .lead { color: var(--c-muted); font-size: 1rem; line-height: 1.6; margin: 0; max-width: 44ch; }
+.membership-cta-btns { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.membership-cta-btns .btn-primary { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); padding: 14px 28px; border-radius: var(--r-full); font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 200ms var(--ease), box-shadow 200ms var(--ease); box-shadow: 0 6px 20px rgba(11,29,109,0.2); }
+.membership-cta-btns .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(11,29,109,0.3); color: var(--c-white); }
+.membership-cta-btns .btn-primary .arrow { transition: transform 200ms var(--ease); }
+.membership-cta-btns .btn-primary:hover .arrow { transform: translateX(4px); }
+.membership-cta-links { display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.membership-cta-links a { color: var(--c-blue); font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: color 200ms var(--ease); }
+.membership-cta-links a:hover { color: var(--c-red); }
+.membership-cta-links .sep { color: var(--c-gray-300); }
+.membership-cta-img { position: relative; overflow: hidden; min-height: 400px; }
+.membership-cta-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.membership-cta-badge { position: absolute; bottom: 24px; left: 24px; background: rgba(11,29,109,.92); color: var(--c-white); padding: 16px 22px; border-radius: var(--r-md); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.15); z-index: 1; }
+.membership-cta-badge strong { display: block; font-size: 1.75rem; font-weight: 700; line-height: 1; margin-bottom: 2px; }
+.membership-cta-badge span { font-size: 0.8125rem; opacity: 0.9; }
+@media (max-width: 900px) {
+  .membership-cta { grid-template-columns: 1fr; }
+  .membership-cta-img { min-height: 280px; }
+  .membership-cta-content { padding: var(--s-6); }
 }
-.already-member p { margin: 0; color: var(--c-blue); font-weight: var(--fw-medium); }
+@media (max-width: 540px) {
+  .membership-cta-img { min-height: 220px; }
+}
 
 /* ---------- 29. Red hero (donation) ---------- */
 .hero-red {
@@ -4233,39 +4231,53 @@ hr {
       </div>
       <div class="tab-panel" data-tab-panel="csr-member" style="padding-top:0">
         <div class="section-heading" data-reveal><h2 data-i18n="membership_heading">Membership Benefits</h2></div>
-        <div class="benefits-grid">
-          <div class="benefit-card" data-reveal>
-            <div class="icon" style="background:var(--c-blue-100);color:var(--c-blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h3 data-i18n="membership_benefit_1_title">Community &amp; Support</h3>
-            <p data-i18n="membership_benefit_1_desc">Connect with patients, families, and caregivers across Cambodia.</p>
+        <div class="membership-benefits">
+          <div class="membership-benefit-card" data-reveal>
+            <div class="membership-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div>
+              <h3 data-i18n="membership_benefit_1_title">Community &amp; Support</h3>
+              <p data-i18n="membership_benefit_1_desc">Connect with patients, families, and caregivers across Cambodia.</p>
+            </div>
           </div>
-          <div class="benefit-card" data-reveal>
-            <div class="icon" style="background:#FCE5E6;color:var(--c-red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-            <h3 data-i18n="membership_benefit_2_title">Access to Resources</h3>
-            <p data-i18n="membership_benefit_2_desc">Exclusive guides, educational materials, and treatment information.</p>
+          <div class="membership-benefit-card" data-reveal>
+            <div class="membership-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <div>
+              <h3 data-i18n="membership_benefit_2_title">Access to Resources</h3>
+              <p data-i18n="membership_benefit_2_desc">Exclusive guides, educational materials, and treatment information.</p>
+            </div>
           </div>
-          <div class="benefit-card" data-reveal>
-            <div class="icon" style="background:#EFE6F4;color:var(--c-purple)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <h3 data-i18n="membership_benefit_3_title">Events &amp; Workshops</h3>
-            <p data-i18n="membership_benefit_3_desc">Attend training sessions, awareness events, and webinars.</p>
+          <div class="membership-benefit-card" data-reveal>
+            <div class="membership-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div>
+              <h3 data-i18n="membership_benefit_3_title">Events &amp; Workshops</h3>
+              <p data-i18n="membership_benefit_3_desc">Attend training sessions, awareness events, and webinars.</p>
+            </div>
           </div>
-          <div class="benefit-card" data-reveal>
-            <div class="icon" style="background:#FEF3C7;color:#B45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
-            <h3 data-i18n="membership_benefit_4_title">Advocacy &amp; Awareness</h3>
-            <p data-i18n="membership_benefit_4_desc">Help raise awareness and advocate for better care nationwide.</p>
-          </div>
-          <div class="benefit-card" data-reveal>
-            <div class="icon" style="background:var(--c-blue-100);color:var(--c-blue-700)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <h3 data-i18n="membership_benefit_5_title">Updates &amp; Newsletters</h3>
-            <p data-i18n="membership_benefit_5_desc">Stay informed with the latest news and CHA announcements.</p>
+          <div class="membership-benefit-card" data-reveal>
+            <div class="membership-benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+            <div>
+              <h3 data-i18n="membership_benefit_4_title">Advocacy &amp; Awareness</h3>
+              <p data-i18n="membership_benefit_4_desc">Help raise awareness and advocate for better care nationwide.</p>
+            </div>
           </div>
         </div>
-        <div class="already-member" data-reveal style="margin-top:var(--s-8)">
-          <p data-i18n="membership_cta">Ready to join our community?</p>
-          <p style="color:var(--c-muted);font-weight:var(--fw-regular)" data-i18n="membership_cta_sub">Register now to access exclusive resources, events, and support.</p>
-          <a class="btn btn-primary" href="#" data-member-register-trigger data-i18n="membership_register">Register Now <span class="arrow">→</span></a>
-          <span style="margin-left:var(--s-4);font-size:0.875rem;color:var(--c-muted)" data-i18n="membership_signin">Already a member? <a href="#" data-member-trigger style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></span>
-          <span style="display:block;margin-top:var(--s-3);font-size:0.875rem"><a href="patient-card.html" style="color:var(--c-blue);font-weight:var(--fw-semibold)">View Patient Card →</a></span>
+        <div class="membership-cta" data-reveal>
+          <div class="membership-cta-content">
+            <h2>Become a Member</h2>
+            <p class="lead">Join our community to access exclusive resources, events, and peer support across Cambodia.</p>
+            <div class="membership-cta-btns">
+              <a class="btn-primary" href="#" data-member-register-trigger>Register Now <span class="arrow">→</span></a>
+              <div class="membership-cta-links">
+                <a href="#" data-member-trigger>Already a member? Sign In</a>
+                <span class="sep">·</span>
+                <a href="patient-card.html">View Patient Card</a>
+              </div>
+            </div>
+          </div>
+          <div class="membership-cta-img">
+            <img src="images/family.jpg" alt="CHA community — families and supporters">
+            <div class="membership-cta-badge"><strong>500+</strong><span>members &amp; growing</span></div>
+          </div>
         </div>
       </div>
       <div class="tab-panel is-active" data-tab-panel="csr-donate" style="padding-top:0">
