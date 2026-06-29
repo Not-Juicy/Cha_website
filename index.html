@@ -3178,11 +3178,18 @@ hr {
 .modal-acct-email { font-size: 0.8125rem; color: var(--c-muted); margin: 0; }
 .modal-acct-status { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--r-full); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: #DCFCE7; color: #166534; }
 .modal-acct-status .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.modal-info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-md); padding: var(--s-4); margin-bottom: var(--s-4); }
+.modal-info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-md); padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5); margin-bottom: var(--s-4); position: relative; overflow: hidden; }
+.modal-info-card::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--c-blue) 0%, var(--c-purple) 100%); border-radius: 3px 0 0 3px; }
 .modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
 @media (max-width: 420px) { .modal-info-grid { grid-template-columns: 1fr; } }
 .modal-info-item .label { font-size: 0.6875rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; margin-bottom: 2px; }
 .modal-info-item .value { font-size: 0.875rem; font-weight: 600; color: var(--c-text); }
+.modal-btn-row { display: flex; gap: var(--s-3); }
+.modal-btn-row .btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: var(--s-2); padding: 12px 16px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 700; font-size: 0.875rem; text-decoration: none; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
+.modal-btn-row .btn-primary { background: var(--c-blue); color: var(--c-white); border: none; box-shadow: 0 6px 16px rgba(11, 29, 109, 0.25); }
+.modal-btn-row .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(11, 29, 109, 0.35); color: var(--c-white); }
+.modal-btn-row .btn-outline { background: transparent; color: var(--c-red); border: 1px solid rgba(227,30,36,0.3); }
+.modal-btn-row .btn-outline:hover { background: var(--c-red); color: var(--c-white); border-color: var(--c-red); transform: translateY(-2px); }
 
 /* ---------- 39. WFH / HFA partner features ---------- */
 .wfh-feature-grid {
@@ -4414,7 +4421,9 @@ hr {
             <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
             <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
             <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+            <div class="modal-btn-row">
+              <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
           </form>
           <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
         </div>
@@ -4435,9 +4444,9 @@ hr {
               <div class="modal-info-item"><div class="label">Member Since</div><div class="value" id="acct-since">—</div></div>
             </div>
           </div>
-          <div style="display:flex;gap:var(--s-3)">
-            <a class="btn btn-primary" href="patient-card.html" style="flex:1;text-align:center;padding:12px;border-radius:var(--r-full);background:var(--c-blue);color:var(--c-white);font-weight:700;font-size:0.9375rem;text-decoration:none">My Patient Card <span class="arrow">→</span></a>
-            <button type="button" id="acct-logout" style="flex:1;padding:12px;border-radius:var(--r-full);background:transparent;color:var(--c-red);border:1px solid var(--c-red);font-weight:700;font-size:0.9375rem;font-family:var(--font-sans);cursor:pointer">Sign Out</button>
+          <div class="modal-btn-row">
+            <a class="btn btn-primary" href="patient-card.html">My Patient Card <span class="arrow">→</span></a>
+            <button type="button" id="acct-logout" class="btn btn-outline">Sign Out</button>
           </div>
         </div>
         <div id="member-register-panel" style="display:none">
@@ -4447,7 +4456,9 @@ hr {
             <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
             <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
             <div class="form-group"><label class="form-check"><input type="checkbox" id="mregterms"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a></span></label></div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+            <div class="modal-btn-row">
+              <button type="submit" class="btn btn-primary">Create Account</button>
+            </div>
           </form>
           <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
         </div>
