@@ -4376,6 +4376,34 @@ hr {
     <div class="donate-modal-panel">
       <button class="donate-modal-close" type="button" data-member-close aria-label="Close login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       <div id="member-login-panel">
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
+        <form data-mock-form novalidate>
+          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
+          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+        </form>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+      </div>
+      <div id="member-account-panel" style="display:none">
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">My Account</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Welcome back, <span id="acct-name" style="font-weight:700;color:var(--c-blue)"></span>!</p>
+        <div class="info-card" style="margin-bottom:var(--s-4)">
+          <h3 style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:.08em;color:var(--c-muted);font-weight:700;margin-bottom:var(--s-4)">Member Information</h3>
+          <div class="info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)">
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Email</div><div id="acct-email" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Role</div><div id="acct-role" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Province</div><div id="acct-province" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member ID</div><div id="acct-id" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member Since</div><div id="acct-since" style="font-size:1rem;font-weight:600"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--s-3)">
+          <a class="btn btn-primary" href="patient-card.html" style="flex:1;text-align:center;padding:12px;border-radius:var(--r-full);background:var(--c-blue);color:var(--c-white);font-weight:700;font-size:0.9375rem;text-decoration:none">My Patient Card <span class="arrow">→</span></a>
+          <button type="button" id="acct-logout" style="flex:1;padding:12px;border-radius:var(--r-full);background:transparent;color:var(--c-red);border:1px solid var(--c-red);font-weight:700;font-size:0.9375rem;font-family:var(--font-sans);cursor:pointer">Sign Out</button>
+        </div>
+      </div>
         <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)" data-i18n="member_login_title">Member Login</h3>
         <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem" data-i18n="member_login_sub">Sign in to access your account, resources, and community.</p>
         <form data-mock-form novalidate>
@@ -4393,7 +4421,7 @@ hr {
           <div class="form-row"><div class="form-group"><label class="form-label" for="mregname"><span data-i18n="contact_name">Full Name</span> <span class="req">*</span></label><input class="form-input" type="text" id="mregname" data-i18n-placeholder="contact_name_ph" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail"><span data-i18n="contact_email_label">Email</span> <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" data-i18n-placeholder="contact_email_ph" placeholder="Enter your email" required></div></div>
           <div class="form-group"><label class="form-label" for="mregpass"><span data-i18n="member_password">Password</span> <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" data-i18n-placeholder="member_create_password_ph" placeholder="Create a password" required></div>
           <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov" data-i18n="member_province">Province</label><select class="form-select" id="mregprov"><option value="" data-i18n="member_select_province">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option data-i18n="member_other">Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole" data-i18n="member_i_am_a">I am a</label><select class="form-select" id="mregrole"><option value="" data-i18n="member_select">Select</option><option data-i18n="member_role_patient">Patient</option><option data-i18n="member_role_family">Family member / Caregiver</option><option data-i18n="member_role_pro">Healthcare professional</option><option data-i18n="member_role_supporter">Supporter</option></select></div></div>
-          <div class="form-group"><label class="form-check"><input type="checkbox" required><span data-i18n="member_agree_prefix">I agree to the</span> <a href="#" data-i18n="member_terms">Terms &amp; Conditions</a></label></div>
+          <div class="form-group"><label class="form-check"><input type="checkbox" id="mregterms"><span data-i18n="member_agree_prefix">I agree to the</span> <a href="terms.html" target="_blank" data-i18n="member_terms">Terms &amp; Conditions</a></label></div>
           <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="member_create_account">Create Account</button>
         </form>
         <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)"><span data-i18n="member_have_account">Already have an account?</span> <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)" data-i18n="member_sign_in_link">Sign In</a></p>
@@ -4848,20 +4876,22 @@ hr {
   const backLoginLink = memberModal.querySelector('[data-member-back-login]');
   if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; });
   if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; });
+  const acctPanel = document.getElementById('member-account-panel');
   // Reset to login on close
   const origCloseMember = closeMember;
-  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; };
+  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; };
 
   // ---- localStorage auth: registration ----
   const regForm = registerPanel.querySelector('form[data-mock-form]');
   if (regForm) regForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const name = document.getElementById('mregname').value.trim();
     const email = document.getElementById('mregemail').value.trim();
     const pass = document.getElementById('mregpass').value;
     const province = document.getElementById('mregprov').value;
     const role = document.getElementById('mregrole').value;
-    const agreed = regForm.querySelector('input[type="checkbox"]').checked;
+    const agreed = document.getElementById('mregterms').checked;
     if (!name || !email || !pass) { alert('Please fill in all required fields.'); return; }
     if (!agreed) { alert('Please agree to the Terms & Conditions.'); return; }
     const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
@@ -4872,7 +4902,7 @@ hr {
     localStorage.setItem('cha_users', JSON.stringify(users));
     localStorage.setItem('cha_current_user', JSON.stringify(user));
     closeMember();
-    updateMemberButton(user);
+    showAccountPanel(user);
     alert('Account created! Welcome, ' + name + '.');
   });
 
@@ -4880,6 +4910,7 @@ hr {
   const loginForm = loginPanel.querySelector('form[data-mock-form]');
   if (loginForm) loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const email = document.getElementById('memail').value.trim();
     const pass = document.getElementById('mpass').value;
     if (!email || !pass) { alert('Please enter your email and password.'); return; }
@@ -4888,7 +4919,7 @@ hr {
     if (!user) { alert('Invalid email or password. Please try again.'); return; }
     localStorage.setItem('cha_current_user', JSON.stringify(user));
     closeMember();
-    updateMemberButton(user);
+    showAccountPanel(user);
     alert('Welcome back, ' + user.name + '!');
   });
 
@@ -4897,8 +4928,40 @@ hr {
     const triggers = document.querySelectorAll('[data-member-trigger]');
     triggers.forEach(t => { t.textContent = user ? 'My Account' : 'Become a Member'; });
   }
+  function showAccountPanel(user) {
+    if (!user || !acctPanel) return;
+    document.getElementById('acct-name').textContent = user.name;
+    document.getElementById('acct-email').textContent = user.email;
+    document.getElementById('acct-role').textContent = user.role || '—';
+    document.getElementById('acct-province').textContent = user.province || '—';
+    document.getElementById('acct-id').textContent = user.memberId || '—';
+    document.getElementById('acct-since').textContent = user.memberSince || '—';
+    if (loginPanel) loginPanel.style.display = 'none';
+    if (registerPanel) registerPanel.style.display = 'none';
+    acctPanel.style.display = 'block';
+  }
   const currentUser = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
   if (currentUser) updateMemberButton(currentUser);
+
+  // ---- Open modal: if logged in, show account panel; else show login panel ----
+  memberTriggers.forEach((t) => {
+    t.removeEventListener('click', openMember);
+    t.addEventListener('click', (e) => {
+      e.preventDefault();
+      const u = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
+      memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+      if (u) { showAccountPanel(u); } else { if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; }
+    });
+  });
+
+  // Logout button
+  const logoutBtn = document.getElementById('acct-logout');
+  if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('cha_current_user');
+    updateMemberButton(null);
+    closeMember();
+    alert('You have been signed out.');
+  });
 })();
 
 /* ============================================

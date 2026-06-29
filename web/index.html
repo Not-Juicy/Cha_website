@@ -4385,6 +4385,34 @@ hr {
         </form>
         <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
       </div>
+      <div id="member-account-panel" style="display:none">
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">My Account</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Welcome back, <span id="acct-name" style="font-weight:700;color:var(--c-blue)"></span>!</p>
+        <div class="info-card" style="margin-bottom:var(--s-4)">
+          <h3 style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:.08em;color:var(--c-muted);font-weight:700;margin-bottom:var(--s-4)">Member Information</h3>
+          <div class="info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)">
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Email</div><div id="acct-email" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Role</div><div id="acct-role" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Province</div><div id="acct-province" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member ID</div><div id="acct-id" style="font-size:1rem;font-weight:600"></div></div>
+            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member Since</div><div id="acct-since" style="font-size:1rem;font-weight:600"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--s-3)">
+          <a class="btn btn-primary" href="patient-card.html" style="flex:1;text-align:center;padding:12px;border-radius:var(--r-full);background:var(--c-blue);color:var(--c-white);font-weight:700;font-size:0.9375rem;text-decoration:none">My Patient Card <span class="arrow">→</span></a>
+          <button type="button" id="acct-logout" style="flex:1;padding:12px;border-radius:var(--r-full);background:transparent;color:var(--c-red);border:1px solid var(--c-red);font-weight:700;font-size:0.9375rem;font-family:var(--font-sans);cursor:pointer">Sign Out</button>
+        </div>
+      </div>
+        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
+        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
+        <form data-mock-form novalidate>
+          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
+          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+        </form>
+        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+      </div>
       <div id="member-register-panel" style="display:none">
         <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Create Account</h3>
         <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Join our community of patients, families, and supporters.</p>
@@ -4852,9 +4880,10 @@ hr {
   const backLoginLink = memberModal.querySelector('[data-member-back-login]');
   if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; });
   if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; });
+  const acctPanel = document.getElementById('member-account-panel');
   // Reset to login on close
   const origCloseMember = closeMember;
-  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; };
+  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; };
 
   // ---- localStorage auth: registration ----
   const regForm = registerPanel.querySelector('form[data-mock-form]');
@@ -4903,8 +4932,40 @@ hr {
     const triggers = document.querySelectorAll('[data-member-trigger]');
     triggers.forEach(t => { t.textContent = user ? 'My Account' : 'Become a Member'; });
   }
+  function showAccountPanel(user) {
+    if (!user || !acctPanel) return;
+    document.getElementById('acct-name').textContent = user.name;
+    document.getElementById('acct-email').textContent = user.email;
+    document.getElementById('acct-role').textContent = user.role || '—';
+    document.getElementById('acct-province').textContent = user.province || '—';
+    document.getElementById('acct-id').textContent = user.memberId || '—';
+    document.getElementById('acct-since').textContent = user.memberSince || '—';
+    if (loginPanel) loginPanel.style.display = 'none';
+    if (registerPanel) registerPanel.style.display = 'none';
+    acctPanel.style.display = 'block';
+  }
   const currentUser = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
   if (currentUser) updateMemberButton(currentUser);
+
+  // ---- Open modal: if logged in, show account panel; else show login panel ----
+  memberTriggers.forEach((t) => {
+    t.removeEventListener('click', openMember);
+    t.addEventListener('click', (e) => {
+      e.preventDefault();
+      const u = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
+      memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+      if (u) { showAccountPanel(u); } else { if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; }
+    });
+  });
+
+  // Logout button
+  const logoutBtn = document.getElementById('acct-logout');
+  if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('cha_current_user');
+    updateMemberButton(null);
+    closeMember();
+    alert('You have been signed out.');
+  });
 })();
 
 /* ============================================
