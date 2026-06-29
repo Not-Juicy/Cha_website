@@ -22,29 +22,13 @@
   --c-gray-50: #F8F9FB;
   --c-gray-100: #F2F4F8;
   --c-gray-200: #E5E8EE;
-  --c-gray-300: #CDD2DB;
-  --c-gray-400: #9AA0AC;
-  --c-gray-500: #6B7280;
   --c-text: #1A1A1A;
   --c-muted: #5A5A5A;
   --font-sans: 'Poppins', 'Battambang', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --s-1: 0.25rem;
-  --s-2: 0.5rem;
-  --s-3: 0.75rem;
-  --s-4: 1rem;
-  --s-5: 1.25rem;
-  --s-6: 1.5rem;
-  --s-8: 2rem;
-  --s-10: 2.5rem;
-  --s-12: 3rem;
-  --s-16: 4rem;
-  --s-20: 5rem;
-  --r-md: 12px;
-  --r-lg: 20px;
-  --r-xl: 28px;
-  --r-full: 999px;
-  --t-fast: 150ms;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.25rem;
+  --s-6: 1.5rem; --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem; --s-20: 5rem;
+  --r-md: 12px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
+  --t-fast: 150ms; --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); color: var(--c-text); background: var(--c-gray-50); line-height: 1.6; min-height: 100vh; }
@@ -52,48 +36,32 @@ a { color: var(--c-blue); text-decoration: none; transition: color var(--t-fast)
 a:hover { color: var(--c-red); }
 .container { max-width: 960px; margin: 0 auto; padding: 0 var(--s-6); }
 
-.topbar { background: var(--c-white); border-bottom: 1px solid var(--c-border); position: sticky; top: 0; z-index: 10; }
+.topbar { background: var(--c-white); border-bottom: 1px solid var(--c-gray-200); position: sticky; top: 0; z-index: 10; }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--s-4) 0; }
 .brand { font-weight: 700; color: var(--c-blue); font-size: 1.125rem; }
 .brand:hover { color: var(--c-blue); }
 .back-link { font-size: 0.9375rem; font-weight: 500; }
 
+/* Not logged in */
+.login-required { padding: var(--s-20) 0; text-align: center; }
+.login-required h1 { font-size: 1.75rem; font-weight: 800; color: var(--c-blue); margin-bottom: var(--s-3); }
+.login-required p { color: var(--c-muted); font-size: 1rem; margin-bottom: var(--s-8); }
+.btn-login { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); padding: 14px 32px; border-radius: var(--r-full); font-weight: 700; font-size: 1rem; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
+.btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
+
 /* Card wrapper */
-.card-page { padding: var(--s-16) 0 var(--s-20); }
+.card-page { padding: var(--s-16) 0 var(--s-20); display: none; }
 .card-page > .container { display: grid; grid-template-columns: 340px 1fr; gap: var(--s-8); align-items: start; }
 @media (max-width: 768px) { .card-page > .container { grid-template-columns: 1fr; } }
 
-/* Patient card */
 .patient-card {
   background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%);
-  border-radius: var(--r-xl);
-  padding: var(--s-8);
-  color: var(--c-white);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(11, 29, 109, 0.25);
-  /* Fixed aspect ratio like a real card */
-  aspect-ratio: 3/2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: var(--r-xl); padding: var(--s-8); color: var(--c-white);
+  position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(11, 29, 109, 0.25);
+  aspect-ratio: 3/2; display: flex; flex-direction: column; justify-content: space-between;
 }
-.patient-card::before {
-  content: "";
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-}
-.patient-card::after {
-  content: "";
-  position: absolute;
-  bottom: -30px; left: -30px;
-  width: 140px; height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(227,30,36,0.15) 0%, transparent 70%);
-}
+.patient-card::before { content: ""; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%); }
+.patient-card::after { content: ""; position: absolute; bottom: -30px; left: -30px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(227,30,36,0.15) 0%, transparent 70%); }
 .patient-card > * { position: relative; z-index: 1; }
 .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
 .card-org { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; }
@@ -105,120 +73,55 @@ a:hover { color: var(--c-red); }
 .card-field-value { font-size: 0.8125rem; font-weight: 500; }
 .card-footer { display: flex; justify-content: space-between; align-items: flex-end; }
 .card-id { font-size: 0.75rem; opacity: 0.6; font-weight: 500; }
-.card-blood-type {
-  background: var(--c-red);
-  border-radius: var(--r-full);
-  padding: 4px 14px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-}
-.card-dob-badge {
-  display: inline-flex;
-  gap: var(--s-2);
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
+.card-blood-type { background: var(--c-red); border-radius: var(--r-full); padding: 4px 14px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; }
+.card-dob-badge { display: inline-flex; gap: var(--s-2); font-size: 0.75rem; opacity: 0.7; }
 
-/* Profile section */
 .profile-section { display: flex; flex-direction: column; gap: var(--s-6); }
 .profile-header { display: flex; align-items: center; gap: var(--s-5); }
-.avatar {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--c-white);
-  font-size: 1.5rem;
-  font-weight: 800;
-  flex-shrink: 0;
-  box-shadow: 0 8px 24px rgba(11, 29, 109, 0.2);
-}
+.avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.5rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 8px 24px rgba(11, 29, 109, 0.2); }
 .profile-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; }
 .profile-email { color: var(--c-muted); font-size: 0.9375rem; }
 
-/* Info rows */
-.info-card {
-  background: var(--c-white);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-lg);
-  padding: var(--s-6);
-}
-.info-card h3 {
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--c-muted);
-  font-weight: 700;
-  margin-bottom: var(--s-4);
-  display: flex;
-  align-items: center;
-  gap: var(--s-2);
-}
-.info-card h3 .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--c-blue);
-  display: inline-block;
-}
+.info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); }
+.info-card h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
+.info-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-blue); display: inline-block; }
 .info-card h3 .dot.red { background: var(--c-red); }
 .info-card h3 .dot.purple { background: var(--c-purple); }
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s-4);
-}
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
 @media (max-width: 540px) { .info-grid { grid-template-columns: 1fr; } }
-.info-item { }
 .info-item .label { font-size: 0.8125rem; color: var(--c-muted); margin-bottom: 2px; }
 .info-item .value { font-size: 1rem; font-weight: 600; }
-.info-item .value.phone a { color: var(--c-text); }
 
-/* Emergency badge */
-.emergency-banner {
-  background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%);
-  border-radius: var(--r-lg);
-  padding: var(--s-5) var(--s-6);
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-  color: var(--c-white);
-}
-.emergency-icon {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+/* Edit form */
+.edit-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-6); }
+.edit-card h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); font-weight: 700; margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-2); }
+.edit-card h3 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c-purple); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+@media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: var(--s-4); }
+.form-group label { display: block; font-size: 0.8125rem; font-weight: 600; color: var(--c-text); margin-bottom: var(--s-1); }
+.form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--c-gray-200); border-radius: var(--r-md); font-family: var(--font-sans); font-size: 0.9375rem; transition: border-color var(--t-fast) var(--ease); }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--c-blue); box-shadow: 0 0 0 3px rgba(11, 29, 109, 0.1); }
+.btn-save { background: var(--c-blue); color: var(--c-white); border: none; padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 6px 16px rgba(11, 29, 109, 0.25); }
+.btn-save:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(11, 29, 109, 0.35); }
+.btn-logout { background: transparent; color: var(--c-red); border: 1px solid var(--c-red); padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: all var(--t-fast) var(--ease); }
+.btn-logout:hover { background: var(--c-red); color: var(--c-white); }
+
+.emergency-banner { background: linear-gradient(135deg, var(--c-red) 0%, var(--c-red-700) 100%); border-radius: var(--r-lg); padding: var(--s-5) var(--s-6); display: flex; align-items: center; gap: var(--s-4); color: var(--c-white); }
+.emergency-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .emergency-icon svg { width: 22px; height: 22px; }
 .emergency-text { font-size: 0.9375rem; line-height: 1.4; }
 .emergency-text strong { display: block; font-size: 1.0625rem; margin-bottom: 2px; }
 
-/* Print button */
-.btn-print {
-  display: inline-flex; align-items: center; gap: var(--s-2);
-  background: var(--c-blue);
-  color: var(--c-white);
-  border: none;
-  padding: 12px 24px;
-  border-radius: var(--r-full);
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
-  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25);
-}
+.btn-print { display: inline-flex; align-items: center; gap: var(--s-2); background: var(--c-blue); color: var(--c-white); border: none; padding: 12px 24px; border-radius: var(--r-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); box-shadow: 0 8px 20px rgba(11, 29, 109, 0.25); }
 .btn-print:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.35); color: var(--c-white); }
 .btn-print svg { width: 18px; height: 18px; }
 
 footer { background: var(--c-blue); color: var(--c-white); padding: var(--s-8) 0; text-align: center; font-size: 0.875rem; margin-top: var(--s-16); }
 footer a { color: var(--c-white); text-decoration: underline; }
 footer a:hover { color: var(--c-red); }
-
 @media print {
-  .topbar, .btn-print, footer, .emergency-banner { display: none !important; }
+  .topbar, .btn-print, .btn-save, .btn-logout, .edit-card, footer, .emergency-banner { display: none !important; }
   body { background: white; }
   .card-page { padding: 0; }
   .patient-card { box-shadow: none; border: 2px solid #ccc; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
@@ -233,12 +136,25 @@ footer a:hover { color: var(--c-red); }
     </div>
   </div>
 
-  <div class="card-page">
+  <!-- Login required screen -->
+  <div class="login-required" id="login-screen">
     <div class="container">
+      <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue),var(--c-purple));display:flex;align-items:center;justify-content:center;margin:0 auto var(--s-6);box-shadow:0 12px 32px rgba(11,29,109,0.25);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h1>Your Patient Card</h1>
+      <p>Sign in or register to view your digital patient card, treatment information, and emergency contacts.</p>
+      <a href="index.html" class="btn-login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Go to CHA Website to Sign In
+      </a>
+    </div>
+  </div>
 
-      <!-- Physical Card Mock -->
+  <div class="card-page" id="card-page">
+    <div class="container">
       <div>
-        <div class="patient-card">
+        <div class="patient-card" id="patient-card">
           <div class="card-header">
             <div>
               <div class="card-logo">CHA</div>
@@ -250,64 +166,86 @@ footer a:hover { color: var(--c-red); }
             </div>
           </div>
           <div class="card-body">
-            <div class="card-patient-name">Sok Vanna</div>
+            <div class="card-patient-name" id="card-name">—</div>
             <div class="card-info">
-              <div><div class="card-field-label">Blood Type</div><div class="card-field-value">A+</div></div>
-              <div><div class="card-field-label">Condition</div><div class="card-field-value">Haemophilia A</div></div>
-              <div><div class="card-field-label">Date of Birth</div><div class="card-field-value">15 Mar 1992</div></div>
-              <div><div class="card-field-label">Member Since</div><div class="card-field-value">2022</div></div>
+              <div><div class="card-field-label">Blood Type</div><div class="card-field-value" id="card-blood">—</div></div>
+              <div><div class="card-field-label">Condition</div><div class="card-field-value" id="card-condition">—</div></div>
+              <div><div class="card-field-label">Date of Birth</div><div class="card-field-value" id="card-dob">—</div></div>
+              <div><div class="card-field-label">Member Since</div><div class="card-field-value" id="card-since">—</div></div>
             </div>
           </div>
           <div class="card-footer">
-            <div class="card-id">ID: CHA-2022-0047</div>
-            <div class="card-blood-type">A+</div>
+            <div class="card-id" id="card-id">ID: CHA-0000-0000</div>
+            <div class="card-blood-type" id="card-blood-badge">—</div>
           </div>
         </div>
-        <button class="btn-print" onclick="window.print()" style="margin-top:var(--s-4)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Print Card
-        </button>
+        <div style="display:flex;gap:var(--s-3);margin-top:var(--s-4)">
+          <button class="btn-print" onclick="window.print()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Card
+          </button>
+          <button class="btn-logout" onclick="localStorage.removeItem('cha_current_user');window.location.reload()">Sign Out</button>
+        </div>
       </div>
 
-      <!-- Profile Details -->
       <div class="profile-section">
         <div class="profile-header">
-          <div class="avatar">SV</div>
+          <div class="avatar" id="avatar-initials">—</div>
           <div>
-            <div class="profile-name">Sok Vanna</div>
-            <div class="profile-email">sok.vanna@email.com</div>
+            <div class="profile-name" id="profile-name">—</div>
+            <div class="profile-email" id="profile-email">—</div>
           </div>
         </div>
 
         <div class="info-card">
           <h3><span class="dot"></span> Patient Information</h3>
           <div class="info-grid">
-            <div class="info-item"><div class="label">Full Name</div><div class="value">Sok Vanna</div></div>
-            <div class="info-item"><div class="label">Date of Birth</div><div class="value">15 March 1992</div></div>
-            <div class="info-item"><div class="label">Blood Type</div><div class="value">A+</div></div>
-            <div class="info-item"><div class="label">Condition</div><div class="value">Haemophilia A (Severe)</div></div>
-            <div class="info-item"><div class="label">Member ID</div><div class="value">CHA-2022-0047</div></div>
-            <div class="info-item"><div class="label">Member Since</div><div class="value">January 2022</div></div>
+            <div class="info-item"><div class="label">Full Name</div><div class="value" id="info-name">—</div></div>
+            <div class="info-item"><div class="label">Date of Birth</div><div class="value" id="info-dob">—</div></div>
+            <div class="info-item"><div class="label">Blood Type</div><div class="value" id="info-blood">—</div></div>
+            <div class="info-item"><div class="label">Condition</div><div class="value" id="info-condition">—</div></div>
+            <div class="info-item"><div class="label">Member ID</div><div class="value" id="info-id">—</div></div>
+            <div class="info-item"><div class="label">Role</div><div class="value" id="info-role">—</div></div>
           </div>
         </div>
 
         <div class="info-card">
           <h3><span class="dot purple"></span> Treatment Centre</h3>
           <div class="info-grid">
-            <div class="info-item"><div class="label">Centre</div><div class="value">National Paediatric Hospital</div></div>
-            <div class="info-item"><div class="label">Phone</div><div class="value phone"><a href="tel:+85523721833">023 721 833</a></div></div>
-            <div class="info-item"><div class="label">Location</div><div class="value">Phnom Penh</div></div>
-            <div class="info-item"><div class="label">Doctor</div><div class="value">Dr. Chan Sopheap</div></div>
+            <div class="info-item"><div class="label">Centre</div><div class="value" id="info-centre">—</div></div>
+            <div class="info-item"><div class="label">Phone</div><div class="value" id="info-centre-phone">—</div></div>
           </div>
         </div>
 
         <div class="info-card">
           <h3><span class="dot red"></span> Emergency Contact</h3>
           <div class="info-grid">
-            <div class="info-item"><div class="label">Name</div><div class="value">Sok Dara</div></div>
-            <div class="info-item"><div class="label">Phone</div><div class="value phone"><a href="tel:+85512345678">012 345 678</a></div></div>
-            <div class="info-item"><div class="label">Relationship</div><div class="value">Father</div></div>
+            <div class="info-item"><div class="label">Name</div><div class="value" id="info-emergency">—</div></div>
+            <div class="info-item"><div class="label">Phone</div><div class="value" id="info-emergency-phone">—</div></div>
           </div>
+        </div>
+
+        <div class="edit-card">
+          <h3><span class="dot" style="background:var(--c-purple)"></span> Edit Profile</h3>
+          <form id="edit-form">
+            <div class="form-row">
+              <div class="form-group"><label>Blood Type</label><input type="text" id="edit-blood" placeholder="e.g. A+, B+, O-"></div>
+              <div class="form-group"><label>Condition</label><input type="text" id="edit-condition" placeholder="e.g. Haemophilia A"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Date of Birth</label><input type="text" id="edit-dob" placeholder="e.g. 15 March 1992"></div>
+              <div class="form-group"><label>Province</label><input type="text" id="edit-province" placeholder="e.g. Phnom Penh"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Treatment Centre</label><input type="text" id="edit-centre" placeholder="e.g. National Paediatric Hospital"></div>
+              <div class="form-group"><label>Treatment Phone</label><input type="text" id="edit-centre-phone" placeholder="e.g. 023 721 833"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Emergency Contact Name</label><input type="text" id="edit-emergency" placeholder="e.g. Sok Dara"></div>
+              <div class="form-group"><label>Emergency Contact Phone</label><input type="text" id="edit-emergency-phone" placeholder="e.g. 012 345 678"></div>
+            </div>
+            <button type="submit" class="btn-save">Save Changes</button>
+          </form>
         </div>
 
         <div class="emergency-banner">
@@ -316,7 +254,7 @@ footer a:hover { color: var(--c-red); }
           </div>
           <div class="emergency-text">
             <strong>Emergency Support</strong>
-            For bleeding emergencies, call <strong>012 345 678</strong> or go to your nearest treatment centre immediately.
+            For bleeding emergencies, call your treatment centre or go to the nearest hospital immediately.
           </div>
         </div>
       </div>
@@ -328,5 +266,68 @@ footer a:hover { color: var(--c-red); }
       © 2026 Cambodian Haemophilia Association · <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="disclaimer.html">Disclaimer</a>
     </div>
   </footer>
+
+  <script>
+  (function() {
+    const user = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
+    const loginScreen = document.getElementById('login-screen');
+    const cardPage = document.getElementById('card-page');
+    if (!user) { loginScreen.style.display = 'block'; cardPage.style.display = 'none'; return; }
+    loginScreen.style.display = 'none'; cardPage.style.display = 'block';
+
+    function render(u) {
+      document.getElementById('card-name').textContent = u.name || '—';
+      document.getElementById('card-blood').textContent = u.bloodType || '—';
+      document.getElementById('card-condition').textContent = u.condition || '—';
+      document.getElementById('card-dob').textContent = u.dob || '—';
+      document.getElementById('card-since').textContent = u.memberSince || '—';
+      document.getElementById('card-id').textContent = 'ID: ' + (u.memberId || '—');
+      document.getElementById('card-blood-badge').textContent = u.bloodType || '—';
+      document.getElementById('avatar-initials').textContent = (u.name || '?').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+      document.getElementById('profile-name').textContent = u.name || '—';
+      document.getElementById('profile-email').textContent = u.email || '—';
+      document.getElementById('info-name').textContent = u.name || '—';
+      document.getElementById('info-dob').textContent = u.dob || '—';
+      document.getElementById('info-blood').textContent = u.bloodType || '—';
+      document.getElementById('info-condition').textContent = u.condition || '—';
+      document.getElementById('info-id').textContent = u.memberId || '—';
+      document.getElementById('info-role').textContent = u.role || '—';
+      document.getElementById('info-centre').textContent = u.treatmentCentre || '—';
+      document.getElementById('info-centre-phone').textContent = u.treatmentPhone || '—';
+      document.getElementById('info-emergency').textContent = u.emergencyContact || '—';
+      document.getElementById('info-emergency-phone').textContent = u.emergencyPhone || '—';
+      document.getElementById('edit-blood').value = u.bloodType || '';
+      document.getElementById('edit-condition').value = u.condition || '';
+      document.getElementById('edit-dob').value = u.dob || '';
+      document.getElementById('edit-province').value = u.province || '';
+      document.getElementById('edit-centre').value = u.treatmentCentre || '';
+      document.getElementById('edit-centre-phone').value = u.treatmentPhone || '';
+      document.getElementById('edit-emergency').value = u.emergencyContact || '';
+      document.getElementById('edit-emergency-phone').value = u.emergencyPhone || '';
+    }
+    render(user);
+
+    document.getElementById('edit-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const updated = Object.assign({}, user, {
+        bloodType: document.getElementById('edit-blood').value.trim(),
+        condition: document.getElementById('edit-condition').value.trim(),
+        dob: document.getElementById('edit-dob').value.trim(),
+        province: document.getElementById('edit-province').value.trim(),
+        treatmentCentre: document.getElementById('edit-centre').value.trim(),
+        treatmentPhone: document.getElementById('edit-centre-phone').value.trim(),
+        emergencyContact: document.getElementById('edit-emergency').value.trim(),
+        emergencyPhone: document.getElementById('edit-emergency-phone').value.trim()
+      });
+      localStorage.setItem('cha_current_user', JSON.stringify(updated));
+      const users = JSON.parse(localStorage.getItem('cha_users') || '[]');
+      const idx = users.findIndex(u => u.email === updated.email);
+      if (idx !== -1) users[idx] = updated;
+      localStorage.setItem('cha_users', JSON.stringify(users));
+      render(updated);
+      alert('Profile saved!');
+    });
+  })();
+  </script>
 </body>
 </html>
