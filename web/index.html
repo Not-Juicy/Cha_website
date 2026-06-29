@@ -3124,28 +3124,41 @@ hr {
 .donate-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .donate-modal-panel {
   position: relative;
   background: var(--c-white);
-  border-radius: var(--r-xl);
-  padding: var(--s-8);
+  border-radius: 24px;
+  padding: 0;
   width: min(480px, 92vw);
   max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 24px 80px rgba(11, 29, 109, 0.2), 0 8px 24px rgba(0, 0, 0, 0.1);
-  transform: translateY(20px);
+  overflow: hidden;
+  box-shadow: 0 32px 80px -16px rgba(11, 29, 109, 0.35), 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(20px) scale(0.98);
   transition: transform 300ms var(--ease);
+  display: flex;
+  flex-direction: column;
 }
-.donate-modal.is-open .donate-modal-panel { transform: translateY(0); }
+.donate-modal.is-open .donate-modal-panel { transform: translateY(0) scale(1); }
+.donate-modal-header {
+  padding: var(--s-6) var(--s-7) var(--s-5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--c-gray-100);
+  flex-shrink: 0;
+}
+.donate-modal-title-block { display: flex; align-items: center; gap: var(--s-3); }
+.donate-modal-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--c-blue-100); color: var(--c-blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.donate-modal-icon svg { width: 18px; height: 18px; }
+.donate-modal-title { font-size: 1.0625rem; font-weight: 700; color: var(--c-blue); letter-spacing: -0.01em; }
 .donate-modal-close {
-  position: absolute;
-  top: var(--s-4);
-  right: var(--s-4);
   width: 36px;
   height: 36px;
-  border-radius: var(--r-full);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3155,7 +3168,21 @@ hr {
   cursor: pointer;
   transition: all var(--t-fast) var(--ease);
 }
-.donate-modal-close:hover { background: var(--c-blue); color: var(--c-white); }
+.donate-modal-close:hover { background: var(--c-blue); color: var(--c-white); transform: rotate(90deg); }
+.donate-modal-body { padding: var(--s-6) var(--s-7) var(--s-7); overflow-y: auto; flex: 1; }
+.modal-h3 { color: var(--c-blue); font-size: 1.25rem; font-weight: 700; margin: 0 0 var(--s-2); letter-spacing: -0.01em; }
+.modal-subtitle { color: var(--c-muted); margin: 0 0 var(--s-5); font-size: 0.9375rem; }
+.modal-acct-header { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-4) var(--s-5); background: linear-gradient(135deg, var(--c-blue-100) 0%, #EFE6F4 100%); border-radius: var(--r-md); margin-bottom: var(--s-5); }
+.modal-acct-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 6px 16px -4px rgba(11, 29, 109, 0.3); }
+.modal-acct-name { font-size: 1.125rem; font-weight: 700; color: var(--c-blue); margin: 0; letter-spacing: -0.01em; }
+.modal-acct-email { font-size: 0.8125rem; color: var(--c-muted); margin: 0; }
+.modal-acct-status { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: var(--r-full); font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: #DCFCE7; color: #166534; }
+.modal-acct-status .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.modal-info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-md); padding: var(--s-4); margin-bottom: var(--s-4); }
+.modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+@media (max-width: 420px) { .modal-info-grid { grid-template-columns: 1fr; } }
+.modal-info-item .label { font-size: 0.6875rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; margin-bottom: 2px; }
+.modal-info-item .value { font-size: 0.875rem; font-weight: 600; color: var(--c-text); }
 
 /* ---------- 39. WFH / HFA partner features ---------- */
 .wfh-feature-grid {
@@ -4373,57 +4400,57 @@ hr {
   <div class="donate-modal" id="member-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Member login">
     <div class="donate-modal-backdrop" data-member-close></div>
     <div class="donate-modal-panel">
-      <button class="donate-modal-close" type="button" data-member-close aria-label="Close login"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <div id="member-login-panel">
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
-        <form data-mock-form novalidate>
-          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
-          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
-          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-        </form>
-        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+      <div class="donate-modal-header">
+        <div class="donate-modal-title-block">
+          <div class="donate-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <span class="donate-modal-title" id="member-modal-title">Member Login</span>
+        </div>
+        <button class="donate-modal-close" type="button" data-member-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
-      <div id="member-account-panel" style="display:none">
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">My Account</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Welcome back, <span id="acct-name" style="font-weight:700;color:var(--c-blue)"></span>!</p>
-        <div class="info-card" style="margin-bottom:var(--s-4)">
-          <h3 style="font-size:0.8125rem;text-transform:uppercase;letter-spacing:.08em;color:var(--c-muted);font-weight:700;margin-bottom:var(--s-4)">Member Information</h3>
-          <div class="info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)">
-            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Email</div><div id="acct-email" style="font-size:1rem;font-weight:600"></div></div>
-            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Role</div><div id="acct-role" style="font-size:1rem;font-weight:600"></div></div>
-            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Province</div><div id="acct-province" style="font-size:1rem;font-weight:600"></div></div>
-            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member ID</div><div id="acct-id" style="font-size:1rem;font-weight:600"></div></div>
-            <div class="info-item"><div style="font-size:0.8125rem;color:var(--c-muted);margin-bottom:2px">Member Since</div><div id="acct-since" style="font-size:1rem;font-weight:600"></div></div>
+      <div class="donate-modal-body">
+        <div id="member-login-panel">
+          <p class="modal-subtitle">Sign in to access your account, resources, and community.</p>
+          <form data-mock-form novalidate>
+            <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
+            <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
+            <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+          </form>
+          <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
+        </div>
+        <div id="member-account-panel" style="display:none">
+          <div class="modal-acct-header">
+            <div class="modal-acct-avatar" id="acct-avatar">—</div>
+            <div>
+              <p class="modal-acct-name" id="acct-name">—</p>
+              <p class="modal-acct-email" id="acct-email">—</p>
+            </div>
+            <span class="modal-acct-status"><span class="dot"></span> Active</span>
+          </div>
+          <div class="modal-info-card">
+            <div class="modal-info-grid">
+              <div class="modal-info-item"><div class="label">Role</div><div class="value" id="acct-role">—</div></div>
+              <div class="modal-info-item"><div class="label">Member ID</div><div class="value" id="acct-id">—</div></div>
+              <div class="modal-info-item"><div class="label">Province</div><div class="value" id="acct-province">—</div></div>
+              <div class="modal-info-item"><div class="label">Member Since</div><div class="value" id="acct-since">—</div></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:var(--s-3)">
+            <a class="btn btn-primary" href="patient-card.html" style="flex:1;text-align:center;padding:12px;border-radius:var(--r-full);background:var(--c-blue);color:var(--c-white);font-weight:700;font-size:0.9375rem;text-decoration:none">My Patient Card <span class="arrow">→</span></a>
+            <button type="button" id="acct-logout" style="flex:1;padding:12px;border-radius:var(--r-full);background:transparent;color:var(--c-red);border:1px solid var(--c-red);font-weight:700;font-size:0.9375rem;font-family:var(--font-sans);cursor:pointer">Sign Out</button>
           </div>
         </div>
-        <div style="display:flex;gap:var(--s-3)">
-          <a class="btn btn-primary" href="patient-card.html" style="flex:1;text-align:center;padding:12px;border-radius:var(--r-full);background:var(--c-blue);color:var(--c-white);font-weight:700;font-size:0.9375rem;text-decoration:none">My Patient Card <span class="arrow">→</span></a>
-          <button type="button" id="acct-logout" style="flex:1;padding:12px;border-radius:var(--r-full);background:transparent;color:var(--c-red);border:1px solid var(--c-red);font-weight:700;font-size:0.9375rem;font-family:var(--font-sans);cursor:pointer">Sign Out</button>
+        <div id="member-register-panel" style="display:none">
+          <p class="modal-subtitle">Join our community of patients, families, and supporters.</p>
+          <form data-mock-form novalidate>
+            <div class="form-row"><div class="form-group"><label class="form-label" for="mregname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div></div>
+            <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
+            <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
+            <div class="form-group"><label class="form-check"><input type="checkbox" id="mregterms"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a></span></label></div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+          </form>
+          <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
         </div>
-      </div>
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Member Login</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Sign in to access your account, resources, and community.</p>
-        <form data-mock-form novalidate>
-          <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
-          <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required></div>
-          <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
-        </form>
-        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
-      </div>
-      <div id="member-register-panel" style="display:none">
-        <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Create Account</h3>
-        <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Join our community of patients, families, and supporters.</p>
-        <form data-mock-form novalidate>
-          <div class="form-row"><div class="form-group"><label class="form-label" for="mregname">Full Name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div><div class="form-group"><label class="form-label" for="mregemail">Email <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div></div>
-          <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required></div>
-          <div class="form-row"><div class="form-group"><label class="form-label" for="mregprov">Province</label><select class="form-select" id="mregprov"><option value="">Select Province</option><option>Phnom Penh</option><option>Siem Reap</option><option>Battambang</option><option>Other</option></select></div><div class="form-group"><label class="form-label" for="mregrole">I am a</label><select class="form-select" id="mregrole"><option value="">Select</option><option>Patient</option><option>Family member / Caregiver</option><option>Healthcare professional</option><option>Supporter</option></select></div></div>
-          <div class="form-group"><label class="form-check"><input type="checkbox" id="mregterms"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a></span></label></div>
-          <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
-        </form>
-        <p style="text-align:center;margin-top:var(--s-4);font-size:0.875rem;color:var(--c-muted)">Already have an account? <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)">Sign In</a></p>
       </div>
     </div>
   </div>
@@ -4874,16 +4901,18 @@ hr {
     memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
     if (loginPanel) loginPanel.style.display = 'none';
     if (registerPanel) registerPanel.style.display = 'block';
+    if (acctPanel) acctPanel.style.display = 'none';
+    if (modalTitle) modalTitle.textContent = 'Create Account';
   }));
 
   const registerLink = memberModal.querySelector('[data-member-register]');
   const backLoginLink = memberModal.querySelector('[data-member-back-login]');
-  if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; });
-  if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; });
+  if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; if (acctPanel) acctPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Create Account'; });
+  if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; if (acctPanel) acctPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Member Login'; });
   const acctPanel = document.getElementById('member-account-panel');
   // Reset to login on close
   const origCloseMember = closeMember;
-  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; };
+  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Member Login'; };
 
   // ---- localStorage auth: registration ----
   const regForm = registerPanel.querySelector('form[data-mock-form]');
@@ -4940,6 +4969,8 @@ hr {
     document.getElementById('acct-province').textContent = user.province || '—';
     document.getElementById('acct-id').textContent = user.memberId || '—';
     document.getElementById('acct-since').textContent = user.memberSince || '—';
+    const avatar = document.getElementById('acct-avatar');
+    if (avatar) avatar.textContent = (user.name || '?').split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
     if (loginPanel) loginPanel.style.display = 'none';
     if (registerPanel) registerPanel.style.display = 'none';
     acctPanel.style.display = 'block';
@@ -4948,15 +4979,19 @@ hr {
   if (currentUser) updateMemberButton(currentUser);
 
   // ---- Open modal: if logged in, show account panel; else show login panel ----
+  const modalTitle = document.getElementById('member-modal-title');
   memberTriggers.forEach((t) => {
     t.removeEventListener('click', openMember);
     t.addEventListener('click', (e) => {
       e.preventDefault();
       const u = JSON.parse(localStorage.getItem('cha_current_user') || 'null');
       memberModal.classList.add('is-open'); memberModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
-      if (u) { showAccountPanel(u); } else { if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; }
+      if (u) { showAccountPanel(u); if (modalTitle) modalTitle.textContent = 'My Account'; } else { if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (acctPanel) acctPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Member Login'; }
     });
   });
+
+  // Update header title when toggling between login and register
+  const updateTitle = (text) => { if (modalTitle) modalTitle.textContent = text; };
 
   // Logout button
   const logoutBtn = document.getElementById('acct-logout');
