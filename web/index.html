@@ -3170,29 +3170,213 @@ hr {
 .donate-modal-body { padding: var(--s-6) var(--s-7) var(--s-7); overflow-y: auto; flex: 1; }
 .modal-h3 { color: var(--c-blue); font-size: 1.25rem; font-weight: 700; margin: 0 0 var(--s-2); letter-spacing: -0.01em; }
 .modal-subtitle { color: var(--c-muted); margin: 0 0 var(--s-5); font-size: 0.9375rem; }
-/* Account panel */
-.modal-acct-welcome { font-size: 1.375rem; font-weight: 800; color: var(--c-text); margin: 0 0 2px; letter-spacing: -0.02em; line-height: 1.2; }
-.modal-acct-welcome span { color: var(--c-blue); }
-.modal-acct-sub { font-size: 0.875rem; color: var(--c-muted); margin: 0 0 var(--s-5); }
-.modal-acct-header { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-5); background: linear-gradient(135deg, var(--c-blue-100) 0%, #EFE6F4 100%); border-radius: var(--r-lg); margin-bottom: var(--s-5); border: 1px solid rgba(11,29,109,0.06); }
-.modal-acct-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%); display: flex; align-items: center; justify-content: center; color: var(--c-white); font-size: 1.25rem; font-weight: 800; flex-shrink: 0; box-shadow: 0 0 0 3px var(--c-white), 0 8px 20px -4px rgba(11, 29, 109, 0.35); letter-spacing: -0.01em; }
-.modal-acct-name { font-size: 1.25rem; font-weight: 800; color: var(--c-blue); margin: 0 0 2px; letter-spacing: -0.02em; }
-.modal-acct-email { font-size: 0.875rem; color: var(--c-muted); margin: 0; }
-.modal-acct-status { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: var(--r-full); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; background: #DCFCE7; color: #166534; }
-.modal-acct-status .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.modal-acct-id { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--c-blue-100); border-radius: var(--r-full); font-size: 0.8125rem; font-weight: 700; color: var(--c-blue); letter-spacing: 0.03em; margin-bottom: var(--s-5); }
-.modal-acct-id svg { width: 14px; height: 14px; opacity: 0.7; }
-.modal-info-card { background: var(--c-white); border: 1px solid var(--c-gray-200); border-radius: var(--r-lg); padding: var(--s-5); margin-bottom: var(--s-5); position: relative; overflow: hidden; }
-.modal-info-card::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--c-blue) 0%, var(--c-purple) 100%); border-radius: 3px 0 0 3px; }
-.modal-info-card h4 { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-blue); font-weight: 700; margin: 0 0 var(--s-3); padding-left: var(--s-2); }
-.modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
-@media (max-width: 420px) { .modal-info-grid { grid-template-columns: 1fr; } }
-.modal-info-item { padding-left: var(--s-2); }
-.modal-info-item .label { font-size: 0.6875rem; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; margin-bottom: 3px; }
-.modal-info-item .value { font-size: 0.9375rem; font-weight: 600; color: var(--c-text); }
-.modal-btn-row { display: flex; gap: var(--s-3); }
-.modal-btn-row .btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: var(--s-2); padding: 13px 16px; border-radius: var(--r-full); font-family: var(--font-sans); font-weight: 700; font-size: 0.9375rem; text-decoration: none; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
-.modal-btn-row .btn-primary { background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-700) 100%); color: var(--c-white); border: none; box-shadow: 0 8px 20px rgba(11, 29, 109, 0.3); }
+/* Account panel — white design with shield decoration */
+.modal-acct-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--s-5);
+}
+.modal-acct-shield {
+  width: 72px; height: 72px;
+  flex-shrink: 0;
+  position: relative;
+}
+.modal-acct-shield svg { width: 100%; height: 100%; }
+.modal-acct-shield::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(106,44,145,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  z-index: -1;
+}
+.modal-acct-welcome {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 6px;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+.modal-acct-welcome .name {
+  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.modal-acct-sub {
+  font-size: 0.9375rem;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.modal-acct-header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--c-white);
+  border: 1px solid var(--c-gray-200);
+  border-radius: var(--r-lg);
+  margin-bottom: var(--s-4);
+  box-shadow: 0 2px 8px rgba(11, 29, 109, 0.04);
+}
+.modal-acct-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-purple) 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-white);
+  font-size: 1.25rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px -4px rgba(11, 29, 109, 0.35);
+  letter-spacing: -0.01em;
+}
+.modal-acct-info { flex: 1; min-width: 0; }
+.modal-acct-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0 0 2px;
+  letter-spacing: -0.02em;
+}
+.modal-acct-email {
+  font-size: 0.875rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+.modal-acct-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--r-full);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  background: #DCFCE7;
+  color: #166534;
+  flex-shrink: 0;
+}
+.modal-acct-status .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+}
+.modal-acct-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--c-blue-100);
+  border-radius: var(--r-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--c-blue);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--s-4);
+}
+.modal-acct-id .id-label { color: var(--c-muted); font-weight: 500; }
+.modal-acct-id .id-value { font-weight: 800; }
+.modal-acct-id svg { width: 16px; height: 16px; opacity: 0.7; }
+
+.modal-info-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-gray-200);
+  border-radius: var(--r-lg);
+  padding: var(--s-5) var(--s-6);
+  margin-bottom: var(--s-5);
+  box-shadow: 0 2px 8px rgba(11, 29, 109, 0.04);
+}
+.modal-info-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-blue);
+  margin: 0 0 var(--s-5);
+}
+.modal-info-card-title .title-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.modal-info-card-title .title-icon svg { width: 16px; height: 16px; }
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--s-5);
+}
+@media (max-width: 540px) { .modal-info-grid { grid-template-columns: 1fr; gap: var(--s-4); } }
+.modal-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: var(--s-2);
+  border-left: 2px solid var(--c-gray-100);
+}
+.modal-info-item .item-icon {
+  width: 28px; height: 28px;
+  border-radius: var(--r-md);
+  background: var(--c-blue-100);
+  color: var(--c-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-info-item .item-icon svg { width: 14px; height: 14px; }
+.modal-info-item .item-icon.purple { background: var(--c-purple-100); color: var(--c-purple); }
+.modal-info-item .item-icon.red { background: var(--c-red-100); color: var(--c-red); }
+.modal-info-item .label {
+  font-size: 0.6875rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+.modal-info-item .value {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+.modal-btn-row {
+  display: flex;
+  gap: var(--s-3);
+}
+.modal-btn-row .btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  padding: 14px 16px;
+  border-radius: var(--r-full);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.modal-btn-row .btn-primary {
+  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-700) 100%);
+  color: var(--c-white);
+  border: none;
+  box-shadow: 0 8px 20px rgba(11, 29, 109, 0.3);
+}
 .modal-btn-row .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(11, 29, 109, 0.4); color: var(--c-white); }
 .modal-btn-row .btn-outline { background: transparent; color: var(--c-red); border: 1.5px solid rgba(227,30,36,0.25); }
 .modal-btn-row .btn-outline:hover { background: var(--c-red); color: var(--c-white); border-color: var(--c-red); transform: translateY(-2px); }
@@ -4448,26 +4632,42 @@ hr {
           <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)">Don't have an account? <a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)">Register</a></p>
         </div>
         <div id="member-account-panel" style="display:none">
-          <h3 class="modal-acct-welcome">Welcome back, <span id="acct-name">—</span>!</h3>
-          <p class="modal-acct-sub">Your membership is active and ready to use.</p>
+          <div class="modal-acct-top">
+            <div>
+              <h3 class="modal-acct-welcome">Welcome back, <span class="name" id="acct-name">—</span>! 👋</h3>
+              <p class="modal-acct-sub">Your membership is active and ready to use.</p>
+            </div>
+            <div class="modal-acct-shield">
+              <svg viewBox="0 0 80 80" fill="none"><path d="M40 6C40 6 18 18 18 34c0 14 10 22 22 22s22-8 22-22C62 18 40 6 40 6z" fill="url(#shield-grad)"/><path d="M32 38l6 6 12-12" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="shield-grad" x1="18" y1="6" x2="62" y2="56"><stop stop-color="#0B1D6D"/><stop offset="1" stop-color="#6A2C91"/></linearGradient></defs></svg>
+            </div>
+          </div>
           <div class="modal-acct-header">
             <div class="modal-acct-avatar" id="acct-avatar">—</div>
-            <div>
+            <div class="modal-acct-info">
               <p class="modal-acct-name" id="acct-name-display">—</p>
               <p class="modal-acct-email" id="acct-email">—</p>
             </div>
             <span class="modal-acct-status"><span class="dot"></span> Active</span>
           </div>
           <div class="modal-acct-id">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span id="acct-id">—</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span class="id-label">Membership ID:</span> <span class="id-value" id="acct-id">—</span>
           </div>
           <div class="modal-info-card">
-            <h4>Member Details</h4>
+            <div class="modal-info-card-title"><span class="title-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Member Details</div>
             <div class="modal-info-grid">
-              <div class="modal-info-item"><div class="label">Role</div><div class="value" id="acct-role">—</div></div>
-              <div class="modal-info-item"><div class="label">Province</div><div class="value" id="acct-province">—</div></div>
-              <div class="modal-info-item"><div class="label">Member Since</div><div class="value" id="acct-since">—</div></div>
+              <div class="modal-info-item">
+                <div class="item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div><div class="label">Role</div><div class="value" id="acct-role">—</div></div>
+              </div>
+              <div class="modal-info-item">
+                <div class="item-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div><div class="label">Province</div><div class="value" id="acct-province">—</div></div>
+              </div>
+              <div class="modal-info-item">
+                <div class="item-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                <div><div class="label">Member Since</div><div class="value" id="acct-since">—</div></div>
+              </div>
             </div>
           </div>
           <div class="modal-btn-row">
