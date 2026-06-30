@@ -18,6 +18,16 @@ index.html.backup
 .claude/
 .cursor/
 .gemini/
+.impeccable/
+.workbuddy/
+
+# Local deployment config
+.vercel/
+.vercelignore
+vercel.json
+desktop.ini
+backups/
+DESIGN.md
 
 # Scratch docs and source images that are not part of the deployed site
 *.docx
