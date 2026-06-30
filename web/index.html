@@ -1676,9 +1676,9 @@ hr {
   cursor: pointer;
 }
 .tab-btn.is-active {
-  background: var(--c-white);
-  color: var(--c-blue);
-  box-shadow: var(--sh-sm);
+  background: linear-gradient(135deg, var(--c-red) 0%, #9E171A 100%);
+  color: var(--c-white);
+  box-shadow: 0 4px 12px rgba(227,30,36,0.25);
 }
 .tab-panel { display: none; }
 .tab-panel.is-active { display: block; }
@@ -1694,15 +1694,16 @@ hr {
 .amount-chip {
   padding: 0.75rem 0.5rem;
   background: var(--c-white);
-  border: 1px solid var(--c-border);
-  border-radius: var(--r-sm);
-  font-weight: var(--fw-semibold);
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-lg);
+  font-weight: 700;
+  font-size: 1.25rem;
   color: var(--c-gray-700);
   cursor: pointer;
   transition: all var(--t-fast) var(--ease);
 }
-.amount-chip:hover { border-color: var(--c-blue); color: var(--c-blue); }
-.amount-chip.is-active { background: var(--c-blue); color: var(--c-white); border-color: var(--c-blue); }
+.amount-chip:hover { border-color: var(--c-red); color: var(--c-red); }
+.amount-chip.is-active { background: linear-gradient(135deg, var(--c-red) 0%, #9E171A 100%); color: var(--c-white); border-color: var(--c-red); box-shadow: 0 4px 12px rgba(227,30,36,0.25); }
 
 .radio-row {
   display: flex;
@@ -4575,43 +4576,140 @@ hr {
   <div class="donate-modal" id="donate-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Make a donation">
     <div class="donate-modal-backdrop" data-donate-close></div>
     <div class="donate-modal-panel">
-      <button class="donate-modal-close" type="button" data-donate-close aria-label="Close donation form"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <h3 style="color:var(--c-blue);font-size:1.5rem;margin-bottom:var(--s-2)">Make a Donation</h3>
-      <p style="color:var(--c-muted);margin-bottom:var(--s-6);font-size:.9375rem">Your support changes lives across Cambodia.</p>
-      <form id="donate-modal-form" novalidate>
-        <div class="tabs-nav" data-tabs>
-          <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="modal-once">One-time</button>
-          <button class="tab-btn" type="button" data-tab-group data-tab-target="modal-monthly">Monthly</button>
-        </div>
-        <div class="tab-panel is-active" data-tab-panel="modal-once">
-          <div class="amount-chips">
-            <button type="button" class="amount-chip is-active" data-amount="10">$10</button>
-            <button type="button" class="amount-chip" data-amount="25">$25</button>
-            <button type="button" class="amount-chip" data-amount="50">$50</button>
-            <button type="button" class="amount-chip" data-amount="100">$100</button>
-            <button type="button" class="amount-chip" data-amount="other">Other</button>
+      <div class="donate-modal-header">
+        <div class="donate-modal-title-block">
+          <div class="donate-modal-icon" style="background: rgba(227,30,36,0.1); color: var(--c-red);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
           </div>
-          <input class="form-input mt-4" type="number" placeholder="Enter amount in USD" data-amount-other min="1">
+          <span class="donate-modal-title" style="font-size: 1.0625rem; font-weight: 700; color: var(--c-blue);">Make a Donation</span>
         </div>
-        <div class="tab-panel" data-tab-panel="modal-monthly">
-          <p class="text-muted mb-4" style="font-size:.875rem">Monthly gifts provide steady support.</p>
-          <div class="amount-chips">
-            <button type="button" class="amount-chip" data-amount="5">$5/mo</button>
-            <button type="button" class="amount-chip is-active" data-amount="10">$10/mo</button>
-            <button type="button" class="amount-chip" data-amount="25">$25/mo</button>
-            <button type="button" class="amount-chip" data-amount="50">$50/mo</button>
-            <button type="button" class="amount-chip" data-amount="other">Other</button>
+        <button class="donate-modal-close" type="button" data-donate-close aria-label="Close donation form"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="donate-modal-body">
+        <div class="modal-acct-top">
+          <div>
+            <h3 class="modal-acct-welcome">Help Change Lives! ❤️</h3>
+            <p class="modal-acct-sub">Your support provides treatment, education, and hope to people with bleeding disorders in Cambodia.</p>
           </div>
-          <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
+          <div class="modal-acct-shield">
+            <svg viewBox="0 0 80 80" fill="none">
+              <path d="M40 6C40 6 18 18 18 34c0 14 10 22 22 22s22-8 22-22C62 18 40 6 40 6z" fill="url(#donate-shield-grad)"/>
+              <path d="M32 38l6 6 12-12" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="donate-shield-grad" x1="18" y1="6" x2="62" y2="56">
+                  <stop stop-color="#E31E24"/>
+                  <stop offset="1" stop-color="#0B1D6D"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
         </div>
-        <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
-        <div class="radio-row">
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal" checked> PayPal</label>
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="aba"> ABA</label>
+
+        <div class="modal-acct-header">
+          <div class="modal-acct-avatar" style="background: linear-gradient(135deg, #E31E24 0%, #9E171A 100%);">❤️</div>
+          <div class="modal-acct-info">
+            <p class="modal-acct-name">Donation</p>
+            <p class="modal-acct-email">Secure & encrypted</p>
+          </div>
+          <span class="modal-acct-status"><span class="dot" style="background: #22C55E;"></span> Safe</span>
         </div>
-        <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Now</button>
-        <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
-      </form>
+
+        <form id="donate-modal-form" novalidate>
+          <!-- One-time / Monthly Tabs -->
+          <div class="tabs-nav" data-tabs style="background: var(--c-gray-100); padding: 6px; border-radius: var(--r-xl); margin-bottom: var(--s-5);">
+            <button class="tab-btn is-active" type="button" data-tab-group data-tab-target="modal-once" style="flex: 1; padding: 12px 16px; border-radius: var(--r-lg); font-weight: 700; font-size: 1.125rem;">One-time</button>
+            <button class="tab-btn" type="button" data-tab-group data-tab-target="modal-monthly" style="flex: 1; padding: 12px 16px; border-radius: var(--r-lg); font-weight: 700; font-size: 1.125rem;">Monthly</button>
+          </div>
+
+          <!-- One-time panel -->
+          <div class="tab-panel is-active" data-tab-panel="modal-once">
+            <div class="amount-chips" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-3); margin-bottom: var(--s-4);">
+              <button type="button" class="amount-chip is-active" data-amount="10" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$10</button>
+              <button type="button" class="amount-chip" data-amount="25" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$25</button>
+              <button type="button" class="amount-chip" data-amount="50" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$50</button>
+              <button type="button" class="amount-chip" data-amount="100" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$100</button>
+              <button type="button" class="amount-chip" data-amount="other" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">Other</button>
+            </div>
+            <input class="form-input" type="number" placeholder="Enter amount in USD" data-amount-other min="1" style="padding: 16px 18px; border-radius: var(--r-lg); font-size: 1.125rem;">
+          </div>
+
+          <!-- Monthly panel -->
+          <div class="tab-panel" data-tab-panel="modal-monthly">
+            <p class="text-muted mb-4" style="font-size:.875rem; padding: 12px 16px; background: var(--c-gray-100); border-radius: var(--r-lg); margin-bottom: var(--s-4); display: flex; align-items: center; gap: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; color: var(--c-red);">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              Monthly gifts provide steady support for long-term care.
+            </p>
+            <div class="amount-chips" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-3); margin-bottom: var(--s-4);">
+              <button type="button" class="amount-chip" data-amount="5" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$5/mo</button>
+              <button type="button" class="amount-chip is-active" data-amount="10" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$10/mo</button>
+              <button type="button" class="amount-chip" data-amount="25" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$25/mo</button>
+              <button type="button" class="amount-chip" data-amount="50" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$50/mo</button>
+              <button type="button" class="amount-chip" data-amount="other" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">Other</button>
+            </div>
+            <input class="form-input" type="number" placeholder="Enter monthly amount" data-amount-other min="1" style="padding: 16px 18px; border-radius: var(--r-lg); font-size: 1.125rem;">
+          </div>
+
+          <!-- Payment Method -->
+          <h4 style="margin: var(--s-6) 0 var(--s-3); font-size: 1.125rem; font-weight: 700; color: var(--c-text); display: flex; align-items: center; gap: 10px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--c-red);">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+            Payment Method
+          </h4>
+          <div class="radio-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-bottom: var(--s-6);">
+            <label class="radio-pill" data-payment-option="paypal" style="padding: 18px 16px; border-radius: var(--r-lg); border: 2px solid var(--c-border); display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span class="custom-radio" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--c-border); display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                  <span style="width: 12px; height: 12px; border-radius: 50%; background: var(--c-red); display: none;"></span>
+                </span>
+                <span style="font-size: 1.25rem; font-weight: 700;">PayPal</span>
+              </div>
+              <input type="radio" name="modal-pay" value="paypal" checked style="display: none;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
+                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106z"/>
+              </svg>
+            </label>
+            <label class="radio-pill" data-payment-option="aba" style="padding: 18px 16px; border-radius: var(--r-lg); border: 2px solid var(--c-border); display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span class="custom-radio" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--c-border); display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                  <span style="width: 12px; height: 12px; border-radius: 50%; background: var(--c-red); display: none;"></span>
+                </span>
+                <span style="font-size: 1.25rem; font-weight: 700;">ABA</span>
+              </div>
+              <input type="radio" name="modal-pay" value="aba" style="display: none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; color: var(--c-gray-400);">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <line x1="2" y1="10" x2="22" y2="10"/>
+              </svg>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-donate btn-block btn-lg" style="padding: 18px 24px; border-radius: var(--r-full); font-size: 1.25rem; font-weight: 800; background: linear-gradient(135deg, var(--c-red) 0%, #9E171A 100%); box-shadow: 0 8px 24px rgba(227, 30, 36, 0.3); display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Donate Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+
+          <p class="secure-note" style="margin-top: var(--s-4); text-align: center; font-size: 1rem; color: var(--c-gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: #22C55E;">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            Secure &amp; encrypted via PayPal &amp; ABA
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -4776,6 +4874,43 @@ hr {
 
 (function () {
   'use strict';
+
+  // Handle custom radio buttons for donate modal payment methods
+  function initDonateRadioButtons() {
+    const donateModal = document.getElementById('donate-modal');
+    if (!donateModal) return;
+
+    const radioLabels = donateModal.querySelectorAll('.radio-pill');
+
+    radioLabels.forEach((label) => {
+      const radio = label.querySelector('input[type="radio"]');
+      const radioIndicator = label.querySelector('span > span');
+
+      // Initial state
+      if (radio.checked) {
+        label.style.borderColor = 'var(--c-red)';
+        label.style.background = 'rgba(227,30,36,0.05)';
+        if (radioIndicator) radioIndicator.style.display = 'flex';
+      }
+
+      label.addEventListener('click', (e) => {
+        // Uncheck all others
+        radioLabels.forEach((otherLabel) => {
+          const otherRadio = otherLabel.querySelector('input[type="radio"]');
+          const otherIndicator = otherLabel.querySelector('span > span');
+          otherLabel.style.borderColor = 'var(--c-border)';
+          otherLabel.style.background = 'transparent';
+          if (otherIndicator) otherIndicator.style.display = 'none';
+        });
+
+        // Check this one
+        radio.checked = true;
+        label.style.borderColor = 'var(--c-red)';
+        label.style.background = 'rgba(227,30,36,0.05)';
+        if (radioIndicator) radioIndicator.style.display = 'flex';
+      });
+    });
+  }
 
   // ---------- 1. Sticky header shadow on scroll ----------
   const header = document.querySelector('.site-header');
@@ -5101,7 +5236,7 @@ hr {
   const donateTriggers = document.querySelectorAll('[data-donate-trigger]');
   const donateClosers = document.querySelectorAll('[data-donate-close]');
 
-  const openModal = (e) => { if (e) e.preventDefault(); donateModal.classList.add('is-open'); donateModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  const openModal = (e) => { if (e) e.preventDefault(); donateModal.classList.add('is-open'); donateModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; setTimeout(initDonateRadioButtons, 50); };
   const closeModal = () => { donateModal.classList.remove('is-open'); donateModal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
 
   donateTriggers.forEach((t) => t.addEventListener('click', openModal));
