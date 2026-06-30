@@ -4496,9 +4496,9 @@ hr {
             <input class="form-input mt-4" type="number" placeholder="Enter monthly amount" data-amount-other min="1">
           </div>
           <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
-          <div class="radio-row"><label class="radio-pill"><input type="radio" name="pay" value="stripe" checked> Stripe</label><label class="radio-pill"><input type="radio" name="pay" value="paypal"> PayPal</label></div>
+          <div class="radio-row"><label class="radio-pill"><input type="radio" name="pay" value="paypal" checked> PayPal</label><label class="radio-pill"><input type="radio" name="pay" value="aba"> ABA</label></div>
           <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Securely</button>
-          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via Stripe &amp; PayPal</p>
+          <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted via PayPal &amp; ABA</p>
         </form>
         <div class="form-success" data-form-success hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Thank You!</h3><p>Your generous donation will help change lives across Cambodia.</p></div>
       </div>
@@ -4606,8 +4606,8 @@ hr {
         </div>
         <h4 style="margin:var(--s-6) 0 var(--s-3);font-size:.9375rem">Payment Method</h4>
         <div class="radio-row">
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="stripe" checked> Stripe</label>
-          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal"> PayPal</label>
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="paypal" checked> PayPal</label>
+          <label class="radio-pill"><input type="radio" name="modal-pay" value="aba"> ABA</label>
         </div>
         <button type="submit" class="btn btn-donate btn-block btn-lg mt-6">Donate Now</button>
         <p class="secure-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure &amp; encrypted</p>
@@ -5023,7 +5023,7 @@ hr {
     });
   }
 
-  // ---------- 12. Donate form — redirect to Stripe or PayPal ----------
+  // ---------- 12. Donate form — redirect to PayPal or ABA ----------
   const donateForm = document.getElementById('donate-form-submit');
   if (donateForm) {
     donateForm.addEventListener('submit', (e) => {
@@ -5040,19 +5040,19 @@ hr {
 
       // Get selected payment method
       const payMethod = donateForm.querySelector('input[name="pay"]:checked');
-      const method = payMethod ? payMethod.value : 'stripe';
+      const method = payMethod ? payMethod.value : 'paypal';
 
       // Get donation type (one-time or monthly)
       const isMonthly = activePanel && activePanel.dataset.tabPanel === 'monthly';
 
-      // Redirect URLs — replace these with your real Stripe/PayPal links
-      const stripeUrl = 'https://buy.stripe.com/your-stripe-link';
+      // Redirect URLs — replace these with your real PayPal/ABA links
       const paypalUrl = 'https://www.paypal.com/donate?business=YOUR_PAYPAL_ID';
+      const abaUrl = 'https://www.ababank.com/your-payment-link';
 
-      if (method === 'stripe') {
-        window.open(stripeUrl, '_blank');
-      } else {
+      if (method === 'paypal') {
         window.open(paypalUrl, '_blank');
+      } else {
+        window.open(abaUrl, '_blank');
       }
     });
   }
@@ -5120,11 +5120,11 @@ hr {
       let amount = activeChip ? activeChip.dataset.amount : '10';
       if (amount === 'other' && otherInput && otherInput.value) amount = otherInput.value;
       const payMethod = modalForm.querySelector('input[name="modal-pay"]:checked');
-      const method = payMethod ? payMethod.value : 'stripe';
-      const stripeUrl = 'https://buy.stripe.com/your-stripe-link';
+      const method = payMethod ? payMethod.value : 'paypal';
       const paypalUrl = 'https://www.paypal.com/donate?business=YOUR_PAYPAL_ID';
-      if (method === 'stripe') window.open(stripeUrl, '_blank');
-      else window.open(paypalUrl, '_blank');
+      const abaUrl = 'https://www.ababank.com/your-payment-link';
+      if (method === 'paypal') window.open(paypalUrl, '_blank');
+      else window.open(abaUrl, '_blank');
     });
   }
 
@@ -5444,7 +5444,7 @@ hr {
       csr_fundraising_desc: "Raising funds through community drives, events, and partner campaigns that keep our programs running.",
       csr_view_campaigns: "View campaigns",
       csr_donate_online: "Online donation",
-      csr_donate_online_desc: "Donate securely via PayPal or Stripe — every contribution changes lives across Cambodia.",
+      csr_donate_online_desc: "Donate securely via PayPal or ABA — every contribution changes lives across Cambodia.",
       csr_donate_now: "Donate now",
       csr_partners_title: "Corporate Partners",
       csr_partners_desc: "Trusted organisations that support our mission and amplify our reach nationwide.",
@@ -5696,7 +5696,7 @@ hr {
       csr_fundraising_desc: "ប្រមូលថវិកាតាមរយៈការប្រមូលក្នុងសហគមន៍ ព្រឹត្តិការណ៍ និងយុទ្ធនាការដៃគូដែលរក្សាកម្មវិធីរបស់យើងឱ្យដំណើរការ។",
       csr_view_campaigns: "មើលយុទ្ធនាការ",
       csr_donate_online: "បរិច្ចាគតាមអ៊ីនធឺណិត",
-      csr_donate_online_desc: "បរិច្ចាគដោយសុវត្ថិភាពតាមរយៈ PayPal ឬ Stripe — រាល់ការរួមចំណែកផ្លាស់ប្តូរជីវិតនៅទូទាំងប្រទេសកម្ពុជា។",
+      csr_donate_online_desc: "បរិច្ចាគដោយសុវត្ថិភាពតាមរយៈ PayPal ឬ ABA — រាល់ការរួមចំណែកផ្លាស់ប្តូរជីវិតនៅទូទាំងប្រទេសកម្ពុជា។",
       csr_donate_now: "បរិច្ចាគឥឡូវ",
       csr_partners_title: "ដៃគូអាជីវកម្ម",
       csr_partners_desc: "អង្គការដែលគួរឱ្យទុកចិត្តដែលគាំទ្របេសកកម្មរបស់យើង និងពង្រីកការឈានដល់របស់យើងទូទាំងប្រទេស។",
