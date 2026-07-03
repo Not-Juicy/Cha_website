@@ -1,5 +1,5 @@
 
-&lt;?php
+<?php
 if (!defined('ABSPATH')) {
     exit;
 }

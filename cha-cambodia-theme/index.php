@@ -1,8 +1,12 @@
-&lt;?php get_header(); ?&gt;
-&lt;div class="container"&gt;
-    &lt;h1&gt;&lt;?php the_title(); ?&gt;&lt;/h1&gt;
-    &lt;?php while ( have_posts() ) : the_post(); ?&gt;
-        &lt;?php the_content(); ?&gt;
-    &lt;?php endwhile; ?&gt;
-&lt;/div&gt;
-&lt;?php get_footer(); ?&gt;
+<?php get_header(); ?>
+
+<div class="container" style="padding: 100px 20px;">
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <h1><?php the_title(); ?></h1>
+            <?php the_content(); ?>
+        </article>
+    <?php endwhile; endif; ?>
+</div>
+
+<?php get_footer(); ?>

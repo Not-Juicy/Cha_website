@@ -1,7 +1,7 @@
-&lt;?php
+<?php
 /*
 Template Name: CHA Patient Card Page
 */
-get_header(); ?&gt;
+get_header(); ?>
 
-&lt;?php get_footer(); ?&gt;
+<?php get_footer(); ?>
