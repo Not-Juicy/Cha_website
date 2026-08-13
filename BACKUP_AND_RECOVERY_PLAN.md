@@ -18,7 +18,7 @@
 | 0 | Baseline (pre-change) | 2026-08-13 | DONE | git tag `checkpoint-baseline-2026-08-13` (19f1625) + `_checkpoint_baseline_*.php/.ts/.json` copies |
 | A | Backup pipeline guide | 2026-08-13 | DONE | `BACKUP_SETUP_GUIDE.md` written. **ACTION REQUIRED (you):** install UpdraftPlus + connect B2, verify first backup |
 | B | Hosting safety net | 2026-08-13 | DONE | Deploy checklist `DEPLOYMENT_CHECKLIST.md` created with pre-deploy backup step. **ACTION REQUIRED (you):** confirm AutoBackup in cPanel |
-| C | Git cleanup + push | pending | | |
+| C | Git cleanup + push | 2026-08-13 | DONE | Commit `bf26046` + tag `checkpoint-c-git-cleanup-2026-08-13`, pushed to GitHub (app source now tracked, no secrets, new .gitignore) |
 | D | Restore runbook + test | pending | | |
 
 ## Step 0 — Baseline (DONE 2026-08-13)
