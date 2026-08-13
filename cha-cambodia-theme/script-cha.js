@@ -467,6 +467,7 @@ document.addEventListener('click', function(e) {
   // Toggle between login and register panels
   const loginPanel = document.getElementById('member-login-panel');
   const registerPanel = document.getElementById('member-register-panel');
+  const forgotPanel = document.getElementById('member-forgot-panel');
 
   // Register-specific trigger (hero button): open modal and show register panel
   const registerTriggers = document.querySelectorAll('[data-member-register-trigger]');
@@ -483,9 +484,15 @@ document.addEventListener('click', function(e) {
   if (registerLink) registerLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; registerPanel.style.display = 'block'; if (modalTitle) modalTitle.textContent = 'Register'; });
   if (backLoginLink) backLoginLink.addEventListener('click', (e) => { e.preventDefault(); registerPanel.style.display = 'none'; loginPanel.style.display = 'block'; if (modalTitle) modalTitle.textContent = 'Member Login'; });
 
+  // Forgot-password panel: open from login link, back returns to login
+  const forgotLink = memberModal.querySelector('[data-member-forgot]');
+  const backLoginForgotLink = memberModal.querySelector('[data-member-back-login-forgot]');
+  if (forgotLink) forgotLink.addEventListener('click', (e) => { e.preventDefault(); loginPanel.style.display = 'none'; if (forgotPanel) forgotPanel.style.display = 'block'; if (modalTitle) modalTitle.textContent = 'Reset Password'; });
+  if (backLoginForgotLink) backLoginForgotLink.addEventListener('click', (e) => { e.preventDefault(); if (forgotPanel) forgotPanel.style.display = 'none'; loginPanel.style.display = 'block'; if (modalTitle) modalTitle.textContent = 'Member Login'; });
+
   // Reset to login on close
   const origCloseMember = closeMember;
-  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Member Login'; };
+  closeMember = () => { origCloseMember(); if (loginPanel) loginPanel.style.display = 'block'; if (registerPanel) registerPanel.style.display = 'none'; if (forgotPanel) forgotPanel.style.display = 'none'; if (modalTitle) modalTitle.textContent = 'Member Login'; };
 
   // ---- Role selector: toggle patient fields ----
   const roleOptions = registerPanel.querySelectorAll('.role-option');
@@ -605,6 +612,31 @@ initHemophiliaOther('mregcondition', 'mregcondition-other');
       closeMember();
       updateMemberButton(data);
       chaToast('Welcome back, ' + data.name + '!', 'success');
+    } catch (err) {
+      chaToast('Network error. Please try again.', 'error');
+    }
+  });
+
+  // ---- API auth: forgot password ----
+  const forgotForm = forgotPanel ? forgotPanel.querySelector('form[data-mock-form]') : null;
+  if (forgotForm) forgotForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const email = document.getElementById('mforgotemail').value.trim();
+    if (!email) { chaToast('Please enter your email address.', 'error'); return; }
+    try {
+      const res = await fetch(chaApi.rest_url + 'forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email }),
+      });
+      const data = await res.json();
+      if (!res.ok) { chaToast(data.message || 'Could not send reset link.', 'error'); return; }
+      if (forgotForm) forgotForm.reset();
+      if (forgotPanel) forgotPanel.style.display = 'none';
+      if (loginPanel) loginPanel.style.display = 'block';
+      if (modalTitle) modalTitle.textContent = 'Member Login';
+      chaToast(data.message || 'If an account exists for that email, a reset link has been sent.', 'success', 12000);
     } catch (err) {
       chaToast('Network error. Please try again.', 'error');
     }

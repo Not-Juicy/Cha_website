@@ -947,6 +947,8 @@ function cha_customize_register($wp_customize) {
         array('member_email_placeholder', 'Enter your email', 'បញ្ចូលអ៊ីមែលរបស់អ្នក'),
         array('member_password_placeholder', 'Enter your password', 'បញ្ចូលពាក្យសម្ងាត់'),
         array('member_forgot', 'Forgot password?', 'ភ្លេចពាក្យសម្ងាត់?'),
+        array('member_forgot_sub', 'Enter your email and we will send you a link to reset your password.', 'បញ្ចូលអ៊ីមែល ហើយយើងនឹងផ្ញើតំណភ្ជាប់សម្រាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញ។'),
+        array('member_forgot_btn', 'Send Reset Link', 'ផ្ញើតំណកំណត់ឡើងវិញ'),
         array('member_signin_btn', 'Sign In', 'ចូល'),
         array('member_register_link', 'Register', 'ចុះឈ្មោះ'),
         array('member_register_title', 'Join our community of patients, families, and supporters.', 'ចូលរួមសហគមន៍អ្នកជំងឺ គ្រួសារ និងអ្នកគាំទ្ររបស់យើង។'),
@@ -967,9 +969,9 @@ function cha_customize_register($wp_customize) {
     );
     foreach ($member_texts as $m) {
         $wp_customize->add_setting($m[0], array('default' => $m[1], 'sanitize_callback' => 'sanitize_text_field'));
-        $wp_customize->add_control($m[0], array('label' => $m[1] . ' (EN)', 'section' => 'cha_member_modal', 'type' => in_array($m[0], array('member_login_sub','member_register_title')) ? 'textarea' : 'text'));
+        $wp_customize->add_control($m[0], array('label' => $m[1] . ' (EN)', 'section' => 'cha_member_modal', 'type' => in_array($m[0], array('member_login_sub','member_register_title','member_forgot_sub')) ? 'textarea' : 'text'));
         $wp_customize->add_setting($m[0] . '_km', array('default' => $m[2], 'sanitize_callback' => 'sanitize_text_field'));
-        $wp_customize->add_control($m[0] . '_km', array('label' => $m[1] . ' (KM)', 'section' => 'cha_member_modal', 'type' => in_array($m[0], array('member_login_sub','member_register_title')) ? 'textarea' : 'text'));
+        $wp_customize->add_control($m[0] . '_km', array('label' => $m[1] . ' (KM)', 'section' => 'cha_member_modal', 'type' => in_array($m[0], array('member_login_sub','member_register_title','member_forgot_sub')) ? 'textarea' : 'text'));
     }
 
     /* ============================================================

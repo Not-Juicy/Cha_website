@@ -115,7 +115,7 @@ if (!function_exists('cha_customizer_km_data')) {
             /* Member modal */
             'member_login_title', 'member_login_sub',
             'member_email_label', 'member_password_label', 'member_email_placeholder', 'member_password_placeholder',
-            'member_forgot', 'member_signin_btn', 'member_register_link', 'member_register_title',
+            'member_forgot', 'member_forgot_sub', 'member_forgot_btn', 'member_signin_btn', 'member_register_link', 'member_register_title',
             'member_register_name_label', 'member_register_name_placeholder',
             'member_register_province', 'member_register_role',
             'member_register_role_patient', 'member_register_role_family', 'member_register_role_professional', 'member_register_role_supporter',
