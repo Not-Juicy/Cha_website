@@ -5,13 +5,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
-
-# Local scratch
-prototype/
-prototype - Copy*/
-web - Copy*/
-web/                  # local mirror of root site for editing convenience
-index.html.backup
+desktop.ini
 
 # Local agent / tool config
 .agents/
@@ -20,19 +14,47 @@ index.html.backup
 .gemini/
 .impeccable/
 .workbuddy/
-
-# Local deployment config
+.trae/
 .vercel/
 .vercelignore
 vercel.json
-desktop.ini
-backups/
-DESIGN.md
 
-# Scratch docs and source images that are not part of the deployed site
+# Local scratch / backups / junk (never commit these)
+backups/
+junk/
+test-site/
+Copy for APP/
+Copyyyy for Backup/
+app-copy/
+web - Copy*/
+web/
+cha-cambodia-themee/
+themeee/
+member info/
+Design/
+Demo Cha + Admin Playbook/
+Image for AI/
+images.zip
+web.zip
+wordpress-assets.zip
+wordpress-templates.zip
+
+# Temporary checkpoint copies (remove once phases verified)
+_checkpoint_baseline_*
+
+# Scratch docs / scripts / exported text
 *.docx
-*.txt
+*.docx.txt
 gen_docx.py
+read_docx.py
 *.png
-!web/images/*.png
-PRODUCT.md
+!images/logo icon CHA.png
+
+# Expo / React Native (app)
+app/node_modules/
+app/.expo/
+app/.expo-shared/
+app/android/
+app/ios/
+app/dist/
+app/.gradle/

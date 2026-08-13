@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "CHA Cambodia",
+    "slug": "cha-cambodia",
+    "owner": "nexus_digital_support",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "54.0.0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chacambodia.app",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow CHA to access your photos to set your membership card photo.",
+        "NSCameraUsageDescription": "Allow CHA to access your camera for your membership card photo."
+      }
+    },
+    "android": {
+      "package": "com.chacambodia.app",
+      "versionCode": 2,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundColor": "#E6F4FE"
+      }
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1D6D"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow CHA to access your photos to set your membership card photo."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bc41d575-e562-4ff9-b5fa-e9b6b19eb0d0"
+      }
+    }
+  }
+}

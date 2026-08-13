@@ -16,7 +16,7 @@ get_header(); ?>
       <p>We collect only the information necessary to provide our services and support our community. This may include:</p>
       <ul>
         <li><strong>Membership information</strong> — name, contact details, date of birth, and (with consent) medical information relevant to your bleeding disorder.</li>
-        <li><strong>Donation information</strong> — name, contact details, and payment information processed securely by Stripe or PayPal. We do not store full card numbers on our servers.</li>
+        <li><strong>Donation information</strong> — name, contact details, and payment information processed securely by PayWay (ABA Bank). We do not store full card numbers on our servers.</li>
         <li><strong>Website analytics</strong> — basic, anonymised usage data to help us improve the site.</li>
         <li><strong>Communications</strong> — when you email us, fill in a form, or join our Telegram or Facebook groups.</li>
       </ul>
@@ -39,10 +39,10 @@ get_header(); ?>
       </ul>
 
       <h2>5. Your rights</h2>
-      <p>You have the right to access, correct, or request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:info@chacambodia.org.kh">info@chacambodia.org.kh</a>.</p>
+      <p>You have the right to access, correct, or request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:info@chacambodia.org">info@chacambodia.org</a>.</p>
 
       <h2>6. Data security</h2>
-      <p>We use industry-standard security measures to protect your information. Donation transactions are processed via Stripe and PayPal using encrypted connections; CHA never stores full payment card details.</p>
+      <p>We use industry-standard security measures to protect your information. Donation transactions are processed via PayWay (ABA Bank) using encrypted connections; CHA never stores full payment card details.</p>
 
       <h2>7. Cookies</h2>
       <p>Our website may use essential cookies for site functionality and minimal analytics cookies to understand how visitors use the site. You can control cookies through your browser settings.</p>
@@ -56,7 +56,7 @@ get_header(); ?>
       <h2>10. Contact us</h2>
       <p>If you have any questions about this Privacy Policy or our handling of your data, please contact us:</p>
       <ul>
-        <li>Email: <a href="mailto:info@chacambodia.org.kh">info@chacambodia.org.kh</a></li>
+        <li>Email: <a href="mailto:info@chacambodia.org">info@chacambodia.org</a></li>
         <li>Phone: 012 345 678</li>
         <li>Address: Phnom Penh, Cambodia</li>
       </ul>

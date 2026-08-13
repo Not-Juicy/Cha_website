@@ -1,95 +1,359 @@
 </main>
 
+<!-- Donate modal -->
+<div class="donate-modal" id="donate-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Make a donation">
+    <div class="donate-modal-backdrop" data-donate-close></div>
+    <div class="donate-modal-panel">
+      <div class="donate-modal-header">
+        <div class="donate-modal-title-block">
+          <div class="donate-modal-icon" style="background: rgba(227,30,36,0.1); color: var(--c-red);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <span class="donate-modal-title" style="font-size: 1.0625rem; font-weight: 700; color: var(--c-blue);"><?php echo esc_html(cha_get_option('donate_modal_title', 'Make a Donation')); ?></span>
+        </div>
+        <button class="donate-modal-close" type="button" data-donate-close aria-label="Close donation form"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="donate-modal-body">
+        <div class="modal-acct-top">
+          <div>
+            <h3 class="modal-acct-welcome"><?php echo esc_html(cha_get_option('donate_modal_heading', 'Help Change Lives!')); ?> ❤️</h3>
+            <p class="modal-acct-sub"><?php echo esc_html(cha_get_option('donate_modal_sub', 'Your support provides treatment, education, and hope to people with bleeding disorders in Cambodia.')); ?></p>
+          </div>
+          <div class="modal-acct-shield">
+            <svg viewBox="0 0 80 80" fill="none">
+              <path d="M40 6C40 6 18 18 18 34c0 14 10 22 22 22s22-8 22-22C62 18 40 6 40 6z" fill="url(#donate-shield-grad)"/>
+              <path d="M32 38l6 6 12-12" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="donate-shield-grad" x1="18" y1="6" x2="62" y2="56">
+                  <stop stop-color="#E31E24"/>
+                  <stop offset="1" stop-color="#0B1D6D"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <div class="modal-acct-header">
+          <div class="modal-acct-avatar" style="background: linear-gradient(135deg, #E31E24 0%, #9E171A 100%);">❤️</div>
+          <div class="modal-acct-info">
+            <p class="modal-acct-name">Donation</p>
+            <p class="modal-acct-email">Secure & encrypted</p>
+          </div>
+          <span class="modal-acct-status"><span class="dot" style="background: #22C55E;"></span> Safe</span>
+        </div>
+
+        <form id="donate-modal-form" novalidate>
+          <div data-tabs>
+            <!-- One-time Amount -->
+            <div class="tab-panel is-active" data-tab-panel="modal-once">
+              <div class="amount-chips" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-3); margin-bottom: var(--s-4);">
+                <button type="button" class="amount-chip is-active" data-amount="10" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$10</button>
+                <button type="button" class="amount-chip" data-amount="25" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$25</button>
+                <button type="button" class="amount-chip" data-amount="50" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$50</button>
+                <button type="button" class="amount-chip" data-amount="100" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">$100</button>
+                <button type="button" class="amount-chip" data-amount="other" style="padding: 16px 12px; font-size: 1.25rem; font-weight: 700; border-radius: var(--r-lg); border: 2px solid var(--c-border);">Other</button>
+              </div>
+              <input class="form-input" type="number" placeholder="Enter amount in USD" data-amount-other min="1" style="padding: 16px 18px; border-radius: var(--r-lg); font-size: 1.125rem;">
+            </div>
+          </div>
+
+          <!-- PayWay Note -->
+          <h4 style="margin: var(--s-6) 0 var(--s-3); font-size: 1.125rem; font-weight: 700; color: var(--c-text); display: flex; align-items: center; gap: 10px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--c-red);">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+            Secure Payment
+          </h4>
+          <p class="text-muted" style="font-size:0.875rem; margin-bottom: var(--s-5);">Pay securely with credit/debit cards, ABA Pay, KHQR, WeChat Pay or Alipay via PayWay (ABA Bank).</p>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-donate btn-block btn-lg" style="padding: 18px 24px; border-radius: var(--r-full); font-size: 1.25rem; font-weight: 800; background: linear-gradient(135deg, var(--c-red) 0%, #9E171A 100%); box-shadow: 0 8px 24px rgba(227, 30, 36, 0.3); display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <?php echo esc_html(cha_get_option('donate_btn', 'Donate Now')); ?>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+
+          <p class="secure-note" style="margin-top: var(--s-4); text-align: center; font-size: 1rem; color: var(--c-gray-500); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: #22C55E;">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <?php echo esc_html(cha_get_option('donate_footer_note', 'Secure & encrypted via PayWay (ABA Bank)')); ?>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Member modal -->
+  <div class="donate-modal" id="member-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Member login">
+    <div class="donate-modal-backdrop" data-member-close></div>
+    <div class="donate-modal-panel">
+      <div class="donate-modal-header">
+        <div class="donate-modal-title-block">
+          <div class="donate-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <span class="donate-modal-title" id="member-modal-title"><?php echo esc_html(cha_get_option('member_login_title', 'Member Login')); ?></span>
+        </div>
+        <button class="donate-modal-close" type="button" data-member-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="donate-modal-body">
+        <div id="member-login-panel">
+          <p class="modal-subtitle"><?php echo esc_html(cha_get_option('member_login_sub', 'Sign in to access your account, resources, and community.')); ?></p>
+          <form data-mock-form novalidate>
+            <div class="form-group"><label class="form-label" for="memail">Email <span class="req">*</span></label><input class="form-input" type="email" id="memail" placeholder="Enter your email" required></div>
+            <div class="form-group"><label class="form-label" for="mpass">Password <span class="req">*</span></label><div class="password-wrapper"><input class="form-input" type="password" id="mpass" placeholder="Enter your password" required><button type="button" class="password-toggle" onclick="togglePass(event)" aria-label="Toggle password visibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-open"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-closed" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div></div>
+            <div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-4)"><a href="#" style="font-size:0.8125rem;color:var(--c-muted)">Forgot password?</a></div>
+            <div class="modal-btn-row">
+              <button type="submit" class="btn btn-primary"><?php echo esc_html(cha_get_option('member_signin_btn', 'Sign In')); ?></button>
+            </div>
+          </form>
+          <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)"><a href="#" data-member-register style="color:var(--c-blue);font-weight:var(--fw-semibold)"><?php echo esc_html(cha_get_option('member_register_link', 'Register')); ?></a></p>
+        </div>
+        <div id="member-register-panel" style="display:none">
+          <p class="modal-subtitle"><?php echo esc_html(cha_get_option('member_register_title', 'Join our community of patients, families, and supporters.')); ?></p>
+          <form data-mock-form novalidate>
+            <div class="form-group"><label class="form-label" for="mregrole">I am a <span class="req">*</span></label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)">
+                <label class="role-option" style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:2px solid var(--c-border);border-radius:var(--r-lg);cursor:pointer;transition:all 0.2s">
+                  <input type="radio" name="mregrole" value="Supporter" checked style="display:none">
+                  <span class="role-radio" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s"><span style="width:10px;height:10px;border-radius:50%;background:var(--c-blue);display:none"></span></span>
+                  <span><strong style="display:block;font-size:0.875rem">Member</strong><span style="font-size:0.75rem;color:var(--c-muted)">Supporter / Family</span></span>
+                </label>
+                <label class="role-option" style="display:flex;align-items:center;gap:10px;padding:14px 16px;border:2px solid var(--c-border);border-radius:var(--r-lg);cursor:pointer;transition:all 0.2s">
+                  <input type="radio" name="mregrole" value="Patient" style="display:none">
+                  <span class="role-radio" style="width:20px;height:20px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s"><span style="width:10px;height:10px;border-radius:50%;background:var(--c-blue);display:none"></span></span>
+                  <span><strong style="display:block;font-size:0.875rem">Patient</strong><span style="font-size:0.75rem;color:var(--c-muted)">I have a bleeding disorder</span></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label" for="mregname">Full name <span class="req">*</span></label><input class="form-input" type="text" id="mregname" placeholder="Enter your full name" required></div>
+            <div class="form-group"><label class="form-label" for="mregemail">Email address <span class="req">*</span></label><input class="form-input" type="email" id="mregemail" placeholder="Enter your email" required></div>
+            <div class="form-group"><label class="form-label" for="mregpass">Password <span class="req">*</span></label><div class="password-wrapper"><input class="form-input" type="password" id="mregpass" placeholder="Create a password" required><button type="button" class="password-toggle" onclick="togglePass(event)" aria-label="Toggle password visibility"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-open"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-closed" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div></div>
+            <div class="form-group"><label class="form-label" for="mregphone">Phone number (optional)</label><input class="form-input" type="tel" id="mregphone" placeholder="Enter your phone number"></div>
+            <div class="form-group"><label class="form-label" for="mregaddress">Address (optional)</label><input class="form-input" type="text" id="mregaddress" placeholder="Enter your address"></div>
+<div id="patient-fields" style="display:none">
+  <div class="form-group"><label class="form-label" for="mregdob">Date of birth</label><input class="form-input" type="text" id="mregdob" placeholder="dd/mm/yyyy"></div>
+              <div class="form-group"><label class="form-label" for="mregcondition">Hemophilia Type</label><select class="form-input" id="mregcondition"><option value="">Select type</option><option value="Hemophilia A">Hemophilia A</option><option value="Hemophilia B">Hemophilia B</option><option value="Other">Other</option></select><input class="form-input" type="text" id="mregcondition-other" placeholder="Specify your condition" style="display:none;margin-top:8px"></div>
+              <div class="form-group"><label class="form-label" for="mregblood">Blood type</label>
+                <select class="form-input" id="mregblood"><option value="">Select blood type</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-check"><input type="checkbox" id="mregconsent"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a>.</span></label></div>
+            <div class="modal-btn-row">
+              <button type="submit" class="btn btn-primary"><?php echo esc_html(cha_get_option('member_register_btn', 'Register')); ?></button>
+            </div>
+          </form>
+          <p style="text-align:center;margin-top:var(--s-5);font-size:0.875rem;color:var(--c-muted)"><?php echo esc_html(cha_get_option('member_register_login', 'Already have an account?')); ?> <a href="#" data-member-back-login style="color:var(--c-blue);font-weight:var(--fw-semibold)"><?php echo esc_html(cha_get_option('member_signin_btn', 'Sign In')); ?></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard modal -->
+  <div class="donate-modal" id="dashboard-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Member dashboard">
+    <div class="donate-modal-backdrop" data-dashboard-close></div>
+    <div class="donate-modal-panel" style="max-width:560px">
+      <div class="donate-modal-header">
+        <div class="donate-modal-title-block">
+          <div class="donate-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <span class="donate-modal-title" id="dashboard-modal-title" data-i18n="dash_title">My Dashboard</span>
+        </div>
+        <button class="donate-modal-close" type="button" data-dashboard-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="donate-modal-body">
+        <!-- Member view (simple) -->
+        <div id="dash-member-view" style="display:none">
+          <div style="text-align:center;margin-bottom:var(--s-6)">
+            <div id="dash-member-avatar" style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue) 0%,var(--c-red) 100%);display:flex;align-items:center;justify-content:center;margin:0 auto var(--s-3);color:#fff;font-size:2rem;font-weight:700"></div>
+            <h3 id="dash-member-name" style="color:var(--c-blue);margin-bottom:4px"></h3>
+            <p id="dash-member-role" style="font-size:0.8125rem;color:var(--c-muted);margin:0"></p>
+          </div>
+          <div style="background:var(--c-gray-100);border-radius:var(--r-lg);padding:var(--s-5)" id="dash-member-info">
+            <div class="dash-info-row"><span class="dash-info-label" data-i18n="dash_member_id">Member ID</span><span id="dash-member-id" class="dash-info-value"></span></div>
+            <div class="dash-info-row"><span class="dash-info-label" data-i18n="dash_email">Email</span><span id="dash-member-email" class="dash-info-value"></span><input type="email" id="m-edit-email" class="form-input dash-edit-input" style="display:none" placeholder="Email" data-i18n-placeholder="dash_ph_email"></div>
+            <div class="dash-info-row"><span class="dash-info-label" data-i18n="dash_phone">Phone</span><span id="dash-member-phone" class="dash-info-value"></span><input type="tel" id="m-edit-phone" class="form-input dash-edit-input" style="display:none" placeholder="Phone" data-i18n-placeholder="dash_ph_phone"></div>
+            <div class="dash-info-row"><span class="dash-info-label" data-i18n="dash_address">Address</span><span id="dash-member-address" class="dash-info-value"></span><input type="text" id="m-edit-address" class="form-input dash-edit-input" style="display:none" placeholder="Address" data-i18n-placeholder="dash_ph_address"></div>
+            <div class="dash-info-row"><span class="dash-info-label" data-i18n="dash_member_since">Member since</span><span id="dash-member-since" class="dash-info-value"></span></div>
+            <div style="margin-top:var(--s-4)" id="dash-member-actions">
+              <button type="button" class="btn btn-outline" id="dash-member-edit-btn" style="width:100%" data-i18n="dash_edit_profile">Edit Profile</button>
+              <div id="dash-member-save-cancel" style="display:none;grid-template-columns:1fr 1fr;gap:var(--s-3)">
+                <button type="button" class="btn btn-primary" id="dash-member-save-btn" data-i18n="dash_save">Save</button>
+                <button type="button" class="btn btn-outline" id="dash-member-cancel-btn" data-i18n="dash_cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:var(--s-5);text-align:center">
+            <button type="button" class="btn btn-primary" data-dashboard-logout style="width:100%" data-i18n="dash_sign_out">Sign Out</button>
+          </div>
+        </div>
+        <!-- Patient view (ID card) -->
+        <div id="dash-patient-view" style="display:none">
+          <div style="text-align:center;margin-bottom:var(--s-4)">
+            <h3 id="dash-patient-name" style="color:var(--c-blue);margin-bottom:4px;font-size:1.25rem"></h3>
+            <p style="font-size:0.8125rem;color:var(--c-muted);margin:0;letter-spacing:0.02em" data-i18n="dash_card_subtitle">Patient Identification Card</p>
+          </div>
+          <!-- ID Card Front -->
+          <div class="id-card-front">
+            <div class="id-card-front-inner">
+              <div class="id-card-photo-wrap">
+                <img id="dash-patient-photo" src="" alt="Patient photo" style="display:none">
+                <div id="dash-patient-photo-placeholder" style="width:100%;height:100%;background:var(--c-gray-200);display:flex;align-items:center;justify-content:center;color:var(--c-muted);font-size:0.75rem" data-i18n="dash_no_photo">No Photo</div>
+                <button type="button" id="dash-photo-delete" class="id-card-photo-delete" title="Remove photo" style="display:none">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <label class="id-card-photo-upload" for="patient-photo-input">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </label>
+                <input type="file" id="patient-photo-input" accept="image/*" style="display:none">
+              </div>
+              <div class="id-card-details">
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_member_id">Member ID</span><span class="id-card-dots"></span><span id="dash-patient-id" class="id-card-value"></span></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_name">Name</span><span class="id-card-dots"></span><span id="dash-patient-name-display" class="id-card-value"></span><input type="text" id="p-edit-name" class="id-card-edit-input" style="display:none" placeholder="Name" data-i18n-placeholder="dash_ph_name"></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_dob">Date of Birth</span><span class="id-card-dots"></span><span id="dash-patient-dob" class="id-card-value"></span><input type="text" id="p-edit-dob" class="id-card-edit-input" style="display:none" placeholder="dd/mm/yyyy"></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_condition">Condition</span><span class="id-card-dots"></span><span id="dash-patient-condition" class="id-card-value"></span><select id="p-edit-condition" class="id-card-edit-input" style="display:none"><option value="">Select type</option><option value="Hemophilia A">Hemophilia A</option><option value="Hemophilia B">Hemophilia B</option><option value="Other">Other</option></select><input type="text" id="p-edit-condition-other" class="id-card-edit-input" placeholder="Specify your condition" style="display:none"></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_blood_type">Blood Type</span><span class="id-card-dots"></span><span id="dash-patient-blood" class="id-card-value"></span><select id="p-edit-blood" class="id-card-edit-input" style="display:none"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_phone">Phone</span><span class="id-card-dots"></span><span id="dash-patient-phone" class="id-card-value"></span><input type="tel" id="p-edit-phone" class="id-card-edit-input" style="display:none" placeholder="Phone" data-i18n-placeholder="dash_ph_phone"></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_created_at">Created At</span><span class="id-card-dots"></span><span id="dash-patient-created" class="id-card-value"></span></div>
+                <div class="id-card-row"><span class="id-card-label" data-i18n="dash_address">Address</span><span class="id-card-dots"></span><span id="dash-patient-address" class="id-card-value"></span><input type="text" id="p-edit-address" class="id-card-edit-input" style="display:none" placeholder="Address" data-i18n-placeholder="dash_ph_address"></div>
+              </div>
+            </div>
+          </div>
+          <!-- ID Card Back -->
+          <div class="id-card-back" style="margin-top:var(--s-4)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s-4)">
+              <img src="<?php echo get_template_directory_uri(); ?>/cha-logo-left.png" alt="CHA" style="height:36px">
+              <div style="font-size:0.75rem;font-weight:700;color:var(--c-red);margin-right:8px" data-i18n="dash_card_title_back">Patient Identification Card</div>
+            </div>
+            <div style="font-size:0.6875rem;line-height:1.6;color:var(--c-gray-600)">
+              <p style="margin:0 0 6px;font-weight:700;color:var(--c-blue)" data-i18n="dash_rules">Rules</p>
+              <ol style="margin:0;padding-left:16px">
+                <li data-i18n="dash_rule_1">This card is the property of the Cambodian Haemophilia Association.</li>
+                <li data-i18n="dash_rule_2">Please present this card when receiving treatment services.</li>
+                <li data-i18n="dash_rule_3">If lost, please contact the association immediately.</li>
+              </ol>
+            </div>
+            <div style="display:flex;justify-content:flex-end;align-items:flex-end;margin-top:var(--s-5)">
+              <div style="font-size:0.625rem;color:var(--c-muted);text-align:right">
+                <div style="font-weight:700;color:var(--c-blue)" data-i18n="dash_member_id">Member ID</div>
+                <div id="dash-patient-id-back"></div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-actions" style="margin-top:var(--s-5);display:flex;flex-direction:column;align-items:center;gap:var(--s-3)">
+            <button type="button" class="btn btn-primary" id="dash-print-card" style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg><span data-i18n="dash_print_card">Print Card</span></button>
+            <div id="dash-patient-actions" style="width:100%">
+              <button type="button" class="btn btn-outline" id="dash-patient-edit-btn" style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span data-i18n="dash_edit_profile">Edit Profile</span></button>
+              <div id="dash-patient-save-cancel" style="display:none;width:100%;grid-template-columns:1fr 1fr;gap:var(--s-3)">
+                <button type="button" class="btn btn-primary" id="dash-patient-save-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="dash_save">Save</span></button>
+                <button type="button" class="btn btn-outline" id="dash-patient-cancel-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span data-i18n="dash_cancel">Cancel</span></button>
+              </div>
+            </div>
+            <div class="dash-actions-divider"></div>
+            <button type="button" class="btn-text" data-dashboard-logout><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span data-i18n="dash_sign_out">Sign Out</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer transition wave -->
+<div class="footer-wave">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L0,60 Q120,80 360,60 Q600,40 720,50 Q960,70 1200,50 Q1320,40 1440,50 L1440,0 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
 <!-- Footer -->
-<footer class="site-footer">
-    <div class="footer-wave">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0 80L120 73.3C240 66.7 480 53.3 720 53.3C960 53.3 1200 66.7 1320 73.3L1440 80V0H1320C1200 0 960 0 720 0C480 0 240 0 120 0H0V80Z" fill="#0B1D6D"/>
-        </svg>
-    </div>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col footer-col-brand">
-                <a href="<?php echo home_url(); ?>" class="footer-brand">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cha-logo-small.png" alt="Cambodian Haemophilia Association">
-                </a>
-                <p class="footer-tagline">
-                    Supporting people living with bleeding disorders across Cambodia.
-                </p>
-                <div class="footer-socials">
-                    <a href="#" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Email">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                </div>
+<footer class="site-footer"><div class="container">
+    <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+            <a href="<?php echo home_url(); ?>" class="footer-brand">
+                <img src="<?php echo get_template_directory_uri(); ?>/cha-logo-left.png" alt="Cambodian Haemophilia Association" style="height:52px;width:auto;max-width:200px;object-fit:contain">
+            </a>
+            <p class="footer-tagline"><?php echo esc_html(cha_get_option('footer_tagline', 'Supporting people living with bleeding disorders across Cambodia.')); ?></p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
             </div>
-
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="<?php echo home_url(); ?>">Home</a></li>
-                    <li><a href="#about">About CHA</a></li>
-                    <li><a href="#programs">Programs & Care</a></li>
-                    <li><a href="#news">News & Events</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Get Involved</h4>
-                <ul>
-                    <li><a href="#donate">Donate</a></li>
-                    <li><a href="#member">Become a Member</a></li>
-                    <li><a href="#">Volunteer</a></li>
-                    <li><a href="#">Partner With Us</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col footer-contact">
-                <h4>Contact Us</h4>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul><li><a href="<?php echo home_url(); ?>">Home</a></li><li><a href="<?php echo home_url('/about'); ?>">About Us</a></li><li><a href="<?php echo home_url('/haemophilia'); ?>">About Haemophilia</a></li><li><a href="<?php echo home_url('/#contact'); ?>">Contact Us</a></li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Resources</h4>
+            <ul><li><a href="<?php echo home_url('/programs'); ?>#treatment-centres">Treatment Centres</a></li><li><a href="<?php echo home_url('/#news-events'); ?>">News &amp; Events</a></li><li><a href="#" data-donate-trigger>Donation</a></li></ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="footer-contact">
                 <div class="item">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    <div>
-                        Phnom Penh, Cambodia
-                    </div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span><?php echo esc_html(cha_get_option('contact_address', '#35, St. 121, Sangkat Tuel Tumpong 2, Khan Chamkarmon, Phnom Penh, Cambodia')); ?></span>
                 </div>
                 <div class="item">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                    <div>
-                        +855 12 345 678
-                    </div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <a href="tel:<?php echo esc_attr(cha_get_option('contact_phone_digits', '+85512345678')); ?>"><?php echo esc_html(cha_get_option('contact_phone', '(+855) 12 345 678')); ?></a>
+                </div>
+                <div class="item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:<?php echo esc_attr(cha_get_option('contact_email', 'info@chacambodia.org')); ?>"><?php echo esc_html(cha_get_option('contact_email', 'info@chacambodia.org')); ?></a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div>© <?php echo date('Y'); ?> Cambodian Haemophilia Association. All rights reserved.</div>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Disclaimer</a>
-            </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <?php echo date('Y'); ?> <?php echo esc_html(cha_get_option('footer_copyright', 'Cambodian Haemophilia Association. All rights reserved.')); ?></span>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Social Media Links</a>
+            <a href="<?php echo home_url('/#contact'); ?>">Contact Us</a>
         </div>
     </div>
-</footer>
+</div></footer>
 
 <?php wp_footer(); ?>
+  <!-- Flatpickr (Airbnb theme) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    function initFlatpickr() {
+      if (typeof flatpickr === 'undefined') return;
+      document.querySelectorAll('#mregdob, #p-edit-dob').forEach(function(el) {
+        if (!el._flatpickr) {
+          flatpickr(el, {
+            dateFormat: 'd/m/Y',
+            allowInput: true,
+            clickOpens: true,
+            locale: { firstDayOfWeek: 1 }
+          });
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', initFlatpickr);
+    // Re-init when modals open (MutationObserver catches dynamic content)
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.addedNodes.length) initFlatpickr();
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+
+  <!-- Botpress Chat Widget -->
+  <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2026/07/21/02/20260721025253-A1YF239M.js" defer></script>
 </body>
 </html>

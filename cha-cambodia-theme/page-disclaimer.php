@@ -30,7 +30,7 @@ get_header(); ?>
       <p>Where translations between English and Khmer are provided, every effort has been made to ensure accuracy. However, the English version takes precedence in case of any discrepancy or ambiguity.</p>
 
       <h2>7. Donations</h2>
-      <p>All donations made through this website are processed by third-party payment providers (Stripe and PayPal). CHA is not responsible for any issues arising from payment processing, but we will gladly assist you in resolving any donation-related concerns.</p>
+      <p>All donations made through this website are processed by PayWay (ABA Bank), a third-party payment provider. CHA is not responsible for any issues arising from payment processing, but we will gladly assist you in resolving any donation-related concerns.</p>
 
       <h2>8. Limitation of liability</h2>
       <p>To the fullest extent permitted by law, CHA and its representatives are not liable for any loss or damage (including indirect, consequential, or incidental loss) arising out of or in connection with your use of this website.</p>
@@ -41,7 +41,7 @@ get_header(); ?>
       <h2>10. Contact us</h2>
       <p>If you have any questions about this disclaimer, please contact us:</p>
       <ul>
-        <li>Email: <a href="mailto:info@chacambodia.org.kh">info@chacambodia.org.kh</a></li>
+        <li>Email: <a href="mailto:info@chacambodia.org">info@chacambodia.org</a></li>
         <li>Phone: 012 345 678</li>
         <li>Address: Phnom Penh, Cambodia</li>
       </ul>
