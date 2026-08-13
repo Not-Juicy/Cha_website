@@ -16,7 +16,7 @@
 | # | Checkpoint | Date | Status | Where |
 |---|------------|------|--------|-------|
 | 0 | Baseline (pre-change) | 2026-08-13 | DONE | git tag `checkpoint-baseline-2026-08-13` (19f1625) + `_checkpoint_baseline_*.php/.ts/.json` copies |
-| A | Backup pipeline guide | 2026-08-13 | DONE | `BACKUP_SETUP_GUIDE.md` written. **ACTION REQUIRED (you):** install UpdraftPlus + connect B2, verify first backup |
+| A | Backup pipeline guide | 2026-08-13 | DONE | `BACKUP_SETUP_GUIDE.md` written. **ACTION REQUIRED (you):** install UpdraftPlus + connect **Google Drive**, verify first backup |
 | B | Hosting safety net | 2026-08-13 | DONE | Deploy checklist `DEPLOYMENT_CHECKLIST.md` created with pre-deploy backup step. **ACTION REQUIRED (you):** confirm AutoBackup in cPanel |
 | C | Git cleanup + push | 2026-08-13 | DONE | Commit `bf26046` + tag `checkpoint-c-git-cleanup-2026-08-13`, pushed to GitHub (app source now tracked, no secrets, new .gitignore) |
 | D | Restore runbook + test | pending | | |
@@ -27,11 +27,11 @@
 - Baseline copies of live files made as `_checkpoint_baseline_*` alongside each file
   (delete these later once phases are verified).
 
-## Phase A — Backup pipeline (UpdraftPlus → S3-compatible off-site)
+## Phase A — Backup pipeline (UpdraftPlus → Google Drive)
 
 - Install **UpdraftPlus** (free) on `chacambodia.org` WP admin.
-- Connect destination: **Backblaze B2 (~$6/mo)** — cheapest S3-compatible storage.
-  *Later:* same pipeline points at **Supabase Storage (S3)** when boss approves ($25/mo,
+- Connect destination: **Google Drive** — free (15 GB), one-click setup, plenty of headroom.
+  *Later:* swap destination to **Supabase Storage (S3)** when boss approves ($25/mo,
   doubles as future global backend). Swap = new keys + endpoint only.
 - Schedule: **database daily**, **full backup weekly**; retain 30 daily + 12 weekly.
 - Verify first scheduled run completes (check UpdraftPlus "Existing backups").

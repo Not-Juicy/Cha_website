@@ -9,7 +9,7 @@
 |---|---|---|
 | A file/theme change broke the site | Git checkout of previous commit (below) | 5 min |
 | Database corrupted / users lost | UpdraftPlus backup (daily) | 15 min |
-| Whole site gone / hosting disk failed | UpdraftPlus off-site copy (B2) | 30–60 min |
+| Whole site gone / hosting disk failed | UpdraftPlus off-site copy (Google Drive) | 30–60 min |
 | App won't build | Rebuild from `app/` source (tracked in git) | via EAS |
 
 ---
@@ -30,7 +30,7 @@ git checkout <good-commit> -- cha-cambodia-theme app   # restore those folders
 ## 2. RESTORE DATABASE via UpdraftPlus (fastest)
 
 1. WP Admin → **UpdraftPlus → Existing backups**
-2. Pick the newest backup with a green tick (uploaded to B2)
+2. Pick the newest backup with a green tick (uploaded to Google Drive)
 3. Select **"Database"** only (or "Everything" if full restore)
 4. Click **Restore**, confirm, wait
 5. Verify: members table has rows; try a login
@@ -78,4 +78,4 @@ git checkout <good-commit> -- cha-cambodia-theme app   # restore those folders
 ## Golden rule
 
 **Never restore without a verified backup.** If a backup shows no green tick / isn't on
-B2, it isn't a backup — run a fresh one first.
+Google Drive, it isn't a backup — run a fresh one first.
