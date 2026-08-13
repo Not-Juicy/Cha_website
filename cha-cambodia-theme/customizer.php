@@ -887,12 +887,37 @@ function cha_customize_register($wp_customize) {
         array('footer_resources', 'Resources', 'ធនធាន'),
         array('footer_contact_heading', 'Contact Us', 'ទំនាក់ទំនង'),
         array('footer_social_links', 'Social Media Links', 'តំណបណ្តាញសង្គម'),
+        array('footer_privacy', 'Privacy Policy', 'គោលនយោបាយឯកជនភាព'),
+        array('footer_disclaimer', 'Disclaimer', 'ការបដិសេធ'),
+        array('footer_terms', 'Terms of Service', 'លក្ខខណ្ឌនៃការប្រើប្រាស់'),
     );
     foreach ($footer_navs as $f) {
         $wp_customize->add_setting($f[0], array('default' => $f[1], 'sanitize_callback' => 'sanitize_text_field'));
         $wp_customize->add_control($f[0], array('label' => $f[1] . ' (EN)', 'section' => 'cha_footer_nav', 'type' => 'text'));
         $wp_customize->add_setting($f[0] . '_km', array('default' => $f[2], 'sanitize_callback' => 'sanitize_text_field'));
         $wp_customize->add_control($f[0] . '_km', array('label' => $f[1] . ' (KM)', 'section' => 'cha_footer_nav', 'type' => 'text'));
+    }
+
+    /* ---- Section: Legal Pages ---- */
+    $wp_customize->add_section('cha_legal_pages', array(
+        'title' => 'Legal Pages',
+        'panel' => 'cha_footer_modals',
+    ));
+
+    $legal_texts = array(
+        array('legal_last_updated', 'Last updated line', 'កាលបរិច្ឆេទអាប់ដេត'),
+        array('legal_privacy_title', 'Privacy title', 'ចំណងជើងគោលនយោបាយឯកជនភាព'),
+        array('legal_privacy_lead', 'Privacy intro', 'ការពិពណ៌នាគោលនយោបាយឯកជនភាព'),
+        array('legal_disclaimer_title', 'Disclaimer title', 'ចំណងជើងការបដិសេធ'),
+        array('legal_disclaimer_lead', 'Disclaimer intro', 'ការពិពណ៌នាការបដិសេធ'),
+        array('legal_terms_title', 'Terms title', 'ចំណងជើងលក្ខខណ្ឌ'),
+        array('legal_terms_lead', 'Terms intro', 'ការពិពណ៌នាលក្ខខណ្ឌ'),
+    );
+    foreach ($legal_texts as $l) {
+        $wp_customize->add_setting($l[0], array('default' => $l[1], 'sanitize_callback' => 'sanitize_text_field'));
+        $wp_customize->add_control($l[0], array('label' => $l[1] . ' (EN)', 'section' => 'cha_legal_pages', 'type' => 'text'));
+        $wp_customize->add_setting($l[0] . '_km', array('default' => $l[2], 'sanitize_callback' => 'sanitize_text_field'));
+        $wp_customize->add_control($l[0] . '_km', array('label' => $l[1] . ' (KM)', 'section' => 'cha_legal_pages', 'type' => 'text'));
     }
 
     /* ---- Section: Donate Modal ---- */

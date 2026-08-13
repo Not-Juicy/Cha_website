@@ -146,7 +146,7 @@
                 <select class="form-input" id="mregblood"><option value="">Select blood type</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select>
               </div>
             </div>
-            <div class="form-group"><label class="form-check"><input type="checkbox" id="mregconsent"><span>I agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a>.</span></label></div>
+            <div class="form-group"><label class="form-check"><input type="checkbox" id="mregconsent"><span><?php echo esc_html(cha_get_option('member_register_terms', 'I agree to the')); ?> <a href="<?php echo esc_url(home_url('/terms')); ?>" target="_blank"><?php echo esc_html(cha_get_option('member_register_terms_link', 'Terms & Conditions')); ?></a>.</span></label></div>
             <div class="modal-btn-row">
               <button type="submit" class="btn btn-primary"><?php echo esc_html(cha_get_option('member_register_btn', 'Register')); ?></button>
             </div>
@@ -325,10 +325,11 @@
     <div class="footer-bottom">
         <span>© <?php echo date('Y'); ?> <?php echo esc_html(cha_get_option('footer_copyright', 'Cambodian Haemophilia Association. All rights reserved.')); ?></span>
         <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Disclaimer</a>
-            <a href="#">Social Media Links</a>
-            <a href="<?php echo home_url('/#contact'); ?>">Contact Us</a>
+            <a href="<?php echo esc_url(home_url('/privacy')); ?>" data-i18n="footer_privacy"><?php echo esc_html(cha_get_option('footer_privacy', 'Privacy Policy')); ?></a>
+            <a href="<?php echo esc_url(home_url('/disclaimer')); ?>" data-i18n="footer_disclaimer"><?php echo esc_html(cha_get_option('footer_disclaimer', 'Disclaimer')); ?></a>
+            <a href="<?php echo esc_url(home_url('/terms')); ?>" data-i18n="footer_terms"><?php echo esc_html(cha_get_option('footer_terms', 'Terms of Service')); ?></a>
+            <a href="#" data-donate-trigger>Donation</a>
+            <a href="<?php echo home_url('/#contact'); ?>" data-i18n="footer_contact"><?php echo esc_html(cha_get_option('footer_contact_heading', 'Contact Us')); ?></a>
         </div>
     </div>
 </div></footer>

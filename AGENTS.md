@@ -38,6 +38,9 @@ Cha/
 │   ├── functions.php       → ALL REST endpoints + SMTP + PayWay + rate logic
 │   ├── reset-password.php  → web password-reset page (POST form, token validation)
 │   ├── verify.php          → email-verification web page
+│   ├── page-privacy.php    → Privacy Policy (EN+KM) — template "CHA Privacy Page"
+│   ├── page-disclaimer.php → Disclaimer (EN+KM) — template "CHA Disclaimer Page"
+│   ├── page-terms.php      → Terms of Service (EN+KM) — template "CHA Terms Page"
 │   ├── header/footer/front-page + page-*.php → templates
 │   ├── customizer.php, script-cha.js, style-cha.css
 │   └── index.php, style.css
@@ -157,6 +160,8 @@ Every completed phase = git tag `checkpoint-<name>-YYYY-MM-DD`, pushed to GitHub
 | `checkpoint-c-git-cleanup-2026-08-13` | `bf26046` |
 | `checkpoint-d-runbook-2026-08-13` | `7a25427` |
 | `checkpoint-a-googledrive-2026-08-13` | `fdb62f8` |
+| `checkpoint-backup-confirmed-2026-08-13` | `f9b0baf` |
+| `checkpoint-web-forgot-2026-08-13` | `b0d83a8` |
 
 Rollback: `git checkout <tag> -- cha-cambodia-theme app`. All on GitHub
 `Not-Juicy/Cha_website` (branch `main`). `.gitignore` excludes junk/copy/backup folders,
@@ -168,20 +173,21 @@ Rollback: `git checkout <tag> -- cha-cambodia-theme app`. All on GitHub
 
 ## 9. IN-FLIGHT / NEXT WORK (priority order)
 
-1. **Expo Go login "network error" (UNRESOLVED — resume this)**
-   - Server verified healthy (login returns proper JSON; 403 = `not_verified` only).
-   - TLS chain complete, no WAF block found.
-   - `client.ts` already updated to surface the real cause (timeout/DNS/status/not-JSON).
-   - Remaining: reload Expo Go, retry, ask user for the exact NEW message + the registered
-     email to check `wp_cha_members.status` for that email. Diagnose if it's `not_verified`,
-     `invalid_credentials`, or transport.
-2. **Forgot-password end-to-end test**: app → Send Reset Link → Brevo email → `reset-password.php`
-   → set new password → login. Theme zip must be redeployed first (see §7 open items).
+1. **Login + forgot-password VERIFIED** (web + app): user confirmed both work. Web forgot added
+   as modal panel in the member modal (`#member-forgot-panel`, `data-member-forgot`),
+   POST to `cha/v1/forgot-password` (`script-cha.js`). Tag `checkpoint-web-forgot-2026-08-13`.
+2. **Store compliance (Phase 2 DOWN to WP admin actions)**:
+   - Built: real `page-privacy.php`, `page-disclaimer.php`, new `page-terms.php` (all EN+KM,
+     templates "CHA Privacy Page" / "CHA Disclaimer Page" / "CHA Terms Page"), footer links
+     wired to `/privacy` `/disclaimer` `/terms` + register consent → `/terms`.
+   - **ACTION REQUIRED (you, WP admin)**: with the new theme live, create 3 Pages with those
+     templates + slugs `privacy`/`disclaimer`/`terms`, publish, purge LiteSpeed Cache.
+   - Master doc: `STORE_SUBMISSION_CHECKLIST.md` (Data Safety answers, Health-apps declaration,
+     Apple Privacy labels, demo reviewer account, listing copy EN/KM, 12-testers/14-day plan).
+   - Remaining store items all boss-side: Google $25 + Apple $99 accounts, PayWay production
+     credentials, icon/screenshots, closed test.
 3. **Hardening (low priority)**: secure public `cha-smtp-debug.log`; rate-limit
    `/login`, `/register`, `/forgot-password` per IP.
-4. **Store compliance (playbook: demo reviewer account, privacy/disclaimer content, health-apps
-   declaration, Data Safety form, closed test 12 testers × 14 days, listing copy EN/KM)**.
-   See `CHA_Cambodia_Client_Requirements_Checklist.docx.txt`.
 
 ---
 

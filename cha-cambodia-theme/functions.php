@@ -104,6 +104,7 @@ if (!function_exists('cha_customizer_km_data')) {
             'other_heading', 'other_1_title', 'other_1_desc', 'other_2_title', 'other_2_desc', 'other_footer',
             /* Footer nav */
             'footer_quick_links', 'footer_resources', 'footer_contact_heading', 'footer_social_links',
+            'footer_privacy', 'footer_disclaimer', 'footer_terms',
             /* Donate modal */
             'donate_modal_title', 'donate_modal_heading', 'donate_modal_sub',
             'donate_secure_label', 'donate_safe_label', 'donate_one_time', 'donate_monthly',
@@ -136,6 +137,10 @@ if (!function_exists('cha_customizer_km_data')) {
             'contact_form_name', 'contact_form_email', 'contact_form_subject', 'contact_form_message',
             'contact_form_name_ph', 'contact_form_email_ph', 'contact_form_subject_ph', 'contact_form_message_ph',
             'contact_form_btn', 'contact_form_success',
+            /* Legal pages */
+            'legal_last_updated', 'legal_privacy_title', 'legal_privacy_lead',
+            'legal_disclaimer_title', 'legal_disclaimer_lead',
+            'legal_terms_title', 'legal_terms_lead',
         );
         $map = array();
         foreach ($en_fields as $f) {
