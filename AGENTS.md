@@ -131,15 +131,15 @@ session, applied via `cha_upgrade_members_table` migration on theme deploy),
 **DONE**
 - Git save points pushed (tags below). App source now version-controlled (was never tracked).
 - UpdraftPlus → Google Drive connected (account `Nexus Digital Support`, ~5 TB free).
-- Schedules set: Files **Weekly**, Database **Daily**.
+- Schedules CONFIRMED: Files **Weekly** (Thu Aug 20), Database **Daily** (Fri Aug 14).
+- Retention CONFIRMED: **files 4 / database 14** (DB should be raised to ≥14 done; ok now).
 - Docs created: plan, setup guide, deployment checklist, restore runbook.
 
 **OPEN — needs site owner action (agent cannot click WP admin/cPanel)**
-- [ ] Confirm UpdraftPlus retention is **Files 12 / Database 30** (not 2).
-- [ ] Confirm cPanel **AutoBackup** is enabled (Phase B).
+- [ ] One manual **Backup Now** → confirm green tick (files + DB upload to Google Drive).
+- [ ] Confirm cPanel **AutoBackup** is enabled (Phase B) — **deferred, no cPanel access yet**.
 - [ ] Phase D **restore test** — runbook written but untested; needs cPanel/phpMyAdmin
-      access. Golden rule: never restore from an untested backup.
-- [ ] After moving the Google Drive UpdraftPlus folder, run Backup Now once → green tick.
+      access (deferred). Golden rule: never restore from an untested backup.
 
 **Doc order to follow**: `BACKUP_AND_RECOVERY_PLAN.md` (master) → `BACKUP_SETUP_GUIDE.md`
 → `BACKUP_AND_RESTORE.md` → `DEPLOYMENT_CHECKLIST.md`.

@@ -16,10 +16,11 @@
 | # | Checkpoint | Date | Status | Where |
 |---|------------|------|--------|-------|
 | 0 | Baseline (pre-change) | 2026-08-13 | DONE | git tag `checkpoint-baseline-2026-08-13` (19f1625) + `_checkpoint_baseline_*.php/.ts/.json` copies |
-| A | Backup pipeline guide | 2026-08-13 | DONE | `BACKUP_SETUP_GUIDE.md` written. **ACTION REQUIRED (you):** install UpdraftPlus + connect **Google Drive**, verify first backup |
-| B | Hosting safety net | 2026-08-13 | DONE | Deploy checklist `DEPLOYMENT_CHECKLIST.md` created with pre-deploy backup step. **ACTION REQUIRED (you):** confirm AutoBackup in cPanel |
+| A | Backup pipeline guide | 2026-08-13 | DONE | `BACKUP_SETUP_GUIDE.md` written. UpdraftPlus → **Google Drive** connected 2026-08-13. Schedules CONFIRMED: Files Thu Aug 20 (weekly), Database Fri Aug 14 (daily). Retention CONFIRMED: files 4 / database 14. **Remaining:** one manual *Backup Now* → green tick in Existing backups |
+| B | Hosting safety net | 2026-08-13 | DONE | Deploy checklist `DEPLOYMENT_CHECKLIST.md` created with pre-deploy backup step. **ACTION REQUIRED (you):** confirm AutoBackup in cPanel — **deferred until Namecheap/cPanel access granted** |
 | C | Git cleanup + push | 2026-08-13 | DONE | Commit `bf26046` + tag `checkpoint-c-git-cleanup-2026-08-13`, pushed to GitHub (app source now tracked, no secrets, new .gitignore) |
-| D | Restore runbook + test | pending | | |
+| D | Restore runbook + test | pending | | `BACKUP_AND_RESTORE.md` written (commit `7a25427`). **Restore test deferred** until cPanel/phpMyAdmin access granted |
+| H | Handoff (AGENTS.md) | 2026-08-13 | DONE | Commit `5b32815` + tag `checkpoint-handoff-2026-08-13`. Full web+app state captured for future agents |
 
 ## Step 0 — Baseline (DONE 2026-08-13)
 
@@ -33,8 +34,10 @@
 - Connect destination: **Google Drive** — free (15 GB), one-click setup, plenty of headroom.
   *Later:* swap destination to **Supabase Storage (S3)** when boss approves ($25/mo,
   doubles as future global backend). Swap = new keys + endpoint only.
-- Schedule: **database daily**, **full backup weekly**; retain 30 daily + 12 weekly.
-- Verify first scheduled run completes (check UpdraftPlus "Existing backups").
+- Schedule: **database daily**, **full backup weekly** (CONFIRMED live: Files Thu Aug 20,
+  Database Fri Aug 14). Retention (CONFIRMED live): **files 4 / database 14**.
+- Verify first scheduled run completes (check UpdraftPlus "Existing backups"). One manual
+  *Backup Now* → green tick still to confirm.
 
 ## Phase B — Hosting safety net
 
