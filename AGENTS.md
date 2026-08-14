@@ -56,26 +56,28 @@ Theme → **purge LiteSpeed Cache** (stale cache has caused stale pages before).
 
 ---
 
-## 3. App — screens (15)
+## 3. App — screens (14)
+
+Tabs (4): Home · Haemophilia · Locations · Account.
 
 | Screen | Path |
 |---|---|
 | Home | `screens/Home/HomeScreen.tsx` |
-| News | `screens/News/NewsScreen.tsx` |
-| Programs | `screens/Programs/ProgramsScreen.tsx` |
+| Locations (tab) | `screens/Locations/LocationsScreen.tsx` (CHA PP+SR offices + partner centres) |
 | Haemophilia | `screens/Haemophilia/HaemophiliaScreen.tsx` |
-| About | `screens/About/AboutScreen.tsx` |
 | Donate (PayWay WebView) | `screens/Donate/DonateScreen.tsx` |
-| Dashboard (Account) | `screens/Dashboard/DashboardScreen.tsx` |
+| Dashboard (Account tab) | `screens/Dashboard/DashboardScreen.tsx` |
 | MembershipCard | `screens/Dashboard/MembershipCardScreen.tsx` |
 | EditProfile | `screens/Profile/EditProfileScreen.tsx` (has Delete Account) |
 | ChangePassword | `screens/Profile/ChangePasswordScreen.tsx` |
 | Settings | `screens/Settings/SettingsScreen.tsx` (Terms link, real version via expo-constants) |
 | Help | `screens/Help/HelpScreen.tsx` |
 | Auth (login/register/verify) | `screens/Auth/AuthScreen.tsx` |
-| ForgotPassword | `screens/Auth/ForgotPasswordScreen.tsx` (NEW) |
+| ForgotPassword | `screens/Auth/ForgotPasswordScreen.tsx` |
 
-Role: member / patient. Auth = own email+password (no Sign-in-with-Apple required).
+Removed per boss (Aug 14): About tab, News, Programs tab, leadership/about-us content,
+homepage news + "Who is CHA?" sections. Role: member / patient. Auth = own email+password
+(no Sign-in-with-Apple required).
 
 ---
 
@@ -162,6 +164,8 @@ Every completed phase = git tag `checkpoint-<name>-YYYY-MM-DD`, pushed to GitHub
 | `checkpoint-a-googledrive-2026-08-13` | `fdb62f8` |
 | `checkpoint-backup-confirmed-2026-08-13` | `f9b0baf` |
 | `checkpoint-web-forgot-2026-08-13` | `b0d83a8` |
+| `checkpoint-store-legal-2026-08-13` | `e3c6eb4` |
+| `checkpoint-app-restructure-2026-08-14` | `0564a0f` |
 
 Rollback: `git checkout <tag> -- cha-cambodia-theme app`. All on GitHub
 `Not-Juicy/Cha_website` (branch `main`). `.gitignore` excludes junk/copy/backup folders,
@@ -186,7 +190,15 @@ Rollback: `git checkout <tag> -- cha-cambodia-theme app`. All on GitHub
      Apple Privacy labels, demo reviewer account, listing copy EN/KM, 12-testers/14-day plan).
    - Remaining store items all boss-side: Google $25 + Apple $99 accounts, PayWay production
      credentials, icon/screenshots, closed test.
-3. **Hardening (low priority)**: secure public `cha-smtp-debug.log`; rate-limit
+3. **App restructure DONE (Aug 14)**: per boss — removed About tab + News/Programs tabs
+   (leadership/about-us/news content deleted), added **Locations** tab (`LocationsScreen.tsx`:
+   CHA PP HQ + SR chapter offices with call/maps + partner treatment centres finder). Homepage
+   cleaned: no news/"Who is CHA?"; quick actions now Haemophilia / Locations / Membership Card /
+   Donate. Tabs: Home · Haemophilia · Locations · Account. `npx tsc --noEmit` clean.
+   Tag `checkpoint-app-restructure-2026-08-14`. NOTE: SR chapter address is a placeholder —
+   boss to confirm. Push pending (GitHub auth: cached creds are `ndxdigitalsupport` which lacks
+   push access to `Not-Juicy/Cha_website`).
+4. **Hardening (low priority)**: secure public `cha-smtp-debug.log`; rate-limit
    `/login`, `/register`, `/forgot-password` per IP.
 
 ---
