@@ -15,7 +15,6 @@ import EditProfileScreen from './src/screens/Profile/EditProfileScreen';
 import ChangePasswordScreen from './src/screens/Profile/ChangePasswordScreen';
 import HelpScreen from './src/screens/Help/HelpScreen';
 import DonateScreen from './src/screens/Donate/DonateScreen';
-import NewsScreen from './src/screens/News/NewsScreen';
 import SettingsScreen from './src/screens/Settings/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
@@ -57,7 +56,6 @@ function AppNavigator() {
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="Help" component={HelpScreen} />
         <Stack.Screen name="Donate" component={DonateScreen} />
-        <Stack.Screen name="News" component={NewsScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>

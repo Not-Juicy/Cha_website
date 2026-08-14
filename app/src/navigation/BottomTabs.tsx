@@ -10,9 +10,8 @@ import { useAppTheme } from '../store/ThemeContext';
 const { width } = Dimensions.get('window');
 
 import HomeScreen from '../screens/Home/HomeScreen';
-import AboutScreen from '../screens/About/AboutScreen';
 import HaemophiliaScreen from '../screens/Haemophilia/HaemophiliaScreen';
-import ProgramsScreen from '../screens/Programs/ProgramsScreen';
+import LocationsScreen from '../screens/Locations/LocationsScreen';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 
 const Tab = createBottomTabNavigator();
@@ -58,9 +57,8 @@ export default function BottomTabs() {
         tabBarIcon: ({ focused }) => {
           let iconName: keyof typeof Ionicons.glyphMap = 'home';
           if (route.name === 'Home') iconName = focused ? 'home' : 'home-outline';
-          else if (route.name === 'About') iconName = focused ? 'people' : 'people-outline';
           else if (route.name === 'Haemophilia') iconName = focused ? 'water' : 'water-outline';
-          else if (route.name === 'Programs') iconName = focused ? 'medical' : 'medical-outline';
+          else if (route.name === 'Locations') iconName = focused ? 'location' : 'location-outline';
           else if (route.name === 'Account') iconName = focused || user ? 'person' : 'person-outline';
 
           return (
@@ -82,9 +80,8 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: t('nav.home', 'Home') }} />
-      <Tab.Screen name="About" component={AboutScreen} options={{ tabBarLabel: t('nav.about', 'About') }} />
       <Tab.Screen name="Haemophilia" component={HaemophiliaScreen} options={{ tabBarLabel: t('nav.haemophilia', 'Haemophilia') }} />
-      <Tab.Screen name="Programs" component={ProgramsScreen} options={{ tabBarLabel: t('nav.programs', 'Programs') }} />
+      <Tab.Screen name="Locations" component={LocationsScreen} options={{ tabBarLabel: t('nav.locations', 'Locations') }} />
       <Tab.Screen name="Account" component={DashboardScreen} options={{ tabBarLabel: t('dashboard.title', 'Account') }} />
     </Tab.Navigator>
   );

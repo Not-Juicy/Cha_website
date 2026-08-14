@@ -19,9 +19,8 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About",
     "haemophilia": "Hemophilia",
-    "programs": "Programs",
+    "locations": "Locations",
     "more": "More"
   },
   "home": {
@@ -43,67 +42,42 @@
     "howWeHelp": "How We Help",
     "howWeHelpSub": "Four core areas where CHA makes a difference for patients and families across Cambodia.",
     "quickActions": {
-      "about": "About CHA",
       "haemophilia": "Haemophilia",
-      "programs": "Programs",
+      "locations": "Locations",
+      "card": "Membership Card",
       "donate": "Donate"
     },
     "helpDesc": {
-      "about": "Our mission & leadership",
       "haemophilia": "Types & symptoms",
-      "programs": "Find partner clinics",
+      "locations": "CHA offices & clinics",
+      "card": "Your CHA ID card",
       "donate": "Support bleeding care"
     },
     "explore": "Explore",
     "learnMore": "Learn More",
-    "whoIs": "Who is CHA?",
-    "whoDesc": "The Cambodian Haemophilia Association is a patient-led organization dedicated to improving the quality of life for people living with bleeding disorders across Cambodia.",
-    "ourVision": "OUR VISION",
-    "visionText": "A Cambodia where every person with a bleeding disorder has access to diagnosis, treatment, and support.",
-    "ourMission": "OUR MISSION",
-    "missionText": "To advocate for quality care, educate communities, support families, and empower caregivers.",
-    "news": "Latest News & Events",
-    "newsSub": "Community events, treatment guidelines, and training workshops.",
-    "viewAll": "View All",
-    "readMore": "Read Article",
     "donate": {
       "title": "Help Change Lives",
       "button": "Donate Now",
       "ctaText": "Your donation helps us provide treatment, education and hope to people with bleeding disorders in Cambodia."
     }
   },
-  "about": {
-    "title": "Who is CHA?",
-    "lead": "The Cambodian Haemophilia Association is a patient-led organization dedicated to improving care, advocacy, and quality of life across Cambodia.",
-    "visionLabel": "Our Vision",
-    "visionText": "A Cambodia where every person with a bleeding disorder has access to timely diagnosis, care, and life-saving factor treatments.",
-    "missionLabel": "Our Mission",
-    "missionText": "To advocate for quality health care, educate medical staff, support affected families, and empower patient caregivers nationwide.",
-    "journeyTitle": "Our Journey & Milestones",
-    "leadershipTitle": "Leadership Team",
-    "leadershipSub": "Dedicated advocates leading the mission for hemophilia patients in Cambodia.",
-    "roles": {
-      "honoraryPresident": "Honorary President",
-      "president": "President",
-      "vicePresident": "Vice President",
-      "executiveDirector": "Executive Director"
-    },
-    "history": {
-      "y2011": {
-        "event": "CHA Founded",
-        "desc": "Cambodian Haemophilia Association officially established to support bleeding disorder patients."
+  "locations": {
+    "title": "CHA Locations",
+    "lead": "Find CHA offices and partner treatment centres in Phnom Penh and Siem Reap.",
+    "officesTitle": "CHA Offices",
+    "openInMaps": "Open in Maps",
+    "partnersTitle": "Partner Treatment Centres",
+    "partnersSub": "Hospitals and specialized haematology units across Cambodia.",
+    "offices": {
+      "phnomPenh": {
+        "name": "CHA National Headquarters",
+        "sub": "Phnom Penh",
+        "address": "#35, St. 121, Sangkat Tuol Tompoung 2, Khan Chamkarmon, Phnom Penh, Cambodia"
       },
-      "y2014": {
-        "event": "HFA Regional Membership",
-        "desc": "Joined Haemophilia Federation of Asia as a core member state."
-      },
-      "y2017": {
-        "event": "WFH Global Recognition",
-        "desc": "Formally recognized by the World Federation of Hemophilia (WFH)."
-      },
-      "y2023": {
-        "event": "National Expansion",
-        "desc": "Expanded hospital partner network across all 25 Cambodian provinces."
+      "siemReap": {
+        "name": "CHA Siem Reap Chapter",
+        "sub": "Siem Reap",
+        "address": "Siem Reap Provincial Hospital, Pokambor Ave, Siem Reap, Cambodia"
       }
     }
   },
